@@ -27,6 +27,7 @@ This section must provide a good overview of the Web API that your group is goin
 :ballot_box_with_check: **EVALUATION**
 
 ---
+{: .alert .alert-gitlab-orange}
 ## Main concepts and relations
 ## API uses
 ## Related work
