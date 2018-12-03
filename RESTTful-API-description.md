@@ -1,7 +1,7 @@
 # General API description
 ---
 
-:ballot_box_with_check: ** EVALUATION **
+:ballot_box_with_check: **EVALUATION**
 
 ---
 # Main concepts and relations
