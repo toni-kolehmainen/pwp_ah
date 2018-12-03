@@ -6,7 +6,7 @@
 ---
 ---
 
-###SUMMARY
+### SUMMARY
 
 This section must provide a good overview of the Web API that your group is going to develop during the course. You should not focus in implementation aspects such as database structure,  interfaces or the request/responses formats. We recommend that you look into existing APIs (see Related work below) before writing the description for your own API.
 
