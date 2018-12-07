@@ -1,7 +1,35 @@
-{::options parse_block_html="true" /}
+# Important information for Deadline 1
+
+:bangbang:&nbsp;&nbsp;**This section should be completed by Deadline 1** *(see course information at [Lovelace](http://lovelace.oulu.fi))*
+
+
+<details>
+<summary>
+<strong>Content that must be included in the section</strong>
+</summary>
+
+<bloquote>
+You should check 
+
+</bloquote>
+
+</details>
+
+
+
+<details>
+<summary>
+:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Evaluation criteria</strong>
+</summary>
+
+<bloquote>
+
+</bloquote>
+
+</details>
 
 # RESTful API description
----
+
 
 **DEADLINE 1**.
 
@@ -20,16 +48,7 @@ This section must provide a good overview of the Web API that your group is goin
 * Describe the project topic API
 * Describe how the API will be used in the project
 
----
-## General API description
 
-
----
-
-:ballot_box_with_check: **EVALUATION**
-
----
-{: .alert .alert-gitlab-orange}
 ## Main concepts and relations
 ## API uses
 ## Related work
