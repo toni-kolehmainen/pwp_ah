@@ -1,11 +1,11 @@
 # Important information for Deadline 1
 ---
-:bangbang:&nbsp;&nbsp;**This section should be completed by Deadline 1** *(see course information at [Lovelace](http://lovelace.oulu.fi))*
+:bangbang:&nbsp;&nbsp;**This chapter should be completed by Deadline 1** *(see course information at [Lovelace](http://lovelace.oulu.fi))*
 ---
 ---
 <details>
 <summary>
-:bookmark_tabs:&nbsp;&nbsp;<strong>Content that must be included in the section</strong>
+:bookmark_tabs:&nbsp;&nbsp;<strong>Content that must be included in the chapter</strong>
 </summary>
 
 <bloquote>
@@ -95,6 +95,16 @@ You can get a maximum of <strong>2 points in this section</strong>
 </summary>
 
 <bloquote>
+<strong>Define</strong> the <strong>main concepts</strong> and describe the <strong>relations</strong> among them textually. Roughly, a concept is a real-world entity that is expected to be of interest to users. This section will be used in Deadline 3 to generate the list of resources. Students should remember that some of the concepts might not be a resource by themselves, but just a part of it (resource property). In this section, students should not describe the RESTful resources, but identify which are the main ideas of the API. Do not forget to include the relations among the concepts.
+
+A description of the main concepts for the Forum API could be: 
+
+<em>"The API permits users send messages. The forum contains a list of categories and a list of users. Each category specifies a name, a description and a thread. A thread is [...]The forum may contain 0 or more categories… Each category may have 0 or more threads… Users can write and read messages to a forum thread. A user has a profile, basic information, activity information (stores, for instance, all the messages sent by a user, the messages marked as favorites). [...]The user history contains information of the last 30 messages sent by the user.[…]"</em>
+
+Include a diagram which shows easily the relations among concepts.
+
+This section is important because it outlines the concepts that you will later implement. In particular, the diagram defined here will follow you throughout the project report and you will be adding more details to it.
+
 
 </bloquote>
 
@@ -109,7 +119,12 @@ You can get a maximum of <strong>2 points in this section</strong>
 </summary>
 
 <bloquote>
-
+In this section you can get a maximum of <strong>1.5 points:</strong>
+<ul>
+<li>Concepts are named: <strong>0.5</strong></li>
+<li>Each concept is described briefly: <strong>0.5</strong></li>
+<li>A diagram is provided that shows relations between concepts: <strong>0.5</strong></li>
+</ul>
 </bloquote>
 
 </details>
@@ -123,7 +138,7 @@ You can get a maximum of <strong>2 points in this section</strong>
 </summary>
 
 <bloquote>
-
+Describe at least two clients that could use your Web API. You must explain here which is the functionality provided by the client, and how use the Web API to implement this functionality.
 </bloquote>
 
 </details>
@@ -137,6 +152,12 @@ You can get a maximum of <strong>2 points in this section</strong>
 </summary>
 
 <bloquote>
+In this section you can get a maximum of <strong>2 points</strong>
+<ul>
+<li>The client descriptions are written clearly and explain what they are for: <strong>0.5</strong></li>
+<li>Descriptions outline what parts of the API each client uses, and how: <strong>1.0</strong></li>
+<li>At least two more examples of clients are provided (1-2 sentences per client):<strong>0.5</strong></li>
+</ul>
 
 </bloquote>
 
@@ -151,7 +172,9 @@ You can get a maximum of <strong>2 points in this section</strong>
 </summary>
 
 <bloquote>
+Find at least one API that resembles the functionality provided by yours. Explain in detail the functionality provided by the API. Classify the API according to its type (RPC, REST, pure REST, hypermedia driven ...) justifying your selection. Provide at least one example client that uses this API.
 
+The purpose of this task is to get more familiar with what exactly is an API. This will be helpful in describing your own API. Therefore it is recommended to do this section after you have decided the topic of your project but before writing your API description.
 </bloquote>
 
 </details>
@@ -165,10 +188,23 @@ You can get a maximum of <strong>2 points in this section</strong>
 </summary>
 
 <bloquote>
-
+You can get a maximum of <strong>2.5 points</strong> in this secton:
+<ul>
+<li>One API is selected and named: <strong>0.5</strong></li>
+<li>The selected API is similar or related to the project topic: <strong>0.5</strong></li>
+<li>The API classified correctly, and is described in terms of offered functionality: <strong>1.0</strong></li>
+<li>An example of a client that uses this API is provided, explaining briefly what it does: <strong>0.5</strong></li>
+</ul>
 </bloquote>
 
 </details>
 
 ---
 ## Resources allocation
+|**Task** | **Student**|**Estimated time**|
+|:------: |:----------:|:----------------:|
+|||| 
+|||| 
+|||| 
+|||| 
+|||| 
