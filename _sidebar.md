@@ -1,5 +1,5 @@
 * [Group information](home)
-* [DL1. RESTful API description](RESTTful-API-description.md)
+* [DL1. RESTful API description](RESTTful-API-description)
 * [DL2. Backend](Database-design-and-implementation)
 * [DL3. RESTful API design](RESTful-API-design)
 * [DL4. RESTful API implementation](restful-api-implementation)
