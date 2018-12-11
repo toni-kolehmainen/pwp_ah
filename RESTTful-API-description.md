@@ -5,15 +5,15 @@
 ---
 <details>
 <summary>
-:bookmark_tabs:&nbsp;&nbsp;<strong>Content that must be included in the chapter</strong>
+:bookmark_tabs:&nbsp;&nbsp;<strong>Content that must be included in the Chapter</strong>
 </summary>
 
 <bloquote>
 This chapter must provide a good overview of the Web API that your group is going to develop during the course. You should not focus in implementation aspects such as database structure,  interfaces or the request/responses formats. We recommend that you look into existing APIs (see Related work below) before writing the description for your own API.
 
-In this section you must describe JUST the RESTful API, NOT THE CLIENT. Remember that client and Web API should be totally decoupled.
+In this Chapter you must describe JUST the RESTful API, NOT THE CLIENT. Remember that client and Web API should be totally decoupled.
 
-<h3>SECTION GOALS:</h3>
+<h3>Chapter GOALS:</h3>
 <ol>
 <li> Understand what is an API</li>
 <li>Describe the project topic API</li>
@@ -32,7 +32,7 @@ In this section you must describe JUST the RESTful API, NOT THE CLIENT. Remember
 </summary>
 
 <bloquote>
-You can get a maximum of 8 points after completing this section. More detailed evaluation is provided after each heading.
+You can get a maximum of 8 points after completing this Chapter. More detailed evaluation is provided after each heading.
 </bloquote>
 
 </details>
