@@ -2,6 +2,7 @@
 ---
 :bangbang:&nbsp;&nbsp;**This chapter should be completed by Deadline 2** *(see course information at [Lovelace](http://lovelace.oulu.fi))*
 ---
+
 ---
 <details>
 <summary>

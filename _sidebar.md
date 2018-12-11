@@ -5,4 +5,5 @@
 * [DL4. RESTful API implementation](restful-api-implementation)
 * [DL5. RESTful API client](RESTful-client-design-and-implementation)
 * [FINAL. Reflection and evaluation](analysis-and-reflection)
+* [APPENDIX. Extra Work](extra_work)
 
