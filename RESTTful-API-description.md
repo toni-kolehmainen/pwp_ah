@@ -1,7 +1,6 @@
 # Important information for Deadline 1
----
-:bangbang:&nbsp;&nbsp;**This chapter should be completed by Deadline 1** *(see course information at [Lovelace](http://lovelace.oulu.fi))*
----
+
+:bangbang:&nbsp;&nbsp;**This chapter should be completed by Deadline 1** *(see course information at [Lovelace](http://lovelace.oulu.fi))*
 ---
 <details>
 <summary>

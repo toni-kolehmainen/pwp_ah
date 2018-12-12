@@ -1,7 +1,6 @@
 # Important information for final deadline
----
-:bangbang:&nbsp;&nbsp;**This chapter should be completed by final deadline** *(see course information at [Lovelace](http://lovelace.oulu.fi))*
----
+
+:bangbang:&nbsp;&nbsp;**This chapter should be completed by final deadline** *(see course information at [Lovelace](http://lovelace.oulu.fi))*
 
 ---
 <details>
