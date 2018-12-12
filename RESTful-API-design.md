@@ -44,7 +44,7 @@ In this chapter, the students&nbsp;<strong>must design the RESTful API.The minim
 ---
 <details>
 <summary>
-:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Evaluation criteria</strong>
+:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Evaluation criteria(max 20 points)</strong>
 </summary>
 
 <bloquote>
@@ -81,7 +81,7 @@ You can get a maximum of 20 points after completing this section. More detailed 
 ---
 <details>
 <summary>
-:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Evaluation criteria</strong>
+:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Evaluation criteria(max 3 points)</strong>
 </summary>
 
 <bloquote>
@@ -124,7 +124,7 @@ In addition you must provide, for each request, a small sequence diagram indicat
 ---
 <details>
 <summary>
-:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Evaluation criteria</strong>
+:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Evaluation criteria(max 2 points)</strong>
 </summary>
 
 <bloquote>
@@ -189,7 +189,7 @@ For all resources you must cover:
 ---
 <details>
 <summary>
-:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Evaluation criteria</strong>
+:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Evaluation criteria(max 10.5 points)</strong>
 </summary>
 
 <bloquote>
@@ -247,7 +247,7 @@ Explain briefly how your API meets REST principles. Focus specially in the four 
 ---
 <details>
 <summary>
-:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Evaluation criteria</strong>
+:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Evaluation criteria(max 4.5 points)</strong>
 </summary>
 
 <bloquote>

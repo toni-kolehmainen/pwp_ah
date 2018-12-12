@@ -24,7 +24,7 @@ In this section you must implement the RESTful API designed in the previous sect
 ---
 <details>
 <summary>
-:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Evaluation criteria</strong>
+:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Evaluation criteria(max 20 points)</strong>
 </summary>
 
 <bloquote>
@@ -57,7 +57,7 @@ A list of all implemented resources. Consider that not all resources that you ha
 ---
 <details>
 <summary>
-:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Evaluation criteria</strong>
+:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Evaluation criteria(max 1.0 points)</strong>
 </summary>
 
 <bloquote>
@@ -107,7 +107,7 @@ A list of all implemented resources. Consider that not all resources that you ha
 ---
 <details>
 <summary>
-:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Evaluation criteria</strong>
+:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Evaluation criteria(max 4.5 points)</strong>
 </summary>
 
 <bloquote>
@@ -171,7 +171,7 @@ As with the database tests, in this section it is your responsibility that your 
 ---
 <details>
 <summary>
-:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Evaluation criteria</strong>
+:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Evaluation criteria(max 14.5 points)</strong>
 </summary>
 
 <bloquote>

@@ -26,7 +26,7 @@ It is not mandatory to write code for test the application. Client testing would
 ---
 <details>
 <summary>
-:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Evaluation criteria</strong>
+:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Evaluation criteria(max 15.5 points)</strong>
 </summary>
 
 <bloquote>
@@ -61,7 +61,7 @@ You must provide a description of the application. You must clarify which are th
 ---
 <details>
 <summary>
-:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Evaluation criteria</strong>
+:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Evaluation criteria(max 0.75 points)</strong>
 </summary>
 
 <bloquote>
@@ -95,7 +95,7 @@ Provide a use case diagram of your application. For each case, specify which is 
 ---
 <details>
 <summary>
-:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Evaluation criteria</strong>
+:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Evaluation criteria(max 1.75 points)</strong>
 </summary>
 
 <bloquote>
@@ -132,7 +132,7 @@ Draw a diagram of the client layout. Students can use any software they want to 
 ---
 <details>
 <summary>
-:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Evaluation criteria</strong>
+:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Evaluation criteria(max 1.5 points)</strong>
 </summary>
 
 <bloquote>
@@ -169,7 +169,7 @@ Draw the screen workflow of your client (which are the possible screens that you
 ---
 <details>
 <summary>
-:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Evaluation criteria</strong>
+:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Evaluation criteria(max 1.0 points)</strong>
 </summary>
 
 <bloquote>
@@ -221,7 +221,7 @@ Draw the screen workflow of your client (which are the possible screens that you
 ---
 <details>
 <summary>
-:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Evaluation criteria</strong>
+:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Evaluation criteria(max 13.5 points)</strong>
 </summary>
 
 <bloquote>

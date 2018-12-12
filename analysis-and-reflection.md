@@ -26,7 +26,7 @@ In this section we would like that you reflect about the work you have done duri
 ---
 <details>
 <summary>
-:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Evaluation criteria</strong>
+:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Evaluation criteria (max 6.5 points)</strong>
 </summary>
 
 <bloquote>
@@ -59,7 +59,7 @@ Explain how you would improve your RESTful API and your client application. Try 
 ---
 <details>
 <summary>
-:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Evaluation criteria</strong>
+:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Evaluation criteria(max 1.0 points)</strong>
 </summary>
 
 <bloquote>
@@ -94,7 +94,7 @@ Discuss in this section the things that you would have done differently if you s
 ---
 <details>
 <summary>
-:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Evaluation criteria</strong>
+:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Evaluation criteria(max 0.75 points)</strong>
 </summary>
 
 <bloquote>
@@ -129,7 +129,7 @@ Comment where you encountered the main difficulties while doing your project wor
 ---
 <details>
 <summary>
-:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Evaluation criteria</strong>
+:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Evaluation criteria(max 0.75 points)</strong>
 </summary>
 
 <bloquote>
@@ -165,7 +165,7 @@ Make sincere comments about the course. How this course could be improved? What 
 ---
 <details>
 <summary>
-:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Evaluation criteria</strong>
+:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Evaluation criteria(max 1.5 points)</strong>
 </summary>
 
 <bloquote>
@@ -198,7 +198,7 @@ This section should not contain anything. Just be sure that meeting notes and re
 ---
 <details>
 <summary>
-:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Evaluation criteria</strong>
+:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Evaluation criteria(max 2.5 points)</strong>
 </summary>
 
 <bloquote>

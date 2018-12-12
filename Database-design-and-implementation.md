@@ -37,7 +37,7 @@ In this section you must implement:
 ---
 <details>
 <summary>
-:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Evaluation criteria</strong>
+:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Evaluation criteria(max 15 points)</strong>
 </summary>
 
 <bloquote>
@@ -84,7 +84,7 @@ For this section you can use a visual tool to generate a diagram. Be sure that t
 ---
 <details>
 <summary>
-:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Evaluation criteria</strong>
+:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Evaluation criteria(max 3 points)</strong>
 </summary>
 
 <bloquote>
@@ -177,7 +177,7 @@ def delete_message(self, messageid):
 ---
 <details>
 <summary>
-:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Evaluation criteria</strong>
+:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Evaluation criteria(max 3.5 points)</strong>
 </summary>
 
 <bloquote>
@@ -223,7 +223,7 @@ In this course, showing that your code works is primarily your responsibility. T
 ---
 <details>
 <summary>
-:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Evaluation criteria</strong>
+:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Evaluation criteria(max 7.0 points)</strong>
 </summary>
 
 <bloquote>

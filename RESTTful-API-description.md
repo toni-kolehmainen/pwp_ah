@@ -28,7 +28,7 @@ In this Chapter you must describe JUST the RESTful API, NOT THE CLIENT. Remember
 ---
 <details>
 <summary>
-:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Evaluation criteria</strong>
+:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Evaluation criteria(max 8 points)</strong>
 </summary>
 
 <bloquote>
@@ -66,7 +66,7 @@ The general description IS NOT just a description of the functionality. Try to m
 ---
 <details>
 <summary>
-:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Evaluation criteria</strong>
+:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Evaluation criteria(max 2.0 points)</strong>
 </summary>
 
 <bloquote>
@@ -117,7 +117,7 @@ This section is important because it outlines the concepts that you will later i
 ---
 <details>
 <summary>
-:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Evaluation criteria</strong>
+:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Evaluation criteria(max 1.5 points)</strong>
 </summary>
 
 <bloquote>
@@ -153,7 +153,7 @@ Describe at least two clients that could use your Web API. You must explain here
 ---
 <details>
 <summary>
-:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Evaluation criteria</strong>
+:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Evaluation criteria(max 2.0 points)</strong>
 </summary>
 
 <bloquote>
@@ -192,7 +192,7 @@ The purpose of this task is to get more familiar with what exactly is an API. Th
 ---
 <details>
 <summary>
-:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Evaluation criteria</strong>
+:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Evaluation criteria(max 2.5 points)</strong>
 </summary>
 
 <bloquote>
