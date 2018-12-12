@@ -5,7 +5,7 @@
 ---
 <details>
 <summary>
-:bookmark_tabs:&nbsp;&nbsp;<strong>Content that must be included in the chapter</strong>
+:bookmark_tabs:&nbsp;&nbsp;<strong>Chapter summary</strong>
 </summary>
 
 <bloquote>
@@ -26,7 +26,7 @@ In this section we would like that you reflect about the work you have done duri
 ---
 <details>
 <summary>
-:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Evaluation criteria (max 6.5 points)</strong>
+:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Chapter evaluation (max 6.5 points)</strong>
 </summary>
 
 <bloquote>

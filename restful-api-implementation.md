@@ -5,7 +5,7 @@
 ---
 <details>
 <summary>
-:bookmark_tabs:&nbsp;&nbsp;<strong>Content that must be included in the chapter</strong>
+:bookmark_tabs:&nbsp;&nbsp;<strong>Chapter summary</strong>
 </summary>
 
 <bloquote>
@@ -24,7 +24,7 @@ In this section you must implement the RESTful API designed in the previous sect
 ---
 <details>
 <summary>
-:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Evaluation criteria(max 20 points)</strong>
+:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Chapter evaluation (max 20 points)</strong>
 </summary>
 
 <bloquote>

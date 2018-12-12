@@ -5,7 +5,7 @@
 ---
 <details>
 <summary>
-:bookmark_tabs:&nbsp;&nbsp;<strong>Content that must be included in the chapter</strong>
+:bookmark_tabs:&nbsp;&nbsp;<strong>Chapter summary</strong>
 </summary>
 
 <bloquote>
@@ -26,7 +26,7 @@ It is not mandatory to write code for test the application. Client testing would
 ---
 <details>
 <summary>
-:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Evaluation criteria(max 15.5 points)</strong>
+:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Chapter evaluation (max 15.5 points)</strong>
 </summary>
 
 <bloquote>

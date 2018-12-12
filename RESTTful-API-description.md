@@ -5,7 +5,7 @@
 ---
 <details>
 <summary>
-:bookmark_tabs:&nbsp;&nbsp;<strong>Content that must be included in the Chapter</strong>
+:bookmark_tabs:&nbsp;&nbsp;<strong>Chapter summary</strong>
 </summary>
 
 <bloquote>
@@ -28,7 +28,7 @@ In this Chapter you must describe JUST the RESTful API, NOT THE CLIENT. Remember
 ---
 <details>
 <summary>
-:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Evaluation criteria(max 8 points)</strong>
+:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Chapter evaluation (max 8 points)</strong>
 </summary>
 
 <bloquote>

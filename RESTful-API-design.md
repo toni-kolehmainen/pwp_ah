@@ -5,7 +5,7 @@
 ---
 <details>
 <summary>
-:bookmark_tabs:&nbsp;&nbsp;<strong>Content that must be included in the chapter</strong>
+:bookmark_tabs:&nbsp;&nbsp;<strong>Chapter summary</strong>
 </summary>
 
 <bloquote>
@@ -44,7 +44,7 @@ In this chapter, the students&nbsp;<strong>must design the RESTful API.The minim
 ---
 <details>
 <summary>
-:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Evaluation criteria(max 20 points)</strong>
+:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Chapter evaluation (max 20 points)</strong>
 </summary>
 
 <bloquote>
