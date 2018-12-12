@@ -1,6 +1,7 @@
 # Important information for final deadline
 
-:bangbang:&nbsp;&nbsp;**This chapter should be completed by final deadline** *(see course information at [Lovelace](http://lovelace.oulu.fi))*
+
+:bangbang:&nbsp;&nbsp;**This chapter should be completed by final deadline** *(see course information at [Lovelace](http://lovelace.oulu.fi))*
 
 ---
 <details>
@@ -37,7 +38,7 @@ You can get a maximum of 6.5 points after completing this chapter. More detailed
 
 ---
 
-#Analysis and reflection
+# Analysis and reflection
 
 ## Future Work
 
@@ -71,10 +72,14 @@ Explain how you would improve your RESTful API and your client application. Try 
 </details>
 
 ---
-
-:pencil2: *Write here your text*
-
-## Lessons learnt
+
+
+
+:pencil2: *Write here your text*
+
+
+
+## Lessons learnt
 
 ---
 <details>
@@ -106,10 +111,14 @@ Discuss in this section the things that you would have done differently if you s
 </details>
 
 ---
-
-:pencil2: *Write here your text*
-
-## Comments about the project
+
+
+
+:pencil2: *Write here your text*
+
+
+
+## Comments about the project
 
 ---
 <details>
@@ -141,10 +150,14 @@ Comment where you encountered the main difficulties while doing your project wor
 </details>
 
 ---
-
-:pencil2: *Write here your text*
-
-## Comments about the course
+
+
+
+:pencil2: *Write here your text*
+
+
+
+## Comments about the course
 
 ---
 <details>
