@@ -1,6 +1,7 @@
 # Important information for Deadline 2
 
-:bangbang:&nbsp;&nbsp;**This chapter should be completed by Deadline 2** *(see course information at [Lovelace](http://lovelace.oulu.fi))*
+
+:bangbang:&nbsp;&nbsp;**This chapter should be completed by Deadline 2** *(see course information at [Lovelace](http://lovelace.oulu.fi))*
 
 ---
 <details>
@@ -106,12 +107,13 @@ You can get a maximum of 3 points after completing this section.
 ---
 
 :pencil2: *The table can have the following structure*
+
 |**Name** | **Type**|**Restrictions**|**Description**|**Characteristics** | **Links**|
 |:------: |:-------:|:--------------:|:-------------:|:-----------------: |:--------:|
 |Name of the attribute|Attribute type|Values that the type can take|Description of the attribute|Uniquenes, default...| keys and foreign keys|
-|||||| 
-|||||| 
-|||||| 
+||||||| 
+||||||| 
+||||||| 
 
 :pencil2: *Do not forget to include a diagram presenting the relations*
 
@@ -138,35 +140,35 @@ You can get a maximum of 3 points after completing this section.
 	</ul>
 </li>
 <li>We recommend to include a set of scripts to setup your database and run your tests.</li>
-<li>A README.md file containing:</li>
-<li>
+<li>A README.md file containing:
 	<ul>
 		<li>All dependencies (external libraries) and how to install them (Include also dependencies of your testing suite)</li>
 		<li>Define database and version utilized</li>
 		<li>Instructions how to setup the database framework and external libraries you might have used, or a link where it is clearly explained. </li>
 		<li>Instructions on how to setup and populate the database.</li>
 		<li>Instruction on how to run the tests of your database.</li>
-
 	</ul>
-<li>
+</li>
 </ol>
-NOTE: Your code MUST be clearly documented. For each public method/function you must provide: a short description of the method, input parameters, output parameters, exceptions (when the application can fail and how to handle such fail). Check Exercise 1 for examples on how to document the code.
+
+<strong>NOTE</strong>: Your code MUST be clearly documented. For each public method/function you must provide: a short description of the method, input parameters, output parameters, exceptions (when the application can fail and how to handle such fail). Check Exercise 1 for examples on how to document the code.
 
 Example documentation
+<pre>
 <code>
 def delete_message(self, messageid):
-       '''
-       Delete the message with id given as parameter.
+    '''
+    Delete the message with id given as parameter.
+         
+    :param str messageid: id of the message to remove.Note that messageid
+     is a string with format ``msg-\d{1,3}``
+    :return: True if the message has been deleted, False otherwise
+    :raises ValueError: if the messageId has a wrong format.
  
-       :param str messageid: id of the message to remove.Note that messageid
-           is a string with format ``msg-\d{1,3}``
-       :return: True if the message has been deleted, False otherwise
-       :raises ValueError: if the messageId has a wrong format.
- 
-       '''
+    '''
 </code>
-<strong> addition, should be clear which is the code you have implemented yourself and which is the code that you have borrowed from other sources.</strong>
-
+</pre>
+<strong> In addition, it should be clear which is the code you have implemented yourself and which is the code that you have borrowed from other sources.</strong>
 
 </bloquote>
 
@@ -209,7 +211,7 @@ def delete_message(self, messageid):
 ---
 <details>
 <summary>
-:bookmark_tabs:&nbsp;&nbsp;<strong>Software that must be included in the section</strong>
+:computer:&nbsp;&nbsp;<strong>Software that must be included in the section</strong>
 </summary>
 
 <bloquote>
