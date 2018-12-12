@@ -37,9 +37,11 @@ You can get a maximum of 15.5 points after completing this section. More detaile
 
 ---
 
+# RESTful Client
 
-# Client application description
-## Overview
+
+## Client application description
+### Overview
 ---
 <details>
 <summary>
@@ -73,7 +75,7 @@ You can get a maximum of 0.75 points in this section:
 
 ---
 
-## Functional requirements
+### Functional requirements
 
 ---
 <details>
@@ -107,8 +109,11 @@ You can get a maximum of 1.75 points in this section:
 </details>
 
 ---
-# Client design
-## GUI layout
+
+:pencil2:*Write here your text*
+
+## Client design
+### GUI layout
 
 ---
 <details>
@@ -142,7 +147,9 @@ You can get a maximum of 1.5 points in this section:
 
 ---
 
-## Screen workflow
+:pencil2:*Add your diagrams here*
+
+### Screen workflow
 
 ---
 <details>
@@ -176,7 +183,11 @@ Draw the screen workflow of your client (which are the possible screens that you
 </details>
 
 ---
-#Client implementation
+
+:pencil2:*Add your diagrams here*
+
+## Client implementation
+
 ---
 <details>
 <summary>
@@ -250,7 +261,8 @@ Draw the screen workflow of your client (which are the possible screens that you
 </details>
 
 ---
-*You do not need to write anything in this section, just complete the implementation.*
+
+:pencil2:*You do not need to write anything in this section, just complete the implementation.*
 
 ## Resources allocation
 |**Task** | **Student**|**Estimated time**|

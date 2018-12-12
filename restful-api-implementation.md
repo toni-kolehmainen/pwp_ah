@@ -35,7 +35,9 @@ You can get a maximum of 20 points after completing this section. More detailed 
 
 ---
 
-# List of implemented resources
+# RESTful API implementation
+
+## List of implemented resources
 
 ---
 <details>
@@ -68,10 +70,10 @@ A list of all implemented resources. Consider that not all resources that you ha
 </details>
 
 ---
-
-
-
-# Resources implementation
+
+:pencil2:*Write here your text*
+
+## Resources implementation
 <details>
 <summary>
 :computer:&nbsp;&nbsp;&nbsp;&nbsp; <strong>TODO: SOFTWARE TO DELIVER IN THIS SECTION</strong>
@@ -128,9 +130,9 @@ In this section you can get a maximum of <strong>4.5</strong> points:
 </details>
 
 ---
-*You do not need to write anything in this section, just complete the implementation.*
+:pencil2:*You do not need to write anything in this section, just complete the implementation.*
 
-## RESTful API testing
+### RESTful API testing
 <details>
 <summary>
 :computer:&nbsp;&nbsp;&nbsp;&nbsp; <strong>TODO: SOFTWARE TO DELIVER IN THIS SECTION</strong>
@@ -188,9 +190,9 @@ In this section you can get a maximum of <strong>14.5</strong> points:
 </details>
 
 ---
-*You do not need to write anything in this section, just complete the implementation.*
+:pencil2:*You do not need to write anything in this section, just complete the implementation.*
 
-# Resources allocation
+## Resources allocation
 |**Task** | **Student**|**Estimated time**|
 |:------: |:----------:|:----------------:|
 |||| 

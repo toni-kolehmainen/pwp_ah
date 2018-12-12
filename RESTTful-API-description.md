@@ -1,6 +1,7 @@
 # Important information for Deadline 1
 
 :bangbang:&nbsp;&nbsp;**This chapter should be completed by Deadline 1** *(see course information at [Lovelace](http://lovelace.oulu.fi))*
+
 ---
 <details>
 <summary>
@@ -86,6 +87,8 @@ You can get a maximum of <strong>2 points in this section</strong>
 
 ---
 
+:pencil2:*Write here your description*
+
 ## Main concepts and relations
 ---
 <details>
@@ -129,7 +132,10 @@ In this section you can get a maximum of <strong>1.5 points:</strong>
 </details>
 
 ---
-## API uses
+
+:pencil2:*Write here your text*
+
+## API uses
 ---
 <details>
 <summary>
@@ -163,7 +169,10 @@ In this section you can get a maximum of <strong>2 points</strong>
 </details>
 
 ---
-## Related work
+
+:pencil2:*Write here your text*
+
+## Related work
 ---
 <details>
 <summary>
@@ -199,7 +208,10 @@ You can get a maximum of <strong>2.5 points</strong> in this secton:
 </details>
 
 ---
-## Resources allocation
+
+:pencil2:*Write here your text*
+
+## Resources allocation
 |**Task** | **Student**|**Estimated time**|
 |:------: |:----------:|:----------------:|
 |||| 

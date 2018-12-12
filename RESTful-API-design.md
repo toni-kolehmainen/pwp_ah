@@ -55,7 +55,9 @@ You can get a maximum of 20 points after completing this section. More detailed 
 
 ---
 
-# Resources and relations
+# RESTful API design
+
+## Resources and relations
 ---
 <details>
 <summary>
@@ -97,8 +99,10 @@ You can get a maximum of 3 points after completing this section.
 </details>
 
 ---
-
-# Uniform interface
+
+:pencil2:*Write here your text*
+
+## Uniform interface
 
 ---
 <details>
@@ -138,6 +142,8 @@ You can get a maximum of 2 points after completing this section.
 
 ___
 
+:pencil2:*This table might serve you as a guide*
+
 |         | **GET**|**PUT**|**PATCH**|**POST**|**DELETE**|
 |:------: |:------:|:-----:|:-------:|:------:|:--------:|
 |Resource Name 1|||||| 
@@ -146,8 +152,10 @@ ___
 |Resource Name 4|||||| 
 |Resource Name 5||||||  
 
+:pencil2:*Do not forget to include the sequence diagram*
 
-# Hypermedia API
+
+## Hypermedia API
 
 ---
 <details>
@@ -216,8 +224,10 @@ You can get a maximum of 10.5 points in this section:
 </details>
 
 ---
-
-# REST conformance
+
+:pencil2:*Include here the link to the hypermedia API documentation *
+
+## REST conformance
 
 ---
 <details>
@@ -255,8 +265,10 @@ You can get a maximum of 4.5 points in this section:
 </details>
 
 ---
-
-# Resources allocation
+
+:pencil2:*Write here your text*
+
+## Resources allocation
 |**Task** | **Student**|**Estimated time**|
 |:------: |:----------:|:----------------:|
 |||| 

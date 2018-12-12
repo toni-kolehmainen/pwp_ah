@@ -36,7 +36,10 @@ You can get a maximum of 6.5 points after completing this chapter. More detailed
 </details>
 
 ---
-# Future Work
+
+#Analysis and reflection
+
+## Future Work
 
 ---
 <details>
@@ -68,8 +71,10 @@ Explain how you would improve your RESTful API and your client application. Try 
 </details>
 
 ---
-
-# Lessons learnt
+
+:pencil2:*Write here your text*
+
+## Lessons learnt
 
 ---
 <details>
@@ -101,9 +106,10 @@ Discuss in this section the things that you would have done differently if you s
 </details>
 
 ---
-
-
-# Comments about the project
+
+:pencil2:*Write here your text*
+
+## Comments about the project
 
 ---
 <details>
@@ -135,9 +141,10 @@ Comment where you encountered the main difficulties while doing your project wor
 </details>
 
 ---
-
-
-# Comments about the course
+
+:pencil2:*Write here your text*
+
+## Comments about the course
 
 ---
 <details>
@@ -171,7 +178,9 @@ Make sincere comments about the course. How this course could be improved? What 
 
 ---
 
-#Resources allocation and meeting notes
+:pencil2:*Write here your text*
+
+## Resources allocation and meeting notes
 ---
 <details>
 <summary>
@@ -203,10 +212,9 @@ This section should not contain anything. Just be sure that meeting notes and re
 
 ---
 
+:pencil2:*You do not need to write anything here. Just be sure that your meeting notes and resource allocation are up to date*
 
-*You do not need to write anything here. Just be sure that your meeting notes and resource allocation are up to date*
-
-# Resources allocation
+## Resources allocation
 |**Task** | **Student**|**Estimated time**|
 |:------: |:----------:|:----------------:|
 |||| 

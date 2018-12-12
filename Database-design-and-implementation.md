@@ -48,8 +48,9 @@ You can get a maximum of 15 points after completing this section. More detailed 
 
 ---
 
+# Database design and implementation
 
-# Database design
+## Database design
 ---
 <details>
 <summary>
@@ -104,7 +105,7 @@ You can get a maximum of 3 points after completing this section.
 
 ---
 
-*The table can have the following structure*
+:pencil2:*The table can have the following structure*
 |**Name** | **Type**|**Restrictions**|**Description**|**Characteristics** | **Links**|
 |:------: |:-------:|:--------------:|:-------------:|:-----------------: |:--------:|
 |Name of the attribute|Attribute type|Values that the type can take|Description of the attribute|Uniquenes, default...| keys and foreign keys|
@@ -112,7 +113,9 @@ You can get a maximum of 3 points after completing this section.
 |||||| 
 |||||| 
 
-# Database implementation
+:pencil2:*Do not forget to include a diagram presenting the relations*
+
+## Database implementation
 ---
 <details>
 <summary>
@@ -200,8 +203,9 @@ def delete_message(self, messageid):
 </details>
 
 ---
-*You do not need to write anything in this section, just complete the implementation.*
-## Database testing
+:pencil2:*You do not need to write anything in this section, just complete the implementation.*
+
+### Database testing
 ---
 <details>
 <summary>
@@ -235,8 +239,10 @@ In this section you can get a maximum of 7.0 points.
 
 </details>
 
+:pencil2:*You do not need to write anything here. Just complete the implementation*
+
 ---
-# Resources allocation 
+## Resources allocation 
 |**Task** | **Student**|**Estimated time**|
 |:------: |:----------:|:----------------:|
 |||| 
