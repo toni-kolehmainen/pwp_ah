@@ -110,7 +110,7 @@ You can get a maximum of 1.75 points in this section:
 
 ---
 
-:pencil2:*Write here your text*
+:pencil2: *Write here your text*
 
 ## Client design
 ### GUI layout
@@ -147,7 +147,7 @@ You can get a maximum of 1.5 points in this section:
 
 ---
 
-:pencil2:*Add your diagrams here*
+:pencil2: *Add your diagrams here*
 
 ### Screen workflow
 
@@ -184,7 +184,7 @@ Draw the screen workflow of your client (which are the possible screens that you
 
 ---
 
-:pencil2:*Add your diagrams here*
+:pencil2: *Add your diagrams here*
 
 ## Client implementation
 
@@ -262,7 +262,7 @@ Draw the screen workflow of your client (which are the possible screens that you
 
 ---
 
-:pencil2:*You do not need to write anything in this section, just complete the implementation.*
+:pencil2: *You do not need to write anything in this section, just complete the implementation.*
 
 ## Resources allocation
 |**Task** | **Student**|**Estimated time**|

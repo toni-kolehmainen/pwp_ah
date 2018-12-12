@@ -100,7 +100,7 @@ You can get a maximum of 3 points after completing this section.
 
 ---
 
-:pencil2:*Write here your text*
+:pencil2: *Write here your text*
 
 ## Uniform interface
 
@@ -142,7 +142,7 @@ You can get a maximum of 2 points after completing this section.
 
 ___
 
-:pencil2:*This table might serve you as a guide*
+:pencil2: *This table might serve you as a guide*
 
 |         | **GET**|**PUT**|**PATCH**|**POST**|**DELETE**|
 |:------: |:------:|:-----:|:-------:|:------:|:--------:|
@@ -152,7 +152,7 @@ ___
 |Resource Name 4|||||| 
 |Resource Name 5||||||  
 
-:pencil2:*Do not forget to include the sequence diagram*
+:pencil2: *Do not forget to include the sequence diagram*
 
 
 ## Hypermedia API
@@ -225,7 +225,7 @@ You can get a maximum of 10.5 points in this section:
 
 ---
 
-:pencil2:*Include here the link to the hypermedia API documentation *
+:pencil2: *Include here the link to the hypermedia API documentation *
 
 ## REST conformance
 
@@ -266,7 +266,7 @@ You can get a maximum of 4.5 points in this section:
 
 ---
 
-:pencil2:*Write here your text*
+:pencil2: *Write here your text*
 
 ## Resources allocation
 |**Task** | **Student**|**Estimated time**|

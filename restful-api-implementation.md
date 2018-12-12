@@ -71,7 +71,7 @@ A list of all implemented resources. Consider that not all resources that you ha
 
 ---
 
-:pencil2:*Write here your text*
+:pencil2: *Write here your text*
 
 ## Resources implementation
 <details>
@@ -130,7 +130,7 @@ In this section you can get a maximum of <strong>4.5</strong> points:
 </details>
 
 ---
-:pencil2:*You do not need to write anything in this section, just complete the implementation.*
+:pencil2: *You do not need to write anything in this section, just complete the implementation.*
 
 ### RESTful API testing
 <details>
@@ -190,7 +190,7 @@ In this section you can get a maximum of <strong>14.5</strong> points:
 </details>
 
 ---
-:pencil2:*You do not need to write anything in this section, just complete the implementation.*
+:pencil2: *You do not need to write anything in this section, just complete the implementation.*
 
 ## Resources allocation
 |**Task** | **Student**|**Estimated time**|

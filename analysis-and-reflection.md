@@ -72,7 +72,7 @@ Explain how you would improve your RESTful API and your client application. Try 
 
 ---
 
-:pencil2:*Write here your text*
+:pencil2: *Write here your text*
 
 ## Lessons learnt
 
@@ -107,7 +107,7 @@ Discuss in this section the things that you would have done differently if you s
 
 ---
 
-:pencil2:*Write here your text*
+:pencil2: *Write here your text*
 
 ## Comments about the project
 
@@ -142,7 +142,7 @@ Comment where you encountered the main difficulties while doing your project wor
 
 ---
 
-:pencil2:*Write here your text*
+:pencil2: *Write here your text*
 
 ## Comments about the course
 
@@ -178,7 +178,7 @@ Make sincere comments about the course. How this course could be improved? What 
 
 ---
 
-:pencil2:*Write here your text*
+:pencil2: *Write here your text*
 
 ## Resources allocation and meeting notes
 ---
@@ -212,7 +212,7 @@ This section should not contain anything. Just be sure that meeting notes and re
 
 ---
 
-:pencil2:*You do not need to write anything here. Just be sure that your meeting notes and resource allocation are up to date*
+:pencil2: *You do not need to write anything here. Just be sure that your meeting notes and resource allocation are up to date*
 
 ## Resources allocation
 |**Task** | **Student**|**Estimated time**|

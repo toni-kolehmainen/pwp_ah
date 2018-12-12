@@ -87,7 +87,7 @@ You can get a maximum of <strong>2 points in this section</strong>
 
 ---
 
-:pencil2:*Write here your description*
+:pencil2: *Write here your description*
 
 ## Main concepts and relations
 ---
@@ -133,7 +133,7 @@ In this section you can get a maximum of <strong>1.5 points:</strong>
 
 ---
 
-:pencil2:*Write here your text*
+:pencil2: *Write here your text*
 
 ## API uses
 ---
@@ -170,7 +170,7 @@ In this section you can get a maximum of <strong>2 points</strong>
 
 ---
 
-:pencil2:*Write here your text*
+:pencil2: *Write here your text*
 
 ## Related work
 ---
@@ -209,7 +209,7 @@ You can get a maximum of <strong>2.5 points</strong> in this secton:
 
 ---
 
-:pencil2:*Write here your text*
+:pencil2: *Write here your text*
 
 ## Resources allocation
 |**Task** | **Student**|**Estimated time**|
