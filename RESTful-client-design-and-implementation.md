@@ -226,18 +226,18 @@ Draw the screen workflow of your client (which are the possible screens that you
 ---
 <details>
 <summary>
-:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Evaluation criteria(max 13.5 points)</strong>
+:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Evaluation criteria(max 10 points)</strong>
 </summary>
 
 <bloquote>
-	In this section you can get a maximum of 13.5 points.
+	In this section you can get a maximum of 10 points.
 <ul>
 	<li>Instructions to set up the client and run the tests are provided in the <a href="doc/README.md">README.md</a> file<strong>: 0.5</strong>
 		<ul>
-		<li>this means there should be no undocumented extra steps in running the code/tests!</li>
+			<li>this means there should be no undocumented extra steps in running the code/tests!</li>
 		</ul>
 	</li>
-	<li>The code has clear structure and naming for variables and methods<strong>: 0.5</strong></li>
+	<li>The code has clear structure and naming for variables and methods<strong>: 1.0</strong></li>
 	<li>You have clearly marked which parts of the code are your own work and which is borrowed code<strong>: 0.5</strong></li>
 	<li>Client is usable and navigation is coherent (no broken links)<strong>: 1.0</strong></li>
 	<li>Demonstrate through a presentation or screenshots that your client fulfills the minimum requirements<strong>: 1.0</strong></li>
@@ -252,7 +252,7 @@ Draw the screen workflow of your client (which are the possible screens that you
 			<li>For full points the functionality provided by the external API should be integrated in the client functionality and not as an incosistent addition.</li>
 		</ul>
 	</li>
-	<li>The client is a true hypermedia client (if you are not using an hypermedia API you wont get this points): <strong> 2.5</strong>
+	<li>The client is a true hypermedia client (if you are not using an hypermedia API you wont get this points): <strong> 2.0</strong>
 		<ul>
 			<li>this means that the client uses the hypermedia links to find URLs, uses forms from the hypermedia to form its requests, follows correctly link relations, workflow is mainly in the server, not the client... etc. If any of these aspects are not considered cannot get full points in this section.</li>
 			<li>the ideal client is resistant to changes in the API because it only relies on information it gets from the API in runtime</li>
