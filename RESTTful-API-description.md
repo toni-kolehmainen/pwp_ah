@@ -1,6 +1,7 @@
 # Important information for Deadline 1
 
-:bangbang:&nbsp;&nbsp;**This chapter should be completed by Deadline 1** *(see course information at [Lovelace](http://lovelace.oulu.fi))*
+
+:bangbang:&nbsp;&nbsp;**This chapter should be completed by Deadline 1** *(see course information at [Lovelace](http://lovelace.oulu.fi))*
 
 ---
 <details>
@@ -49,13 +50,16 @@ You can get a maximum of 8 points after completing this Chapter. More detailed e
 
 <bloquote>
 
-Describe the Web API briefly and comment which is the main functionality that it exposes to clients. A really short version of an overview for the RESTful Web API could be: 
+Describe the Web API briefly and comment which is the main functionality that it exposes to clients. Focus in the Web API not in the application which is using this API. Take into account that in the end, a WEB API is an encapsualted functionality as well as the interface to access that functionality. This section CANNOT include a description of an application or client that uses the API.  
+
+Justify also why you want to implement this API. Comment why a developer would like to integrate this API into their application. Try to "sell" the API to your potential customers.
+
+A really short version of an overview for the RESTful Web API could be: 
 
 <em>“The discussion forum Web API offers different functionalities to structure non-real-time conversations among the people of a group about topics they are interested in certain topic. Messages are grouped in Threads, that at the same time are grouped in Topics. The messages are accessible to anyone, but posts can only be created by providing credentials of a registered user [...] Clients using this service may implement applications similar to [...]“</em>
 
-Justify also why you want to implement this API.
 
-The general description IS NOT just a description of the functionality. Try to market your API to potential customers.
+Remember: The general description IS NOT just a description of the functionality. Try to market your API to potential customers.
 
 </bloquote>
 
@@ -105,7 +109,7 @@ A description of the main concepts for the Forum API could be:
 
 Include a diagram which shows easily the relations among concepts.
 
-This section is important because it outlines the concepts that you will later implement. In particular, the diagram defined here will follow you throughout the project report and you will be adding more details to it.
+This section is important because it outlines the concepts that you will later implement. In particular, the diagram defined here will follow you throughout the project report and you will be adding more details to it. 
 
 
 </bloquote>
@@ -123,19 +127,23 @@ This section is important because it outlines the concepts that you will later i
 <bloquote>
 In this section you can get a maximum of <strong>1.5 points:</strong>
 <ul>
-<li>Concepts are named: <strong>0.5</strong></li>
-<li>Each concept is described briefly: <strong>0.5</strong></li>
-<li>A diagram is provided that shows relations between concepts: <strong>0.5</strong></li>
+<li>Concepts are named and described: <strong>0.5</strong></li>
+<li>Relations among concepts is clear: <strong>0.5</strong></li>
+<li>A diagram that shows relations between concepts is provided: <strong>0.5</strong></li>
 </ul>
 </bloquote>
 
 </details>
 
 ---
-
-:pencil2: *Write here your text*
-
-## API uses
+
+
+
+:pencil2: *Write here your text*
+
+
+
+## API uses
 ---
 <details>
 <summary>
@@ -169,10 +177,14 @@ In this section you can get a maximum of <strong>2 points</strong>
 </details>
 
 ---
-
-:pencil2: *Write here your text*
-
-## Related work
+
+
+
+:pencil2: *Write here your text*
+
+
+
+## Related work
 ---
 <details>
 <summary>
@@ -180,9 +192,9 @@ In this section you can get a maximum of <strong>2 points</strong>
 </summary>
 
 <bloquote>
-Find at least one API that resembles the functionality provided by yours. Explain in detail the functionality provided by the API. Classify the API according to its type (RPC, REST, pure REST, hypermedia driven ...) justifying your selection. Provide at least one example client that uses this API.
+Find at least one API that resembles the functionality provided by yours. Explain in detail the functionality provided by the API. Classify the API according to its type (RPC, CRUD REST, pure REST, hypermedia driven ...) justifying your selection. Provide at least one example client that uses this API.
 
-The purpose of this task is to get more familiar with what exactly is an API. This will be helpful in describing your own API. Therefore it is recommended to do this section after you have decided the topic of your project but before writing your API description.
+The purpose of this task is to get more familiar with what an API is. This will be helpful in describing your own API. Therefore, it is recommended to do this section after you have decided the topic of your project but before writing your API description.
 </bloquote>
 
 </details>
@@ -198,20 +210,24 @@ The purpose of this task is to get more familiar with what exactly is an API. Th
 <bloquote>
 You can get a maximum of <strong>2.5 points</strong> in this secton:
 <ul>
-<li>One API is selected and named: <strong>0.5</strong></li>
 <li>The selected API is similar or related to the project topic: <strong>0.5</strong></li>
 <li>The API classified correctly, and is described in terms of offered functionality: <strong>1.0</strong></li>
 <li>An example of a client that uses this API is provided, explaining briefly what it does: <strong>0.5</strong></li>
+<li>An additional API is provided <strong>0.5</strong></li>
 </ul>
 </bloquote>
 
 </details>
 
 ---
-
-:pencil2: *Write here your text*
-
-## Resources allocation
+
+
+
+:pencil2: *Write here your text*
+
+
+
+## Resources allocation
 |**Task** | **Student**|**Estimated time**|
 |:------: |:----------:|:----------------:|
 |||| 
