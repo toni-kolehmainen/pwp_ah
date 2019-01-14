@@ -28,11 +28,11 @@ In this section we are going to evaluate also the project management
 ---
 <details>
 <summary>
-:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Chapter evaluation (max 6.5 points)</strong>
+:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Chapter evaluation (max 7.5 points)</strong>
 </summary>
 
 <bloquote>
-You can get a maximum of 6.5 points after completing this chapter. More detailed evaluation is provided after each heading.
+You can get a maximum of 4.5 points after completing the Analysis and Reflection section. In addition you can get up to 3.0 points due to correct Project management. More detailed evaluation is provided after each heading.
 </bloquote>
 
 </details>
@@ -194,7 +194,7 @@ Make sincere comments about the course. How this course could be improved? What 
 
 :pencil2: *Write here your text*
 
-## Resources allocation and meeting notes
+# Project management
 ---
 <details>
 <summary>
