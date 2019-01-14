@@ -58,11 +58,11 @@ In this chapter, the students&nbsp;<strong>must design the RESTful API.The minim
 ---
 <details>
 <summary>
-:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Chapter evaluation (max 26 points)</strong>
+:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Chapter evaluation (max 25 points)</strong>
 </summary>
 
 <bloquote>
-You can get a maximum of 26 points after completing this section. More detailed evaluation is provided after each heading.
+You can get a maximum of 25 points after completing this section. More detailed evaluation is provided after each heading.
 </bloquote>
 
 </details>
@@ -208,26 +208,27 @@ For all resources you must cover:
 ---
 <details>
 <summary>
-:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Evaluation criteria(max 13 points)</strong>
+:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Evaluation criteria(max 13.5 points)</strong>
 </summary>
 
 <bloquote>
-You can get a maximum of 13 points in this section:
+You can get a maximum of 13.5 points in this section:
 <ul>
 <li> You are using a hypermedia API: <strong>3.0</strong></li>
 <li>Each request has the correct media type: <strong>0.5</strong></li>
 <li>The media type is used according to its specification: <strong>1.5</strong></li>
-<li>Link relations are described (either in the profile for hypermedia types, or in the resource documentation for the CRUD approach): <strong>0.75</strong>
+<li>Link relations are described (either in the profile for hypermedia types, or in the resource documentation for the CRUD approach): <strong>1.0</strong>
 	<ul>
 		<li>Do not forget you can use link relations from <a href="http://www.iana.org/assignments/link-relations/link-relations.xhtml">http://www.iana.org/assignments/link-relations/link-relations.xhtml</a></li>
 	</ul>
 </li>
-<li>Attributes are clearly explained ( either in the profile - for hypermedia types - or in the resource documentation - for the CRUD approach -): <strong>0.75</strong></li>
+<li>Attributes are clearly explained ( either in the profile - for hypermedia types - or in the resource documentation - for the CRUD approach -): <strong>1.0</strong></li>
 <li>Examples are provided for each request: <strong>0.5</strong></li>
 <li>Examples provided for each request do not contain errors: <strong>0.5</strong></li>
-<li>Examples are provided for each response: <strong>0.5</strong></li>
-<li>Examples provided for each response do not contain errors: <strong>0.5</strong></li>
-<li>Examples includes error responses <strong>0.5</strong></li>
+<li>Examples are provided for each response: <strong>1.0</strong></li>
+<li>Examples provided for each response do not contain errors: <strong>1.0</strong></li>
+<li>Examples includes error responses <strong>0.25</strong></li>
+<li>Examples provided in error responses do not contain errors <strong>0.25</strong></li>
 <li>Examples have correct headers: <strong>0.5</strong></li>
 <li>Profiles are linked in each response (only for hypermedia APIs, CRUD implementation receive 0 points in this section): <strong>0.5</strong></li>
 <li>Examples use correct status codes: <strong>1.0</strong></li>
@@ -241,7 +242,7 @@ You can get a maximum of 13 points in this section:
 
 
 
-:pencil2: *Include here the link to the hypermedia API documentation *
+:pencil2: <strong>Include here the link to the hypermedia API documentation </strong>
 
 
 
