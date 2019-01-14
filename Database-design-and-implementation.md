@@ -225,21 +225,22 @@ In this course, showing that your code works is primarily your responsibility. T
 <bloquote>
 In this section you can get a maximum of 2.5 points.
 <ul>
-<li>The test case cover all models in the database: <strong>1.0</strong> (0.5 if not all methods covered / 0 if just a few methods covered)
+<li>The test case cover all models in the database: <strong>1.0</strong> (<i>0.5</i> if not all methods covered / <i>0</i> if just a few methods covered)
 	<ul>
-		<li>For each model the script should, at least,:
+		<li>For each model the script should, at least:
 			<ul>
 				<li>Create a new instance of the model</li>
 				<li>Retrieve an existing instance of the model (recommended trying with different filter options)</li>
 				<li>Update an existing model instance (if update operation is supported by this model)</li>
-				<li>Remove an existing model from the database<li>
+				<li>Remove an existing model from the database</li>
 			</ul>
 		</li>
 		<li>You should try to force errors (for instance, try to break foreign keys relations)</li>
 	</ul>
 </li>
 <li>Test cases cover also errors scenarios: <strong>0.5</strong></li>
-<li>The model implementation do not have errors : <strong>1.0</strong></li></ul>
+<li>The model implementation do not have errors : <strong>1.0</strong></li>
+</ul>
 
 </bloquote>
 
