@@ -62,13 +62,13 @@ You must provide a description of the application. You must clarify which are th
 ---
 <details>
 <summary>
-:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Evaluation criteria(max 0.75 points)</strong>
+:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Evaluation criteria(max 1.0 points)</strong>
 </summary>
 
 <bloquote>
-You can get a maximum of 0.75 points in this section:
+You can get a maximum of 1.0 points in this section:
 <ul>
-	<li>The clients purpose is clearly described: <strong>0.75</strong></li>
+	<li>The clients purpose is clearly described: <strong>1.0</strong></li>
 </ul>
 </bloquote>
 
@@ -96,13 +96,13 @@ Provide a use case diagram of your application. For each case, specify which is 
 ---
 <details>
 <summary>
-:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Evaluation criteria(max 1.75 points)</strong>
+:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Evaluation criteria(max 2.0 points)</strong>
 </summary>
 
 <bloquote>
-You can get a maximum of 1.75 points in this section:
+You can get a maximum of 2.0 points in this section:
 <ul>
-	<li>Diagram below presents the different use cases and they are correctly explained:  <strong>1.0</strong></li>
+	<li>Diagram below presents the different use cases and they are correctly explained:  <strong>1.25</strong></li>
 	<li>Description + diagram shows clearly what functionality of the API the client uses:  <strong>0.75</strong></li>
 </ul>
 </bloquote>
