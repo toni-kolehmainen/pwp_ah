@@ -1,6 +1,7 @@
 # Important information for Deadline 4
 
-:bangbang:&nbsp;&nbsp;**This chapter should be completed by Deadline 4** *(see course information at [Lovelace](http://lovelace.oulu.fi))*
+
+:bangbang:&nbsp;&nbsp;**This chapter should be completed by Deadline 4** *(see course information at [Lovelace](http://lovelace.oulu.fi))*
 
 ---
 <details>
@@ -24,11 +25,11 @@ In this section you must implement the RESTful API designed in the previous sect
 ---
 <details>
 <summary>
-:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Chapter evaluation (max 20 points)</strong>
+:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Chapter evaluation (max 17 points)</strong>
 </summary>
 
 <bloquote>
-You can get a maximum of 20 points after completing this section. More detailed evaluation is provided after each heading.
+You can get a maximum of 17 points after completing this section. More detailed evaluation is provided after each heading.
 </bloquote>
 
 </details>
@@ -57,11 +58,11 @@ A list of all implemented resources. Consider that not all resources that you ha
 ---
 <details>
 <summary>
-:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Evaluation criteria(max 1.0 points)</strong>
+:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Evaluation criteria(max 0.5 points)</strong>
 </summary>
 
 <bloquote>
-	In this section you can get a maximum of 1.0 points.
+	In this section you can get a maximum of 0.5 points.
 	<ul>
 		<li>The table clearly shows which resources are implemented, and what requests they support: <strong>1.0</strong></li>
 	</ul>
@@ -70,10 +71,14 @@ A list of all implemented resources. Consider that not all resources that you ha
 </details>
 
 ---
-
-:pencil2: *Write here your text*
-
-## Resources implementation
+
+
+
+:pencil2: *Write here your text*
+
+
+
+## Resources implementation
 <details>
 <summary>
 :computer:&nbsp;&nbsp;&nbsp;&nbsp; <strong>TODO: SOFTWARE TO DELIVER IN THIS SECTION</strong>
@@ -175,13 +180,13 @@ As with the database tests, in this section it is your responsibility that your 
 </summary>
 
 <bloquote>
-In this section you can get a maximum of <strong>14.5</strong> points:
+In this section you can get a maximum of <strong>12</strong> points:
 
 <ul>
 	<li>Test cases run correctly: <strong>1.0</strong></li>
 	<li>Each method is tested with correct requests: <strong>2.0</strong></li>
 	<li>Test cases cover all predictable error scenarios (various invalid requests) for all methods:<strong>4.0</strong></li>
-	<li>Test output clearly describes the testing process for each case: <strong>3.5</strong></li>
+	<li>Test output clearly describes the testing process for each case: <strong>1.0</strong></li>
 	<li>The interface works as intended (i.e. we don't find any errors. ) Errors will diminish this grade.: <strong>4.0</strong></li>
 	<li>NOTE: In group with 4 people we will be more strict when assigning grades in this section.</li>
 </ul>

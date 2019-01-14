@@ -1,6 +1,7 @@
 # Important information for Deadline 3
 
-:bangbang:&nbsp;&nbsp;**This chapter should be completed by Deadline 3** *(see course information at [Lovelace](http://lovelace.oulu.fi))*
+
+:bangbang:&nbsp;&nbsp;**This chapter should be completed by Deadline 3** *(see course information at [Lovelace](http://lovelace.oulu.fi))*
 
 ---
 <details>
@@ -10,25 +11,38 @@
 
 <bloquote>
 In this chapter, the students&nbsp;<strong>must design the RESTful API.The minimum requirements are summarized in the&nbsp;<a href="">Minimum Requirements</a>&nbsp;section of the Project Work Assignment. Note that if you do not meet Minimum Requirements this section wont be evaluated.</strong>
+
 <h3>SECTION GOALS: </h3>
 <ul>
 <li>Understand REST principles</li>
-<li>Understand hypermedia</li>
+<li>Understand connectedness and/or hypermedia</li>
 <li>Design a small API</li>
 <li>Write API documentation</li>
 </ul>
+
+<p>
+	You have two options:
+		<ol>
+			<li>Implement the API using a non-hypermedia format (RESTful CRUD). In this case, it is mandatory that all your resources are connected. <strong>You cannot get full points in this section if you do not design your API using an hypermedia format</strong></li>
+			<li>Using an hypermedia format. Lots of examples provided in Exercise 3. You can get full points. In this case you need to clearly include in the documentation a profile with link relations and semantic descriptors.</li>
+		</ol>
+
+</p>
+
 <strong>The recommended step-by-step process &nbsp;is:</strong>
 <ol>
 <li><strong>Identify all the resources</strong>&nbsp;to be exposed by the Web API. To that end, students should make an abstraction of the concepts defined in section 1. Be aware that a one-to-one mapping between the resources and the concepts defined in section 1 is not usually the best option. Sometimes it is better to pack several concepts in the same resource.</li>
 <li><strong>Establish the resource hierarchy and assign a URI to each resource.</strong></li>
 <li>Establish relations and possible actions among resources.&nbsp;<strong>Create the state diagram of your API.</strong></li>
 <li><strong>Expose</strong>&nbsp;each one of the resources&nbsp;<strong>to the uniform interface</strong>.</li>
-<li><strong>Design the resource representation using hypermedia format. </strong>The requests do not need to use hypermedia, though. The format of the request should be defined somehow by the media type used or the profile.<br />
+<li><strong>Design the resource representation using adequate format. </strong><br />
 <ol>
-<li>Define the media type and its extension</li>
-<li>Define the profiles. Try to reuse existing profiles as much as possible. For instance, utilize schemas defined in <a href="http://schema.org/docs/schemas.html">schemas.org</a>.
-<ol>
-<li>If the media type does not define the format of the requests, they must be defined in the profile</li></ol></li></ol></li>
+<li>Define the media type and its extension (if any)</li>
+<li>Define the profiles (if you are using an hypermedia format). Try to reuse existing profiles as much as possible. For instance, utilize schemas defined in <a href="http://schema.org/docs/schemas.html">schemas.org</a>.
+<li>Do not forget to include the format of the requests. If you are using hypermedia format and the media type does not define the format of the requests, they must be defined in the profile. Otherwise, the request formats must be defined in the documentation.</li>
+<ul>
+</ul>
+</li></ol></li>
 <li><strong>Define protocol attributes</strong>: headers, possible response codes ... must be clearly specified both for requests and responses.</li>
 <li>Define the&nbsp;<strong>error conditions</strong>. When errors are triggered?
 <ul>
@@ -44,11 +58,11 @@ In this chapter, the students&nbsp;<strong>must design the RESTful API.The minim
 ---
 <details>
 <summary>
-:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Chapter evaluation (max 20 points)</strong>
+:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Chapter evaluation (max 26 points)</strong>
 </summary>
 
 <bloquote>
-You can get a maximum of 20 points after completing this section. More detailed evaluation is provided after each heading.
+You can get a maximum of 26 points after completing this section. More detailed evaluation is provided after each heading.
 </bloquote>
 
 </details>
@@ -81,15 +95,14 @@ You can get a maximum of 20 points after completing this section. More detailed 
 ---
 <details>
 <summary>
-:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Evaluation criteria(max 3 points)</strong>
+:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Evaluation criteria(max 2.5 points)</strong>
 </summary>
 
 <bloquote>
-You can get a maximum of 3 points after completing this section.
+You can get a maximum of 2.5 points after completing this section.
 
 <ul>
 	<li>Resource table with URLs and short descriptions is provided: <strong>0.5</strong></li>
-	<li>URL hierarchy diagram is shown (see below): <strong>0.5</strong></li>
 	<li>State diagram with transitions exists (see below): <strong>0.5</strong></li>
 	<li>State diagram follows relationships from DL1: <strong>0.5</strong></li>
 	<li>State diagram is correct, states make sense, transitions are clear and all possible transitions documented: <strong>1.0</strong></li>
@@ -99,10 +112,20 @@ You can get a maximum of 3 points after completing this section.
 </details>
 
 ---
-
-:pencil2: *Write here your text*
-
-## Uniform interface
+
+:pencil2: *This table might serve you as a guide*
+
+|  Resource name       | Resource url | Resource description |
+|:-------------------: |:------------:|:--------------------:|
+|Resource Name 1       |              |                      |
+|Resource Name 2       |              |                      |
+
+
+:pencil2: *Draw here your state machine diagram*
+
+
+
+## Uniform interface
 
 ---
 <details>
@@ -113,8 +136,6 @@ You can get a maximum of 3 points after completing this section.
 <bloquote>
 Fill the following table with a description of how your resources are exposed to the uniform interface (GET, PUT/PATCH, POST and DELETE methods). You must describe the action executed in each request.  For example, a GET request to the URL /messages/{message_id} "gets the body and the title of a specific message".
 
-In addition you must provide, for each request, a small sequence diagram indicating the request, a short summary of the body of the request, the possible responses and a short summary of the body of the response. You can find attached an example created using the https://www.websequencediagrams.com/
-
 </bloquote>
 
 </details>
@@ -124,17 +145,13 @@ In addition you must provide, for each request, a small sequence diagram indicat
 ---
 <details>
 <summary>
-:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Evaluation criteria(max 2 points)</strong>
+:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Evaluation criteria(max 1 point)</strong>
 </summary>
 
 <bloquote>
-You can get a maximum of 2 points after completing this section.
+You can get a maximum of 1 points after completing this section.
 <ul>
 <li>The uniform interface shows all possible requests and actions are described for each: <strong>1.0</strong></li>
-<li>Sequence diagrams for requests: <strong>0.5</strong>
-<ul>
-<li>this diagram is especially useful for documenting requests and responses for each resource in the next task</li></ul></li>
-<li>The sequence diagram are correct: <strong>0.5</strong></li>
 </ul>
 </bloquote>
 
@@ -155,7 +172,7 @@ ___
 :pencil2: *Do not forget to include the sequence diagram*
 
 
-## Hypermedia API
+## API design
 
 ---
 <details>
@@ -164,14 +181,16 @@ ___
 </summary>
 
 <bloquote>
-<p>Use any of the tools presented in Exercise 3 (e.g. Apiary) to document the API. Follow the format specified in that exercise also.
+<p>Use any of the tools presented in Exercise 2 and 3 (e.g. Apiary) to document the API. Follow the format specified in that exercise also.
 You can take the <a href="https://developer.paypal.com/docs/api/">Paypal REST API</a> or <a href="http://docs.tvflix.apiary.io/">TVflix service REST API</a> (created by previous year students) as a model. 
+
+
 For all resources you must cover:
 <ul>
 <li>The possible HTTP methods exposed by this resource</li>
 <li>The headers in the request and responses</li>
 <li>The media type utilized (in the response Content-Type header). If you are utilizing your own media-type you must describe it in the section Own media type implementation.</li>
-<li>The profile utilized. If you are using your own profile be sure you include:
+<li>If you are using an hypermedia type you must provide the profile utilized, including. 
 <ul>
 <li>Link relations. Include methods and format of the requests if they are defined in the media type. Use as much as possible IANA defined relations.</li>
 <li>Semantic descriptors. If you utilize a descriptor used in some other profile (e.g. <a href="http://schema.org/docs/schemas.html">schema.org</a>) provide the link. </li>
@@ -189,45 +208,44 @@ For all resources you must cover:
 ---
 <details>
 <summary>
-:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Evaluation criteria(max 10.5 points)</strong>
+:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Evaluation criteria(max 13 points)</strong>
 </summary>
 
 <bloquote>
-You can get a maximum of 10.5 points in this section:
+You can get a maximum of 13 points in this section:
 <ul>
+<li> You are using a hypermedia API: <strong>3.0</strong></li>
 <li>Each request has the correct media type: <strong>0.5</strong></li>
-<li>The hypermedia type is syntactically correct: <strong>0.75</strong></li>
-<li>The hypermedia type is used according to its specification: <strong>1.25</strong></li>
-<li>There are no isolated resources: <strong>0.5</strong>
-<ul>
-	<li>isolated resource is a resource that either is not linked to from anywhere, or doesn't contain links itself</li></ul></li>
-	<li>IANA link relations are used where applicable: <strong>1.0</strong>
-<ul>
-<li><a href="http://www.iana.org/assignments/link-relations/link-relations.xhtml">http://www.iana.org/assignments/link-relations/link-relations.xhtml</a></li></ul></li>
-<li>Custom link relations are described in the resource's profile: <strong>0.5</strong></li>
-<li>Semantic descriptions are included for attributes in resource profiles: <strong>0.5</strong></li>
-<li>Protocol semantics are included in resource profiles: <strong>0.5</strong></li>
-<li>Examples are provided for each request and response: <strong>1.5</strong>
-<ul>
-	<li>you should have an example for each arrow in the sequence diagram you created for the previous task</li></ul></li>
-	<li>Examples includes response for errors <strong>1.5</strong>
-<ul>
-	<li>you should have an example for each arrow in the sequence diagram you created for the previous task</li>
-</ul>
+<li>The media type is used according to its specification: <strong>1.5</strong></li>
+<li>Link relations are described (either in the profile for hypermedia types, or in the resource documentation for the CRUD approach): <strong>0.75</strong>
+	<ul>
+		<li>Do not forget you can use link relations from <a href="http://www.iana.org/assignments/link-relations/link-relations.xhtml">http://www.iana.org/assignments/link-relations/link-relations.xhtml</a></li>
+	</ul>
 </li>
+<li>Attributes are clearly explained ( either in the profile - for hypermedia types - or in the resource documentation - for the CRUD approach -): <strong>0.75</strong></li>
+<li>Examples are provided for each request: <strong>0.5</strong></li>
+<li>Examples provided for each request do not contain errors: <strong>0.5</strong></li>
+<li>Examples are provided for each response: <strong>0.5</strong></li>
+<li>Examples provided for each response do not contain errors: <strong>0.5</strong></li>
+<li>Examples includes error responses <strong>0.5</strong></li>
 <li>Examples have correct headers: <strong>0.5</strong></li>
-<li>Profiles are linked in each response: <strong>0.5</strong></li>
+<li>Profiles are linked in each response (only for hypermedia APIs, CRUD implementation receive 0 points in this section): <strong>0.5</strong></li>
 <li>Examples use correct status codes: <strong>1.0</strong></li>
+<li>Design is coherent: <strong>1.0</strong></li>
 </ul>
 </bloquote>
 
 </details>
 
 ---
-
-:pencil2: *Include here the link to the hypermedia API documentation *
-
-## REST conformance
+
+
+
+:pencil2: *Include here the link to the hypermedia API documentation *
+
+
+
+## REST conformance
 
 ---
 <details>
@@ -247,17 +265,22 @@ Explain briefly how your API meets REST principles. Focus specially in the four 
 ---
 <details>
 <summary>
-:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Evaluation criteria(max 4.5 points)</strong>
+:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Evaluation criteria(max 8 points)</strong>
 </summary>
 
 <bloquote>
-You can get a maximum of 4.5 points in this section:
+You can get a maximum of 8 points in this section:
 <ul>
 	<li>The justification is clear and coherent, and shows an understanding of REST principles: <strong>2.0</strong></li>
-	<li>The Api is addressable (no errors regarding addressability): <strong>0.5</strong></li>
-	<li>The Api uses correctly the uniform interface: <strong>0.5</strong></li>
+	<li>The Api is addressable (no errors regarding addressability): <strong>1.0</strong></li>
+	<li>The Api uses correctly the uniform interface: <strong>1.0</strong></li>
 	<li>The Api does not hold state in the server: <strong>0.5</strong></li>
-	<li>The different resources of the API are connected: <strong>1.0</strong></li>
+	<li>The different resources of the API are connected, that is there are not isolated resources: <strong>2.0</strong>
+		<ul>
+			<li>isolated resource is a resource that either is not linked to from anywhere, or doesn't contain links itself</li>
+		</ul>
+	</li>
+	<li>Protocol semantics are clearly provided either by the response or by the profile (If you are using a CRUD API you won't get points in this section): <strong>1.5</strong>
 </ul>
 
 </bloquote>
@@ -265,10 +288,14 @@ You can get a maximum of 4.5 points in this section:
 </details>
 
 ---
-
-:pencil2: *Write here your text*
-
-## Resources allocation
+
+
+
+:pencil2: *Write here your text*
+
+
+
+## Resources allocation
 |**Task** | **Student**|**Estimated time**|
 |:------: |:----------:|:----------------:|
 |||| 
