@@ -68,7 +68,8 @@ You must provide a description of the application. You must clarify which are th
 <bloquote>
 You can get a maximum of 1.0 points in this section:
 <ul>
-	<li>The clients purpose is clearly described: <strong>1.0</strong></li>
+	<li>The clients purpose is clearly described: <strong>0.75</strong></li>
+	<li>Description of the API client not just a GUI: <strong>0.25</strong></li>
 </ul>
 </bloquote>
 
