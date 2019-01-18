@@ -131,22 +131,7 @@ You can get a maximum of 3 points after completing this section.
 <li>A <var>.sql dump</var> of a database or the <var>.db file</var> (if you are using SQlite). You must provide a populated database in order to test your models.</li>
 <li>The scripts used to generate your database (if any)</li>
 <li>If you are using python, the requirements.txt file.</li> 
-<li>A simple script to test your models </li>
-<li>
-	<ul>
-		<li>The code of the test MUST be commented indicating what are you testing in each case.</li>
-		<li>For each model the script should, at least,:
-			<ul>
-				<li>Create a new instance of the model</li>
-				<li>Retrieve an existing instance of the model (recommended trying with different filter options)</li>
-				<li>Update an existing model instance (if update operation is supported by this model)</li>
-				<li>Remove an existing model from the database<li>
-			</ul>
-		</li>
-		<li>You should try to force errors (for instance, try to break foreign keys relations)</li>
-	</ul>
-</li>
-<li>We recommend to include a set of scripts to setup your database and run your test.</li>
+
 <li>A README.md file containing:
 	<ul>
 		<li>All dependencies (external libraries) and how to install them</li>
@@ -209,7 +194,25 @@ You can get a maximum of 3 points after completing this section.
 </summary>
 
 <bloquote>
+<p>
 In this course, showing that your code works is primarily your responsibility. Therefore we expect test cases that show that all of your methods work not just with correct parameters, but that they also handle error situations correctly. Tests should always cover the most common error scenarios that are easy to predict (e.g. trying to edit something that doesn't exist, trying to create duplicate primary keys etc.) Each test case has to clearly show what it tests, what test parameters it uses and finally to show that result was as expected.
+</p>
+<p>You should follow the testing methodologies shown in Exercise 1.</p>
+<p>Some guidelines for the testing:</p>
+<ul>
+		<li>The code of the test MUST be commented indicating what are you testing in each case.</li>
+		<li>For each model the test script should, at least:
+			<ul>
+				<li>Create a new instance of the model</li>
+				<li>Retrieve an existing instance of the model (recommended trying with different filter options)</li>
+				<li>Update an existing model instance (if update operation is supported by this model)</li>
+				<li>Remove an existing model from the database</li>
+                                <li>Test possible errors conditions (e.g. breaking foreign keys relations)</li>
+			</ul>
+		</li>
+</ul>
+
+<li>We recommend to include a set of scripts to setup your database and run your test.</li>
 </bloquote>
 
 </details>
