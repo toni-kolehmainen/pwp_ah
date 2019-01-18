@@ -1,6 +1,7 @@
 # Important information for Deadline 5
 
-:bangbang:&nbsp;&nbsp;**This chapter should be completed by Deadline 5** *(see course information at [Lovelace](http://lovelace.oulu.fi))*
+
+:bangbang:&nbsp;&nbsp;**This chapter should be completed by Deadline 5** *(see course information at [Lovelace](http://lovelace.oulu.fi))*
 
 ---
 <details>
@@ -61,13 +62,14 @@ You must provide a description of the application. You must clarify which are th
 ---
 <details>
 <summary>
-:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Evaluation criteria(max 0.75 points)</strong>
+:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Evaluation criteria(max 1.0 points)</strong>
 </summary>
 
 <bloquote>
-You can get a maximum of 0.75 points in this section:
+You can get a maximum of 1.0 points in this section:
 <ul>
 	<li>The clients purpose is clearly described: <strong>0.75</strong></li>
+	<li>Description of the API client not just a GUI: <strong>0.25</strong></li>
 </ul>
 </bloquote>
 
@@ -95,13 +97,13 @@ Provide a use case diagram of your application. For each case, specify which is 
 ---
 <details>
 <summary>
-:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Evaluation criteria(max 1.75 points)</strong>
+:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Evaluation criteria(max 2.0 points)</strong>
 </summary>
 
 <bloquote>
-You can get a maximum of 1.75 points in this section:
+You can get a maximum of 2.0 points in this section:
 <ul>
-	<li>Diagram below presents the different use cases and they are correctly explained:  <strong>1.0</strong></li>
+	<li>Diagram below presents the different use cases and they are correctly explained:  <strong>1.25</strong></li>
 	<li>Description + diagram shows clearly what functionality of the API the client uses:  <strong>0.75</strong></li>
 </ul>
 </bloquote>
@@ -109,10 +111,14 @@ You can get a maximum of 1.75 points in this section:
 </details>
 
 ---
-
-:pencil2: *Write here your text*
-
-## Client design
+
+
+
+:pencil2: *Write here your text*
+
+
+
+## Client design
 ### GUI layout
 
 ---
@@ -221,22 +227,20 @@ Draw the screen workflow of your client (which are the possible screens that you
 ---
 <details>
 <summary>
-:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Evaluation criteria(max 13.5 points)</strong>
+:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Evaluation criteria(max 10 points)</strong>
 </summary>
 
 <bloquote>
-	In this section you can get a maximum of 13.5 points.
+	In this section you can get a maximum of 10 points.
 <ul>
 	<li>Instructions to set up the client and run the tests are provided in the <a href="doc/README.md">README.md</a> file<strong>: 0.5</strong>
 		<ul>
-		<li>this means there should be no undocumented extra steps in running the code/tests!</li>
+			<li>this means there should be no undocumented extra steps in running the code/tests!</li>
 		</ul>
 	</li>
-	<li>The code has clear structure and naming for variables and methods<strong>: 0.5</strong></li>
+	<li>The code has clear structure and naming for variables and methods<strong>: 1.0</strong></li>
 	<li>You have clearly marked which parts of the code are your own work and which is borrowed code<strong>: 0.5</strong></li>
-	<li>Client layout and workflow diagram present and coherent<strong>: 1.5</strong></li>
 	<li>Client is usable and navigation is coherent (no broken links)<strong>: 1.0</strong></li>
-	<li>UI is aesthetically pleasant<strong>: 1.0</strong></li>
 	<li>Demonstrate through a presentation or screenshots that your client fulfills the minimum requirements<strong>: 1.0</strong></li>
 	<li>Client works as expected<strong>: 2.0</strong>
 		<ul>
@@ -245,11 +249,11 @@ Draw the screen workflow of your client (which are the possible screens that you
 	</li>
 	<li>The client uses a different API in addition to using your own API (i.e. finds additional information from somewhere else)<strong>: 2.0</strong>
 		<ul>
-			<li>For full points the client should utilize at least two different methods from the uniform interfaces OR utilize at least 5 differents API calls.</li>
+			<li>For full points the client should utilize at least two different methods from the uniform interfaces OR utilize at least 4 differents API calls.</li>
 			<li>For full points the functionality provided by the external API should be integrated in the client functionality and not as an incosistent addition.</li>
 		</ul>
 	</li>
-	<li>The client is a true hypermedia client<strong>: 2.5</strong>
+	<li>The client is a true hypermedia client (if you are not using an hypermedia API you wont get this points): <strong> 2.0</strong>
 		<ul>
 			<li>this means that the client uses the hypermedia links to find URLs, uses forms from the hypermedia to form its requests, follows correctly link relations, workflow is mainly in the server, not the client... etc. If any of these aspects are not considered cannot get full points in this section.</li>
 			<li>the ideal client is resistant to changes in the API because it only relies on information it gets from the API in runtime</li>
@@ -262,7 +266,7 @@ Draw the screen workflow of your client (which are the possible screens that you
 
 ---
 
-:pencil2: *You do not need to write anything in this section, just complete the implementation.*
+:pencil2: *Implement your client and include a few screenshots of the final version of the client to show that meets the requirements*
 
 ## Resources allocation
 |**Task** | **Student**|**Estimated time**|
