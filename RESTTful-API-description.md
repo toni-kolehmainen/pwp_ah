@@ -139,7 +139,7 @@ In this section you can get a maximum of <strong>1.5 points:</strong>
 
 
 
-:pencil2: *Write here your text*
+:pencil2: *Write here your text and draw the diagram*
 
 
 

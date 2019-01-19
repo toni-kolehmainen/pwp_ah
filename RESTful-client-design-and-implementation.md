@@ -244,7 +244,7 @@ Draw the screen workflow of your client (which are the possible screens that you
 	<li>Demonstrate through a presentation or screenshots that your client fulfills the minimum requirements<strong>: 1.0</strong></li>
 	<li>Client works as expected<strong>: 2.0</strong>
 		<ul>
-			<li>We do not detect big errors</li>
+			<li>We do not find errors while using the application</li>
 		</ul>
 	</li>
 	<li>The client uses a different API in addition to using your own API (i.e. finds additional information from somewhere else)<strong>: 2.0</strong>
@@ -253,7 +253,7 @@ Draw the screen workflow of your client (which are the possible screens that you
 			<li>For full points the functionality provided by the external API should be integrated in the client functionality and not as an incosistent addition.</li>
 		</ul>
 	</li>
-	<li>The client is a true hypermedia client (if you are not using an hypermedia API you wont get this points): <strong> 2.0</strong>
+	<li>The client is a true hypermedia client (if you are not using an hypermedia API you won't get these points): <strong> 2.0</strong>
 		<ul>
 			<li>this means that the client uses the hypermedia links to find URLs, uses forms from the hypermedia to form its requests, follows correctly link relations, workflow is mainly in the server, not the client... etc. If any of these aspects are not considered cannot get full points in this section.</li>
 			<li>the ideal client is resistant to changes in the API because it only relies on information it gets from the API in runtime</li>
