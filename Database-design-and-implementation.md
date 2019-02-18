@@ -206,7 +206,7 @@ In this course, showing that your code works is primarily your responsibility. T
 				<li>Create a new instance of the model</li>
 				<li>Retrieve an existing instance of the model (recommended trying with different filter options)</li>
 				<li>Update an existing model instance (if update operation is supported by this model)</li>
-				<li>Remove an existing model from the database</li>
+				<li>Remove an existing model instance from the database</li>
                                 <li>Test possible errors conditions (e.g. breaking foreign keys relations)</li>
 			</ul>
 		</li>
@@ -235,7 +235,7 @@ In this section you can get a maximum of 2.5 points.
 				<li>Create a new instance of the model</li>
 				<li>Retrieve an existing instance of the model (recommended trying with different filter options)</li>
 				<li>Update an existing model instance (if update operation is supported by this model)</li>
-				<li>Remove an existing model from the database</li>
+				<li>Remove an existing model instance from the database</li>
 			</ul>
 		</li>
 		<li>You should try to force errors (for instance, try to break foreign keys relations)</li>
