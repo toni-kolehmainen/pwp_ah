@@ -170,10 +170,10 @@ You can get a maximum of 3 points after completing this section.
 	<li>Table in the previous section covers all implemented models: <strong>0.25</strong></li>
 	<li>All properties of the table in the previous section are implemented correctly in the model (using correct types...): <strong>0.75</strong></li>
 	<li>The code has clear structure and naming for variables and methods: <strong>1.0</strong></li>
-	<li>Each method's implemented in the model  functionality and input parameters are described in its documentation: <strong>0.5</strong></li>
-	<li>Return value(s) (name, type, description for each) are documented: <strong>0.5</strong></li>
-	<li>Exceptions (type, what causes it) are documented: <strong>0.5</strong></li>
-	<li>Code documentation uses a consistent and clear format: <strong>0.5</strong>
+	<li>Each method's implemented in the model  functionality and input parameters are described in its documentation (documentation in the code, not as external document): <strong>0.5</strong></li>
+	<li>Return value(s) (name, type, description for each) are documented (documentation in the code, not as external document): <strong>0.5</strong></li>
+	<li>Exceptions (type, what causes it) are documented (documentation in the code, not as external document): <strong>0.5</strong></li>
+	<li>Code documentation uses a consistent and clear format(documentation in the code, not as external document): <strong>0.5</strong>
 		<ul>
 		<li>you can use an existing documenting format (e.g. Sphinx for Python) or simply come up with your own - as long as it's consistent</li>
 		</ul>
