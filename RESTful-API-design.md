@@ -169,7 +169,7 @@ ___
 |Resource Name 4|||||| 
 |Resource Name 5||||||  
 
-:pencil2: *Do not forget to include the sequence diagram*
+~~:pencil2: *Do not forget to include the sequence diagram*~~
 
 
 ## API design
