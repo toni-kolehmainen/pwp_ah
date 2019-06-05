@@ -157,7 +157,7 @@ You can get a maximum of 3 points after completing this section.
 ---
 <details>
 <summary>
-:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Evaluation criteria(max 4.5 points)</strong>
+:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Evaluation criteria(max 3.5 points)</strong>
 </summary>
 
 <bloquote>
@@ -167,17 +167,10 @@ You can get a maximum of 3 points after completing this section.
 			<li>this means there should be no undocumented extra steps in running the code/tests!</li>
 		</ul>
 	</li>
-	<li>Table in the previous section covers all implemented models: <strong>0.25</strong></li>
-	<li>All properties of the table in the previous section are implemented correctly in the model (using correct types...): <strong>0.75</strong></li>
+	<li>Table in the previous section covers all implemented models: <strong>0.5</strong></li>
+	<li>All properties of the table in the previous section are implemented correctly in the model (using correct types...): <strong>1.0</strong></li>
 	<li>The code has clear structure and naming for variables and methods: <strong>1.0</strong></li>
-	<li>Each method's implemented in the model  functionality and input parameters are described in its documentation: <strong>0.5</strong></li>
-	<li>Return value(s) (name, type, description for each) are documented: <strong>0.5</strong></li>
-	<li>Exceptions (type, what causes it) are documented: <strong>0.5</strong></li>
-	<li>Code documentation uses a consistent and clear format: <strong>0.5</strong>
-		<ul>
-		<li>you can use an existing documenting format (e.g. Sphinx for Python) or simply come up with your own - as long as it's consistent</li>
-		</ul>
-	</li>
+	<li>On delete behavior for foreign keys and relationship attributes have been explicitly set <strong>1.0</strong></li>
 </ul>
 </bloquote>
 
@@ -226,9 +219,9 @@ In this course, showing that your code works is primarily your responsibility. T
 </summary>
 
 <bloquote>
-In this section you can get a maximum of 2.5 points.
+In this section you can get a maximum of 3.5 points.
 <ul>
-<li>The test case cover all models in the database: <strong>1.0</strong> (<i>0.5</i> if not all methods covered / <i>0</i> if just a few methods covered)
+<li>The test case cover all models in the database: <strong>1.0</strong> (<i>0.5</i> if not all models covered / <i>0</i> if just a one model covered)
 	<ul>
 		<li>For each model the script should, at least:
 			<ul>
@@ -241,7 +234,7 @@ In this section you can get a maximum of 2.5 points.
 		<li>You should try to force errors (for instance, try to break foreign keys relations)</li>
 	</ul>
 </li>
-<li>Test cases cover also errors scenarios: <strong>0.5</strong></li>
+<li>Test cases cover also errors scenarios: <strong>1.5</strong></li>
 <li>The model implementation do not have errors : <strong>1.0</strong></li>
 </ul>
 
