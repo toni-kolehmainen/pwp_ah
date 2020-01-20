@@ -29,7 +29,7 @@ In this Chapter you must describe JUST the RESTful API, NOT THE CLIENT. Remember
 ---
 <details>
 <summary>
-:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Chapter evaluation (max 8 points)</strong>
+:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Chapter evaluation (max 7.5 points)</strong>
 </summary>
 
 <bloquote>
