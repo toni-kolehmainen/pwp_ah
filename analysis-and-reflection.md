@@ -194,6 +194,16 @@ Make sincere comments about the course. How this course could be improved? What 
 
 :pencil2: *Write here your text*
 
+
+## Resources allocation
+|**Task** | **Student**|**Estimated time**|
+|:------: |:----------:|:----------------:|
+|||| 
+|||| 
+|||| 
+|||| 
+|||| 
+
 # Project management
 ---
 <details>
@@ -262,12 +272,3 @@ This section should not contain anything. Just be sure that you have completed t
 ---
 
 :pencil2: *You do not need to write anything here. Just be sure that you have delivered all the exercises in <a href="https://lovelace.oulu.fi/"></a>*
-
-## Resources allocation
-|**Task** | **Student**|**Estimated time**|
-|:------: |:----------:|:----------------:|
-|||| 
-|||| 
-|||| 
-|||| 
-|||| 
