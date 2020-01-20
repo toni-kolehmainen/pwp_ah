@@ -70,7 +70,7 @@ Remember: The general description IS NOT just a description of the functionality
 ---
 <details>
 <summary>
-:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Evaluation criteria(max 2.0 points)</strong>
+:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Evaluation criteria(max 1.75 points)</strong>
 </summary>
 
 <bloquote>
@@ -165,7 +165,7 @@ Describe at least two clients that could use your Web API. You must explain here
 </summary>
 
 <bloquote>
-In this section you can get a maximum of <strong>2 points</strong>
+In this section you can get a maximum of <strong>1.75 points</strong>
 <ul>
 <li>The client descriptions are written clearly and explain what they are for: <strong>0.75</strong></li>
 <li>Descriptions outline what parts of the API each client uses, and how: <strong>0.5</strong></li>
