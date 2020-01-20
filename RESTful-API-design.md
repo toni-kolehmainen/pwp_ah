@@ -24,7 +24,7 @@ In this chapter, the students&nbsp;<strong>must design the RESTful API.The minim
 	You have two options:
 		<ol>
 			<li>Implement the API using a non-hypermedia format (RESTful CRUD). In this case, it is mandatory that all your resources are connected. <strong>You cannot get full points in this section if you do not design your API using an hypermedia format</strong></li>
-			<li>Using an hypermedia format. Lots of examples provided in Exercise 3. You can get full points. In this case you need to clearly include in the documentation a profile with link relations and semantic descriptors.</li>
+			<li>Using an hypermedia format. Lots of examples provided in Exercise 2. You can get full points. In this case you need to clearly include in the documentation a profile with link relations and semantic descriptors.</li>
 		</ol>
 
 </p>
@@ -145,13 +145,13 @@ Fill the following table with a description of how your resources are exposed to
 ---
 <details>
 <summary>
-:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Evaluation criteria(max 1 point)</strong>
+:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Evaluation criteria(max 0.75 point)</strong>
 </summary>
 
 <bloquote>
-You can get a maximum of 1 points after completing this section.
+You can get a maximum of 0.75 points after completing this section.
 <ul>
-<li>The uniform interface shows all possible requests and actions are described for each: <strong>1.0</strong></li>
+<li>The uniform interface shows all possible requests and actions are described for each: <strong>0.75</strong></li>
 </ul>
 </bloquote>
 
@@ -181,8 +181,8 @@ ___
 </summary>
 
 <bloquote>
-<p>Use any of the tools presented in Exercise 2 and 3 (e.g. Apiary) to document the API. Follow the format specified in that exercise also.
-You can take the <a href="https://developer.paypal.com/docs/api/">Paypal REST API</a> or <a href="http://docs.tvflix.apiary.io/">TVflix service REST API</a> (created by previous year students) as a model. 
+<p>Use any of the tools presented in Exercise 2 (e.g. Apiary) to document the API. Follow the format specified in that exercise also.
+You can take the <a href="http://docs.tvflix.apiary.io/">TVflix service REST API</a> or <a href="https://cryptotrading.docs.apiary.io/#">Cryptotrading API</a>(created by previous year students) as a model. 
 
 
 For all resources you must cover:
@@ -208,15 +208,15 @@ For all resources you must cover:
 ---
 <details>
 <summary>
-:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Evaluation criteria(max 13.5 points)</strong>
+:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Evaluation criteria(max 13.00 points)</strong>
 </summary>
 
 <bloquote>
-You can get a maximum of 13.5 points in this section:
+You can get a maximum of 13.00 points in this section:
 <ul>
 <li> You are using a hypermedia API: <strong>3.0</strong></li>
 <li>Each request has the correct media type: <strong>0.5</strong></li>
-<li>The media type is used according to its specification: <strong>1.5</strong></li>
+<li>The media type is used according to its specification: <strong>1.0</strong></li>
 <li>Link relations are described (either in the profile for hypermedia types, or in the resource documentation for the CRUD approach): <strong>1.0</strong>
 	<ul>
 		<li>Do not forget you can use link relations from <a href="http://www.iana.org/assignments/link-relations/link-relations.xhtml">http://www.iana.org/assignments/link-relations/link-relations.xhtml</a></li>
@@ -225,10 +225,11 @@ You can get a maximum of 13.5 points in this section:
 <li>Attributes are clearly explained ( either in the profile - for hypermedia types - or in the resource documentation - for the CRUD approach -): <strong>1.0</strong></li>
 <li>Examples are provided for each request: <strong>0.5</strong></li>
 <li>Examples provided for each request do not contain errors: <strong>0.5</strong></li>
-<li>Examples are provided for each response: <strong>1.0</strong></li>
-<li>Examples provided for each response do not contain errors: <strong>1.0</strong></li>
+<li>Examples are provided for each response: <strong>0.75</strong></li>
+<li>Examples provided for each response do not contain errors: <strong>0.75</strong></li>
 <li>Examples includes error responses <strong>0.25</strong></li>
 <li>Examples provided in error responses do not contain errors <strong>0.25</strong></li>
+<li>Examples provide all possible/reasonable error responses for each method <strong>0.50</strong></li>
 <li>Examples have correct headers: <strong>0.5</strong></li>
 <li>Profiles are linked in each response (only for hypermedia APIs, CRUD implementation receive 0 points in this section): <strong>0.5</strong></li>
 <li>Examples use correct status codes: <strong>1.0</strong></li>
@@ -266,11 +267,11 @@ Explain briefly how your API meets REST principles. Focus specially in the four 
 ---
 <details>
 <summary>
-:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Evaluation criteria(max 8 points)</strong>
+:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Evaluation criteria(max 8.75 points)</strong>
 </summary>
 
 <bloquote>
-You can get a maximum of 8 points in this section:
+You can get a maximum of 8.75 points in this section:
 <ul>
 	<li>The justification is clear and coherent, and shows an understanding of REST principles: <strong>2.0</strong></li>
 	<li>The Api is addressable (no errors regarding addressability): <strong>1.0</strong></li>
@@ -281,7 +282,8 @@ You can get a maximum of 8 points in this section:
 			<li>isolated resource is a resource that either is not linked to from anywhere, or doesn't contain links itself</li>
 		</ul>
 	</li>
-	<li>Protocol semantics are clearly provided either by the response or by the profile (If you are using a CRUD API you won't get points in this section): <strong>1.5</strong>
+	<li>Protocol semantics are clearly provided either by the response or by the profile (If you are using a CRUD API you won't get points in this section): <strong>1.25</strong></li>
+	<li>Applications semantics are clearly defined either in the type, in the profile or in the API documentation if using CRUD: <strong>1.00</strong></li>
 </ul>
 
 </bloquote>

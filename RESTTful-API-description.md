@@ -33,7 +33,7 @@ In this Chapter you must describe JUST the RESTful API, NOT THE CLIENT. Remember
 </summary>
 
 <bloquote>
-You can get a maximum of 8 points after completing this Chapter. More detailed evaluation is provided after each heading.
+You can get a maximum of 7.5 points after completing this Chapter. More detailed evaluation is provided after each heading.
 </bloquote>
 
 </details>
@@ -74,11 +74,11 @@ Remember: The general description IS NOT just a description of the functionality
 </summary>
 
 <bloquote>
-You can get a maximum of <strong>2 points in this section</strong>
+You can get a maximum of <strong>1.75 points in this section</strong>
 <ul>
 <li>The description is clearly written and explains what the API is for: <strong>0.5</strong></li>
 <li>The description includes a clear justification of why this project is useful. Why do you want to build this API:</li> <strong>0.5</strong>
-<li>The description describes an API - not an application or client: <strong>1.0</strong>
+<li>The description describes an API - not an application or client: <strong>0.75</strong>
 <ul>
 <li>This means that the description is written in terms of the functionality it makes available for clients, and internal working of the API</li>
 <li> <em>tip</em>: don't think about human users when writing the description - think about machines </li>
@@ -161,14 +161,14 @@ Describe at least two clients that could use your Web API. You must explain here
 ---
 <details>
 <summary>
-:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Evaluation criteria(max 2.0 points)</strong>
+:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Evaluation criteria(max 1.75 points)</strong>
 </summary>
 
 <bloquote>
 In this section you can get a maximum of <strong>2 points</strong>
 <ul>
-<li>The client descriptions are written clearly and explain what they are for: <strong>0.5</strong></li>
-<li>Descriptions outline what parts of the API each client uses, and how: <strong>1.0</strong></li>
+<li>The client descriptions are written clearly and explain what they are for: <strong>0.75</strong></li>
+<li>Descriptions outline what parts of the API each client uses, and how: <strong>0.5</strong></li>
 <li>At least two more examples of clients are provided (1-2 sentences per client):<strong>0.5</strong></li>
 </ul>
 

@@ -27,11 +27,11 @@ It is not mandatory to write code for test the application. Client testing would
 ---
 <details>
 <summary>
-:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Chapter evaluation (max 15.5 points)</strong>
+:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Chapter evaluation (max 15 points)</strong>
 </summary>
 
 <bloquote>
-You can get a maximum of 15.5 points after completing this section. More detailed evaluation is provided after each heading.
+You can get a maximum of 15 points after completing this section. More detailed evaluation is provided after each heading.
 </bloquote>
 
 </details>
@@ -68,8 +68,8 @@ You must provide a description of the application. You must clarify which are th
 <bloquote>
 You can get a maximum of 1.0 points in this section:
 <ul>
-	<li>The clients purpose is clearly described: <strong>0.75</strong></li>
-	<li>Description of the API client not just a GUI: <strong>0.25</strong></li>
+	<li>The clients purpose is clearly described: <strong>0.5</strong></li>
+	<li>Description of the API client not just a GUI: <strong>0.5</strong></li>
 </ul>
 </bloquote>
 
@@ -181,7 +181,7 @@ Draw the screen workflow of your client (which are the possible screens that you
 <bloquote>
 	You can get a maximum of 1.0 points in this section:
 <ul>
-	<li>Workflow diagram available. Coherent navigation is coherent <strong>1.0</strong></li>
+	<li>Workflow diagram available. Navigation is coherent <strong>1.0</strong></li>
 </ul>
 
 </bloquote>
@@ -227,11 +227,11 @@ Draw the screen workflow of your client (which are the possible screens that you
 ---
 <details>
 <summary>
-:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Evaluation criteria(max 10 points)</strong>
+:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Evaluation criteria(max 9.5 points)</strong>
 </summary>
 
 <bloquote>
-	In this section you can get a maximum of 10 points.
+	In this section you can get a maximum of 9.5 points.
 <ul>
 	<li>Instructions to set up the client and run the tests are provided in the <a href="doc/README.md">README.md</a> file<strong>: 0.5</strong>
 		<ul>
@@ -247,7 +247,7 @@ Draw the screen workflow of your client (which are the possible screens that you
 			<li>We do not find errors while using the application</li>
 		</ul>
 	</li>
-	<li>The client uses a different API in addition to using your own API (i.e. finds additional information from somewhere else)<strong>: 2.0</strong>
+	<li>The client uses a different API in addition to using your own API (i.e. finds additional information from somewhere else)<strong>: 1.5</strong>
 		<ul>
 			<li>For full points the client should utilize at least two different methods from the uniform interfaces OR utilize at least 4 differents API calls.</li>
 			<li>For full points the functionality provided by the external API should be integrated in the client functionality and not as an incosistent addition.</li>
@@ -256,7 +256,7 @@ Draw the screen workflow of your client (which are the possible screens that you
 	<li>The client is a true hypermedia client (if you are not using an hypermedia API you won't get these points): <strong> 2.0</strong>
 		<ul>
 			<li>this means that the client uses the hypermedia links to find URLs, uses forms from the hypermedia to form its requests, follows correctly link relations, workflow is mainly in the server, not the client... etc. If any of these aspects are not considered cannot get full points in this section.</li>
-			<li>the ideal client is resistant to changes in the API because it only relies on information it gets from the API in runtime</li>
+			<li>The ideal client is resistant to changes in the API because it only relies on information it gets from the API in runtime</li>
 		</ul>
 	</li>
 </ul>

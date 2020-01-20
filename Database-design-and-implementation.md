@@ -38,11 +38,11 @@ In this section you must implement:
 ---
 <details>
 <summary>
-:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Chapter evaluation (max 10 points)</strong>
+:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Chapter evaluation (max 9 points)</strong>
 </summary>
 
 <bloquote>
-You can get a maximum of 10 points after completing this section. More detailed evaluation is provided after each heading.
+You can get a maximum of 9 points after completing this section. More detailed evaluation is provided after each heading.
 </bloquote>
 
 </details>
@@ -85,16 +85,16 @@ For this section you can use a visual tool to generate a diagram. Be sure that t
 ---
 <details>
 <summary>
-:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Evaluation criteria(max 3 points)</strong>
+:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Evaluation criteria(max 2.75 points)</strong>
 </summary>
 
 <bloquote>
-You can get a maximum of 3 points after completing this section.
+You can get a maximum of 2.75 points after completing this section.
 <ul>
 <li>Design of database is coherent: <strong>1.0</strong></li>
 <li>Each model and its attributes are named: <strong>0.5</strong></li>
 <li>Details for attributes are provided (datatype, default value, characteristics etc.): <strong>0.5</strong></li>
-<li>Foreign keys follow the relationship diagram from deadline 1: <strong>1.0</strong>
+<li>Foreign keys follow the relationship diagram from deadline 1: <strong>0.75</strong>
 	<ul></li>
 		if necessary, you can update your diagram 
 	</li></ul>
@@ -157,7 +157,7 @@ You can get a maximum of 3 points after completing this section.
 ---
 <details>
 <summary>
-:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Evaluation criteria(max 4.5 points)</strong>
+:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Evaluation criteria(max 4.25 points)</strong>
 </summary>
 
 <bloquote>
@@ -167,12 +167,11 @@ You can get a maximum of 3 points after completing this section.
 			<li>this means there should be no undocumented extra steps in running the code/tests!</li>
 		</ul>
 	</li>
-	<li>Table in the previous section covers all implemented models: <strong>0.25</strong></li>
+	<li>Table in the previous section covers all implemented models: <strong>0.5</strong></li>
 	<li>All properties of the table in the previous section are implemented correctly in the model (using correct types...): <strong>0.75</strong></li>
+	<li>All Relations are correctly implemented (0.25 if 1 or 2 minor errors, 0 otherwise): <strong>0.5</strong></li>
 	<li>The code has clear structure and naming for variables and methods: <strong>1.0</strong></li>
-	<li>Each method's implemented in the model  functionality and input parameters are described in its documentation: <strong>0.5</strong></li>
-	<li>Return value(s) (name, type, description for each) are documented: <strong>0.5</strong></li>
-	<li>Exceptions (type, what causes it) are documented: <strong>0.5</strong></li>
+	<li>Methods inside models (if any) are correctly documented in the code (functionality, input, output): <strong>0.5</strong></li>
 	<li>Code documentation uses a consistent and clear format: <strong>0.5</strong>
 		<ul>
 		<li>you can use an existing documenting format (e.g. Sphinx for Python) or simply come up with your own - as long as it's consistent</li>
@@ -207,7 +206,7 @@ In this course, showing that your code works is primarily your responsibility. T
 				<li>Retrieve an existing instance of the model (recommended trying with different filter options)</li>
 				<li>Update an existing model instance (if update operation is supported by this model)</li>
 				<li>Remove an existing model from the database</li>
-                                <li>Test possible errors conditions (e.g. breaking foreign keys relations)</li>
+                                <li>Test possible errors conditions (e.g. Integrity Errors)</li>
 			</ul>
 		</li>
 </ul>
@@ -222,15 +221,16 @@ In this course, showing that your code works is primarily your responsibility. T
 ---
 <details>
 <summary>
-:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Evaluation criteria(max 2.5 points)</strong>
+:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Evaluation criteria(max 3.0 points)</strong>
 </summary>
 
 <bloquote>
-In this section you can get a maximum of 2.5 points.
+In this section you can get a maximum of 3.0 points.
 <ul>
-<li>The test case cover all models in the database: <strong>1.0</strong> (<i>0.5</i> if not all methods covered / <i>0</i> if just a few methods covered)
+<li>Methods in the test are correctly documented (functionality of each method): <strong>0.5</strong>(<i>0.25</i> if not all covered / <i>0</i> if just a few are covered)</li>
+<li>The test case cover all models in the database: <strong>1.0</strong> (<i>0.5</i> if not all methods covered (~90% coverage) / <i>0</i> if just a few methods covered). 
 	<ul>
-		<li>For each model the script should, at least:
+		<li>In order to get full points, all CRUD methods should be tested for each model. For each model the script should, at least:
 			<ul>
 				<li>Create a new instance of the model</li>
 				<li>Retrieve an existing instance of the model (recommended trying with different filter options)</li>

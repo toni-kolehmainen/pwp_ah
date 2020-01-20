@@ -212,7 +212,7 @@ This section should not contain anything. Just be sure that meeting notes and re
 ---
 <details>
 <summary>
-:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Evaluation criteria(max 3.0 points)</strong>
+:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Evaluation criteria(max 5.0 points)</strong>
 </summary>
 
 <bloquote>
@@ -220,6 +220,7 @@ This section should not contain anything. Just be sure that meeting notes and re
 	<li>Resource allocation was filled for all deadlines: <strong>0.5</strong></li>
 	<li>Good meeting notes were taken during each meeting <strong>1.5</strong></li>
 	<li>Good time management during the whole course <strong>1.0</strong></li>
+	<li>Attendace to all meetings and active participation in those <strong>2.0</strong>(<i>1.0</i> if you missed one meeting or not enough active, <i>0</i> otherwise.</li>
 </ul>
 </bloquote>
 
@@ -228,6 +229,39 @@ This section should not contain anything. Just be sure that meeting notes and re
 ---
 
 :pencil2: *You do not need to write anything here. Just be sure that your meeting notes and resource allocation are up to date*
+
+# Exercises
+---
+<details>
+<summary>
+:bookmark_tabs:&nbsp;&nbsp;<strong>Exercises</strong>
+</summary>
+
+<bloquote>
+This section should not contain anything. Just be sure that you have completed the exercises in <a href="https://lovelace.oulu.fi/">Lovelace</a>
+</bloquote>
+
+</details>
+
+---
+
+---
+<details>
+<summary>
+:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Evaluation criteria(max 16.0 points)</strong>
+</summary>
+
+<bloquote>
+<ul>
+	<li>Correct implementation of all exercises tasks and attendance to the exercise session (for those taking the 6 deliverables option) <strong>16.0</strong></li>
+</ul>
+</bloquote>
+
+</details>
+
+---
+
+:pencil2: *You do not need to write anything here. Just be sure that you have delivered all the exercises in <a href="https://lovelace.oulu.fi/"></a>*
 
 ## Resources allocation
 |**Task** | **Student**|**Estimated time**|

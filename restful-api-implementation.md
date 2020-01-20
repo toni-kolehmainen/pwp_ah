@@ -25,11 +25,11 @@ In this section you must implement the RESTful API designed in the previous sect
 ---
 <details>
 <summary>
-:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Chapter evaluation (max 19 points)</strong>
+:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Chapter evaluation (max 18 points)</strong>
 </summary>
 
 <bloquote>
-You can get a maximum of 19 points after completing this section. More detailed evaluation is provided after each heading.
+You can get a maximum of 18 points after completing this section. More detailed evaluation is provided after each heading.
 </bloquote>
 
 </details>
@@ -101,7 +101,7 @@ A list of all implemented resources. Consider that not all resources that you ha
 		</ul>
 	</li>
 </ol>
-<strong>NOTE: Your code MUST be clearly documented. </strong>For each public method/function you must provide: a short description of the method, input parameters, output parameters, exceptions (when the application can fail and how to handle such fail). Check Exercise 2 and 3 for examples on how to document the code.
+<strong>NOTE: Your code MUST be clearly documented. </strong>For each public method/function you must provide: a short description of the method, input parameters, output parameters, exceptions (when the application can fail and how to handle such fail). Check Exercise 3 for examples on how to document the code.
 &nbsp;<strong>In addition should be clear which is the code you have implemented yourself and which is the code that you have borrowed from other sources</strong>
 </bloquote>
 
@@ -112,11 +112,11 @@ A list of all implemented resources. Consider that not all resources that you ha
 ---
 <details>
 <summary>
-:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Evaluation criteria(max 4.5 points)</strong>
+:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Evaluation criteria(max 5.5 points)</strong>
 </summary>
 
 <bloquote>
-In this section you can get a maximum of <strong>4.5</strong> points:
+In this section you can get a maximum of <strong>5.5</strong> points:
 
 <ul>
 	<li>Instructions to set up the API and run the tests are provided in the <a href="http://readme.md/">README.md</a> file: <strong>1.0</strong>
@@ -127,8 +127,9 @@ In this section you can get a maximum of <strong>4.5</strong> points:
 	<li>The code has clear structure and naming for variables and methods: <strong>1.0</strong></li>
 	<li>You have clearly marked which parts of the code are your own work and which have been borrowed: <strong>0.5</strong></li>
 	<li>Each method's functionality is described in its documentation: <strong>1.0</strong></li>
-	<li>Parameters read from the request are described: <strong>0.5</strong></li>
-	<li>Responses are briefly described (refer to your API documentation): <strong>0.5</strong></li>
+	<li>Documentation for auxiliar functions(if any) have correct input / output description: <strong>0.5</strong></li>
+	<li>Implementation matches the design of the previous section: <strong>1.5</strong> (<i>0.75</i> if there are minor mismatch (e.g. missing parameters, wrong header...), <i>0</i> if several calls differ)</li>
+
 </ul>
 </bloquote>
 
@@ -176,18 +177,18 @@ As with the database tests, in this section it is your responsibility that your 
 ---
 <details>
 <summary>
-:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Evaluation criteria(max 14 points)</strong>
+:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Evaluation criteria(max 12 points)</strong>
 </summary>
 
 <bloquote>
-In this section you can get a maximum of <strong>14</strong> points:
+In this section you can get a maximum of <strong>12</strong> points:
 
 <ul>
-	<li>Test cases run correctly: <strong>1.5</strong></li>
-	<li>Each method is tested with correct requests: <strong>2.0</strong></li>
-	<li>Test cases cover all predictable error scenarios (various invalid requests) for all methods:<strong>4.0</strong></li>
+	<li>Test cases run correctly: <strong>1.0</strong></li>
+	<li>Test coverage >=96%: <strong>3.0</strong>(<i>2.0</i> if coverage between 91% and 95%, <i>1.0</i> if coverage between 85% and 90%,<i>0</i> otherwise)</li>
+	<li>Test cases cover all predictable error scenarios (various invalid requests) for all methods:<strong>3.0</strong></li>
 	<li>Test output clearly describes the testing process for each case: <strong>1.0</strong></li>
-	<li>The interface works as intended (i.e. we don't find any errors. ) Errors will diminish this grade: <strong>5.5</strong></li>
+	<li>The interface works as intended (i.e. we don't find any errors. ) Errors will diminish this grade: <strong>4.0</strong></li>
 	<li>NOTE: In group with 4 people we will be more strict when assigning grades in this section.</li>
 </ul>
 </bloquote>
