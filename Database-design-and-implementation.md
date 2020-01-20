@@ -158,7 +158,6 @@ You can get a maximum of 2.75 points after completing this section.
 <details>
 <summary>
 :heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Evaluation criteria(max 4.25 points)</strong>
-</summary>
 
 <bloquote>
 <ul>
@@ -235,13 +234,13 @@ In this section you can get a maximum of 3.0 points.
 				<li>Create a new instance of the model</li>
 				<li>Retrieve an existing instance of the model (recommended trying with different filter options)</li>
 				<li>Update an existing model instance (if update operation is supported by this model)</li>
-				<li>Remove an existing model from the database</li>
+				<li>Remove an existing model instance from the database</li>
 			</ul>
 		</li>
 		<li>You should try to force errors (for instance, try to break foreign keys relations)</li>
 	</ul>
 </li>
-<li>Test cases cover also errors scenarios: <strong>0.5</strong></li>
+<li>Test cases cover also errors scenarios: <strong>1.5</strong></li>
 <li>The model implementation do not have errors : <strong>1.0</strong></li>
 </ul>
 
