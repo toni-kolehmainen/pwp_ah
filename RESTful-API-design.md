@@ -169,7 +169,6 @@ ___
 |Resource Name 4|||||| 
 |Resource Name 5||||||  
 
-~~:pencil2: *Do not forget to include the sequence diagram*~~
 
 
 ## API design
@@ -208,11 +207,11 @@ For all resources you must cover:
 ---
 <details>
 <summary>
-:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Evaluation criteria(max 13.00 points)</strong>
+:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Evaluation criteria(max 13.75 points)</strong>
 </summary>
 
 <bloquote>
-You can get a maximum of 13.00 points in this section:
+You can get a maximum of 13.75 points in this section:
 <ul>
 <li> You are using a hypermedia API: <strong>3.0</strong></li>
 <li>Each request has the correct media type: <strong>0.5</strong></li>
@@ -226,13 +225,13 @@ You can get a maximum of 13.00 points in this section:
 <li>Examples are provided for each request: <strong>0.5</strong></li>
 <li>Examples provided for each request do not contain errors: <strong>0.5</strong></li>
 <li>Examples are provided for each response: <strong>0.75</strong></li>
-<li>Examples provided for each response do not contain errors: <strong>0.75</strong></li>
+<li>Examples provided for each response do not contain errors: <strong>1.0</strong></li>
 <li>Examples includes error responses <strong>0.25</strong></li>
-<li>Examples provided in error responses do not contain errors <strong>0.25</strong></li>
-<li>Examples provide all possible/reasonable error responses for each method <strong>0.50</strong></li>
+<li>Examples provided in error responses do not contain errors <strong>0.5</strong></li>
+<li>Examples provide all possible/reasonable error responses for each method <strong>0.5</strong></li>
 <li>Examples have correct headers: <strong>0.5</strong></li>
 <li>Profiles are linked in each response (only for hypermedia APIs, CRUD implementation receive 0 points in this section): <strong>0.5</strong></li>
-<li>Examples use correct status codes: <strong>1.0</strong></li>
+<li>Examples use correct status codes: <strong>1.25</strong></li>
 <li>Design is coherent: <strong>1.0</strong></li>
 </ul>
 </bloquote>
@@ -267,11 +266,11 @@ Explain briefly how your API meets REST principles. Focus specially in the four 
 ---
 <details>
 <summary>
-:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Evaluation criteria(max 8.75 points)</strong>
+:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Evaluation criteria(max 8.0 points)</strong>
 </summary>
 
 <bloquote>
-You can get a maximum of 8.75 points in this section:
+You can get a maximum of 8.0 points in this section:
 <ul>
 	<li>The justification is clear and coherent, and shows an understanding of REST principles: <strong>2.0</strong></li>
 	<li>The Api is addressable (no errors regarding addressability): <strong>1.0</strong></li>
@@ -282,8 +281,7 @@ You can get a maximum of 8.75 points in this section:
 			<li>isolated resource is a resource that either is not linked to from anywhere, or doesn't contain links itself</li>
 		</ul>
 	</li>
-	<li>Protocol semantics are clearly provided either by the response or by the profile (If you are using a CRUD API you won't get points in this section): <strong>1.25</strong></li>
-	<li>Applications semantics are clearly defined either in the type, in the profile or in the API documentation if using CRUD: <strong>1.00</strong></li>
+	<li>Protocol semantics are clearly provided either by the response or by the profile (If you are using a CRUD API you won't get points in this section): <strong>1.5</strong></li>
 </ul>
 
 </bloquote>
