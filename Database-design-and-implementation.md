@@ -89,7 +89,7 @@ For this section you can use a visual tool to generate a diagram. Be sure that t
 </summary>
 
 <bloquote>
-You can get a maximum of <strong>2.75</strpng> points after completing this section.
+You can get a maximum of <strong>2.75</strong> points after completing this section.
 <ul>
 <li>Design of database is coherent: <strong>1.0</strong></li>
 <li>Each model and its attributes are named: <strong>0.5</strong></li>
@@ -157,7 +157,7 @@ You can get a maximum of <strong>2.75</strpng> points after completing this sect
 ---
 <details>
 <summary>
-:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Evaluation criteria(max 4.25 points)</strong>
+:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Evaluation criteria(max 3.25 points)</strong>
 </summary>
 
 <bloquote>
@@ -170,14 +170,8 @@ You can get a maximum of <strong>2.75</strpng> points after completing this sect
 	<li>Table in the previous section covers all implemented models: <strong>0.5</strong></li>
 	<li>All properties of the table in the previous section are implemented correctly in the model (using correct types...): <strong>0.75</strong></li>
 	<li>All Relations are correctly implemented (<i>0.25</i> if 1 or 2 minor errors, <i>0</i> otherwise): <strong>0.5</strong></li>
-	<li>The code has clear structure and naming for variables and methods: <strong>1.0</strong></li>
-	<li>Methods inside models (if any) are correctly documented in the code (functionality, input, output): <strong>0.5</strong></li>
-	<li>Code documentation uses a consistent and clear format: <strong>0.5</strong>
-		<ul>
-		<li>You can use an existing documenting format (e.g. Sphinx for Python) or simply come up with your own - as long as it's consistent</li>
-		</ul>
-	</li>
-</ul>
+	<li>The code has clear structure and naming for variables and methods: <strong>0.75</strong></li>
+	<li>Methods inside models (if any) are correctly documented in the code (functionality, input, output): <strong>0.25</strong></li></ul>
 </bloquote>
 
 </details>
@@ -221,11 +215,11 @@ In this course, showing that your code works is primarily your responsibility. T
 ---
 <details>
 <summary>
-:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Evaluation criteria(max 2.0 points)</strong>
+:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Evaluation criteria(max 3.0 points)</strong>
 </summary>
 
 <bloquote>
-In this section you can get a maximum of <strong>2.0</strong> points.
+In this section you can get a maximum of <strong>3.0</strong> points.
 <ul>
 <li>Methods in the test are correctly documented (functionality of each method): <strong>0.5</strong>(<i>0.25</i> if not all covered / <i>0</i> if just a few are covered)</li>
 <li>The test case cover all models in the database: <strong>1.0</strong> (<i>0.5</i> if not all methods covered (~90% coverage) / <i>0</i> if just a few methods covered). 

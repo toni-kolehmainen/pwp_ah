@@ -64,7 +64,7 @@ A list of all implemented resources. Consider that not all resources that you ha
 <bloquote>
 	In this section you can get a maximum of 0.5 points.
 	<ul>
-		<li>The table clearly shows which resources are implemented, and what requests they support: <strong>1.0</strong></li>
+		<li>The table clearly shows which resources are implemented, and what requests they support: <strong>0.5</strong></li>
 	</ul>
 </bloquote>
 
