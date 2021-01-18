@@ -220,7 +220,7 @@ In this course, showing that your code works is primarily your responsibility. T
 </summary>
 
 <bloquote>
-In this section you can get a maximum of <strong>3.0</strong> points.
+In this section you can get a maximum of <strong>2.5</strong> points.
 <ul>
 <li>Methods in the test are correctly documented (functionality of each method): <strong>1</strong>(<i>0.25</i> if not all covered / <i>0</i> if just a few are covered)</li>
 <li>Each model is tested with each one of the 4 CRUD operations (create, read, update and delete). Ondelete and onModify behaviour should also be tested: <strong>1.0</strong> (<i>0.75</i> if few operations missing. <i>0.5</i> if one model not tested. <i>0</i> if more than one model not tested). 
