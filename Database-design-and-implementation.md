@@ -85,11 +85,11 @@ For this section you can use a visual tool to generate a diagram. Be sure that t
 ---
 <details>
 <summary>
-:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Evaluation criteria(max 2.75 points)</strong>
+:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Evaluation criteria(max 3.25 points)</strong>
 </summary>
 
 <bloquote>
-You can get a maximum of <strong>2.75</strong> points after completing this section.
+You can get a maximum of <strong>3.25</strong> points after completing this section.
 <ul>
 <li>Design of database is coherent: <strong>1.0</strong></li>
 <li>Each model and its attributes are named: <strong>0.5</strong></li>
@@ -99,6 +99,7 @@ You can get a maximum of <strong>2.75</strong> points after completing this sect
 		if necessary, you can update your diagram 
 	</li></ul>
 </li>
+<li>Diagram with relations exist and present the foreign keys relations: <strong>0.5</strong></li>
 </ul>
 </bloquote>
 
@@ -135,7 +136,7 @@ You can get a maximum of <strong>2.75</strong> points after completing this sect
 <li>A README.md file containing:
 	<ul>
 		<li>All dependencies (external libraries) and how to install them</li>
-		<li>Define database and version utilized</li>
+		<li>Define database (MySQL, SQLite, MariaDB, MongoDB...) and version utilized</li>
 		<li>Instructions how to setup the database framework and external libraries you might have used, or a link where it is clearly explained. </li>
 		<li>Instructions on how to setup and populate the database.</li>
 		<li>Instruction on how to run the tests of your database.</li>
@@ -167,11 +168,10 @@ You can get a maximum of <strong>2.75</strong> points after completing this sect
 			<li>this means there should be no undocumented extra steps in running the code/tests!</li>
 		</ul>
 	</li>
-	<li>Table in the previous section covers all implemented models: <strong>0.5</strong></li>
 	<li>All properties of the table in the previous section are implemented correctly in the model (using correct types...): <strong>0.75</strong></li>
 	<li>All Relations are correctly implemented (<i>0.25</i> if 1 or 2 minor errors, <i>0</i> otherwise): <strong>0.5</strong></li>
-	<li>The code has clear structure and naming for variables and methods: <strong>0.75</strong></li>
-	<li>Methods inside models (if any) are correctly documented in the code (functionality, input, output): <strong>0.25</strong></li></ul>
+	<li>The naming of the attributes and relations are self-descriptive and additional functions for the models (if any) are correctly documented (input/output): <strong>0.75</strong></li>
+	<li>All models from design tables are implemented. All implemented models appear in the design tables: <strong>0.75</strong></li>
 </bloquote>
 
 </details>
@@ -188,7 +188,7 @@ You can get a maximum of <strong>2.75</strong> points after completing this sect
 
 <bloquote>
 <p>
-In this course, showing that your code works is primarily your responsibility. Therefore we expect test cases that show that all of your methods work not just with correct parameters, but that they also handle error situations correctly. Tests should always cover the most common error scenarios that are easy to predict (e.g. trying to edit something that doesn't exist, trying to create duplicate primary keys etc.) Each test case has to clearly show what it tests, what test parameters it uses and finally to show that result was as expected.
+In this course, showing that your code works is primarily your responsibility. Therefore we expect test cases that show that all of your methods work not just with correct parameters, but that they also handle error situations correctly. Tests should always cover the most common error scenarios that are easy to predict (e.g.foreign keys violations work correctly) 
 </p>
 <p>You should follow the testing methodologies shown in Exercise 1.</p>
 <p>Some guidelines for the testing:</p>
@@ -200,7 +200,8 @@ In this course, showing that your code works is primarily your responsibility. T
 				<li>Retrieve an existing instance of the model (recommended trying with different filter options)</li>
 				<li>Update an existing model instance (if update operation is supported by this model)</li>
 				<li>Remove an existing model from the database</li>
-                                <li>Test possible errors conditions (e.g. Integrity Errors)</li>
+				<li>Test that onModify and onDelete work as expected</li>
+                <li>Test possible errors conditions (e.g. foreign keys violation or other situation where Integrity error might be raised)</li>
 			</ul>
 		</li>
 </ul>
@@ -215,14 +216,14 @@ In this course, showing that your code works is primarily your responsibility. T
 ---
 <details>
 <summary>
-:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Evaluation criteria(max 3.0 points)</strong>
+:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Evaluation criteria(max 2.5 points)</strong>
 </summary>
 
 <bloquote>
 In this section you can get a maximum of <strong>3.0</strong> points.
 <ul>
-<li>Methods in the test are correctly documented (functionality of each method): <strong>0.5</strong>(<i>0.25</i> if not all covered / <i>0</i> if just a few are covered)</li>
-<li>The test case cover all models in the database: <strong>1.0</strong> (<i>0.5</i> if not all methods covered (~90% coverage) / <i>0</i> if just a few methods covered). 
+<li>Methods in the test are correctly documented (functionality of each method): <strong>1</strong>(<i>0.25</i> if not all covered / <i>0</i> if just a few are covered)</li>
+<li>Each model is tested with each one of the 4 CRUD operations (create, read, update and delete). Ondelete and onModify behaviour should also be tested: <strong>1.0</strong> (<i>0.75</i> if few operations missing. <i>0.5</i> if one model not tested. <i>0</i> if more than one model not tested). 
 	<ul>
 		<li>In order to get full points, all CRUD methods should be tested for each model. For each model the script should, at least:
 			<ul>
@@ -230,13 +231,14 @@ In this section you can get a maximum of <strong>3.0</strong> points.
 				<li>Retrieve an existing instance of the model (recommended trying with different filter options)</li>
 				<li>Update an existing model instance (if update operation is supported by this model)</li>
 				<li>Remove an existing model instance from the database</li>
+				<li>Additionally onModify and onDelete should be tested</li>
 			</ul>
 		</li>
-		<li>You should try to force errors (for instance, try to break foreign keys relations)</li>
 	</ul>
 </li>
-<li>Test cases cover also errors scenarios: <strong>0.5</strong></li>
-<li>The model implementation do not have errors : <strong>1.0</strong></li>
+<li>Test cases includes possible error situation (e.g. foreign key violation): <strong>0.5</strong></li>
+<li>Tests run correctly: <strong>0.5</strong></li>
+<li>The model implementation do not have errors. Note that course staff might do additional tests : <strong>0.5</strong></li>
 </ul>
 
 </bloquote>
