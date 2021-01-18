@@ -1,7 +1,7 @@
 # Report index
 * [Group information](home)
 * [DL1. RESTful API description](RESTTful-API-description)
-* [DL2. Backend](Database-design-and-implementation)
+* [DL2. Database design and implementation](Database-design-and-implementation)
 * [DL3. RESTful API design](RESTful-API-design)
 * [DL4. RESTful API implementation](restful-api-implementation)
 * [DL5. RESTful API client](RESTful-client-design-and-implementation)
