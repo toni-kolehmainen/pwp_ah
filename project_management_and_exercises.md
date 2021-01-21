@@ -29,7 +29,7 @@ This section should not contain anything. Just be sure that meeting notes and re
 	<li>Good meeting notes were taken during each meeting <strong>0.5</strong></li>
 	<li>Good time management during the whole course <strong>1.0</strong></li>
 	<li>Attendace to all meetings and active participation in those <strong>1.0</strong>(<i>0.5</i> if you missed one meeting or not enough active, <i>0</i> otherwise.</li>
-	<li>Filling official course feedback at <a href="https://palaute.oulu.fi/">https://palaute.oulu.fi/</a></li>
+	<li>Filling official course feedback at <a href="https://palaute.oulu.fi/">https://palaute.oulu.fi/</a><strong>2.0</strong></li>
 </ul>
 </bloquote>
 
