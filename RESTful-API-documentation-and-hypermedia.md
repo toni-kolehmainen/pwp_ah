@@ -64,6 +64,7 @@ Include a state diagram of your application, in which each resource is a state. 
 
 :pencil2: *Draw here your state machine diagram*
 
+---
 
 ## API design
 
