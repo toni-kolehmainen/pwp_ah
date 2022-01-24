@@ -172,6 +172,10 @@ You must provide a description of the service. You must clarify which are the go
 
 ---
 
+:pencil2: *Write your description here*
+
+---
+
 ### Functional requirements
 
 <details>
