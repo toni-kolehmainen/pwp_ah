@@ -177,8 +177,11 @@ Write a short rationale of how URL converters are used, including your thoughts 
 </details>
 
 ---
+
 :pencil2: *Write your text here*
+
 ---
+
 ### Schema Validation
 
 <details>
@@ -191,7 +194,9 @@ Write a short description of your JSON schemas, including key decision making fo
 </details>
 
 ---
+
 :pencil2: *Write your text here*
+
 ---
 
 ### Caching
@@ -206,7 +211,9 @@ Explain your caching decisions here. Include an explanation for every GET method
 </details>
 
 ---
+
 :pencil2: *Write your text here*
+
 ---
 
 ### Authentication
@@ -221,7 +228,9 @@ Explain your authentication scheme here. Describe the authentication requirement
 </details>
 
 ---
+
 :pencil2: *Write your text here*
+
 ---
 
 ## Resources allocation
