@@ -114,6 +114,8 @@ For all resources you must cover:
 Declare your chosen mediatype, and provide your reasoning for choosing that mediatype. For each custom link relation defined in your API's namespace, explain why it was needed (i.e. why there wasn't a suitable relation in the IANA standard). Explain how Connectedness is achieved in your API.
 </bloquote>
 
+---
+
 :pencil2: <strong>Write your description here</strong>
 
 
