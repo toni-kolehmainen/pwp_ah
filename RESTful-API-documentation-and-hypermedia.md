@@ -46,7 +46,6 @@ You can get a maximum of 10 points after completing this section. More detailed 
 # RESTful API documentation
 
 ## Resource relations
----
 <details>
 <summary>
 :bookmark_tabs:&nbsp;&nbsp;<strong>Content that must be included in the section</strong>
@@ -68,7 +67,6 @@ Include a state diagram of your application, in which each resource is a state. 
 
 ## API design
 
----
 <details>
 <summary>
 :bookmark_tabs:&nbsp;&nbsp;<strong>Content that must be included in the section</strong>
