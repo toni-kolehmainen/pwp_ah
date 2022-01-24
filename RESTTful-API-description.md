@@ -24,7 +24,6 @@ This chapter must provide a good overview of the Web API that your group is goin
 
 ---
 
----
 <details>
 <summary>
 :heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Chapter evaluation (max 5 points)</strong>
@@ -40,7 +39,6 @@ You can get a maximum of 5 points after completing this Chapter. More detailed e
 
 # RESTful API description
 ## Overview
----
 <details>
 <summary>
 :bookmark_tabs:&nbsp;&nbsp;<strong>Content that must be included in the section</strong>
@@ -64,8 +62,10 @@ A really short version of an overview for the RESTful Web API could be:
 
 :pencil2: *Write your description here*
 
-## Main concepts and relations
 ---
+
+
+## Main concepts and relations
 <details>
 <summary>
 :bookmark_tabs:&nbsp;&nbsp;<strong>Content that must be included in the section</strong>
@@ -91,8 +91,9 @@ This section is important because it outlines the concepts that you will later i
 
 :pencil2: *Write your text here and draw the diagram*
 
-## API uses
 ---
+
+## API uses
 <details>
 <summary>
 :bookmark_tabs:&nbsp;&nbsp;<strong>Content that must be included in the section</strong>
@@ -111,7 +112,6 @@ Describe at least two clients or services that could use your Web API. You must 
 
 
 ## Related work
----
 <details>
 <summary>
 :bookmark_tabs:&nbsp;&nbsp;<strong>Content that must be included in the section</strong>
@@ -131,6 +131,7 @@ The purpose of this task is to get more familiar with what an API is. This will 
 
 :pencil2: *Write your text here*
 
+---
 
 
 ## Resources allocation
