@@ -21,8 +21,6 @@ In this section you must implement a RESTful API. <strong>The minimum requiremen
 </details>
 
 ---
-
----
 <details>
 <summary>
 :heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Chapter evaluation (max 25 points)</strong>
@@ -40,7 +38,6 @@ You can get a maximum of 18 points after completing this section. More detailed 
 
 ## List of implemented resources
 
----
 <details>
 <summary>
 :bookmark_tabs:&nbsp;&nbsp;<strong>Content that must be included in the section</strong>
@@ -62,7 +59,7 @@ A list of all implemented resources. Consider that you do not need to implement 
 |Resource Name 1       |              |                      |                      |             |
 |Resource Name 2       |              |                      |                      |             |
 
-
+---
 
 ## Basic implementation
 <details>
@@ -96,6 +93,7 @@ A list of all implemented resources. Consider that you do not need to implement 
 ---
 :pencil2: *You do not need to write anything in this section, just complete the implementation.*
 
+---
 
 ### RESTful API testing
 <details>
@@ -131,6 +129,7 @@ In this section it is your responsibility that your API handles requests correct
 
 </details>
 
+---
 :pencil2: *You do not need to write anything in this section, just complete the implementation.*
 
 ---
@@ -152,6 +151,7 @@ Explain briefly how your API meets REST principles. Focus specially in these thr
 
 :pencil2: *Write your text here*
 
+---
 
 ## Extras
 
@@ -176,8 +176,9 @@ Write a short rationale of how URL converters are used, including your thoughts 
 </bloquote>
 </details>
 
+---
 :pencil2: *Write your text here*
-
+---
 ### Schema Validation
 
 <details>
@@ -189,7 +190,9 @@ Write a short description of your JSON schemas, including key decision making fo
 </bloquote>
 </details>
 
+---
 :pencil2: *Write your text here*
+---
 
 ### Caching
 
@@ -202,7 +205,9 @@ Explain your caching decisions here. Include an explanation for every GET method
 </bloquote>
 </details>
 
+---
 :pencil2: *Write your text here*
+---
 
 ### Authentication
 
@@ -215,8 +220,9 @@ Explain your authentication scheme here. Describe the authentication requirement
 </bloquote>
 </details>
 
+---
 :pencil2: *Write your text here*
-
+---
 
 ## Resources allocation
 |**Task** | **Student**|**Estimated time**|
