@@ -1,7 +1,7 @@
-# Important information for Deadline 4
+# Important information for Deadline 3
 
 
-:bangbang:&nbsp;&nbsp;**This chapter should be completed by Deadline 4** *(see course information at [Lovelace](http://lovelace.oulu.fi))*
+:bangbang:&nbsp;&nbsp;**This chapter should be completed by Deadline 3** *(see course information at [Lovelace](http://lovelace.oulu.fi))*
 
 ---
 <details>
@@ -10,7 +10,7 @@
 </summary>
 
 <bloquote>
-In this section you must implement the RESTful API designed in the previous section. <strong>The minimum requirements are summarized in the&nbsp;<a href="">Minimum Requirements</a>&nbsp;section of the Project Work Assignment. If you do not meet the minimum requirements this section WILL NOT be evaluated. </strong>
+In this section you must implement a RESTful API. <strong>The minimum requirements are summarized in the&nbsp;<a href="">Minimum Requirements</a>&nbsp;section of the Project Work Assignment. If you do not meet the minimum requirements this section WILL NOT be evaluated. </strong>
 <h3>CHAPTER GOALS</h3>
 <ul>
 <li>Implement a RESTful API</li>
@@ -25,11 +25,11 @@ In this section you must implement the RESTful API designed in the previous sect
 ---
 <details>
 <summary>
-:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Chapter evaluation (max 18 points)</strong>
+:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Chapter evaluation (max 25 points)</strong>
 </summary>
 
 <bloquote>
-You can get a maximum of 18 points after completing this section. More detailed evaluation is provided after each heading.
+You can get a maximum of 18 points after completing this section. More detailed evaluation is provided in the evaluation sheet in Lovelace.
 </bloquote>
 
 </details>
@@ -47,7 +47,7 @@ You can get a maximum of 18 points after completing this section. More detailed 
 </summary>
 
 <bloquote>
-A list of all implemented resources. Consider that not all resources that you have designed must be implemented.&nbsp; The minimum requirements are summarized in the Minimum requirements section from the Project work assignment. <em>You can use a table similar to the one you used to explain the uniform interface. <em>Do not forget to include in the <a href="doc/README.md">README.md</a> file which is the path to access to your application remotely.</em>
+A list of all implemented resources. Consider that you do not need to implement every resource you initially planned. &nbsp; The minimum requirements are summarized in the Minimum requirements section from the Project work assignment. <em>Do not forget to include in the <a href="doc/README.md">README.md</a> file which is the path to access to your application remotely.</em>
 
 </bloquote>
 
@@ -55,30 +55,16 @@ A list of all implemented resources. Consider that not all resources that you ha
 
 ---
 
----
-<details>
-<summary>
-:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Evaluation criteria(max 0.5 points)</strong>
-</summary>
+:pencil2: *List your resources here. You can use the table below for listing resources. You can also list unimplemented resources if you think they are worth mentioning*
 
-<bloquote>
-	In this section you can get a maximum of 0.5 points.
-	<ul>
-		<li>The table clearly shows which resources are implemented, and what requests they support: <strong>0.5</strong></li>
-	</ul>
-</bloquote>
-
-</details>
-
----
+|  Resource name       | Resource url | Resource description | Supported Methods    | Implemented |
+|:-------------------: |:------------:|:--------------------:|:--------------------:|:-----------:|
+|Resource Name 1       |              |                      |                      |             |
+|Resource Name 2       |              |                      |                      |             |
 
 
 
-:pencil2: *Write here your text*
-
-
-
-## Resources implementation
+## Basic implementation
 <details>
 <summary>
 :computer:&nbsp;&nbsp;&nbsp;&nbsp; <strong>TODO: SOFTWARE TO DELIVER IN THIS SECTION</strong>
@@ -101,42 +87,15 @@ A list of all implemented resources. Consider that not all resources that you ha
 		</ul>
 	</li>
 </ol>
-<strong>NOTE: Your code MUST be clearly documented. </strong>For each public method/function you must provide: a short description of the method, input parameters, output parameters, exceptions (when the application can fail and how to handle such fail). Check Exercise 3 for examples on how to document the code.
-&nbsp;<strong>In addition should be clear which is the code you have implemented yourself and which is the code that you have borrowed from other sources</strong>
-</bloquote>
-
-</details>
-
----
-
----
-<details>
-<summary>
-:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Evaluation criteria(max 5.5 points)</strong>
-</summary>
-
-<bloquote>
-In this section you can get a maximum of <strong>5.5</strong> points:
-
-<ul>
-	<li>Instructions to set up the API and run the tests are provided in the <a href="http://readme.md/">README.md</a> file: <strong>1.0</strong>
-		<ul>
-			<li>this means there should be no undocumented extra steps in running the code/tests!</li>
-		</ul>
-	</li>
-	<li>The code has clear structure and naming for variables and methods: <strong>1.0</strong></li>
-	<li>You have clearly marked which parts of the code are your own work and which have been borrowed: <strong>0.5</strong></li>
-	<li>Each method's functionality is described in its documentation: <strong>1.0</strong></li>
-	<li>Documentation for auxiliar functions(if any) have correct input / output description: <strong>0.5</strong></li>
-	<li>Implementation matches the design of the previous section: <strong>1.5</strong> (<i>0.75</i> if there are minor mismatch (e.g. missing parameters, wrong header...), <i>0</i> if several calls differ)</li>
-
-</ul>
+<strong>NOTE: Your code MUST be clearly documented. </strong>For each public method/function you must provide: a short description of the method, input parameters, output parameters, exceptions (when the application can fail and how to handle such fail). 
+&nbsp;<strong>In addition should be clear which is the code you have implemented yourself and which is the code that you have borrowed from other sources. Always provide a link to the original source. This includes links to the course material.</strong>
 </bloquote>
 
 </details>
 
 ---
 :pencil2: *You do not need to write anything in this section, just complete the implementation.*
+
 
 ### RESTful API testing
 <details>
@@ -167,36 +126,97 @@ Do not forget to include in the <a href="doc/README.md">README.md</a> the instru
 
 Remember that you MUST implement a functional testing suite. A detailed description of the input / output in the a REST client plugin.
 
-As with the database tests, in this section it is your responsibility that your API handles requests correctly. All of the example requests in your API documentation should work, and your API must give the responses from your documentation. You also need to show that invalid requests are properly handled, and that the responses match those in the documentation.
+In this section it is your responsibility that your API handles requests correctly. All of the supported methods for each resource should work. You also need to show that invalid requests are properly handled, and that the response codes are correct in each situation.
 </bloquote>
 
 </details>
 
----
+:pencil2: *You do not need to write anything in this section, just complete the implementation.*
 
 ---
+
+## REST conformance
+
 <details>
 <summary>
-:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Evaluation criteria(max 12 points)</strong>
+:bookmark_tabs:&nbsp;&nbsp;<strong>Content that must be included in the section</strong>
 </summary>
 
 <bloquote>
-In this section you can get a maximum of <strong>12</strong> points:
-
-<ul>
-	<li>Test cases run correctly: <strong>1.0</strong></li>
-	<li>Test coverage >=96%: <strong>3.0</strong> (<i>2.0</i> if coverage between 91% and 95%, <i>1.0</i> if coverage between 85% and 90%,<i>0</i> otherwise)</li>
-	<li>Test cases cover all predictable error scenarios (various invalid requests) for all methods:<strong>3.0</strong></li>
-	<li>Test output clearly describes the testing process for each case: <strong>1.0</strong></li>
-	<li>The interface works as intended (i.e. we don't find any errors. ) Errors will diminish this grade: <strong>4.0</strong></li>
-	<li>NOTE: In group with 4 people we will be more strict when assigning grades in this section.</li>
-</ul>
+Explain briefly how your API meets REST principles. Focus specially in these three principles: <strong>Addressability, Uniform interface, and Statelessness</strong>. Provide examples (e.g. how does each HTTP method work in your API). Note that Connectedness will be addressed in Deadline 4.
 </bloquote>
 
 </details>
 
 ---
-:pencil2: *You do not need to write anything in this section, just complete the implementation.*
+
+:pencil2: *Write your text here*
+
+
+## Extras
+
+<details>
+<summary>
+:bookmark_tabs:&nbsp;&nbsp;<strong>Details on extra features</strong>
+</summary>
+<bloquote>
+This section lists the additional features that will be graded as part of the API but are not required. In addition to implementing the feature you are also asked to write a short description for each.
+</bloquote>
+
+</details>
+
+### URL Converters
+
+<details>
+<summary>
+:bookmark_tabs:&nbsp;&nbsp;<strong>Fill this section if you used URL converters</strong>
+</summary>
+<bloquote>
+Write a short rationale of how URL converters are used, including your thoughts on the possible trade-offs. Go through all URL parameters in your API and describe whether they use a converter, what property is used for converting, or why it's not using a converter.
+</bloquote>
+</details>
+
+:pencil2: *Write your text here*
+
+### Schema Validation
+
+<details>
+<summary>
+:bookmark_tabs:&nbsp;&nbsp;<strong>Fill this section if you used JSON schema validation</strong>
+</summary>
+<bloquote>
+Write a short description of your JSON schemas, including key decision making for choosing how to validate each field. 
+</bloquote>
+</details>
+
+:pencil2: *Write your text here*
+
+### Caching
+
+<details>
+<summary>
+:bookmark_tabs:&nbsp;&nbsp;<strong>Fill this section if you implemented server side caching</strong>
+</summary>
+<bloquote>
+Explain your caching decisions here. Include an explanation for every GET method in your API, explaining what is cached (or why it is not cached), and how long is it cached (and why). If you are using manual cache clearing, also explain when it happens.
+</bloquote>
+</details>
+
+:pencil2: *Write your text here*
+
+### Authentication
+
+<details>
+<summary>
+:bookmark_tabs:&nbsp;&nbsp;<strong>Fill this section if you implemented authentication</strong>
+</summary>
+<bloquote>
+Explain your authentication scheme here. Describe the authentication requirements for each resource in your API, and your reasoning for the decisions. In addition, provide a plan for how API keys will be distributed, even if the distribution is not currently implemented.
+</bloquote>
+</details>
+
+:pencil2: *Write your text here*
+
 
 ## Resources allocation
 |**Task** | **Student**|**Estimated time**|
