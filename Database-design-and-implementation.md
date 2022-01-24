@@ -32,7 +32,6 @@ In this section you must implement:
 
 ---
 
----
 <details>
 <summary>
 :heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Chapter evaluation (max 5 points)</strong>
@@ -49,7 +48,6 @@ You can get a maximum of 9 points after completing this section. More detailed e
 # Database design and implementation
 
 ## Database design
----
 <details>
 <summary>
 :bookmark_tabs:&nbsp;&nbsp;<strong>Content that must be included in the section</strong>
@@ -79,8 +77,6 @@ For this section you can use a visual tool to generate a diagram. Be sure that t
 
 ---
 
----
-
 :pencil2: *The table can have the following structure*
 
 |**Name** | **Type**|**Restrictions**|**Description**|**Characteristics** | **Links**|
@@ -92,8 +88,9 @@ For this section you can use a visual tool to generate a diagram. Be sure that t
 
 :pencil2: *Do not forget to include a diagram presenting the relations*
 
-## Database implementation
 ---
+
+## Database implementation
 <details>
 <summary>
 :computer:&nbsp;&nbsp;&nbsp;&nbsp; <strong>TODO: SOFTWARE TO DELIVER IN THIS SECTION</strong>
@@ -126,8 +123,8 @@ For this section you can use a visual tool to generate a diagram. Be sure that t
 
 :pencil2: *You do not need to write anything in this section, just complete the implementation.*
 
-
 ---
+
 ## Resources allocation 
 |**Task** | **Student**|**Estimated time**|
 |:------: |:----------:|:----------------:|
