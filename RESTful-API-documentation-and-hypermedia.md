@@ -32,11 +32,11 @@ In this chapter, the students&nbsp;<strong>must document their RESTful API. The 
 ---
 <details>
 <summary>
-:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Chapter evaluation (max 10 points)</strong>
+:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Chapter evaluation (max 15 points)</strong>
 </summary>
 
 <bloquote>
-You can get a maximum of 10 points after completing this section. More detailed evaluation is provided in the evaluation sheet in Lovelace.
+You can get a maximum of 15 points after completing this section. More detailed evaluation is provided in the evaluation sheet in Lovelace.
 </bloquote>
 
 </details>
