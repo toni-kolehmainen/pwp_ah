@@ -23,11 +23,11 @@ In this section you must implement a RESTful API. <strong>The minimum requiremen
 ---
 <details>
 <summary>
-:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Chapter evaluation (max 25 points)</strong>
+:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Chapter evaluation (max 20 points)</strong>
 </summary>
 
 <bloquote>
-You can get a maximum of 18 points after completing this section. More detailed evaluation is provided in the evaluation sheet in Lovelace.
+You can get a maximum of 20 points after completing this section. More detailed evaluation is provided in the evaluation sheet in Lovelace.
 </bloquote>
 
 </details>
