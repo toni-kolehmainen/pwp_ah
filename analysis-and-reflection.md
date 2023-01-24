@@ -16,8 +16,6 @@ In this section we would like that you reflect about the work you have done duri
 	<li>Reflect about own learning</li>
 	<li>Feedback on course instruction</li>
 </ul>
-In this section we are going to evaluate also the project management
-
 
 </bloquote>
 
@@ -25,14 +23,13 @@ In this section we are going to evaluate also the project management
 
 ---
 
----
 <details>
 <summary>
-:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Chapter evaluation (max 4.5 points)</strong>
+:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Chapter evaluation (max 5 points)</strong>
 </summary>
 
 <bloquote>
-You can get a maximum of 4.5 points after completing the Analysis and Reflection section.
+You can get a maximum of 5 points after completing the Analysis and Reflection section. More information in Lovelace return box for Final deadline.
 </bloquote>
 
 </details>
@@ -52,22 +49,6 @@ You can get a maximum of 4.5 points after completing the Analysis and Reflection
 <bloquote>
 Explain how you would improve your RESTful API and your client application. Try to develop the ideas, and explain why each improvement is needed
 
-</bloquote>
-
-</details>
-
----
-
----
-<details>
-<summary>
-:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Evaluation criteria(max 1.5 points)</strong>
-</summary>
-
-<bloquote>
-<ul>
-	<li>Future work is provided and carefully thought out: <strong>1.5</strong></li>
-</ul>
 </bloquote>
 
 </details>
@@ -97,22 +78,6 @@ Discuss in this section the things that you would have done differently if you s
 
 ---
 
----
-<details>
-<summary>
-:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Evaluation criteria(max 1.0 points)</strong>
-</summary>
-
-<bloquote>
-<ul>
-	<li>A short reflective description of what was learned while working on the project <strong>1.0</strong></li>
-</ul>
-</bloquote>
-
-</details>
-
----
-
 
 
 :pencil2: *Write here your text*
@@ -136,24 +101,6 @@ Comment where you encountered the main difficulties while doing your project wor
 
 ---
 
----
-<details>
-<summary>
-:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Evaluation criteria(max 1.0 points)</strong>
-</summary>
-
-<bloquote>
-<ul>
-	<li>A short reflective description of the easiest/most difficults parts of the projects <strong>1.0</strong></li>
-</ul>
-</bloquote>
-
-</details>
-
----
-
-
-
 :pencil2: *Write here your text*
 
 
@@ -170,22 +117,6 @@ Comment where you encountered the main difficulties while doing your project wor
 Make sincere comments about the course. How this course could be improved? What should be changed? What should not be changed?
 
 
-</bloquote>
-
-</details>
-
----
-
----
-<details>
-<summary>
-:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Evaluation criteria(max 1.0 points)</strong>
-</summary>
-
-<bloquote>
-<ul>
-	<li>Useful course feedback - what we should change, what we should keep: <strong>1.0</strong></li>
-</ul>
 </bloquote>
 
 </details>

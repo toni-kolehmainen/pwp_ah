@@ -38,7 +38,7 @@ In this section you must implement:
 </summary>
 
 <bloquote>
-You can get a maximum of 9 points after completing this section. More detailed evaluation is provided in the evaluation sheet in Lovelace.
+You can get a maximum of 5 points after completing this section. More detailed evaluation is provided in the evaluation sheet in Lovelace.
 </bloquote>
 
 </details>
@@ -69,7 +69,7 @@ Describe your database. The documentation must include:
 </ul>
 You can use the table skeleton provided below
 
-For this section you can use a visual tool to generate a diagram. Be sure that the digram contains all the information provided in the models. Some tools you can use include: <a href="https://dbdesigner.net">https://dbdesigner.net/</a>, <a href="https://www.lucidchart.com/pages/tour/ER_diagram_tool">https://www.lucidchart.com/pages/tour/ER_diagram_tool</a>, <a href="https://dbdiffo.com/">https://dbdiffo.com/</a>
+For this section you can use a visual tool to generate a diagram. Be sure that the digram contains all the information provided in the models. Some tools you can use include: <a href="https://www.dbdesigner.net/">https://dbdesigner.net/</a>, <a href="https://www.lucidchart.com/pages/tour/ER_diagram_tool">https://www.lucidchart.com/pages/tour/ER_diagram_tool</a>, <a href="https://dbdiffo.com/">https://dbdiffo.com/</a>
 
 </bloquote>
 
@@ -100,9 +100,8 @@ For this section you can use a visual tool to generate a diagram. Be sure that t
 <strong>The code repository must contain: </strong>
 <ol>
 <li>The ORM models and functions</li>
-<li>A <var>.sql dump</var> of a database or the <var>.db file</var> (if you are using SQlite). You must provide a populated database in order to test your models.</li>
+<li>A <var>.sql dump</var> (or similar data structure) of a database or the <var>.db file</var> (if you are using SQlite). The provided document must contain enough information to replicate your database. You must provide a populated database in order to test your models.</li>
 <li>The scripts used to generate your database (if any)</li>
-<li>If you are using python, the requirements.txt file.</li> 
 
 <li>A README.md file containing:
 	<ul>

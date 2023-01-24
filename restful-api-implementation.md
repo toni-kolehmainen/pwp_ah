@@ -10,7 +10,7 @@
 </summary>
 
 <bloquote>
-In this section you must implement a RESTful API. <strong>The minimum requirements are summarized in the&nbsp;<a href="">Minimum Requirements</a>&nbsp;section of the Project Work Assignment. If you do not meet the minimum requirements this section WILL NOT be evaluated. </strong>
+In this section you must implement a RESTful API. <strong>The minimum requirements are summarized in the&nbsp;<a href="https://lovelace.oulu.fi/ohjelmoitava-web/ohjelmoitava-web/pwp-project-work-assignment/#minimum-requirements-and-constraints">Minimum Requirements</a>&nbsp;section of the Project Work Assignment. If you do not meet the minimum requirements this section WILL NOT be evaluated. </strong>
 <h3>CHAPTER GOALS</h3>
 <ul>
 <li>Implement a RESTful API</li>
@@ -44,7 +44,7 @@ You can get a maximum of 20 points after completing this section. More detailed 
 </summary>
 
 <bloquote>
-A list of all implemented resources. Consider that you do not need to implement every resource you initially planned. &nbsp; The minimum requirements are summarized in the Minimum requirements section from the Project work assignment. <em>Do not forget to include in the <a href="doc/README.md">README.md</a> file which is the path to access to your application remotely.</em>
+A list of all resourcess. Each resource should include its URL, a short description and supported methods. You should mark also which is the name of the class implementing the resource (if you have implemented such resource) Consider that you do not need to implement every resource you initially planned. &nbsp; The minimum requirements are summarized in the <a href="https://lovelace.oulu.fi/ohjelmoitava-web/ohjelmoitava-web/pwp-project-work-assignment/#minimum-requirements-and-constraints">Minimum requirements section</a> from the Project work assignment. 
 
 </bloquote>
 
@@ -84,6 +84,8 @@ A list of all implemented resources. Consider that you do not need to implement 
 		</ul>
 	</li>
 </ol>
+<em>Do not forget to include in the <a href="doc/README.md">README.md</a> file which is the path to access to your application remotely.</em>
+
 <strong>NOTE: Your code MUST be clearly documented. </strong>For each public method/function you must provide: a short description of the method, input parameters, output parameters, exceptions (when the application can fail and how to handle such fail). 
 &nbsp;<strong>In addition should be clear which is the code you have implemented yourself and which is the code that you have borrowed from other sources. Always provide a link to the original source. This includes links to the course material.</strong>
 </bloquote>
@@ -130,7 +132,7 @@ In this section it is your responsibility that your API handles requests correct
 </details>
 
 ---
-:pencil2: *You do not need to write anything in this section, just complete the implementation.*
+:pencil2: *Most important part of this section is completing the implementation. Write down here a short reflection on which are the main errors you have solved thanks to the functional tests.*
 
 ---
 
@@ -142,7 +144,7 @@ In this section it is your responsibility that your API handles requests correct
 </summary>
 
 <bloquote>
-Explain briefly how your API meets REST principles. Focus specially in these three principles: <strong>Addressability, Uniform interface, and Statelessness</strong>. Provide examples (e.g. how does each HTTP method work in your API). Note that Connectedness will be addressed in Deadline 4.
+Explain briefly how your API meets REST principles. Focus specially in these three principles: <strong>Addressability, Uniform interface, Statelessness</strong>. Provide examples (e.g. how does each HTTP method work in your API). Note that Connectedness will be addressed in more depth in Deadline 4.
 </bloquote>
 
 </details>
