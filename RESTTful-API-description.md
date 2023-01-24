@@ -100,7 +100,7 @@ This section is important because it outlines the concepts that you will later i
 </summary>
 
 <bloquote>
-Describe at least two clients or services that could use your Web API. You must explain here what is the functionality provided by the client/service, and how it uses the Web API to implement this functionality. 
+Describe at least one client and one service that could use your Web API. You must explain here what is the functionality provided by the client/service, and how it uses the Web API to implement this functionality. 
 </bloquote>
 
 </details>
