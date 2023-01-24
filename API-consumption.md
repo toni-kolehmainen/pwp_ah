@@ -232,7 +232,7 @@ Provide a diagram that shows how the service communicates with other parts in th
 
 ---
 
-:pencil2: *Implement your service*
+:pencil2: *Do not need to write anything here. Implement your service*
 
 ---
 
