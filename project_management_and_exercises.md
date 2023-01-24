@@ -17,11 +17,12 @@ This section should not contain anything. Just be sure that meeting notes and re
 
 ---
 
----
+
 <details>
 <summary>
 :heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Evaluation criteria(max 4.0 points)</strong>
 </summary>
+<bloquote>Check evaluation criteria in Lovelace. You can find assessment criteria in Final deliverable return box </bloquote>
 </details>
 
 ---
