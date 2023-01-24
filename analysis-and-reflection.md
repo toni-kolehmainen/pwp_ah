@@ -39,8 +39,6 @@ You can get a maximum of 5 points after completing the Analysis and Reflection s
 # Analysis and reflection
 
 ## Future Work
-
----
 <details>
 <summary>
 :bookmark_tabs:&nbsp;&nbsp;<strong>Content that must be included in the section</strong>
@@ -59,11 +57,9 @@ Explain how you would improve your RESTful API and your client application. Try 
 
 :pencil2: *Write here your text*
 
-
+---
 
 ## Lessons learnt
-
----
 <details>
 <summary>
 :bookmark_tabs:&nbsp;&nbsp;<strong>Content that must be included in the section</strong>
@@ -79,14 +75,12 @@ Discuss in this section the things that you would have done differently if you s
 ---
 
 
-
 :pencil2: *Write here your text*
+---
 
 
 
 ## Comments about the project
-
----
 <details>
 <summary>
 :bookmark_tabs:&nbsp;&nbsp;<strong>Content that must be included in the section</strong>
@@ -103,11 +97,9 @@ Comment where you encountered the main difficulties while doing your project wor
 
 :pencil2: *Write here your text*
 
-
+---
 
 ## Comments about the course
-
----
 <details>
 <summary>
 :bookmark_tabs:&nbsp;&nbsp;<strong>Content that must be included in the section</strong>
@@ -124,7 +116,7 @@ Make sincere comments about the course. How this course could be improved? What 
 ---
 
 :pencil2: *Write here your text*
-
+---
 
 ## Resources allocation
 |**Task** | **Student**|**Estimated time**|
