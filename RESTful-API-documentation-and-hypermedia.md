@@ -21,7 +21,7 @@ In this chapter, the students&nbsp;<strong>must document their RESTful API. The 
 <p>
 	You have two options:
 		<ol>
-			<li>Implement the API using a non-hypermedia format (RESTful CRUD). In this case, it is mandatory that all your resources are connected. <strong>Anyhow, you cannot get full points in this section if you do not design your API using an hypermedia format</strong></li>
+			<li>Implement the API using a non-hypermedia format (RESTful CRUD). In this case, it is recommended that all your resources are connected (linking to other resources). <strong>Anyhow, you cannot get full points in this section if you do not design your API using an hypermedia format</strong></li>
 			<li>Using an hypermedia format. Lots of examples provided in Exercise 3. You can get full points. In this case you need to clearly include in the documentation a profile with link relations and semantic descriptors.</li>
 		</ol>
 
@@ -84,7 +84,6 @@ For all resources you must cover:
 <li>The format of the HTTP request body (just for PUT/POST), providing a clear example. If necessary, comment the example.</li>
 <li>The format of the HTTP response body, providing a clear example. If necessary, comment the example.</li>
 <li>The error conditions, status code and format of the error response, providing a clear example.</li>
-<li><em>If you are not using an hypermedia type </em> indicate which resources are you linking in the response.</li>
 <li><em>If you are using an hypermedia type you must provide the profile utilized, including:</em> 
 <ul>
 <li>Link relations. Include methods and format of the requests if they are defined in the media type. Use as much as possible IANA defined relations.</li>
