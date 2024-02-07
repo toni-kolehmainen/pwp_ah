@@ -29,11 +29,11 @@ In addition, you must include an auxiliary service that interacts with your API 
 
 <details>
 <summary>
-:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Chapter evaluation (max 30 points)</strong>
+:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Chapter evaluation (max 26 points)</strong>
 </summary>
 
 <bloquote>
-You can get a maximum of 30 points after completing this section. You can check more detailed assessment criteria in the Lovelace return box for Deadline 5. 
+You can get a maximum of 26 points after completing this section. You can check more detailed assessment criteria in the Lovelace return box for Deadline 5. 
 </bloquote>
 
 </details>

@@ -32,11 +32,11 @@ In this chapter, the students&nbsp;<strong>must modify their API to use hypermed
 ---
 <details>
 <summary>
-:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Chapter evaluation (max 15 points)</strong>
+:heavy_check_mark:&nbsp;&nbsp;&nbsp;&nbsp; <strong>Chapter evaluation (max 18 points)</strong>
 </summary>
 
 <bloquote>
-You can get a maximum of 15 points after completing this section. More detailed evaluation is provided in the evaluation sheet in Lovelace.
+You can get a maximum of 18 points after completing this section. More detailed evaluation is provided in the evaluation sheet in Lovelace.
 </bloquote>
 
 </details>
