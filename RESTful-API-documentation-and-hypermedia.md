@@ -10,7 +10,7 @@
 </summary>
 
 <bloquote>
-In this chapter, the students&nbsp;<strong>must document their RESTful API. The minimum requirements are summarized in the&nbsp;<a href="https://lovelace.oulu.fi/ohjelmoitava-web/ohjelmoitava-web/pwp-project-work-assignment/#minimum-requirements-and-constraints">Minimum Requirements</a>&nbsp;section of the Project Work Assignment. Note that if you do not meet Minimum Requirements this section wont be evaluated.</strong>
+In this chapter, the students&nbsp;<strong>must modify their API to use hypermedia following REST principles and document their RESTful API. The minimum requirements are summarized in the&nbsp;<a href="https://lovelace.oulu.fi/ohjelmoitava-web/ohjelmoitava-web/pwp-project-work-assignment/#minimum-requirements-and-constraints">Minimum Requirements</a>&nbsp;section of the Project Work Assignment. Note that if you do not meet Minimum Requirements this section wont be evaluated.</strong>
 
 <h3>SECTION GOALS: </h3>
 <ul>
@@ -43,8 +43,7 @@ You can get a maximum of 15 points after completing this section. More detailed 
 
 ---
 
-# RESTful API documentation
-
+# Hypermedia
 ## Resource relations
 <details>
 <summary>
@@ -65,6 +64,86 @@ Include a state diagram of your application, with all the application states. Ea
 :pencil2: *Draw here your state machine diagram*
 
 ---
+## Hypermedia implementation 
+
+<details>
+<summary>
+:computer:&nbsp;&nbsp;&nbsp;&nbsp; <strong>TODO: SOFTWARE TO DELIVER IN THIS SECTION</strong>
+</summary>
+
+<bloquote>
+<strong>The code repository must contain: </strong>
+<ol>
+	<li>The source code of the RESTful API incorporating hypermedia. The source coude should be documented using the same quality criteria in Deliverable 3. Please, remember to include original source if you have not written the code (even if you have used an AI).</li>
+	<li>Necessary scripts to run your server</li>
+	<li>The README.md file with all the information described in the Deliverable 3. </li>
+</ol></bloquote>
+
+</details>
+
+---
+:pencil2: *You do not need to write anything in this section, just complete the implementation.*
+
+---
+
+### RESTful API testing using hypermedia
+<details>
+<summary>
+:computer:&nbsp;&nbsp;&nbsp;&nbsp; <strong>TODO: SOFTWARE TO DELIVER IN THIS SECTION</strong>
+</summary>
+
+<bloquote>
+<strong>The code repository must contain: </strong>
+<ol>
+	<li>The code to test your RESTful API (Functional test)
+		<ul>
+			<li>The code of the test MUST be commented indicating what you are going to test in each test case.</li>
+			<li>The test must include values that force error messages</li>
+		</ul>
+	</li>
+	<li>The external libraries that you have used</li>
+	<li>We recommend to include a set of scripts to execute your tests.</li>
+	<li>A database file or the necessary files and scripts to automatically populate your database.</li>
+	<li>A <a href="documents/README.md">README.md</a> file containing:
+		<ul>
+			<li>Dependencies (external libraries)</li>
+			<li>Instructions on how to run the different tests for your application.</li>
+		</ul>
+	</li>
+</ol>
+Do not forget to include in the <a href="doc/README.md">README.md</a> the instructions on how to run your tests. Discuss briefly which were the main errors that you detected thanks to the functional testing.
+
+Remember that you MUST implement a functional testing suite. A detailed description of the input / output in the a REST client plugin.
+
+In this section it is your responsibility that your API handles requests correctly. All of the supported methods for each resource should work. You also need to show that invalid requests are properly handled, and that the response codes are correct in each situation.
+</bloquote>
+
+</details>
+
+---
+:pencil2: *Most important part of this section is completing the implementation. Write down here a short reflection on which are the main errors you have solved thanks to the functional tests.*
+
+---
+## Justification on Hypermedia Implementation
+
+<details>
+<summary>
+:bookmark_tabs:&nbsp;&nbsp;<strong>Content that must be included in this section. Fill this section if your API uses hypermedia</strong>
+</summary>
+
+<bloquote>
+Declare your chosen mediatype, and provide your reasoning for choosing that mediatype. For each custom link relation defined in your API's namespace, explain why it was needed (i.e. why there wasn't a suitable relation in the IANA standard). Explain how Connectedness is achieved in your API.
+</bloquote>
+</details>
+
+---
+
+:pencil2: <em>Write your text here </em>
+
+
+---
+
+# RESTful API documentation
 
 ## API Documentation
 
@@ -99,25 +178,6 @@ For all resources you must cover:
 
 
 :pencil2: <em>Put the link to your API documentation here</em>
-
-
----
-
-## Justification on Hypermedia Implementation
-
-<details>
-<summary>
-:bookmark_tabs:&nbsp;&nbsp;<strong>Content that must be included in this section. Fill this section if your API uses hypermedia</strong>
-</summary>
-
-<bloquote>
-Declare your chosen mediatype, and provide your reasoning for choosing that mediatype. For each custom link relation defined in your API's namespace, explain why it was needed (i.e. why there wasn't a suitable relation in the IANA standard). Explain how Connectedness is achieved in your API.
-</bloquote>
-</details>
-
----
-
-:pencil2: <em>Write your text here </em>
 
 
 ---
