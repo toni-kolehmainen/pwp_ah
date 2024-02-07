@@ -121,7 +121,7 @@ In this section it is your responsibility that your API handles requests correct
 </details>
 
 ---
-:pencil2: *Most important part of this section is completing the implementation. Write down here a short reflection on which are the main errors you have solved thanks to the functional tests.*
+:pencil2: *Most important part of this section is completing the implementation. Write down here a short reflection on  the main errors you have solved thanks to the functional tests.*
 
 ---
 ## Justification on Hypermedia Implementation
