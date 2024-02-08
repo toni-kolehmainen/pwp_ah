@@ -94,7 +94,7 @@ Provide a use case diagram of your application. For each case, specify which is 
 </summary>
 
 <bloquote>
-Draw a diagram of the client layout. Students can use any software they want to do the sketching. For more professional-like design, students can use any wireframing tool available in Internet. Some of them can be found from <a href="http://webdesignledger.com/tools/13-super-useful-ui-wireframe-tools">http://webdesignledger.com/tools/13-super-useful-ui-wireframe-tools</a>. <a href="http://pencil.evolus.vn/Default.html">Pencil </a>is free, open source and easy to use. Other options are Visio and Balsamiq (you need a license). You can also create the UI using a paper and a pencil and scan the resulting drawing.
+Draw a diagram of the client layout. Students can use any software they want to do the sketching. For more professional-like design, students can use any wireframing tool available in Internet. Some of them can be found from <a href="https://www.hostinger.com/tutorials/best-wireframing-tools">https://www.hostinger.com/tutorials/best-wireframing-tools</a>. <a href="http://pencil.evolus.vn/Default.html">Pencil </a>is free, open source and easy to use. Other options are Visio and Balsamiq (you need a license). You can also create the UI using a paper and a pencil and scan the resulting drawing.
 </bloquote>
 
 </details>
