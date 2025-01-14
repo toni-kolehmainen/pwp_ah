@@ -60,7 +60,10 @@ A really short version of an overview for the RESTful Web API could be:
 
 ---
 
-:pencil2: *Write your description here*
+:pencil2: 
+<em>“The Auction house API offers users bid on list of items. Items can put to auction for set off time. People can search for items in different groups, but if you want to add bid for an item you need to register first. For this there is need to add multiple get request to get list of items and one specific item. 
+
+Auction house API could be part of enforcement agencies where items that are seizured and put to auction.“</em>
 
 ---
 
