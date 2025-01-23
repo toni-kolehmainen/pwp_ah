@@ -61,9 +61,9 @@ A really short version of an overview for the RESTful Web API could be:
 ---
 
 :pencil2: 
-<em>“The Auction house API offers users bid on list of items. Items can put to auction for set off time. People can search for items in different groups, but if you want to add bid for an item you need to register first. For this there is need to add multiple get request to get list of items and one specific item. 
+<em>“The Auction house API offers users to bid on list of itemsthat are in auction. Items can put to auction for set off time and people can search for items that belongs in different groups, but if you want to add bid for an item you need to be registered. For this there is need to add items in certain category and item contains its own basic information. For adding a bid there should be authentication, so there is way to now who did the bid. Users can also serch used or new items based on their preference. Authenticated user can add item for auction.
 
-Auction house API could be part of enforcement agencies where items that are seizured and put to auction.“</em>
+There is many use cases for auction house API. It could be part of enforcement agencies where items that are seizured and put to auction or collectible auction, where art pieces can be put for auction. Both private and public sector can use it for auctioning items for both examples there could be own site that includes items that are seizured or there are collectibles.“</em>
 
 ---
 
@@ -93,7 +93,7 @@ This section is important because it outlines the concepts that you will later i
 ---
 
 :pencil2: *Write your text here and draw the diagram*
-
+The auction house contains users, auctions, items and bids. Item can be pu to auction and the item can be new/used. Auction of course contains bids that are done by users. Auctioned item may contain 0 or more bids, but the bids most be done by user that is authenticated. Everyone can look the auctions only the bidding is controlled by authentication. (someone can continue or change this)
 ---
 
 ## API uses
