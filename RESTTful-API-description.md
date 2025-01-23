@@ -93,7 +93,8 @@ This section is important because it outlines the concepts that you will later i
 ---
 
 :pencil2: *Write your text here and draw the diagram*
-The auction house contains users, auctions, items and bids. Item can be pu to auction and the item can be new/used. Auction of course contains bids that are done by users. Auctioned item may contain 0 or more bids, but the bids most be done by user that is authenticated. Everyone can look the auctions only the bidding is controlled by authentication. (someone can continue or change this)
+<em>"The auction house contains users, auctions, items and bids. Item can be pu to auction and the item can be new/used. Auction of course contains bids that are done by users. Auctioned item may contain 0 or more bids, but the bids most be done by user that is authenticated. Everyone can look the auctions only the bidding is controlled by authentication. (someone can continue or change this)"</em>
+
 ---
 
 ## API uses
