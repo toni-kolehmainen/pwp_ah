@@ -93,7 +93,10 @@ This section is important because it outlines the concepts that you will later i
 ---
 
 :pencil2: *Write your text here and draw the diagram*
-<em>"The auction house contains users, auctions, items and bids. Item can be pu to auction and the item can be new/used. Auction of course contains bids that are done by users. Auctioned item may contain 0 or more bids, but the bids most be done by user that is authenticated. Everyone can look the auctions only the bidding is controlled by authentication. (someone can continue or change this)"</em>
+<em>"The auction house contains users, auctions, items and bids. Item can be put to auction and the item can be new/used. Auction of course contains bids that are done by users. Auctioned item may contain 0 or more bids, but the bids most be done by user that is authenticated. Everyone can look the auctions only the bidding is controlled by authentication. 
+
+The API of Auction House also alerts its users for new auctions or objects in an area in which they had already declared their interest. Users could establish the highest bid for an item. This would permit the system to submit bids for the buyers up until the end of their limit. A rating system could promote trust for sellers. Implementing a delivery service could further process the shipment of goods acquired in an auction and other external functionalities would add flexibility and value to users.
+"</em>
 
 ---
 
