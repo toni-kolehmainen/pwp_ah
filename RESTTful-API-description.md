@@ -138,6 +138,8 @@ The purpose of this task is to get more familiar with what an API is. This will 
 
 :pencil2: *Write your text here*
 eBay’s Trading API is a similar sort of API likely to the Auction House API. It supports online auctions for managing, creating, and searching auction listings. Also, it has capabilities like listing items, bidding, and searching products in categories or using filters. Therefore, this is another CRUD REST API. CRUD is unique as it involves standard HTTP operations such as GET, POST, and PUT as of creation, read, update, and delete. As some people argue, the API is not a fully hypermedia REST API. Most client applications use this API, such as the eBay Mobile App, to list items, like the platform for bidding, and for tracking auction results.
+
+
 ---
 
 
