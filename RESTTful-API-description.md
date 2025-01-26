@@ -97,6 +97,7 @@ This section is important because it outlines the concepts that you will later i
 
 The API of Auction House also alerts its users for new auctions or objects in an area in which they had already declared their interest. Users could establish the highest bid for an item. This would permit the system to submit bids for the buyers up until the end of their limit. 
 "</em>
+!(uploads/AuctionDiagram.png) 
 
 ---
 
