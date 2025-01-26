@@ -147,7 +147,6 @@ eBay’s Trading API is a similar sort of API likely to the Auction House API. I
 |**Task** | **Student**|**Estimated time**|
 |:------: |:----------:|:----------------:|
 |Documenation|Md Mobusshar Islam|2h| 
-|||| 
-|||| 
-|||| 
-|||| 
+|Documenation|Miiro Kuosmanen|2h| 
+|Documenation|Haseeb Rehman|2h| 
+|Documenation|Toni Kolehmainen|2h| 
