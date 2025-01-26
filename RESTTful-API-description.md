@@ -115,7 +115,7 @@ Describe at least one client and one service that could use your Web API. You mu
 ---
 
 :pencil2: *Write your text here*
-
+Applications developed to browse auction items will be interested in using the Auction House API. To make the app usable for different users, the Item Search API (GET /items?category=new) is used to find a category of items within the application. In this way, the application will support the fast tracking of goods.
 
 
 ## Related work
