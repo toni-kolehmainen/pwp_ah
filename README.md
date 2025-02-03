@@ -19,9 +19,8 @@ Dependencies
 ```sh
 npm install pg, sequelize, cors, express
 ```
-
-```sh
 Dev-Dependencies
+```sh
 npm install --save-dev cross-env, dotenv, nodemon, supertest
 ```
 
