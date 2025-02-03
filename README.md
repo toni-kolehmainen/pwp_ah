@@ -14,15 +14,17 @@ __Remember to include all required documentation and HOWTOs, including how to cr
 - [Database](#database)
 - [Usage](#usage)
   
-## Sependencies
-pg, sequelize, cors, express
-cross-env, dotenv, nodemon, supertest
-```sh
+## Dependencies
 Dependencies
+```sh
 npm install pg, sequelize, cors, express
+```
+
+```sh
 Dev-Dependencies
 npm install --save-dev cross-env, dotenv, nodemon, supertest
 ```
+
 ## Database
 Postgresql V?
 ## Usage
