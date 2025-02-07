@@ -1,32 +1,19 @@
 const { Model, DataTypes } = require('sequelize')
 const { sequelize } = require('../utils/db')
 
-class User extends Model {}
+class Category extends Model {}
 
-User.init({
+Category.init({
   id: {
     type: DataTypes.INTEGER,
     primaryKey: true,
     autoIncrement: true
   },
+  description: {
+    type: DataTypes.TEXT,
+    allowNull: true
+  },
   name: {
-    type: DataTypes.TEXT,
-    allowNull: false
-  },
-  nickname: {
-    type: DataTypes.TEXT,
-    allowNull: true
-  },
-  email: {
-    type: DataTypes.TEXT,
-    allowNull: false,
-    unique: true
-  },
-  phone: {
-    type: DataTypes.TEXT,
-    allowNull: true
-  },
-  password: {
     type: DataTypes.TEXT,
     allowNull: false
   },
@@ -34,7 +21,7 @@ User.init({
   sequelize,
   underscored: true,
   timestamps: false,
-  modelName: 'user'
+  modelName: 'category'
 })
 
-module.exports = User
+module.exports = Category
