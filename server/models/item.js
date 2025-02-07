@@ -1,5 +1,6 @@
 const { Model, DataTypes } = require('sequelize')
 const { sequelize } = require('../utils/db')
+
 class Item extends Model {}
 
 Item.init({
@@ -8,7 +9,7 @@ Item.init({
     primaryKey: true,
     autoIncrement: true
   },
-  title: {
+  name: {
     type: DataTypes.TEXT,
     allowNull: false
   },
@@ -16,23 +17,16 @@ Item.init({
     type: DataTypes.TEXT,
     allowNull: true
   },
-  starting_price: {
-    type: DataTypes.DECIMAL,
-    allowNull: true
-  },
-  current_price: {
-    type: DataTypes.DECIMAL,
-    allowNull: false
-  },
-  seller_id: {
-    type: DataTypes.INTEGER,
-    allowNull: true,
-    // references: { model: 'seller', key: 'id' },
-  },
-  end_time: {
-    type: DataTypes.DATE,
-    allowNull: false
-  },
+  // seller_id: {
+  //   type: DataTypes.INTEGER,
+  //   allowNull: false,
+  //   references: { model: 'users', key: 'id', onDelete: 'CASCADE' },
+  // },
+  // category_id: {
+  //   type: DataTypes.INTEGER,
+  //   allowNull: false,
+  //   references: { model: 'categories', key: 'id', onDelete: 'SET NULL' },
+  // },
 }, {
   sequelize,
   underscored: true,
@@ -40,4 +34,4 @@ Item.init({
   modelName: 'item'
 })
 
-module.exports = User
+module.exports = Item

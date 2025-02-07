@@ -1,32 +1,33 @@
 const { Model, DataTypes } = require('sequelize')
 const { sequelize } = require('../utils/db')
-class Item extends Model {}
 
-Item.init({
+class Bid extends Model {}
+
+Bid.init({
   id: {
     type: DataTypes.INTEGER,
     primaryKey: true,
     autoIncrement: true
   },
+  // auction_id: {
+  //   type: DataTypes.INTEGER,
+  //   allowNull: false,
+  //   references: { model: 'auctions', key: 'id', onDelete: 'CASCADE' },
+  // },
+  // buyer_id: {
+  //   type: DataTypes.INTEGER,
+  //   allowNull: false,
+  //   references: { model: 'users', key: 'id', onDelete: 'CASCADE' },
+  // },
   amount: {
-    type: DataTypes.DECIMAL,
-    allowNull: true
+    type: DataTypes.DECIMAL(10,2),
+    allowNull: false
   },
-  user_id: {
-    type: DataTypes.INTEGER,
-    allowNull: false,
-    references: { model: 'user', key: 'id' },
-  },
-  item_id: {
-    type: DataTypes.INTEGER,
-    allowNull: false,
-    references: { model: 'item', key: 'id' },
-  }
 }, {
   sequelize,
   underscored: true,
   timestamps: true,
-  modelName: 'item'
+  modelName: 'bid'
 })
 
-module.exports = User
+module.exports = Bid
