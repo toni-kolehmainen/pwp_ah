@@ -48,13 +48,14 @@ const dbSync = async () => {
       await Category.sync({ alter: true });
       await Auction.sync({ alter: true });
       await Item.sync({ alter: true });
-      await Bid.sync({ alter: true });
+      await Bid.sync({ alter: true});
 
       console.log("All tables synchronized!");
   } catch (error) {
       console.error("Error syncing database:", error);
   }
 };
+
 
 dbSync()
 
