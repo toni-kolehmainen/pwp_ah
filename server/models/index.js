@@ -14,8 +14,8 @@ Auction.belongsTo(User)
 Category.hasMany(Item, { onDelete: 'SET NULL' })
 Item.belongsTo(Category)
 
-Auction.hasMany(Item)
-Item.belongsTo(Auction)
+Item.hasOne(Auction)
+Auction.belongsTo(Item)
 
 User.hasMany(Bid)
 Bid.belongsTo(User)

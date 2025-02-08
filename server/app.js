@@ -15,7 +15,7 @@ app.use((_, res, next) => {
   next()
 })
 
-app.use(router)
+app.use("/api", router)
 app.use(middleware.requestLogger)
 app.use(middleware.unknownEndpoint)
 app.use(middleware.errorHandler)
