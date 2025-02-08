@@ -21,7 +21,11 @@ Bid.init({
   // },
   amount: {
     type: DataTypes.DECIMAL(10,2),
-    allowNull: false
+    allowNull: false,
+    validate: {
+      isInt: true,
+      min: 1
+    }
   },
 }, {
   sequelize,

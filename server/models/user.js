@@ -10,21 +10,21 @@ User.init({
     autoIncrement: true
   },
   name: {
-    type: DataTypes.TEXT,
+    type: DataTypes.STRING(100),
     allowNull: false
   },
   nickname: {
-    type: DataTypes.TEXT,
+    type: DataTypes.STRING(20),
     allowNull: true
   },
   email: {
-    type: DataTypes.TEXT,
+    type: DataTypes.STRING(50),
     allowNull: false,
     unique: true
   },
   phone: {
-    type: DataTypes.TEXT,
-    allowNull: true
+    type: DataTypes.STRING(20),
+    allowNull: false
   },
   password: {
     type: DataTypes.TEXT,

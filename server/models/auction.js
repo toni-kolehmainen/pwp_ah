@@ -1,5 +1,6 @@
 const { Model, DataTypes } = require('sequelize')
 const { sequelize } = require('../utils/db')
+const Sequelize = require('sequelize')
 
 class Auction extends Model {}
 
@@ -10,7 +11,7 @@ Auction.init({
     autoIncrement: true
   },
   desctription: {
-    type: DataTypes.DECIMAL,
+    type: DataTypes.TEXT,
     allowNull: true
   },
   // item_id: {
@@ -23,13 +24,22 @@ Auction.init({
   //   allowNull: false,
   //   references: { model: 'users', key: 'id', onDelete: 'CASCADE' },
   // },
+  end_time: {
+    type: DataTypes.DATE,
+    allowNull: false,
+    defaultValue: Sequelize.literal("NOW() + INTERVAL '24 hours'")
+  },
   starting_price: {
     type: DataTypes.DECIMAL(10,2),
-    allowNull: false
+    allowNull: false,
+    validate: {
+      min: 0.00
+    }
   },
   current_price: {
     type: DataTypes.DECIMAL(10,2),
-    allowNull: false
+    allowNull: false,
+    defaultValue: 0.00
   }
 }, {
   sequelize,

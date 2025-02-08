@@ -10,8 +10,9 @@ Item.init({
     autoIncrement: true
   },
   name: {
-    type: DataTypes.TEXT,
-    allowNull: false
+    type: DataTypes.STRING(100),
+    allowNull: false,
+    unique: true
   },
   description: {
     type: DataTypes.TEXT,
