@@ -45,3 +45,14 @@ Instructions on how to setup and populate the database.
     ```sh
     npm dev
     ```
+
+## Data Population
+- Install Faker
+```sh
+npm install @faker-js/faker
+```
+- Populate the Database
+The database is automatically populated with sample data when the server starts if the database is empty. To manually populate the database, run:
+```sh
+node script/DataPopulator.js
+```

@@ -11,9 +11,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@faker-js/faker": "^9.4.0",
     "ah": "file:",
     "cors": "^2.8.5",
     "express": "^4.21.2",
+    "faker": "^6.6.6",
     "pg": "^8.13.1",
     "sequelize": "^6.37.5"
   },
