@@ -49,7 +49,7 @@ npm install --save-dev cross-env, dotenv, nodemon, supertest
 ```
 
 ## Database
-Postgresql V?
+Postgresql V17
 Todo:
 Instructions how to setup the database framework and external libraries you might have used, or a link where it is clearly explained.
 Instructions on how to setup and populate the database.
