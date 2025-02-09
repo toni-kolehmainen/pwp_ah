@@ -10,10 +10,28 @@
 __Remember to include all required documentation and HOWTOs, including how to create and populate the database, how to run and test the API, the url to the entrypoint, instructions on how to setup and run the client, instructions on how to setup and run the axiliary service and instructions on how to deploy the api in a production environment__
 
 ## Table of Contents
+- [Setup](#setup)
 - [Dependencies](#dependencies)
 - [Database](#database)
 - [Usage](#usage)
-  
+
+## Setup
+Setting up the project you need to follow next few steps:
+1. Create node_modules folder
+One way to do this is to run
+```init
+npm init
+```
+This creates the node_modules folder and package.json files these are the most important things.
+2. You need to add all other files where your node_modules file is. For this you can look the project structure for help.
+3. .env file contains all information that you want to use. It should be where your index.js file is
+For setting up this correctly you need add information to .env file
+
+PORT = <server port number> example 3001
+DATABASE_URL = "http://localhost:5432"
+NAME = <Username in postgres>
+PASSWORD = <Password in postgres>
+
 ## Dependencies
 Dependencies
 ```sh
