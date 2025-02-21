@@ -1,10 +1,21 @@
 const { Bid } = require('../models')
 
-const getBids = async (req, res) => {
+const getBid = async (req, res) => {
+
   const bid = await Bid.findAll()
-  res.json(bid)
+  res.status(501).json({ message: 'This is not implemented' })
+}
+
+const addBid = async (req, res) => {
+
+  res.status(501).json({ message: 'This is not implemented' })
+}
+
+const deleteBid = async (req, res) => {
+
+  res.status(501).json({ message: 'This is not implemented' })
 }
 
 module.exports = {
-  getBids,
+  getBid, deleteBid, addBid
 }

@@ -1,19 +1,53 @@
 const { Item } = require('../models')
 
-const getItems = (req, res) => {
-  res.status(200).send("test")
+const getItem = (req, res) => {
+  res.status(501).json({ message: 'This is not implemented' })
+  // Item.findOne({
+  //   where: {
+  //     id: req.params.id
+  //   }
+  // }).then((item) => {
+  //   res.json(item)
+  // }).catch((error) => {
+  //   return res.status(400).json({ error })
+  // })
 }
 
 const addItem = (req, res) => {
-  res.status(200).send("test")
+  res.status(501).json({ message: 'This is not implemented' })
+    // Item.create(req.body)
+    // .then(() => {
+    //   res.json({ status: 'Added' })
+    // })
+    // .catch((error) => {
+    //   return res.status(400).json({ error })
+    // })
 }
 
-const placeBid = (req, res) => {
-  res.status(200).send("test")
+const updateItem = (req, res) => {
+  res.status(501).json({ message: 'This is not implemented' })
+  // Item.update(req.body, {
+  //   where: {
+  //     id: req.params.id
+  //   }
+  // })
+}
+
+const deleteItem = (req, res) => {
+  res.status(501).json({ message: 'This is not implemented' })
+  // Item.destroy({
+  //   where: {
+  //     id: req.params.id
+  //   }
+  // })
+  // .then(() => {
+  //   res.json({ status: 'Deleted' })
+  // })
 }
 
 module.exports = {
-  getItems,
+  getItem,
   addItem,
-  placeBid
+  updateItem,
+  deleteItem
 }

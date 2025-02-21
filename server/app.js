@@ -15,6 +15,7 @@ app.use((_, res, next) => {
   next()
 })
 
+app.use(middleware.limiter)
 app.use("/api", router)
 app.use(middleware.requestLogger)
 app.use(middleware.unknownEndpoint)

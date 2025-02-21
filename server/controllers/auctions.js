@@ -1,21 +1,17 @@
 const { Auction } = require('../models')
 
 // add combined auction and item data and user data
-const getAuction = async (req, res) => {
-  const auction = await Auction.findAll()
-  res.json(auction)
-}
-
-const addAuction = async (req, res) => {
-
+const getAuctions = async (req, res) => {
+  // const auction = await Auction.findAll()
+  // res.json(auction)
   res.status(501).json({ message: 'This is not implemented' })
 }
 
-const deleteAuction = async (req, res) => {
-
+const deleteAuctions = async (req, res) => {
   res.status(501).json({ message: 'This is not implemented' })
 }
 
 module.exports = {
-  getAuction, addAuction, deleteAuction
+  getAuctions,
+  deleteAuctions
 }
