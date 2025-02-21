@@ -1,13 +1,16 @@
 const Sequelize = require('sequelize')
 const { env } = require('node:process');
-const { DATABASE_URL, NAME, PASSWORD } = require('./config')
+
+const { DATABASE_URL, NAME, PASSWORD, NODE_ENV } = require('./config')
 
 const host = (env.DB_HOST) ? env.DB_HOST : 'localhost'
 
-const sequelize = new Sequelize('postgres', NAME, PASSWORD, {
+const db = (NODE_ENV === "test") ? "test" : 'postgres'
+const sequelize = new Sequelize(db, NAME, PASSWORD, {
   host: host,
   dialect: 'postgres',
-  logging: console.log
+  logging: false,
+  // logging: console.log
 });
 
 const connectToDatabase = async () => {

@@ -1,12 +1,43 @@
-const userController = require('../controllers/user_controller')
-const itemController = require('../controllers/item_controller')
-
+const userController = require('../controllers/user')
+const usersController = require('../controllers/users')
+const itemController = require('../controllers/item')
+const itemsController = require('../controllers/items')
+const categoryController = require('../controllers/category')
+const auctionController = require('../controllers/auction')
+const auctionsController = require('../controllers/auctions')
+const bidController = require('../controllers/bid')
+const bidsController = require('../controllers/bids')
 const router = require('express').Router()
-router.get('/test', userController.getTest)
-router.get('/users', userController.getUsers)
-router.post('/adduser', userController.addUser)
-router.get('/users/:id', userController.getUser)
-router.get('/items', itemController.getItems)
-router.post('/additem', itemController.addItem)
-router.post('/items/:id/bid', itemController.placeBid)
+
+// router.get('/test', usersController.getTest)
+
+router.get('/users', usersController.getUsers)
+
+router.get('/user/:user_id', userController.getUser)
+router.post('/user/:user_id', userController.addUser)
+router.put('/user/:user_id', userController.updateUser)
+router.delete('/user/:user_id', userController.deleteUser)
+
+router.get('/categories', categoryController.getCategories)
+router.post('/categories', categoryController.addCategories)
+router.delete('/categories/:id', categoryController.deleteCategories)
+
+router.get('/items', itemsController.getItems)
+
+router.get('/item/:id', itemController.getItem)
+router.post('/item/:id', itemController.addItem)
+router.put('/item/:id', itemController.updateItem)
+router.delete('/item/:id', itemController.deleteItem)
+
+router.get('/bids', bidsController.getBids)
+
+router.get('/bid/:id', bidController.getBid)
+router.post('/bid/:id', bidController.addBid)
+router.delete('/bid/:id', bidController.deleteBid)
+
+router.get('/auctions', auctionsController.getAuctions)
+
+router.get('/auction', auctionController.getAuction)
+router.post('/auction', auctionController.addAuction)
+router.delete('/auction', auctionController.deleteAuction)
 module.exports = router
