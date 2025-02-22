@@ -7,14 +7,17 @@ const auctionController = require('../controllers/auction')
 const auctionsController = require('../controllers/auctions')
 const bidController = require('../controllers/bid')
 const bidsController = require('../controllers/bids')
+const authenticationController = require('../controllers/authentication')
+const middleware = require('../utils/middleware')
 const router = require('express').Router()
 
 // router.get('/test', usersController.getTest)
+router.post('/login/:user_id', authenticationController.login)
 
 router.get('/users', usersController.getUsers)
 
 router.get('/user/:user_id', userController.getUser)
-router.post('/user/:user_id', userController.addUser)
+router.post('/user/', userController.addUser)
 router.put('/user/:user_id', userController.updateUser)
 router.delete('/user/:user_id', userController.deleteUser)
 
@@ -32,7 +35,7 @@ router.delete('/item/:id', itemController.deleteItem)
 router.get('/bids', bidsController.getBids)
 
 router.get('/bid/:id', bidController.getBid)
-router.post('/bid/:id', bidController.addBid)
+router.post('/bid/:id', middleware.authenticateJWT,  bidController.addBid)
 router.delete('/bid/:id', bidController.deleteBid)
 
 router.get('/auctions', auctionsController.getAuctions)
