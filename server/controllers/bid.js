@@ -6,9 +6,12 @@ const getBid = async (req, res) => {
   res.status(501).json({ message: 'This is not implemented' })
 }
 
-const addBid = async (req, res) => {
-
-  res.status(501).json({ message: 'This is not implemented' })
+const addBid = async (req, res, next) => {
+  try {
+    res.status(501).json({ message: 'This is not implemented' })
+  } catch (error) {
+    return next(error)
+  }
 }
 
 const deleteBid = async (req, res) => {
