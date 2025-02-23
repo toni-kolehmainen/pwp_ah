@@ -36,8 +36,8 @@ const generateRandomItems = (count, users, categories) => {
     items.push({
       name: faker.commerce.productName(),
       description: faker.commerce.productDescription(),
-      userId: users[Math.floor(Math.random() * users.length)].id,
-      categoryId: categories[Math.floor(Math.random() * categories.length)].id,
+      user_id: users[Math.floor(Math.random() * users.length)].id,
+      category_id: categories[Math.floor(Math.random() * categories.length)].id,
     });
   }
   return items;
