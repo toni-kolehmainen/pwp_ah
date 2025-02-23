@@ -12,7 +12,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@faker-js/faker": "^9.4.0",
+    "@faker-js/faker": "^9.5.0",
     "ah": "file:",
     "ajv": "^8.17.1",
     "bcrypt": "^5.1.1",
