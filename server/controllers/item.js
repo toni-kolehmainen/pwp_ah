@@ -10,10 +10,10 @@ type: "object",
 properties: {
   name: { type: "string" },
   description: { type: "string" },
-  user_id: { type: "number" },
-  category_id: { type: "number" },
+  userId: { type: "number" },
+  categoryId: { type: "number" },
 },
-required: ["name", "user_id", "category_id"],
+required: ["name", "userId", "categoryId"],
 additionalProperties: false
 };
 
@@ -22,11 +22,10 @@ type: "object",
 properties: {
   name: { type: "string" },
   description: { type: "string" },
-  user_id: { type: "number" },
-  category_id: { type: "number" },
+  userId: { type: "number" },
+  categoryId: { type: "number" },
 },
 minProperties: 1,
-maxProperties: 1,
 additionalProperties: false
 };
 
@@ -106,7 +105,7 @@ try {
   });
 
   if (deleted) {
-    return res.status(204).send();
+    return res.status(200).json({ message: 'Item deleted' });
   }
 
   throw new Error('Item not found');
