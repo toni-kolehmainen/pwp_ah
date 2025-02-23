@@ -28,7 +28,7 @@ router.delete('/categories/:id', categoryController.deleteCategories)
 router.get('/items', itemsController.getItems)
 
 router.get('/item/:id', itemController.getItem)
-router.post('/item/:id', itemController.addItem)
+router.post('/item/', itemController.addItem)
 router.put('/item/:id', itemController.updateItem)
 router.delete('/item/:id', itemController.deleteItem)
 
