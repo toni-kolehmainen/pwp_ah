@@ -39,21 +39,29 @@ afterAll(async () => {
 });
 
 describe('GET /api/items', function () {
-  it('should return status 204 and empty', async function () {
-    Item.findAll.mockResolvedValue([]);
-    const response = await api.get('/api/items').expect(204);
-    expect(response.body).toEqual({});
+    it('should return status 204 and empty object when no items exist', async function () {
+      Item.findAll.mockResolvedValue([]);
+      const response = await api.get('/api/items').expect(204);
+      expect(response.body).toEqual({});
+    });
+  
+    it('should return status 200 and the mock items', async function () {
+      Item.findAll.mockResolvedValue(mockItems);
+      const response = await api.get('/api/items').expect(200);
+      expect(response.body).toEqual(mockItems);
+    });
+  
+    it('should return status 500 if database throws an error', async function () {
+      Item.findAll.mockRejectedValue(new Error('Database error'));
+      const response = await api.get('/api/items').expect(500);
+      expect(response.body.error).toBe('Database error');
+    });
+  
+    it('should handle large dataset responses correctly', async function () {
+      const largeMockItems = Array(100).fill(mockItems[0]); // Simulate many items
+      Item.findAll.mockResolvedValue(largeMockItems);
+      const response = await api.get('/api/items').expect(200);
+      expect(response.body.length).toBe(100);
+    });
   });
-
-  it('should return status 200 if mock items exist', async function () {
-    Item.findAll.mockResolvedValue(mockItems);
-
-    await api.get('/api/items').expect(200).expect('Content-Type', /application\/json/);
-  });
-
-  it('should return the mock items', async function () {
-    Item.findAll.mockResolvedValue(mockItems);
-    const response = await api.get('/api/items').expect(200);
-    expect(response.body).toEqual(mockItems);
-  });
-});
+  
