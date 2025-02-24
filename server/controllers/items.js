@@ -3,7 +3,7 @@ const { Item } = require('../models');
 // hypermedia
 // to auction, to bids, to items?
 
-const getItems = async (req, res) => {
+const getItems = async (req, res, next) => {
   try {
     const items = await Item.findAll();
     if (!items || items.length === 0) {
@@ -13,7 +13,7 @@ const getItems = async (req, res) => {
   } catch (e) {
     const error = new Error(e.message);
     error.name = e.name;
-    return next(error);
+    return next(error); 
   }
 };
 

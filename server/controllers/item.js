@@ -108,7 +108,7 @@ try {
     return res.status(200).json({ message: 'Item deleted' });
   }
 
-  throw new Error('Item not found');
+  return res.status(404).json({ error: 'Item not found' });
 } catch (e) {
   const error = new Error(e.message);
   error.name = e.name;
