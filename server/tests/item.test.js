@@ -63,6 +63,8 @@ describe('GET /api/item', function () {
     Item.findOne.mockRejectedValueOnce(new Error('Invalid input syntax for type integer'));
     await api.get('/api/item/kissa').expect(500);
   });
+  
+  
 });
 
 describe('POST /api/item', function () {
@@ -146,6 +148,15 @@ describe('PUT /api/item', function () {
     });
     await api.put('/api/item/kissa').send(mockUpdateItem).expect(500);
   });
+
+  
+  it('should return 400 for invalid update request', async function () {
+    const invalidUpdate = { invalidKey: 'test' }; // Missing required fields
+    const response = await api.put('/api/item/1').send(invalidUpdate);
+    expect(response.status).toBe(400);
+  });
+    
+  
 });
 
 describe('DELETE /api/item', function () {
@@ -167,4 +178,9 @@ describe('DELETE /api/item', function () {
     Item.destroy.mockRejectedValueOnce(new Error('Invalid input syntax for type integer'));
     await api.delete(`/api/item/kissa`).expect(500);
   });
+  it('should return 500 if database error occurs during deletion', async function () {
+    Item.destroy.mockRejectedValueOnce(new Error('Database error'));
+    await api.delete(`/api/item/1`).expect(500);
+  });
+  
 });
