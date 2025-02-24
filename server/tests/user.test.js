@@ -52,9 +52,9 @@ describe('GET /api/user', function () {
     const response = await api.get('/api/user/1').expect(200).expect('Content-Type', /application\/json/);
     expect(response.body).toEqual(mockUser);
   });
-  it('empty get (204)', async function () {
+  it('empty get (404)', async function () {
     User.findOne.mockResolvedValue(0);
-    const response = await api.get('/api/user/999').expect(204);
+    const response = await api.get('/api/user/999').expect(404);
     expect(response.body).toEqual({});
   });
 
