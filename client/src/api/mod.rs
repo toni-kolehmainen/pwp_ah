@@ -1,7 +1,8 @@
 pub mod categories;
 pub mod items;
 pub mod users;
+pub mod utils;
 
-pub use categories::fetch_categories;
-pub use items::fetch_items;
-pub use users::fetch_users;
+pub use categories::{add_category, fetch_categories};
+pub use items::{add_item, fetch_items};
+pub use users::{fetch_user, fetch_users};

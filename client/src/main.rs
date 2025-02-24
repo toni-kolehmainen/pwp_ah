@@ -1,33 +1,90 @@
 mod api;
 mod models;
 
-use api::{fetch_categories, fetch_items, fetch_users};
-use clap::{ArgMatches, Command};
+use crate::models::Item;
+use api::{add_category, add_item, fetch_categories, fetch_items, fetch_user, fetch_users};
+use clap::{Parser, Subcommand};
 use reqwest::Client;
 use std::error::Error;
 
-fn get_matches() -> ArgMatches {
-    Command::new("Auction House CLI")
-        .version("1.0")
-        .author("Your Name")
-        .about("Interacts with the Auction House API")
-        .subcommand(Command::new("fetch-users").about("Fetch all users"))
-        .subcommand(Command::new("fetch-items").about("Fetch all items"))
-        .subcommand(Command::new("fetch-categories").about("Fetch all categories"))
-        .get_matches()
+#[derive(Parser, Debug)]
+#[clap(author, version, about)]
+struct Args {
+    #[clap(subcommand)]
+    command: Commands,
+}
+
+#[derive(Subcommand, Debug)]
+enum Commands {
+    /// Fetch all users
+    FetchUsers,
+
+    /// Fetch a user by ID
+    FetchUser {
+        /// User ID
+        id: u32,
+    },
+
+    /// Fetch all items
+    FetchItems,
+
+    /// Create new item
+    CreateItem {
+        name: String,
+        description: String,
+        userId: i32,
+        categoryId: i32,
+    },
+
+    /// Fetch all categories
+    FetchCategories,
+
+    /// Create new category
+    AddCategory {
+        /// Category Name
+        name: String,
+        /// Category Description
+        description: String,
+    },
 }
 
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn Error>> {
-    let matches = get_matches();
+    let args = Args::parse();
+
     let client = Client::new();
 
-    if let Some(_) = matches.subcommand_matches("fetch-users") {
-        fetch_users(&client).await?;
-    } else if let Some(_) = matches.subcommand_matches("fetch-items") {
-        fetch_items(&client).await?;
-    } else if let Some(_) = matches.subcommand_matches("fetch-categories") {
-        fetch_categories(&client).await?;
+    match args.command {
+        Commands::FetchUsers => {
+            fetch_users(&client).await?;
+        }
+        Commands::FetchUser { id } => {
+            fetch_user(&client, id.try_into().unwrap()).await?;
+        }
+        Commands::FetchItems => {
+            fetch_items(&client).await?;
+        }
+        Commands::CreateItem {
+            name,
+            description,
+            userId,
+            categoryId,
+        } => {
+            let item = Item {
+                name,
+                description,
+                userId,
+                categoryId,
+            };
+            add_item(&client, item).await?;
+        }
+        Commands::FetchCategories => {
+            fetch_categories(&client).await?;
+        }
+        Commands::AddCategory { name, description } => {
+            add_category(&client, name, description).await?
+        }
+        _ => unimplemented!(),
     }
 
     Ok(())
