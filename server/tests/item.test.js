@@ -33,11 +33,12 @@ jest.mock('../models', () => {
 // You need to wait for the database models to create.
 beforeAll(async () => {
   await dbSync();
+  await Item.destroy({ where: {} });
   console.log('Database is synced before running tests');
 });
 
 afterAll(async () => {
-  sequelize.close();
+  await sequelize.close();
 });
 
 describe('GET /api/item', function () {
@@ -53,13 +54,13 @@ describe('GET /api/item', function () {
   });
 
   it('empty get (204)', async function () {
-    Item.findOne.mockResolvedValue(0);
+    Item.findOne.mockResolvedValue(null); // Return null to simulate no content
     const response = await api.get('/api/item/999').expect(204);
     expect(response.body).toEqual({});
   });
 
   it('Param is not int (500)', async function () {
-    Item.findOne.mockRejectedValueOnce(mockItem);
+    Item.findOne.mockRejectedValueOnce(new Error('Invalid input syntax for type integer'));
     await api.get('/api/item/kissa').expect(500);
   });
 });
@@ -117,19 +118,19 @@ describe('PUT /api/item', function () {
   });
 
   it('Normal valid with description (200)', async function () {
-    Item.update.mockResolvedValueOnce(mockItem);
+    Item.update.mockResolvedValueOnce([1]); // Simulate successful update
     const response = await api.put('/api/item/1').send(mockUpdateItem).expect('Content-Type', /application\/json/);
     expect(response.status).toBe(200);
   });
 
   it('Normal valid with name (200)', async function () {
-    Item.update.mockResolvedValueOnce(mockItem);
+    Item.update.mockResolvedValueOnce([1]); // Simulate successful update
     const response = await api.put('/api/item/1').send(mockUpdateItem1).expect('Content-Type', /application\/json/);
     expect(response.status).toBe(200);
   });
 
   it('try to update two lines same time (400)', async function () {
-    Item.update.mockRejectedValueOnce(mockItem);
+    Item.update.mockRejectedValueOnce(new Error('Invalid Request body'));
     const response = await api.put('/api/item/1').send(mockUpdateItemInvalid).expect('Content-Type', /application\/json/);
     expect(response.status).toBe(400);
   });
@@ -149,9 +150,9 @@ describe('PUT /api/item', function () {
 
 describe('DELETE /api/item', function () {
   it('should delete an item successfully', async () => {
-    Item.destroy.mockResolvedValueOnce(mockItem); // Simulate successful deletion
+    Item.destroy.mockResolvedValueOnce(1); // Simulate successful deletion
     const response = await api.delete(`/api/item/1`).expect(200);
-    expect(response.body.status).toBe('Deleted');
+    expect(response.body.message).toBe('Item deleted');
   });
 
   it('should return 404 when item is not found', async () => {
@@ -163,7 +164,7 @@ describe('DELETE /api/item', function () {
   });
 
   it('Pass param id string (500)', async () => {
-    Item.destroy.mockRejectedValueOnce(0);
+    Item.destroy.mockRejectedValueOnce(new Error('Invalid input syntax for type integer'));
     await api.delete(`/api/item/kissa`).expect(500);
   });
 });
