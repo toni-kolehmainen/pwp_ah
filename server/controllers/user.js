@@ -1,9 +1,6 @@
 const { User } = require('../models')
-const jwt = require('jsonwebtoken')
 const bcrypt = require('bcrypt')
 const Ajv = require('ajv')
-const { isNumeric } = require('validator')
-const { error } = require('../utils/logger')
 const ajv = new Ajv({ coerceTypes: false })
 
 // hypermedia

@@ -23,8 +23,8 @@ Bid.init({
     type: DataTypes.DECIMAL(10,2),
     allowNull: false,
     validate: {
-      isInt: true,
-      min: 1
+      isDecimal: true,
+      min: 0
     }
   },
 }, {

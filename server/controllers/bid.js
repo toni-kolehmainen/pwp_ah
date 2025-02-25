@@ -1,22 +1,76 @@
 const { Bid } = require('../models')
+const Ajv = require('ajv')
+const ajv = new Ajv({ coerceTypes: false })
 
-const getBid = async (req, res) => {
+const addSchema = {
+  type: "object",
+  properties: {
+    auction_id: {type: "integer"},
+    buyer_id : {type: "integer"},
+    amount : {type: "number"},
+  },
+  required: ["auction_id", "buyer_id", "amount"],
+  additionalProperties: false
+}
 
-  const bid = await Bid.findAll()
-  res.status(501).json({ message: 'This is not implemented' })
+const getBid = async (req, res, next) => {
+
+  Bid.findOne({
+    where:{
+      id: req.params.bid_id
+    }
+  }).then((bid)=>{
+    if (!bid) {
+        return res.status(404).end()
+      }
+    res.json(bid)
+  }).catch((e)=>{
+    const error = new Error(e.message);
+    error.name = e.name
+    return next(error)
+  })
 }
 
 const addBid = async (req, res, next) => {
-  try {
-    res.status(501).json({ message: 'This is not implemented' })
-  } catch (error) {
-    return next(error)
-  }
+    const validate = ajv.compile(addSchema)
+    const valid = validate(req.body)
+
+    if (!valid) {
+      const error = new Error('Invalid Request body')
+      error.name = 'ValidationError'
+      return next(error)
+    }
+
+    Bid.create(req.body).then((bid)=>{
+      res.status(201).json(bid)
+
+    }).catch((e)=>{
+      const error = new Error(e.message)
+      error.name = e.name
+      if (e.errors.length != 0) {
+        error.message = e.errors[0].message
+      }
+      return next(error)
+    })
 }
 
-const deleteBid = async (req, res) => {
+const deleteBid = (req, res, next) => {
 
-  res.status(501).json({ message: 'This is not implemented' })
+  Bid.destroy({
+    where: {
+      id: req.params.bid_id
+    }
+  }).then((count) => {
+    console.log(count)
+    if (count === 0) {
+      return res.status(404).json({ error: 'User not found' })
+    }
+    res.json({ status: 'Deleted'})
+  }).catch((e) => {
+    const error = new Error(e.message)
+    error.name = e.name
+    return next(error)
+  })
 }
 
 module.exports = {

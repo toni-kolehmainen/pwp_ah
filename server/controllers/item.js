@@ -1,9 +1,6 @@
-const { Item } = require('../models');
+const { Item, User, Category } = require('../models');
 const Ajv = require('ajv');
 const ajv = new Ajv({ coerceTypes: false });
-const jwt = require('jsonwebtoken')
-const { isNumeric } = require('validator')
-const { error } = require('../utils/logger')
 
 const addSchema = {
 type: "object",
@@ -29,16 +26,14 @@ minProperties: 1,
 additionalProperties: false
 };
 
-
 const getItem = async (req, res, next) => {
 try {
   const item = await Item.findOne({
     where: {
       id: req.params.id
     },
-    //attributes: {exclude: ['userId','categoryId']} 
   });
-
+  
   if (!item) {
     return res.status(404).json({ error: 'Item not found' });
   }

@@ -69,7 +69,7 @@ describe('POST /api', function () {
     // Clean up the User model before each test
     await User.destroy({ where: {}, truncate: true });
   });
- it('no name should return status (400)', async function () {
+  it('no name should return status (400)', async function () {
     User.create.mockResolvedValueOnce(mockUserWrong);
     // Make the POST request
     const response = await api
