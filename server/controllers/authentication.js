@@ -14,24 +14,6 @@ const loginSchema = {
   additionalProperties: false
 }
 
-const tokenValidation = async (req, res, next) => {
-
-  User.findOne({
-    where:{
-      id: req.params.user_id
-    }
-  }).then((user)=>{
-    if (!user) {
-        return res.status(204).end()
-      }
-    res.json(user)
-  }).catch((e)=>{
-    const error = new Error(e.message);
-    error.name = e.name
-    return next(error)
-  })
-}
-
 const login = async (req, res, next) => {
     const validate = ajv.compile(loginSchema)
     const valid = validate(req.body)
@@ -42,14 +24,19 @@ const login = async (req, res, next) => {
       return next(error)
     }
     try {
-      const user = await User.findOne({where:req.param.user_id})
+      const user = await User.findOne({
+        where:{
+          id: req.params.user_id
+        }
+      })
       if (!user) {
-        return res.status(204).json({message:"user not found"})
+        return res.status(404).json({message:"user not found"})
       }
+      console.log(user)
       const passwordValid = await bcrypt.compare(req.body.password, user.password)
 
       if (!(user.email === req.body.email  && passwordValid)) {
-        const error = new Error("Invalid username or password");
+        const error = new Error("Invalid email or password");
         error.name = "ValidationError";
         return next(error)
       }
@@ -69,5 +56,5 @@ const login = async (req, res, next) => {
 }
 
 module.exports = {
-  login,
+  login
 }

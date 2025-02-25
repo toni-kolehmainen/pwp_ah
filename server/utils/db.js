@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize')
 const { env } = require('node:process');
-
+const logger = require('./logger');
 const { DATABASE_URL, NAME, PASSWORD, NODE_ENV } = require('./config')
 
 const host = (env.DB_HOST) ? env.DB_HOST : 'localhost'
@@ -16,10 +16,10 @@ const sequelize = new Sequelize(db, NAME, PASSWORD, {
 const connectToDatabase = async () => {
   try {
     await sequelize.authenticate()
-    console.log('database connected')
+    logger.info('database connected')
   } catch (err) {
-    console.log(err)
-    console.log('connecting database failed')
+    logger.error(err)
+    logger.info('connecting database failed')
     return process.exit(1)
   }
 

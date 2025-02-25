@@ -33,6 +33,7 @@ Auction.init({
     type: DataTypes.DECIMAL(10,2),
     allowNull: false,
     validate: {
+      isDecimal: true,
       min: 0.00
     }
   },

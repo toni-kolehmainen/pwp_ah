@@ -36,8 +36,8 @@ const generateRandomItems = (count, users, categories) => {
     items.push({
       name: faker.commerce.productName(),
       description: faker.commerce.productDescription(),
-      user_id: users[Math.floor(Math.random() * users.length)].id,
-      category_id: categories[Math.floor(Math.random() * categories.length)].id,
+      userId: users[Math.floor(Math.random() * users.length)].id,
+      categoryId: categories[Math.floor(Math.random() * categories.length)].id,
     });
   }
   return items;
@@ -52,8 +52,8 @@ const generateRandomAuctions = (count, items) => {
       end_time: faker.date.future(),
       starting_price: parseFloat(faker.commerce.price({ min: 10, max: 1000 })),
       current_price: parseFloat(faker.commerce.price({ min: 10, max: 1000 })),
-      itemId: items[Math.floor(Math.random() * items.length)].id,
-      userId: items[Math.floor(Math.random() * items.length)].userId,
+      item_id: items[Math.floor(Math.random() * items.length)].id,
+      user_id: items[Math.floor(Math.random() * items.length)].userId,
     });
   }
   return auctions;
@@ -65,8 +65,8 @@ const generateRandomBids = (count, users, auctions) => {
   for (let i = 0; i < count; i++) {
     bids.push({
       amount: parseFloat(faker.commerce.price({ min: 10, max: 1000 })),
-      auctionId: auctions[Math.floor(Math.random() * auctions.length)].id,
-      userId: users[Math.floor(Math.random() * users.length)].id,
+      auction_id: auctions[Math.floor(Math.random() * auctions.length)].id,
+      buyer_id: users[Math.floor(Math.random() * users.length)].id,
     });
   }
   return bids;
@@ -102,10 +102,10 @@ const seedData = async () => {
   } catch (error) {
     console.error("❌ Error seeding data:", error);
   } finally {
-    await sequelize.close(); // Close the connection only after all operations are done
+    // await sequelize.close(); // Close the connection only after all operations are done
   }
 };
 
 // Run the script
-seedData();
+// seedData();
 module.exports = { seedData };

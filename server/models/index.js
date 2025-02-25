@@ -19,11 +19,31 @@ Item.belongsTo(Category)
 Item.hasOne(Auction)
 Auction.belongsTo(Item)
 
-User.hasMany(Bid)
-Bid.belongsTo(User)
+User.hasMany(Bid, { 
+  foreignKey: { 
+      name: 'buyer_id', 
+      allowNull: false
+  } 
+})
+Bid.belongsTo(User,{ 
+  foreignKey: { 
+      name: 'buyer_id',
+      allowNull: false
+  } 
+})
 
-Auction.hasMany(Bid)
-Bid.belongsTo(Auction)
+Auction.hasMany(Bid, { 
+  foreignKey: { 
+      name: 'auction_id',
+      allowNull: false
+  } 
+})
+Bid.belongsTo(Auction, { 
+  foreignKey: { 
+      name: 'auction_id',
+      allowNull: false
+  } 
+})
 
 // Sync models
 const dbSync = async () => {
