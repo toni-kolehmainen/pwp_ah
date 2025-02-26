@@ -1,16 +1,16 @@
-const { dbSync, Category  } = require('../models'); // models
-const { sequelize  } = require('../utils/db'); // Import sequelize
 const supertest = require('supertest');
-const app = require('../app'); // Import your Express app
+const { dbSync, Category } = require('../models'); // models
+const { sequelize } = require('../utils/db'); // Import sequelize
+const app = require('../app');
+// Import your Express app
 const api = supertest(app);
-const {mockCategory, mockCategories, mockCategoryWrong} = require('./data');
+const { mockCategory, mockCategories, mockCategoryWrong } = require('./data');
+
 const test = { name: 'Unique Category' };
 
-jest.mock('express-rate-limit', () => {
-  return jest.fn().mockImplementation(() => (req, res, next) => {
-    next(); // Mocking the rate-limiting middleware without enforcing limits
-  });
-});
+jest.mock('express-rate-limit', () => jest.fn().mockImplementation(() => (req, res, next) => {
+  next(); // Mocking the rate-limiting middleware without enforcing limits
+}));
 
 jest.mock('../models', () => {
   const mockModel = {
@@ -19,7 +19,7 @@ jest.mock('../models', () => {
     create: jest.fn(),
     update: jest.fn(),
     destroy: jest.fn(),
-    truncate: jest.fn(),
+    truncate: jest.fn()
   };
 
   return {
@@ -28,7 +28,7 @@ jest.mock('../models', () => {
     Category: mockModel,
     Auction: mockModel,
     Bid: mockModel,
-    dbSync: jest.fn(),
+    dbSync: jest.fn()
   };
 });
 
@@ -38,35 +38,33 @@ beforeAll(async () => {
 });
 
 afterAll(async () => {
-  sequelize.close()
+  sequelize.close();
 });
 
-describe('GET /api', function () {
-  it('should return status 200', async function () {
+describe('GET /api', () => {
+  it('should return status 200', async () => {
     Category.findAll.mockResolvedValue(mockCategories);
     await api.get('/api/categories').expect(200).expect('Content-Type', /application\/json/);
   });
-  it('should return the mock user', async function () {
+  it('should return the mock user', async () => {
     Category.findAll.mockResolvedValue(mockCategories);
     const response = await api.get('/api/categories').expect(200);
     expect(response.body).toEqual(mockCategories);
   });
-  it('should return status 404', async function () {
+  it('should return status 404', async () => {
     await api.get('/api/category').expect(404).expect('Content-Type', /application\/json/);
   });
 });
 // test unique for line 33
-describe('POST /api', function () {
-  it('Normal post request (201)', async function () {
-
+describe('POST /api', () => {
+  it('Normal post request (201)', async () => {
     // Make the POST request
     const response = await api
       .post('/api/categories')
       .send(test).expect('Content-Type', /application\/json/);
-      expect(response.status).toBe(201);
+    expect(response.status).toBe(201);
   });
-  it('Name unique post request (409)', async function () {
-    
+  it('Name unique post request (409)', async () => {
     await api.post('/api/categories')
       .send(test)
       .expect('Content-Type', /application\/json/)
@@ -74,7 +72,7 @@ describe('POST /api', function () {
 
     Category.create.mockRejectedValueOnce({
       code: '23505',
-      message: 'duplicate key value violates unique constraint "categories_name_key"',
+      message: 'duplicate key value violates unique constraint "categories_name_key"'
     });
 
     const response = await api
@@ -84,7 +82,7 @@ describe('POST /api', function () {
     expect(response.status).toBe(409); // Expect conflict due to duplicate category name
   });
 
-  it('Invalid category post (400)', async function () {
+  it('Invalid category post (400)', async () => {
     Category.create.mockResolvedValueOnce(mockCategoryWrong);
     // Make the POST request
     const response = await api
@@ -94,19 +92,19 @@ describe('POST /api', function () {
   });
 });
 
-describe('DELETE /api', function () {
+describe('DELETE /api', () => {
   it('should delete a category successfully', async () => {
     Category.destroy.mockResolvedValueOnce(mockCategory); // Simulate successful deletion
     const response = await api
-      .delete(`/api/categories/1`)
+      .delete('/api/categories/1')
       .expect(200);
     expect(response.body.status).toBe('Deleted');
   });
 
   it('should return 404 when category is not found', async () => {
     const categoryId = 999; // Non-existing category
-  
-    Category.destroy.mockResolvedValueOnce(0); 
+
+    Category.destroy.mockResolvedValueOnce(0);
     const response = await api
       .delete(`/api/categories/${categoryId}`)
       .expect(404);
@@ -115,7 +113,7 @@ describe('DELETE /api', function () {
   it('Pass param id string (500)', async () => {
     Category.destroy.mockRejectedValueOnce(0);
     const response = await api
-      .delete(`/api/categories/kissa`)
+      .delete('/api/categories/kissa')
       .expect(500);
   });
 });

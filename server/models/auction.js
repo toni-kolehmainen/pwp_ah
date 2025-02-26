@@ -1,8 +1,8 @@
-const { Model, DataTypes } = require('sequelize')
-const { sequelize } = require('../utils/db')
-const Sequelize = require('sequelize')
+const { Model, DataTypes } = require('sequelize');
+const Sequelize = require('sequelize');
+const { sequelize } = require('../utils/db');
 
-class Auction extends Model {}
+class Auction extends Model { }
 
 Auction.init({
   id: {
@@ -27,10 +27,10 @@ Auction.init({
   end_time: {
     type: DataTypes.DATE,
     allowNull: false,
-    defaultValue: Sequelize.literal("NOW() + INTERVAL '24 hours'")
+    defaultValue: Sequelize.literal('NOW() + INTERVAL \'24 hours\'')
   },
   starting_price: {
-    type: DataTypes.DECIMAL(10,2),
+    type: DataTypes.DECIMAL(10, 2),
     allowNull: false,
     validate: {
       isDecimal: true,
@@ -38,7 +38,7 @@ Auction.init({
     }
   },
   current_price: {
-    type: DataTypes.DECIMAL(10,2),
+    type: DataTypes.DECIMAL(10, 2),
     allowNull: false,
     defaultValue: 0.00
   }
@@ -47,6 +47,6 @@ Auction.init({
   underscored: true,
   timestamps: true,
   modelName: 'auction'
-})
+});
 
-module.exports = Auction
+module.exports = Auction;

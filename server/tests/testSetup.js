@@ -1,4 +1,4 @@
-const { dbSync, User } = require('../models'); // Import your models
+const { dbSync } = require('../models'); // Import your models
 const { sequelize } = require('../utils/db'); // Import sequelize connection
 
 // Define beforeAll hook to sync database and clean up the User model

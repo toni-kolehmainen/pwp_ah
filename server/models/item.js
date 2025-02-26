@@ -1,7 +1,7 @@
-const { Model, DataTypes } = require('sequelize')
-const { sequelize } = require('../utils/db')
+const { Model, DataTypes } = require('sequelize');
+const { sequelize } = require('../utils/db');
 
-class Item extends Model {}
+class Item extends Model { }
 
 Item.init({
   id: {
@@ -22,19 +22,19 @@ Item.init({
     type: DataTypes.INTEGER,
     allowNull: false,
     field: 'user_id',
-    references: { model: 'users', key: 'id', onDelete: 'CASCADE' },
+    references: { model: 'users', key: 'id', onDelete: 'CASCADE' }
   },
   categoryId: {
     type: DataTypes.INTEGER,
     allowNull: false,
-    field:'category_id',
-    references: { model: 'categories', key: 'id', onDelete: 'SET NULL' },
-  },
+    field: 'category_id',
+    references: { model: 'categories', key: 'id', onDelete: 'SET NULL' }
+  }
 }, {
   sequelize,
   underscored: true,
   timestamps: false,
   modelName: 'item'
-})
+});
 
-module.exports = Item
+module.exports = Item;

@@ -6,18 +6,19 @@ const { authenticateJWT } = require('../utils/middleware');
 jest.mock('jsonwebtoken'); // Mock JWT module
 
 describe('authenticateJWT Middleware', () => {
-  let nextMock, resMock, reqMock;
+  let nextMock; let resMock; let
+    reqMock;
 
   beforeEach(() => {
     jest.clearAllMocks();
 
     reqMock = {
       header: jest.fn(),
-      user: undefined,
+      user: undefined
     };
     resMock = {
       status: jest.fn().mockReturnThis(),
-      json: jest.fn(),
+      json: jest.fn()
     };
     nextMock = jest.fn();
   });

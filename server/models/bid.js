@@ -1,7 +1,7 @@
-const { Model, DataTypes } = require('sequelize')
-const { sequelize } = require('../utils/db')
+const { Model, DataTypes } = require('sequelize');
+const { sequelize } = require('../utils/db');
 
-class Bid extends Model {}
+class Bid extends Model { }
 
 Bid.init({
   id: {
@@ -20,18 +20,18 @@ Bid.init({
   //   references: { model: 'users', key: 'id', onDelete: 'CASCADE' },
   // },
   amount: {
-    type: DataTypes.DECIMAL(10,2),
+    type: DataTypes.DECIMAL(10, 2),
     allowNull: false,
     validate: {
       isDecimal: true,
       min: 0
     }
-  },
+  }
 }, {
   sequelize,
   underscored: true,
   timestamps: true,
   modelName: 'bid'
-})
+});
 
-module.exports = Bid
+module.exports = Bid;

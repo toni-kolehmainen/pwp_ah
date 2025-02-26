@@ -1,7 +1,7 @@
-const { Model, DataTypes } = require('sequelize')
-const { sequelize } = require('../utils/db')
+const { Model, DataTypes } = require('sequelize');
+const { sequelize } = require('../utils/db');
 
-class Category extends Model {}
+class Category extends Model { }
 
 Category.init({
   id: {
@@ -17,12 +17,12 @@ Category.init({
     type: DataTypes.STRING(100),
     allowNull: false,
     unique: true
-  },
+  }
 }, {
   sequelize,
   underscored: true,
   timestamps: false,
   modelName: 'category'
-})
+});
 
-module.exports = Category
+module.exports = Category;

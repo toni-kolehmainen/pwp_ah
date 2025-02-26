@@ -4,18 +4,19 @@
 // not found
 // range
 
-const { dbSync, User  } = require('../models'); // models
-const { sequelize  } = require('../utils/db'); // Import sequelize
 const supertest = require('supertest');
-const app = require('../app'); // Import your Express app
+const { dbSync, User } = require('../models'); // models
+const { sequelize } = require('../utils/db'); // Import sequelize
+const app = require('../app');
+// Import your Express app
 const api = supertest(app);
-const {mockUser} = require('./data')
+const { mockUser } = require('./data');
 
 // Mock the models with the imported mocks
 jest.mock('../models', () => {
   const mockModel = {
     findAll: jest.fn(),
-    destroy: jest.fn(),
+    destroy: jest.fn()
   };
 
   return {
@@ -24,7 +25,7 @@ jest.mock('../models', () => {
     Category: mockModel,
     Auction: mockModel,
     Bid: mockModel,
-    dbSync: jest.fn(),
+    dbSync: jest.fn()
   };
 });
 
@@ -35,23 +36,23 @@ beforeAll(async () => {
 });
 
 afterAll(async () => {
-  sequelize.close()
+  sequelize.close();
 });
 
-describe('GET /api', function () {
-  it('should return status 204 and empty', async function () {
+describe('GET /api', () => {
+  it('should return status 204 and empty', async () => {
     User.findAll.mockResolvedValue();
     const response = await api.get('/api/users').expect(204);
     expect(response.body).toEqual({});
   });
 
-  it('should return status 200 if mock user created', async function () {
+  it('should return status 200 if mock user created', async () => {
     User.findAll.mockResolvedValue(mockUser);
 
     await api.get('/api/users').expect(200).expect('Content-Type', /application\/json/);
   });
 
-  it('should return the mock user', async function () {
+  it('should return the mock user', async () => {
     User.findAll.mockResolvedValue([mockUser]);
     const response = await api.get('/api/users').expect(200);
     expect(response.body).toEqual([mockUser]);
