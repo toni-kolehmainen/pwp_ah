@@ -1,4 +1,3 @@
-
 const app = require('./app');
 const config = require('./utils/config');
 const logger = require('./utils/logger');
@@ -10,23 +9,19 @@ const { seedData } = require('./script/DataPopulator'); // Import the seedData f
 const initializeDatabase = async () => {
   try {
     // Check if the User table is empty
-    let userCount = -1
-    while (true) {
-      userCount = await User.count();
-      await new Promise((resolve) => setTimeout(resolve, 1000));
-      if (userCount >= 0) {
-        break
-      }
-    }
+    let userCount = -1;
+
+    userCount = await User.count();
+    // Promise((resolve) => setTimeout(resolve, 1000));
     // userCount = 0
     if (userCount === 0) {
-      logger.info('Database is empty. Populating data...')
+      logger.info('Database is empty. Populating data...');
       await seedData(); // Run the data population script
     } else {
-      logger.info('Database already contains data. Skipping population.')
+      logger.info('Database already contains data. Skipping population.');
     }
   } catch (error) {
-    logger.error('Error initializing database:', error)
+    logger.error('Error initializing database:', error);
   }
 };
 

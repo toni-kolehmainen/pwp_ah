@@ -1,9 +1,10 @@
-const { dbSync, User  } = require('../models'); // models
-const { sequelize  } = require('../utils/db'); // Import sequelize
 const supertest = require('supertest');
-const app = require('../app'); // Import Express app
+const { dbSync, User } = require('../models'); // models
+const { sequelize } = require('../utils/db'); // Import sequelize
+const app = require('../app');
+// Import Express app
 const api = supertest(app);
-const {mockUser, mockUserWrong} = require('./data')
+const { mockUser, mockUserWrong } = require('./data');
 
 jest.mock('../models', () => {
   const mockModel = {
@@ -12,7 +13,7 @@ jest.mock('../models', () => {
     findOne: jest.fn(),
     create: jest.fn(),
     update: jest.fn(), // Assuming one row updated
-    destroy: jest.fn(), // Assuming one row deleted
+    destroy: jest.fn() // Assuming one row deleted
   };
 
   return {
@@ -21,17 +22,17 @@ jest.mock('../models', () => {
     Category: mockModel,
     Auction: mockModel,
     Bid: mockModel,
-    dbSync: jest.fn(),
+    dbSync: jest.fn()
   };
 });
 
-describe('GET /api/user', function () {
+describe('GET /api/user', () => {
   beforeEach(() => {
     // Clean up the User model before each test
     jest.clearAllMocks();
   });
 
-  it('First five should be 200 and final 429', async function () {
+  it('First five should be 200 and final 429', async () => {
     User.findOne.mockResolvedValue(mockUser);
     for (let index = 0; index < 5; index++) {
       await api.get('/api/user/1').expect(200).expect('Content-Type', /application\/json/);
@@ -47,5 +48,5 @@ beforeAll(async () => {
 });
 
 afterAll(async () => {
-  sequelize.close()
+  sequelize.close();
 });

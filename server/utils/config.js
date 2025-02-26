@@ -1,14 +1,14 @@
-require('dotenv').config()
+require('dotenv').config();
 
-let NODE_ENV = process.env.NODE_ENV
-let PORT = process.env.PORT
-let DATABASE_URL = process.env.PORT
-let NAME = process.env.NAME
-let PASSWORD = process.env.PASSWORD
+const { NODE_ENV } = process.env;
+const { PORT } = process.env;
+const DATABASE_URL = process.env.PORT;
+const { NAME } = process.env;
+const { PASSWORD } = process.env;
 module.exports = {
   PORT,
   DATABASE_URL,
   NODE_ENV,
   NAME,
   PASSWORD
-}
+};

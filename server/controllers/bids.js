@@ -1,4 +1,4 @@
-const { Bid, User, Auction } = require('../models')
+const { Bid } = require('../models');
 
 const getBids = async (req, res) => {
   const bids = await Bid.findAll({
@@ -13,19 +13,19 @@ const getBids = async (req, res) => {
     //   }
     // ],
     // attributes: { exclude: ['buyer_id', 'auction_id'] }
-  })
+  });
   if (!bids) {
-    return res.status(204).end()
+    return res.status(204).end();
   }
-  res.json(bids)
-}
+  return res.json(bids);
+};
 
 const deleteBids = async (req, res) => {
-  const bids = await Bid.destroy()
-  res.json(bids)
-}
+  const bids = await Bid.destroy();
+  return res.json(bids);
+};
 
 module.exports = {
   getBids,
-  deleteBids,
-}
+  deleteBids
+};

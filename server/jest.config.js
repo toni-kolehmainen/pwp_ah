@@ -1,11 +1,11 @@
 module.exports = {
-  testEnvironment: "node",
+  testEnvironment: 'node',
   collectCoverage: true,
   // silent: true, // removes all console log!!!
   coveragePathIgnorePatterns: [
-      "/node_modules/",
-      "/tests/"
-    ],
-  coverageDirectory: "coverage",
-  coverageReporters: ["text", "lcov"],
+    '/node_modules/',
+    '/tests/'
+  ],
+  coverageDirectory: 'coverage',
+  coverageReporters: ['text', 'lcov']
 };

@@ -1,31 +1,28 @@
-const { dbSync, Bid  } = require('../models'); // models
-const { sequelize  } = require('../utils/db'); // Import sequelize
 const supertest = require('supertest');
-const app = require('../app'); // Import Express app
+const { dbSync, Bid } = require('../models'); // models
+const { sequelize } = require('../utils/db'); // Import sequelize
+const app = require('../app');
+// Import Express app
 const api = supertest(app);
-const {authenticateJWT} = require('../utils/middleware');
-const mockBid = 
-  {
-    amount: 500,
-    buyer_id: 1,
-    auction_id: 1
-  }
-  const mockBidInvalid = 
-  {
-    amount: -1,
-    buyer_id: 1,
-    auction_id: 1
-  }
-  const mockBidInvalid1 = 
-  {
-    amount: -1,
-    auction_id: 1
-  }
-jest.mock('express-rate-limit', () => {
-  return jest.fn().mockImplementation(() => (req, res, next) => {
-    next(); // Mocking the rate-limiting middleware without enforcing limits
-  });
-});
+const { authenticateJWT } = require('../utils/middleware');
+
+const mockBid = {
+  amount: 500,
+  buyer_id: 1,
+  auction_id: 1
+};
+const mockBidInvalid = {
+  amount: -1,
+  buyer_id: 1,
+  auction_id: 1
+};
+const mockBidInvalid1 = {
+  amount: -1,
+  auction_id: 1
+};
+jest.mock('express-rate-limit', () => jest.fn().mockImplementation(() => (req, res, next) => {
+  next(); // Mocking the rate-limiting middleware without enforcing limits
+}));
 
 jest.mock('../utils/middleware', () => {
   const actualMiddleware = jest.requireActual('../utils/middleware'); // Keep other middleware if needed
@@ -38,14 +35,13 @@ jest.mock('../utils/middleware', () => {
   };
 });
 
-
 jest.mock('../models', () => {
   const mockModel = {
     findAll: jest.fn(), // Return the mock user
     findOne: jest.fn(),
     create: jest.fn(),
     update: jest.fn(), // Assuming one row updated
-    destroy: jest.fn(), // Assuming one row deleted
+    destroy: jest.fn() // Assuming one row deleted
   };
 
   return {
@@ -54,7 +50,7 @@ jest.mock('../models', () => {
     Category: mockModel,
     Auction: mockModel,
     Bid: mockModel,
-    dbSync: jest.fn(),
+    dbSync: jest.fn()
   };
 });
 
@@ -65,7 +61,7 @@ beforeAll(async () => {
 });
 
 afterAll(async () => {
-  sequelize.close()
+  sequelize.close();
 });
 
 // describe('authentication /api', function () {
@@ -75,36 +71,35 @@ afterAll(async () => {
 //   });
 // });
 
-describe('GET /api/bid', function () {
+describe('GET /api/bid', () => {
   beforeEach(async () => {
     // Clean up the User model before each test
     await Bid.destroy({ where: {}, truncate: true });
   });
-  it('Normal get (200)', async function () {
+  it('Normal get (200)', async () => {
     Bid.findOne.mockResolvedValue(mockBid);
     const response = await api.get('/api/bid/1').expect(200).expect('Content-Type', /application\/json/);
     expect(response.body).toEqual(mockBid);
   });
-  it('empty get (404)', async function () {
+  it('empty get (404)', async () => {
     Bid.findOne.mockResolvedValue(0);
     const response = await api.get('/api/bid/999').expect(404);
     expect(response.body).toEqual({});
   });
 
-  it('Param is not int (500)', async function () {
+  it('Param is not int (500)', async () => {
     Bid.findOne.mockRejectedValueOnce(mockBid);
     await api.get('/api/bid/dog').expect(500);
   });
 });
 
-describe('POST /api', function () {
+describe('POST /api', () => {
   beforeEach(async () => {
     // Clean up the User model before each test
     await Bid.destroy({ where: {}, truncate: true });
     jest.clearAllMocks();
   });
-  it('amount negative should return status (400)', async function () {
-
+  it('amount negative should return status (400)', async () => {
     Bid.create.mockRejectedValueOnce({
       name: 'SequelizeValidationError',
       message: 'Validation min on amount failed',
@@ -113,9 +108,9 @@ describe('POST /api', function () {
           message: 'Validation min on amount failed',
           type: 'Validation error',
           path: 'amount',
-          value: mockBidInvalid.amount,
-        },
-      ],
+          value: mockBidInvalid.amount
+        }
+      ]
     });
 
     const response = await api
@@ -124,7 +119,7 @@ describe('POST /api', function () {
       .send(mockBidInvalid);
     expect(response.status).toBe(400);
   });
-  it('Default valid (201)', async function () {
+  it('Default valid (201)', async () => {
     Bid.create.mockResolvedValueOnce(mockBid);
 
     const response = await api
@@ -133,7 +128,7 @@ describe('POST /api', function () {
       .send(mockBid);
     expect(response.status).toBe(201);
   });
-  it('invalid schema (400)', async function () {
+  it('invalid schema (400)', async () => {
     Bid.create.mockRejectedValueOnce(mockBidInvalid1);
 
     const response = await api
@@ -144,18 +139,18 @@ describe('POST /api', function () {
   });
 });
 
-describe('DELETE /api', function () {
+describe('DELETE /api', () => {
   it('should delete a bid successfully', async () => {
     Bid.destroy.mockResolvedValueOnce(mockBid); // Simulate successful deletion
     const response = await api
-      .delete(`/api/bid/1`)
+      .delete('/api/bid/1')
       .expect(200);
     expect(response.body.status).toBe('Deleted');
   });
 
   it('should return 404 when user is not found', async () => {
     const bid_id = 999; // Non-existing user
-  
+
     Bid.destroy.mockResolvedValueOnce(0);
     const response = await api
       .delete(`/api/bid/${bid_id}`)
@@ -165,7 +160,7 @@ describe('DELETE /api', function () {
   it('Pass param id string (500)', async () => {
     Bid.destroy.mockRejectedValueOnce(0);
     await api
-      .delete(`/api/bid/cat`)
+      .delete('/api/bid/cat')
       .expect(500);
   });
 });

@@ -27,11 +27,10 @@
 //   };
 // });
 
-
 // // Mock the sequelize instance and methods
 // jest.mock('../utils/db', () => {
 //   const originalDbModule = jest.requireActual('../utils/db');
-  
+
 //   return {
 //     ...originalDbModule,
 //     sequelize: {
@@ -104,7 +103,7 @@
 //   //   });
 //   //   try {
 //   //     await connectToDatabase(); // Call the function
-      
+
 //   //   } catch (error) {
 //   //     // await sequelize.authenticate();
 //   //     // expect(sequelize.authenticate).toHaveBeenCalledTimes(1);

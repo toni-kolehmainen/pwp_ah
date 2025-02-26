@@ -13,10 +13,10 @@ const getItems = async (req, res, next) => {
   } catch (e) {
     const error = new Error(e.message);
     error.name = e.name;
-    return next(error); 
+    return next(error);
   }
 };
 
 module.exports = {
-  getItems,
+  getItems
 };

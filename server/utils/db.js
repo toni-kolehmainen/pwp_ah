@@ -1,29 +1,29 @@
-const Sequelize = require('sequelize')
+const Sequelize = require('sequelize');
 const { env } = require('node:process');
 const logger = require('./logger');
-const { DATABASE_URL, NAME, PASSWORD, NODE_ENV } = require('./config')
+const { NAME, PASSWORD, NODE_ENV } = require('./config');
 
-const host = (env.DB_HOST) ? env.DB_HOST : 'localhost'
+const host = (env.DB_HOST) ? env.DB_HOST : 'localhost';
+const db = (NODE_ENV === 'test') ? 'test' : 'postgres';
 
-const db = (NODE_ENV === "test") ? "test" : 'postgres'
 const sequelize = new Sequelize(db, NAME, PASSWORD, {
-  host: host,
+  host,
   dialect: 'postgres',
-  logging: false,
+  logging: false
   // logging: console.log
 });
 
 const connectToDatabase = async () => {
   try {
-    await sequelize.authenticate()
-    logger.info('database connected')
+    await sequelize.authenticate();
+    logger.info('database connected');
   } catch (err) {
-    logger.error(err)
-    logger.info('connecting database failed')
-    return process.exit(1)
+    logger.error(err);
+    logger.info('connecting database failed');
+    return process.exit(1);
   }
 
-  return null
-}
+  return null;
+};
 
-module.exports = { connectToDatabase, sequelize }
+module.exports = { connectToDatabase, sequelize };

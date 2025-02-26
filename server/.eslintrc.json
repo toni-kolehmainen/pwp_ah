@@ -1,0 +1,22 @@
+{
+    "env": {
+      "node": true,
+      "es2021": true
+    },
+    "extends": ["airbnb-base"],
+    "parserOptions": {
+      "ecmaVersion": 12
+    },
+    "rules": {
+      "no-console": "off",
+      "indent": ["error", 2],
+      "quotes": ["error", "single"],
+      "semi": ["error", "always"],
+      "comma-dangle": ["error", "never"],
+      "no-unused-vars": ["warn"],
+      "no-underscore-dangle": "off",
+      "linebreak-style": ["error", "windows"],
+      "no-plusplus": "off"
+    },
+    "ignorePatterns": ["**/*.test.js"]
+  }
