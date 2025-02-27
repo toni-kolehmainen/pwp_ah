@@ -46,7 +46,7 @@ router.delete('/bid/:bid_id', bidController.deleteBid);
 
 // Auction routes
 router.get('/auctions', auctionsController.getAuctions); // List all auctions
-router.get('/auction/:id', auctionController.getAuction); // Get specific auction
+router.get('/auction/:id', auctionController.getAuctionById); // Get specific auction
 router.post('/auction', middleware.authenticateJWT, auctionController.addAuction); // Create new auction
 router.delete('/auction/:id', middleware.authenticateJWT, auctionController.deleteAuction); // Delete auction
 // router.delete('/auctions', middleware.authenticateJWT, auctionsController.deleteAuctions); // Delete all auctions

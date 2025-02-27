@@ -1,10 +1,15 @@
 const { Auction } = require('../models');
+const Item = require('../models/item'); // Import the Item model
+const User = require('../models/user'); // Import the User model
 
-// GET /auction/:id: Get a specific auction by ID
-const getAuction = async (req, res, next) => {
+const getAuctionById = async (req, res, next) => {
   try {
-    const auction = await Auction.findByPk(req.params.id, {
-      attributes: ['id', 'desctription', 'end_time', 'starting_price', 'current_price']
+    const { id } = req.params;
+    const auction = await Auction.findByPk(id, {
+      include: [
+        { model: Item, as: 'item' }, // Include related item
+        { model: User, as: 'seller' } // Include seller details
+      ]
     });
     if (!auction) {
       return res.status(404).json({ error: 'Auction not found' });
@@ -17,10 +22,13 @@ const getAuction = async (req, res, next) => {
   }
 };
 
+
 // POST /auction: Create a new auction
 const addAuction = async (req, res, next) => {
   try {
-    const { desctription, starting_price, end_time } = req.body;
+
+    const { item_id,desctription, starting_price, end_time  } = req.body;
+    const seller_id = req.user.id;
 
     // Validate required fields
     if (!starting_price || starting_price <= 0) {
@@ -28,6 +36,8 @@ const addAuction = async (req, res, next) => {
     }
 
     const auction = await Auction.create({
+      item_id,
+      seller_id,
       desctription,
       starting_price,
       current_price: starting_price,
@@ -59,7 +69,8 @@ const deleteAuction = async (req, res, next) => {
 };
 
 module.exports = {
-  getAuction,
+  // getAuction,
+  getAuctionById,
   addAuction,
   deleteAuction,
 };
