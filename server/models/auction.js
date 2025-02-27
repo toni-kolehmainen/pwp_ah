@@ -14,16 +14,18 @@ Auction.init({
     type: DataTypes.TEXT,
     allowNull: true
   },
-  // item_id: {
-  //   type: DataTypes.INTEGER,
-  //   allowNull: false,
-  //   references: { model: 'items', key: 'id', onDelete: 'CASCADE' },
-  // },
-  // seller_id: {
-  //   type: DataTypes.INTEGER,
-  //   allowNull: false,
-  //   references: { model: 'users', key: 'id', onDelete: 'CASCADE' },
-  // },
+  item_id: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+    references: { model: 'items', key: 'id', onDelete: 'CASCADE' },
+  },
+  seller_id: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+    references: { model: 'users', key: 'id' },
+    onUpdate: 'CASCADE',
+    onDelete: 'CASCADE'
+  },
   end_time: {
     type: DataTypes.DATE,
     allowNull: false,
@@ -48,5 +50,6 @@ Auction.init({
   timestamps: true,
   modelName: 'auction'
 });
+
 
 module.exports = Auction;
