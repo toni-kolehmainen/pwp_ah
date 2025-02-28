@@ -51,5 +51,4 @@ router.post('/auction', middleware.authenticateJWT, auctionController.addAuction
 router.delete('/auction/:id', middleware.authenticateJWT, auctionController.deleteAuction); // Delete auction
 // router.delete('/auctions', middleware.authenticateJWT, auctionsController.deleteAuctions); // Delete all auctions
 
-
 module.exports = router;
