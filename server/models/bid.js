@@ -36,9 +36,6 @@ const { sequelize } = require('../utils/db');
 
 // module.exports = Bid;
 
-
-
-
 class Bid extends Model { }
 Bid.init({
   id: {

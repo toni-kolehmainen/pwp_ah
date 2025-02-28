@@ -51,9 +51,7 @@
 //   modelName: 'auction'
 // });
 
-
 // module.exports = Auction;
-
 
 const { Model, DataTypes } = require('sequelize');
 const Sequelize = require('sequelize');
@@ -67,50 +65,50 @@ Auction.init(
     id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
-      autoIncrement: true,
+      autoIncrement: true
     },
     description: {
       type: DataTypes.TEXT,
-      allowNull: true,
+      allowNull: true
     },
     item_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
       references: { model: 'items', key: 'id' },
       onUpdate: 'CASCADE',
-      onDelete: 'CASCADE',
+      onDelete: 'CASCADE'
     },
     seller_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
       references: { model: 'users', key: 'id' },
       onUpdate: 'CASCADE',
-      onDelete: 'CASCADE',
+      onDelete: 'CASCADE'
     },
     end_time: {
       type: DataTypes.DATE,
       allowNull: false,
-      defaultValue: Sequelize.literal('NOW() + INTERVAL \'24 hours\''),
+      defaultValue: Sequelize.literal('NOW() + INTERVAL \'24 hours\'')
     },
     starting_price: {
       type: DataTypes.DECIMAL(10, 2),
       allowNull: false,
       validate: {
         isDecimal: true,
-        min: 0.00,
-      },
+        min: 0.00
+      }
     },
     current_price: {
       type: DataTypes.DECIMAL(10, 2),
       allowNull: false,
-      defaultValue: 0.00,
-    },
+      defaultValue: 0.00
+    }
   },
   {
     sequelize,
     modelName: 'auction',
     timestamps: true,
-    underscored: true,
+    underscored: true
   }
 );
 

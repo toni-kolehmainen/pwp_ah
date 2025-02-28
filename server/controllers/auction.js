@@ -22,12 +22,12 @@ const getAuctionById = async (req, res, next) => {
   }
 };
 
-
 // POST /auction: Create a new auction
 const addAuction = async (req, res, next) => {
   try {
-
-    const { item_id,desctription, starting_price, end_time  } = req.body;
+    const {
+      item_id, desctription, starting_price, end_time
+    } = req.body;
     const seller_id = req.user.id;
 
     // Validate required fields
@@ -72,5 +72,5 @@ module.exports = {
   // getAuction,
   getAuctionById,
   addAuction,
-  deleteAuction,
+  deleteAuction
 };

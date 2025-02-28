@@ -2,13 +2,12 @@ const { Auction } = require('../models');
 const Item = require('../models/item'); // Import the Item model
 const User = require('../models/user'); // Import the User model
 
-
 // GET /auctions: List all auctions
 
 const getAuctions = async (req, res, next) => {
   try {
     const auctions = await Auction.findAll({
-      attributes: ['id', 'description', 'end_time', 'starting_price', 'current_price', 'user_id','item_id', 'seller_id'],
+      attributes: ['id', 'description', 'end_time', 'starting_price', 'current_price', 'user_id', 'item_id', 'seller_id'],
       order: [['end_time', 'ASC']] // Optional: Order by end_time ascending
     });
     if (!auctions) {
@@ -36,7 +35,6 @@ const getAuctions = async (req, res, next) => {
 // };
 
 module.exports = {
-  getAuctions,
+  getAuctions
   // deleteAuctions,
 };
-

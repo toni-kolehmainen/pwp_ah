@@ -5,7 +5,7 @@ const getBids = async (req, res) => {
   if (!bids) {
     return res.status(204).end();
   }
-  console.log("all bids data -> ",bids);
+  console.log('all bids data -> ', bids);
   return res.json(bids);
 };
 
