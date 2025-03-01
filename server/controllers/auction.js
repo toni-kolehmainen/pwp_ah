@@ -1,37 +1,33 @@
 const { Auction } = require('../models');
-const Item = require('../models/item'); // Import the Item model
-const User = require('../models/user'); // Import the User model
+const Item = require('../models/item');
+const User = require('../models/user');
+const { validate } = require('../utils/validation');
+const schemas = require('../utils/schemas');
 
 const getAuctionById = async (req, res, next) => {
   try {
     const { id } = req.params;
     const auction = await Auction.findByPk(id, {
       include: [
-        { model: Item, as: 'item' }, // Include related item
-        { model: User, as: 'seller' } // Include seller details
+        { model: Item, as: 'item' },
+        { model: User, as: 'seller' }
       ]
     });
+    
     if (!auction) {
       return res.status(404).json({ error: 'Auction not found' });
     }
+    
     return res.json(auction);
   } catch (error) {
     return res.status(500).json({ error: 'Internal Server Error' });
   }
 };
 
-// POST /auction: Create a new auction
 const addAuction = async (req, res, next) => {
   try {
-    const {
-      item_id, description, starting_price, end_time
-    } = req.body;
+    const { item_id, description, starting_price, end_time } = req.body;
     const seller_id = req.user.id;
-
-    // Validate required fields
-    if (!starting_price || starting_price <= 0) {
-      return res.status(400).json({ error: 'Invalid starting price' });
-    }
 
     const auction = await Auction.create({
       item_id,
@@ -53,7 +49,6 @@ const addAuction = async (req, res, next) => {
   }
 };
 
-// DELETE /auction/:id: Delete an auction by ID
 const deleteAuction = async (req, res, next) => {
   try {
     const auction = await Auction.findByPk(req.params.id);
@@ -73,8 +68,9 @@ const deleteAuction = async (req, res, next) => {
   }
 };
 
+// Export router configuration with validation middleware applied
 module.exports = {
-  getAuctionById,
-  addAuction,
-  deleteAuction
+  getAuctionById: [validate(schemas.auctionId, 'params'), getAuctionById],
+  addAuction: [validate(schemas.auctionCreate, 'body'), addAuction],
+  deleteAuction: [validate(schemas.auctionId, 'params'), deleteAuction]
 };
