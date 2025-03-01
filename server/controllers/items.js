@@ -1,3 +1,4 @@
+
 const { Item } = require('../models');
 
 // hypermedia
@@ -9,7 +10,7 @@ const getItems = async (req, res, next) => {
     if (!items || items.length === 0) {
       return res.status(204).end();
     }
-    res.json(items);
+    return res.json(items);
   } catch (e) {
     const error = new Error(e.message);
     error.name = e.name;
