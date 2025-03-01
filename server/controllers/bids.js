@@ -14,7 +14,7 @@ const getBids = async (req, res) => {
     // ],
     // attributes: { exclude: ['buyer_id', 'auction_id'] }
   });
-  if (!bids) {
+  if (bids.length === 0) {
     return res.status(204).end();
   }
   return res.json(bids);
