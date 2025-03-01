@@ -13,11 +13,11 @@ const getAuctionById = async (req, res, next) => {
         { model: User, as: 'seller' }
       ]
     });
-    
+
     if (!auction) {
       return res.status(404).json({ error: 'Auction not found' });
     }
-    
+
     return res.json(auction);
   } catch (error) {
     return res.status(500).json({ error: 'Internal Server Error' });
@@ -26,7 +26,9 @@ const getAuctionById = async (req, res, next) => {
 
 const addAuction = async (req, res, next) => {
   try {
-    const { item_id, description, starting_price, end_time } = req.body;
+    const {
+      item_id, description, starting_price, end_time
+    } = req.body;
     const seller_id = req.user.id;
 
     const auction = await Auction.create({
@@ -44,7 +46,7 @@ const addAuction = async (req, res, next) => {
     if (error.name === 'SequelizeValidationError' || error.name === 'SequelizeForeignKeyConstraintError') {
       return res.status(400).json({ error: error.message });
     }
-    
+
     return res.status(500).json({ error: 'Internal Server Error' });
   }
 };
@@ -55,12 +57,12 @@ const deleteAuction = async (req, res, next) => {
     if (!auction) {
       return res.status(404).json({ error: 'Auction not found' });
     }
-    
+
     // Check if user is authorized to delete this auction
     if (auction.seller_id !== req.user.id) {
       return res.status(403).json({ error: 'Not authorized to delete this auction' });
     }
-    
+
     await auction.destroy();
     return res.json({ message: 'Auction deleted successfully' });
   } catch (error) {

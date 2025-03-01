@@ -10,29 +10,25 @@ addFormats(ajv); // Add support for additional formats
  * @param {String} property - The request property to validate (body, params, query)
  * @returns {Function} Express middleware function
  */
-const validate = (schema, property) => {
-  return (req, res, next) => {
-    const data = req[property];
-    const validate = ajv.compile(schema);
-    const valid = validate(data);
-    
-    if (!valid) {
-      const errors = validate.errors.map(error => {
-        return {
-          path: error.instancePath || '',
-          message: error.message,
-          params: error.params
-        };
-      });
-      
-      return res.status(400).json({
-        error: 'Validation Error',
-        details: errors
-      });
-    }
-    
-    next();
-  };
+const validate = (schema, property) => (req, res, next) => {
+  const data = req[property];
+  const validate = ajv.compile(schema);
+  const valid = validate(data);
+
+  if (!valid) {
+    const errors = validate.errors.map((error) => ({
+      path: error.instancePath || '',
+      message: error.message,
+      params: error.params
+    }));
+
+    return res.status(400).json({
+      error: 'Validation Error',
+      details: errors
+    });
+  }
+
+  next();
 };
 
 module.exports = { validate };
