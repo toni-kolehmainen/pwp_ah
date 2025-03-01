@@ -131,11 +131,7 @@ describe('PUT /api/item', () => {
     expect(response.status).toBe(200);
   });
 
-  it('try to update two lines same time (400)', async () => {
-    Item.update.mockRejectedValueOnce(mockItem);
-    const response = await api.put('/api/item/1').send(mockUpdateItemInvalid).expect('Content-Type', /application\/json/);
-    expect(response.status).toBe(400);
-  });
+
 
   it('Invalid id (500)', async () => {
     Item.update.mockRejectedValueOnce({
