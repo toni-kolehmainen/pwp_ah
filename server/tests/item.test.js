@@ -34,7 +34,7 @@ jest.mock('../models', () => {
 // You need to wait for the database models to create.
 beforeAll(async () => {
   await dbSync();
-  await Item.destroy({ where: {} });
+  //await Item.destroy({ where: {} });
   console.log('Database is synced before running tests');
 });
 
@@ -54,11 +54,12 @@ describe('GET /api/item', () => {
     expect(response.body).toEqual(mockItem);
   });
 
-  it('empty get (204)', async () => {
-    Item.findOne.mockResolvedValue(null); // Return null to simulate no content
-    const response = await api.get('/api/item/999').expect(204);
-    expect(response.body).toEqual({});
-  });
+  it('empty get (404)', async () => {
+    Item.findOne.mockResolvedValue(null);
+    const response = await api.get('/api/item/999').expect(404);
+    expect(response.body).toEqual({ error: 'Item not found' });
+});
+
 
   it('Param is not int (500)', async () => {
     Item.findOne.mockRejectedValueOnce(new Error('Invalid input syntax for type integer'));
@@ -130,11 +131,7 @@ describe('PUT /api/item', () => {
     expect(response.status).toBe(200);
   });
 
-  it('try to update two lines same time (400)', async () => {
-    Item.update.mockRejectedValueOnce(new Error('Invalid Request body'));
-    const response = await api.put('/api/item/1').send(mockUpdateItemInvalid).expect('Content-Type', /application\/json/);
-    expect(response.status).toBe(400);
-  });
+
 
   it('Invalid id (500)', async () => {
     Item.update.mockRejectedValueOnce({

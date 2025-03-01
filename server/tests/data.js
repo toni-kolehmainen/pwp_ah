@@ -48,14 +48,14 @@ const mockCategoryWrong = {
 const mockItem = {
   name: 'Sample Item',
   description: 'This is a sample item.',
-  user_id: 1,
-  category_id: 1
+  userId: 1,
+  categoryId: 1
 };
 
 const mockItemWrong = {
   description: 'This is a sample item without a name.',
-  user_id: 1,
-  category_id: 1
+  userId: 1,
+  categoryId: 1
 };
 
 const mockUpdateItem = {
@@ -76,15 +76,15 @@ const mockItems = [
     id: 1,
     name: 'Sample Item 1',
     description: 'This is a sample item 1.',
-    user_id: 1,
-    category_id: 1
+    userId: 1,
+    categoryId: 1
   },
   {
     id: 2,
     name: 'Sample Item 2',
     description: 'This is a sample item 2.',
-    user_id: 2,
-    category_id: 2
+    userId: 2,
+    categoryId: 2
   }
 ];
 
@@ -104,3 +104,4 @@ module.exports = {
   mockUpdateItem1,
   mockItems
 };
+
