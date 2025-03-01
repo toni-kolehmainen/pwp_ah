@@ -68,7 +68,7 @@ afterAll(async () => {
 
 describe('GET /api', () => {
   it('should return status 204 and empty', async () => {
-    Bid.findAll.mockResolvedValue();
+    Bid.findAll.mockResolvedValue([]);
     const response = await api.get('/api/bids').expect(204);
     expect(response.body).toEqual({});
   });

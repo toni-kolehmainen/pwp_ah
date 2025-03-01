@@ -41,7 +41,7 @@ afterAll(async () => {
 
 describe('GET /api', () => {
   it('should return status 204 and empty', async () => {
-    User.findAll.mockResolvedValue();
+    User.findAll.mockResolvedValue([]);
     const response = await api.get('/api/users').expect(204);
     expect(response.body).toEqual({});
   });
