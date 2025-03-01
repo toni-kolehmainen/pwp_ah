@@ -15,10 +15,8 @@ const getAuctionById = async (req, res, next) => {
       return res.status(404).json({ error: 'Auction not found' });
     }
     return res.json(auction);
-  } catch (e) {
-    const error = new Error(e.message);
-    error.name = e.name;
-    return next(error);
+  } catch (error) {
+    return res.status(500).json({ error: 'Internal Server Error' });
   }
 };
 
@@ -26,7 +24,7 @@ const getAuctionById = async (req, res, next) => {
 const addAuction = async (req, res, next) => {
   try {
     const {
-      item_id, desctription, starting_price, end_time
+      item_id, description, starting_price, end_time
     } = req.body;
     const seller_id = req.user.id;
 
@@ -38,17 +36,20 @@ const addAuction = async (req, res, next) => {
     const auction = await Auction.create({
       item_id,
       seller_id,
-      desctription,
+      description,
       starting_price,
       current_price: starting_price,
       end_time: end_time || new Date(new Date().getTime() + 24 * 60 * 60 * 1000) // 24 hours
     });
 
     return res.status(201).json(auction);
-  } catch (e) {
-    const error = new Error(e.message);
-    error.name = e.name;
-    return next(error);
+  } catch (error) {
+    // Handle specific validation errors
+    if (error.name === 'SequelizeValidationError' || error.name === 'SequelizeForeignKeyConstraintError') {
+      return res.status(400).json({ error: error.message });
+    }
+    
+    return res.status(500).json({ error: 'Internal Server Error' });
   }
 };
 
@@ -59,17 +60,20 @@ const deleteAuction = async (req, res, next) => {
     if (!auction) {
       return res.status(404).json({ error: 'Auction not found' });
     }
+    
+    // Check if user is authorized to delete this auction
+    if (auction.seller_id !== req.user.id) {
+      return res.status(403).json({ error: 'Not authorized to delete this auction' });
+    }
+    
     await auction.destroy();
     return res.json({ message: 'Auction deleted successfully' });
-  } catch (e) {
-    const error = new Error(e.message);
-    error.name = e.name;
-    return next(error);
+  } catch (error) {
+    return res.status(500).json({ error: 'Internal Server Error' });
   }
 };
 
 module.exports = {
-  // getAuction,
   getAuctionById,
   addAuction,
   deleteAuction
