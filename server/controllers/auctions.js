@@ -6,19 +6,21 @@ const schemas = require('../utils/schemas');
 
 const getAuctions = async (req, res, next) => {
   try {
-    const { limit = 10, offset = 0, sort = 'end_time', order = 'ASC' } = req.query;
-    
+    const {
+      limit = 10, offset = 0, sort = 'end_time', order = 'ASC'
+    } = req.query;
+
     const auctions = await Auction.findAll({
       attributes: ['id', 'description', 'end_time', 'starting_price', 'current_price', 'user_id', 'item_id', 'seller_id'],
       order: [[sort, order]],
       limit: parseInt(limit, 10),
       offset: parseInt(offset, 10)
     });
-    
+
     if (!auctions || auctions.length === 0) {
       return res.status(204).end();
     }
-    
+
     return res.json(auctions);
   } catch (error) {
     return res.status(500).json({ error: 'Internal Server Error' });
