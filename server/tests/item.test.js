@@ -34,7 +34,7 @@ jest.mock('../models', () => {
 // You need to wait for the database models to create.
 beforeAll(async () => {
   await dbSync();
-  await Item.destroy({ where: {} });
+  //await Item.destroy({ where: {} });
   console.log('Database is synced before running tests');
 });
 
@@ -132,7 +132,7 @@ describe('PUT /api/item', () => {
   });
 
   it('try to update two lines same time (400)', async () => {
-    Item.update.mockRejectedValueOnce(new Error('Invalid Request body'));
+    Item.update.mockRejectedValueOnce(mockItem);
     const response = await api.put('/api/item/1').send(mockUpdateItemInvalid).expect('Content-Type', /application\/json/);
     expect(response.status).toBe(400);
   });

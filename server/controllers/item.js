@@ -69,24 +69,28 @@ const addItem = async (req, res, next) => {
 };
 
 const updateItem = async (req, res, next) => {
-  const validate = ajv.compile(updateSchema);
-  const valid = validate(req.body);
-  if (!valid) {
-    const error = new Error('Invalid Request body');
-    error.name = 'ValidationError';
-    return next(error);
-  }
   try {
+    const validate = ajv.compile(updateSchema);
+    const valid = validate(req.body);
+
+    if (!valid) {
+      const error = new Error('Invalid Request body');
+      error.name = 'ValidationError';
+      return next(error);
+    }
+
     const [updated] = await Item.update(req.body, {
       where: {
         id: req.params.id
       }
     });
+
     if (updated) {
       const updatedItem = await Item.findOne({ where: { id: req.params.id } });
       return res.status(200).json(updatedItem);
     }
-    throw new Error('Item not found');
+
+    return res.status(404).json({ error: 'Item not found' });
   } catch (e) {
     const error = new Error(e.message);
     error.name = e.name;
