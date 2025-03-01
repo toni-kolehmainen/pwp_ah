@@ -29,6 +29,7 @@ const updateSchema = {
 
 const getItem = async (req, res, next) => {
   try {
+
     const item = await Item.findOne({
       where: {
         id: req.params.id
@@ -50,6 +51,7 @@ const getItem = async (req, res, next) => {
 const addItem = async (req, res, next) => {
   const validate = ajv.compile(addSchema);
   const valid = validate(req.body);
+  
   if (!valid) {
     const error = new Error('Invalid Request body');
     error.name = 'ValidationError';

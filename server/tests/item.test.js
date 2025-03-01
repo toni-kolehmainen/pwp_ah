@@ -54,11 +54,12 @@ describe('GET /api/item', () => {
     expect(response.body).toEqual(mockItem);
   });
 
-  it('empty get (204)', async () => {
-    Item.findOne.mockResolvedValue(null); // Return null to simulate no content
-    const response = await api.get('/api/item/999').expect(204);
-    expect(response.body).toEqual({});
-  });
+  it('empty get (404)', async () => {
+    Item.findOne.mockResolvedValue(null);
+    const response = await api.get('/api/item/999').expect(404);
+    expect(response.body).toEqual({ error: 'Item not found' });
+});
+
 
   it('Param is not int (500)', async () => {
     Item.findOne.mockRejectedValueOnce(new Error('Invalid input syntax for type integer'));
