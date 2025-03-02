@@ -4,12 +4,14 @@ use dotenv::dotenv;
 use reqwest::{header, Client};
 use std::env;
 use std::error::Error;
+use std::time::Instant;
 
 pub async fn login_user(client: &Client) -> Result<(), Box<dyn Error>> {
     Ok(())
 }
 
 pub async fn fetch_users(client: &Client) -> Result<(), Box<dyn Error>> {
+    let start = Instant::now();
     let base_url = get_base_url().await;
     let url = format!("{}/users", base_url);
 
@@ -20,6 +22,8 @@ pub async fn fetch_users(client: &Client) -> Result<(), Box<dyn Error>> {
             for user in users {
                 println!("ID: {}, Name: {}", user.id.unwrap(), user.name);
             }
+            let duration = start.elapsed();
+            println!("Time taken: {:?}", duration);
             Ok(())
         }
         Err(e) => {
@@ -30,6 +34,7 @@ pub async fn fetch_users(client: &Client) -> Result<(), Box<dyn Error>> {
 }
 
 pub async fn fetch_user(client: &Client, user_id: i32) -> Result<(), Box<dyn Error>> {
+    let start = Instant::now();
     let base_url = get_base_url().await;
     let url = format!("{}/user/{}", base_url, user_id);
     println!("URL: {:?}", &url);
@@ -42,6 +47,8 @@ pub async fn fetch_user(client: &Client, user_id: i32) -> Result<(), Box<dyn Err
 
             let user: User = serde_json::from_str(&body)?;
             println!("ID: {}, Name: {}", user.id.unwrap(), user.name);
+            let duration = start.elapsed();
+            println!("Time taken: {:?}", duration);
             Ok(())
         }
         Err(e) => {
@@ -65,7 +72,7 @@ pub async fn add_user(client: &Client, user: User) -> Result<(), Box<dyn Error>>
     if response.status().is_success() {
         let created_user: User = response.json().await?;
         println!(
-            "Created Category - Name: {}, Description: {}",
+            "Created User - Name: {}, Description: {}",
             created_user.id.unwrap(),
             created_user.name
         );
