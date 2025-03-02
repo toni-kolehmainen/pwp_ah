@@ -22,6 +22,11 @@ app.use((_, res, next) => {
 });
 
 app.use(middleware.limiter);
+
+// Adding the cache middleware before the router
+
+app.use(middleware.cacheMiddleware);
+
 app.use('/api', router);
 app.use(middleware.requestLogger);
 app.use(middleware.unknownEndpoint);

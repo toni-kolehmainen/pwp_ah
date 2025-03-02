@@ -41,7 +41,7 @@ PASSWORD = Password in postgres
 ## Dependencies
 Dependencies
 ```sh
-npm install pg, sequelize, cors, express
+npm install pg, sequelize, cors, express, node-cache
 ```
 Dev-Dependencies
 ```sh

@@ -1,6 +1,7 @@
 const rateLimit = require('express-rate-limit');
 const jwt = require('jsonwebtoken');
 const logger = require('./logger');
+const { cacheMiddleware } = require('./cacheMiddleware');
 
 const requestLogger = (request, response, next) => {
   logger.info('Method:', request.method);
@@ -61,5 +62,6 @@ module.exports = {
   unknownEndpoint,
   errorHandler,
   limiter,
-  authenticateJWT
+  authenticateJWT,
+  cacheMiddleware
 };

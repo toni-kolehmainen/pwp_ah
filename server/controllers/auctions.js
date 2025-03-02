@@ -18,11 +18,11 @@ const getAuctions = async (req, res, next) => {
     });
 
     if (!auctions || auctions.length === 0) {
-      return res.status(204).end();
+      return res.status(204).send(); 
     }
-
-    return res.json(auctions);
+    return res.status(200).json(auctions);
   } catch (error) {
+    console.error("Error in getAuctions: ", error);
     return res.status(500).json({ error: 'Internal Server Error' });
   }
 };

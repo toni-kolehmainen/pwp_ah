@@ -4,16 +4,22 @@ const addFormats = require('ajv-formats');
 const ajv = new Ajv({ allErrors: true });
 addFormats(ajv); // Add support for additional formats
 
-/**
- * Middleware factory for validating request data against a JSON schema
- * @param {Object} schema - The JSON schema to validate against
- * @param {String} property - The request property to validate (body, params, query)
- * @returns {Function} Express middleware function
- */
+
 const validate = (schema, property) => (req, res, next) => {
   const data = req[property];
+  console.log("validations is going on",data);
+  
+  if (property === 'params' && data.id) {
+    const parsedId = parseInt(data.id, 10);
+    if (!isNaN(parsedId)) {
+      data.id = parsedId;
+    }
+  }
+    console.log("validations after going on",data);
+
   const validate = ajv.compile(schema);
   const valid = validate(data);
+  console.log("validations is going on valid ",valid);
 
   if (!valid) {
     const errors = validate.errors.map((error) => ({
