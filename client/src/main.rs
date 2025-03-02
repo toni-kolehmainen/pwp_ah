@@ -1,8 +1,7 @@
 mod api;
 mod models;
 
-use crate::models::Item;
-use api::{add_category, add_item, fetch_categories, fetch_items, fetch_user, fetch_users};
+use crate::models::{Item, User};
 use clap::{Parser, Subcommand};
 use reqwest::Client;
 use std::error::Error;
@@ -22,14 +21,29 @@ enum Commands {
     /// Fetch a user by ID
     FetchUser {
         /// User ID
-        id: u32,
+        id: i32,
     },
+
+    /// Create new user
+    CreateUser {
+        name: String,
+        nickname: String,
+        email: String,
+        phone: String,
+        password: String,
+    },
+
+    /// Delete user by ID
+    DeleteUser { id: i32 },
+
+    /// Update existing user by ID
+    UpdateUser { id: i32 },
 
     /// Fetch all items
     FetchItems,
 
     /// Create new item
-    CreateItem {
+    AddItem {
         name: String,
         description: String,
         userId: i32,
@@ -56,15 +70,38 @@ async fn main() -> Result<(), Box<dyn Error>> {
 
     match args.command {
         Commands::FetchUsers => {
-            fetch_users(&client).await?;
+            api::fetch_users(&client).await?;
         }
         Commands::FetchUser { id } => {
-            fetch_user(&client, id.try_into().unwrap()).await?;
+            api::fetch_user(&client, id.try_into().unwrap()).await?;
+        }
+        Commands::CreateUser {
+            name,
+            nickname,
+            email,
+            phone,
+            password,
+        } => {
+            let user = User {
+                id: None,
+                name,
+                nickname,
+                email,
+                phone,
+                password,
+            };
+            api::add_user(&client, user).await?;
+        }
+        Commands::DeleteUser { id } => {
+            api::delete_user(&client, id).await?;
+        }
+        Commands::UpdateUser { id } => {
+            api::update_user(&client).await?;
         }
         Commands::FetchItems => {
-            fetch_items(&client).await?;
+            api::fetch_items(&client).await?;
         }
-        Commands::CreateItem {
+        Commands::AddItem {
             name,
             description,
             userId,
@@ -76,13 +113,13 @@ async fn main() -> Result<(), Box<dyn Error>> {
                 userId,
                 categoryId,
             };
-            add_item(&client, item).await?;
+            api::add_item(&client, item).await?;
         }
         Commands::FetchCategories => {
-            fetch_categories(&client).await?;
+            api::fetch_categories(&client).await?;
         }
         Commands::AddCategory { name, description } => {
-            add_category(&client, name, description).await?
+            api::add_category(&client, name, description).await?
         }
         _ => unimplemented!(),
     }

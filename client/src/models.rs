@@ -1,7 +1,9 @@
+use chrono::NaiveDateTime;
 use serde::{Deserialize, Serialize};
-#[derive(Deserialize, Debug)]
+
+#[derive(Serialize, Deserialize, Debug)]
 pub struct User {
-    pub id: u32,
+    pub id: Option<i32>,
     pub name: String,
     pub nickname: String,
     pub email: String,
@@ -21,4 +23,19 @@ pub struct Item {
 pub struct Category {
     pub name: String,
     pub description: String,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Bid {
+    pub id: i32,
+    pub amount: f32,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Auction {
+    pub id: i32,
+    pub description: String,
+    pub end_time: NaiveDateTime,
+    pub starting_price: f32,
+    pub current_price: f32,
 }

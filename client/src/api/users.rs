@@ -1,20 +1,24 @@
 use crate::api::utils::get_base_url;
 use crate::models::User;
 use dotenv::dotenv;
-use reqwest::Client;
+use reqwest::{header, Client};
 use std::env;
 use std::error::Error;
 
+pub async fn login_user(client: &Client) -> Result<(), Box<dyn Error>> {
+    Ok(())
+}
+
 pub async fn fetch_users(client: &Client) -> Result<(), Box<dyn Error>> {
-    let base_url = get_base_url().await; // Get the base URL once
-    let url = format!("{}/users", base_url); // Append endpoint
+    let base_url = get_base_url().await;
+    let url = format!("{}/users", base_url);
 
     let response = client.get(&url).send().await;
     match response {
         Ok(res) => {
             let users: Vec<User> = res.json().await?;
             for user in users {
-                println!("ID: {}, Name: {}", user.id, user.name);
+                println!("ID: {}, Name: {}", user.id.unwrap(), user.name);
             }
             Ok(())
         }
@@ -26,20 +30,18 @@ pub async fn fetch_users(client: &Client) -> Result<(), Box<dyn Error>> {
 }
 
 pub async fn fetch_user(client: &Client, user_id: i32) -> Result<(), Box<dyn Error>> {
-    let base_url = get_base_url().await; // Get the base URL once
-    let url = format!("{}/user/{}", base_url, user_id); // Append the user ID to the URL
+    let base_url = get_base_url().await;
+    let url = format!("{}/user/{}", base_url, user_id);
     println!("URL: {:?}", &url);
 
     let response = client.get(&url).send().await;
     match response {
         Ok(res) => {
-            // Check the response body before attempting to deserialize
             let body = res.text().await?;
-            println!("Response body: {}", body); // Log the response for debugging
+            println!("Response body: {}", body);
 
-            // Deserialize the user object
             let user: User = serde_json::from_str(&body)?;
-            println!("ID: {}, Name: {}", user.id, user.name);
+            println!("ID: {}, Name: {}", user.id.unwrap(), user.name);
             Ok(())
         }
         Err(e) => {
@@ -47,4 +49,37 @@ pub async fn fetch_user(client: &Client, user_id: i32) -> Result<(), Box<dyn Err
             Err(Box::new(e))
         }
     }
+}
+
+pub async fn add_user(client: &Client, user: User) -> Result<(), Box<dyn Error>> {
+    let base_url = get_base_url().await;
+    let url = format!("{}/user", base_url);
+
+    let response = client
+        .post(&url)
+        .json(&user)
+        .header(header::CONTENT_TYPE, "application/json")
+        .send()
+        .await?;
+
+    if response.status().is_success() {
+        let created_user: User = response.json().await?;
+        println!(
+            "Created Category - Name: {}, Description: {}",
+            created_user.id.unwrap(),
+            created_user.name
+        );
+    } else {
+        eprintln!("Failed to create user: {}", response.status());
+    }
+
+    Ok(())
+}
+
+pub async fn update_user(client: &Client) -> Result<(), Box<dyn Error>> {
+    Ok(())
+}
+
+pub async fn delete_user(client: &Client, id: i32) -> Result<(), Box<dyn Error>> {
+    Ok(())
 }
