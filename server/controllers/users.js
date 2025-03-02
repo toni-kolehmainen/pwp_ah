@@ -1,4 +1,3 @@
-
 const { User } = require('../models');
 
 // hypermedia
@@ -7,7 +6,7 @@ const { User } = require('../models');
 const getUsers = async (req, res) => {
   const users = await User.findAll({
     attributes: { exclude: ['password'] }
-  })
+  });
   if (users.length === 0) {
     return res.status(204).end();
   }

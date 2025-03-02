@@ -104,4 +104,3 @@ module.exports = {
   mockUpdateItem1,
   mockItems
 };
-
