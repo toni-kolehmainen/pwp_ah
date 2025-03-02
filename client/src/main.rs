@@ -23,7 +23,6 @@ enum MainCommand {
     Category(CategoryGroup),
 }
 
-// Wrap the user subcommands in a struct that implements Parser.
 #[derive(Parser, Debug)]
 struct UserGroup {
     #[clap(subcommand)]
@@ -32,6 +31,12 @@ struct UserGroup {
 
 #[derive(Subcommand, Debug)]
 enum UserCommands {
+    /// Login User,
+    Login {
+        id: i32,
+        email: String,
+        password: String,
+    },
     /// Fetch all users
     FetchUsers,
     /// Fetch a user by ID
@@ -42,7 +47,7 @@ enum UserCommands {
         nickname: String,
         email: String,
         phone: String,
-        password: String,
+        password: Option<String>,
     },
     /// Delete a user by ID
     DeleteUser { id: i32 },
@@ -50,7 +55,6 @@ enum UserCommands {
     UpdateUser { id: i32 },
 }
 
-// Similarly wrap the item subcommands.
 #[derive(Parser, Debug)]
 struct ItemGroup {
     #[clap(subcommand)]
@@ -70,7 +74,6 @@ enum ItemCommands {
     },
 }
 
-// And for categories:
 #[derive(Parser, Debug)]
 struct CategoryGroup {
     #[clap(subcommand)]
@@ -97,6 +100,13 @@ async fn main() -> Result<(), Box<dyn Error>> {
 
     match args.command {
         MainCommand::User(user_group) => match user_group.command {
+            UserCommands::Login {
+                id,
+                email,
+                password,
+            } => {
+                api::login_user(&client, id, email, password).await?;
+            }
             UserCommands::FetchUsers => {
                 api::fetch_users(&client).await?;
             }

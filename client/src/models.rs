@@ -9,7 +9,8 @@ pub struct User {
     pub nickname: String,
     pub email: String,
     pub phone: String,
-    pub password: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub password: Option<String>,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -39,4 +40,9 @@ pub struct Auction {
     pub end_time: NaiveDateTime,
     pub starting_price: f32,
     pub current_price: f32,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct LoginResponse {
+    pub token: String,
 }

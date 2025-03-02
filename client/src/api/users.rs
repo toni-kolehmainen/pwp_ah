@@ -1,12 +1,49 @@
 use crate::api::utils::get_base_url;
-use crate::models::User;
+use crate::models::{LoginResponse, User};
 use dotenv::dotenv;
 use reqwest::{header, Client};
+use std::collections::HashMap;
 use std::env;
 use std::error::Error;
 use std::time::Instant;
 
-pub async fn login_user(client: &Client) -> Result<(), Box<dyn Error>> {
+pub async fn login_user(
+    client: &Client,
+    user_id: i32,
+    email: String,
+    password: String,
+) -> Result<(), Box<dyn Error>> {
+    let start = Instant::now();
+    let base_url = get_base_url().await;
+    let url = format!("{}/login/{}", base_url, user_id);
+    let mut payload = HashMap::new();
+    payload.insert("email", email);
+    payload.insert("password", password);
+    let response = client
+        .post(&url)
+        .json(&payload)
+        .header(header::CONTENT_TYPE, "application/json")
+        .send()
+        .await;
+
+    match response {
+        Ok(res) => {
+            if res.status().is_success() {
+                let token: LoginResponse = res.json().await?;
+                println!("Login successful");
+                println!("Token: {}", token.token);
+            } else {
+                println!("Failed to login: HTTP {}", res.status());
+            }
+        }
+        Err(e) => {
+            println!("Failed to send request: {}", e);
+            return Err(Box::new(e));
+        }
+    }
+    let duration = start.elapsed();
+    println!("Time taken: {:?}", duration);
+
     Ok(())
 }
 
