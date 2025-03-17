@@ -55,6 +55,6 @@ describe('GET /api', () => {
   it('should return the mock user', async () => {
     User.findAll.mockResolvedValue([mockUser]);
     const response = await api.get('/api/users').expect(200);
-    expect(response.body).toEqual([mockUser]);
+    expect(response.body).toEqual(mockUser);
   });
 });
