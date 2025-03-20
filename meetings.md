@@ -36,15 +36,32 @@ Fix the naming inconsistencies, add time allocation, create client, choose fitti
 
 
 ## Meeting 3.
-* **DATE:**
-* **ASSISTANTS:**
+* **DATE:17.03.2025**
+* **ASSISTANTS:Iván Sánchez Milara**
 
 ### Minutes
 *Summary of what was discussed during the meeting*
 
+In this session there was a lot of thinks that we went through. 
+- Our code didn't have comments.
+- Endpoint changes for auction and user.
+- /api/auctions?user={user_id} and /api/auctions/{auction_id}/bids
+- we talked the right way of setting the resources. What should user vs users contain.
+- Improve wiki report with examples
+- Some small things, test coverage, issues with caching, code quality
+
 ### Action points
 *List here the actions points discussed with assistants*
 
+Must do:
+- code quality (under 5 min)
+- set the resources right example user doesn't contain post, but users contains it. (same for all the resources)
+- We need check that the table content matches the code.
+- Check the endpoints before continuing.
+- Check the caching issue.
+- add examples
+Maybe do:
+-testing coverage
 
 
 
