@@ -60,8 +60,9 @@ Must do:
 - Check the endpoints before continuing.
 - Check the caching issue.
 - add examples
+
 Maybe do:
--testing coverage
+- testing coverage
 
 
 
