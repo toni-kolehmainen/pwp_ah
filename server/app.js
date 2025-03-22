@@ -22,7 +22,6 @@ app.use((_, res, next) => {
   next();
 });
 
-app.use(middleware.limiter);
 // app.use(middleware.limiter);
 
 // Adding the middleware
