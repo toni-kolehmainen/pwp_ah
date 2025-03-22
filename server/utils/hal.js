@@ -47,6 +47,37 @@ const createHalLinks = (resource, path, canEdit = true, canDelete = true) => {
   return halStructure;
 };
 
+// Function to delete HAL structure for a single resource
+const deleteHalLinks = (path) => {
+  const halStructure = {
+    _links: {
+      self: { href: `/api/${path}/${resource.id}` },
+      create: { href: `/api/${path}`, "method": "POST" },
+      profile: { href: `/profiles/${path}` }
+    },
+    message:`${path.slice(0,-1)} deleted successfully`
+  };
+
+  return halStructure;
+};
+
+// Function to put HAL structure for a single resource
+const putHalLinks = (resource, path) => {
+  const halStructure = {
+    _links: {
+      self: { href: `/api/${path}/${resource.id}` },
+      create: { href: `/api/${path}`, method: "POST" },
+      profile: { href: `/profiles/${path}` },
+      edit: { href: `/api/${path}/${resource.id}`, method: "PUT" },
+      delete: { href: `/api/${path}/${resource.id}`, method: "DELETE" },
+    },
+    ...resource,
+    message:`${path.slice(0,-1)} updated successfully`
+  };
+
+  return halStructure;
+};
+
 // Function to create HAL structure for a resource profile
 const createHalProfile = (resourceId, path, canEdit = true) => {
   const halStructure = {
@@ -101,5 +132,9 @@ const createHalProfile = (resourceId, path, canEdit = true) => {
 };
 
 module.exports = {
-  createHalLinks, createHalEmbedded, createHalProfile
+  createHalLinks, 
+  createHalEmbedded, 
+  createHalProfile, 
+  deleteHalLinks,
+  putHalLinks
 };

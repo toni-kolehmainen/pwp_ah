@@ -82,7 +82,6 @@ jest.mock('../models', () => {
     destroy: jest.fn() // Assuming one row deleted
   };
 
-
   return {
     User: mockModel,
     Item: mockModel,

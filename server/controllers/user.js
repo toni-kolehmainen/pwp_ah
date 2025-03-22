@@ -3,7 +3,7 @@ const Ajv = require('ajv');
 const { User } = require('../models');
 
 const ajv = new Ajv({ coerceTypes: false });
-const { createHalLinks } = require('../utils/hal');
+const { createHalLinks, deleteHalLinks, putHalLinks } = require('../utils/hal');
 
 const updateSchema = {
   type: 'object',
@@ -68,7 +68,7 @@ const updateUser = async (req, res, next) => {
     });
 
     // Return a success response indicating the user was updated
-    return res.json(createHalLinks(user, 'users'));
+    return res.json(putHalLinks(user,'users'));
   } catch (e) {
     // If an error occurs, create a new error object with the error's message
     const error = new Error(e.message);
@@ -90,7 +90,7 @@ const deleteUser = (req, res, next) => {
     }
 
     // Else the deletion is successful, return a response indicating the user was deleted
-    return res.json({ status: 'Deleted' });
+    return res.json(deleteHalLinks('users'));
   }).catch((e) => {
     // If an error occurs during the deletion process, catch and handle it
     const error = new Error(e.message);
