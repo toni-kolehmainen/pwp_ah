@@ -60,15 +60,18 @@ const updateUser = async (req, res, next) => {
       req.body = { ...req.body, password };
     }
     // Update the user in the database based on the user ID from the request params
-    const user = await User.update(req.body, {
+    const [updatedRows, updatedUsers] = await User.update(req.body, {
       where: {
         id: req.params.user_id
       },
-      attributes: { exclude: ['password'] }
+      attributes: { exclude: ['password'] },
+      returning: true,
     });
-
+    console.log("update")
+    console.log(updatedRows)
+    console.log(updatedUsers)
     // Return a success response indicating the user was updated
-    return res.json(putHalLinks(user,'users'));
+    return res.json(putHalLinks(updatedUsers[0].toJSON(),'users'));
   } catch (e) {
     // If an error occurs, create a new error object with the error's message
     const error = new Error(e.message);

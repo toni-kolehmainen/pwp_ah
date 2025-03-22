@@ -31,6 +31,21 @@ jest.mock('../models', () => {
   };
 });
 
+const mockItemUpdate = {
+  id:1,
+  name: 'Sample Item',
+  description: 'This is a sample item.',
+  userId: 1,
+  categoryId: 1,
+  toJSON: jest.fn().mockReturnValue({
+    id:1,
+    name: 'Sample Item',
+    description: 'This is a sample item.',
+    userId: 1,
+    categoryId: 1,
+  })
+};
+
 // You need to wait for the database models to create.
 beforeAll(async () => {
   await dbSync();
@@ -74,18 +89,16 @@ describe('PUT /api/item', () => {
   });
 
   it('Normal valid with description (200)', async () => {
-    Item.update.mockResolvedValueOnce([1]); // Simulate successful update
+    Item.update.mockResolvedValueOnce([1, mockItemUpdate]); // Simulate successful update
     const response = await api.put('/api/items/1').send(mockUpdateItem).expect('Content-Type', /application\/json/);
     expect(response.status).toBe(200);
   });
 
   it('Normal valid with name (200)', async () => {
-    Item.update.mockResolvedValueOnce([1]); // Simulate successful update
+    Item.update.mockResolvedValueOnce([1, mockItemUpdate]); // Simulate successful update
     const response = await api.put('/api/items/1').send(mockUpdateItem1).expect('Content-Type', /application\/json/);
     expect(response.status).toBe(200);
   });
-
-
 
   it('Invalid id (500)', async () => {
     Item.update.mockRejectedValueOnce({
@@ -108,9 +121,18 @@ describe('PUT /api/item', () => {
 
 describe('DELETE /api/item', () => {
   it('should delete an item successfully', async () => {
-    Item.destroy.mockResolvedValueOnce(1); // Simulate successful deletion
+
+    Item.destroy.mockResolvedValueOnce(mockItemUpdate); // Simulate successful deletion
     const response = await api.delete('/api/items/1').expect(200);
-    expect(response.body.message).toBe('Item deleted');
+    const body = response.body;
+
+    // Check for _links
+    expect(body).toHaveProperty('_links');
+    expect(body._links).toHaveProperty('self');
+    expect(body._links).toHaveProperty('create');
+    expect(body._links.create).toHaveProperty('href', '/api/items');
+    expect(body._links.profile).toHaveProperty('href', '/profiles/items');
+    expect(body).toHaveProperty('message', `Deleted successfully from items`);
   });
 
   it('should return 404 when item is not found', async () => {

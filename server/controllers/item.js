@@ -2,7 +2,7 @@ const Ajv = require('ajv');
 const { Item } = require('../models');
 
 const ajv = new Ajv({ coerceTypes: false });
-const { createHalLinks } = require('../utils/hal');
+const { createHalLinks, putHalLinks, deleteHalLinks } = require('../utils/hal');
 
 const updateSchema = {
   type: 'object',
@@ -47,15 +47,15 @@ const updateItem = async (req, res, next) => {
       return next(error);
     }
 
-    const [updated] = await Item.update(req.body, {
+    const [updated, updatedItems] = await Item.update(req.body, {
       where: {
         id: req.params.id
-      }
+      },
+      returning: true,
     });
 
-    if (updated) {
-      const updatedItem = await Item.findOne({ where: { id: req.params.id } });
-      return res.status(200).json(createHalLinks(updatedItem, 'items'));
+    if (updated ==! 0) {
+      return res.status(200).json(putHalLinks(updatedItems, 'items'));
     }
 
     return res.status(404).json({ error: 'Item not found' });
@@ -75,7 +75,7 @@ const deleteItem = async (req, res, next) => {
     });
 
     if (deleted) {
-      return res.status(200).json({ message: 'Item deleted' });
+      return res.json(deleteHalLinks('items'));
     }
 
     return res.status(404).json({ error: 'Item not found' });

@@ -27,6 +27,7 @@ afterAll(async () => {
 beforeEach(() => {
   jest.clearAllMocks(); // Clears any previous mock calls
 });
+
 describe('Item Controller', () => {
   describe('GET /api/items', () => {
     beforeEach(async () => {

@@ -51,11 +51,11 @@ const createHalLinks = (resource, path, canEdit = true, canDelete = true) => {
 const deleteHalLinks = (path) => {
   const halStructure = {
     _links: {
-      self: { href: `/api/${path}/${resource.id}` },
+      self: { href: `/api/${path}` },
       create: { href: `/api/${path}`, "method": "POST" },
       profile: { href: `/profiles/${path}` }
     },
-    message:`${path.slice(0,-1)} deleted successfully`
+    message:`Deleted successfully from ${path}`
   };
 
   return halStructure;
@@ -72,7 +72,7 @@ const putHalLinks = (resource, path) => {
       delete: { href: `/api/${path}/${resource.id}`, method: "DELETE" },
     },
     ...resource,
-    message:`${path.slice(0,-1)} updated successfully`
+    message:`${path} updated successfully`
   };
 
   return halStructure;
