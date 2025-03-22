@@ -32,7 +32,7 @@ const getUser = async (req, res, next) => {
       return res.status(404).end();
     }
     // If user exists, respond with user data and hypermedia
-    return res.json(createHalLinks(user, 'users'));
+    return res.json(createHalLinks(user.toJSON(), 'users'));
   }).catch((e) => {
     // If an error occurs, create a new error object and pass it to the error handler
     const error = new Error(e.message);

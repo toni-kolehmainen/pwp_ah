@@ -16,13 +16,14 @@ const addSchema = {
   additionalProperties: false
 };
 
-const getItems = async (req, res, next) => {
+const getItems = async (req, res) => {
   try {
     const items = await Item.findAll();
     if (!items || items.length === 0) {
       return res.status(204).end();
     }
-    return res.json({
+    console.log(items);
+    return res.status(200).json({
       _links:
         {
           self: { href: '/api/items/' },
@@ -33,24 +34,28 @@ const getItems = async (req, res, next) => {
         items: items.map((item) => createHalEmbedded(item, 'items'))
       }
     });
-  } catch (e) {
-    const error = new Error(e.message);
-    error.name = e.name;
-    return next(error);
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({ error: 'Internal Server Error' });
   }
 };
 
 const addItem = async (req, res, next) => {
-  const validate = ajv.compile(addSchema);
-  const valid = validate(req.body);
-
-  if (!valid) {
-    const error = new Error('Invalid Request body');
-    error.name = 'ValidationError';
-    return next(error);
-  }
-
+  console.log(req.body);
   try {
+    const validate = ajv.compile(addSchema);
+    const valid = validate(req.body);
+    console.log('after validation');
+    if (!valid) {
+      console.log('Invalid Request body');
+      const error = new Error('Invalid Request body');
+      error.name = 'ValidationError';
+      return next(error);
+    }
+    console.log('after Error');
+    console.log(req.body);
+    console.log(valid);
+
     const item = await Item.create(req.body);
     res.status(201).json(createHalLinks(item, 'items'));
   } catch (e) {

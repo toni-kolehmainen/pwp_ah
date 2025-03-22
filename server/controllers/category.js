@@ -26,7 +26,7 @@ const getCategories = async (req, res) => {
         create: { href: '/api/categories', method: 'POST' }
       },
     _embedded: {
-      categories: categories.map((category) => createHalEmbedded(category, 'categories', false, true))
+      categories: categories.map((category) => createHalEmbedded(category.toJSON(), 'categories', false, true))
     }
   });
 };

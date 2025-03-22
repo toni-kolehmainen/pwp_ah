@@ -1,6 +1,7 @@
 const Ajv = require('ajv');
 const bcrypt = require('bcrypt');
 const { User } = require('../models');
+const { cache } = require('../utils/cacheMiddleware');
 
 const ajv = new Ajv({ coerceTypes: false });
 const { createHalLinks, createHalEmbedded } = require('../utils/hal');
@@ -46,6 +47,7 @@ const getUsers = async (req, res) => {
 
 const addUser = async (req, res, next) => {
   try {
+    console.log(req.body);
     // Validate the request body using the addSchema and ajv
     const validate = ajv.compile(addSchema);
     const valid = validate(req.body);
@@ -63,8 +65,9 @@ const addUser = async (req, res, next) => {
 
     // Create a new user in the database
     const user = await User.create(req.body);
-    return res.status(201).json(createHalLinks(user, 'users'));
+    return res.status(201).json(createHalLinks(user.toJSON(), 'users'));
   } catch (e) {
+    console.log(e);
     // If an error occurs, handle the error
     const error = new Error(e.message);
     error.name = e.name;

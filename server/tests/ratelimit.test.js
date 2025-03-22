@@ -26,7 +26,7 @@ jest.mock('../models', () => {
   };
 });
 
-describe('GET /api/user', () => {
+describe('GET /api/ ratelimit', () => {
   beforeEach(() => {
     // Clean up the User model before each test
     jest.clearAllMocks();
@@ -35,9 +35,9 @@ describe('GET /api/user', () => {
   it('First five should be 200 and final 429', async () => {
     User.findOne.mockResolvedValue(mockUser);
     for (let index = 0; index < 5; index++) {
-      await api.get('/api/user/1').expect(200).expect('Content-Type', /application\/json/);
+      await api.get('/api/users/1').expect(200).expect('Content-Type', /application\/json/);
     }
-    await api.get('/api/user/1').expect(429);
+    await api.get('/api/users/1').expect(429);
   });
 });
 

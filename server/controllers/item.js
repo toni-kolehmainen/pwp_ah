@@ -18,7 +18,6 @@ const updateSchema = {
 
 const getItem = async (req, res, next) => {
   try {
-
     const item = await Item.findOne({
       where: {
         id: req.params.id

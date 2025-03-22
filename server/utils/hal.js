@@ -2,11 +2,12 @@ const { resourceProperties } = require('../static/profiles');
 
 // Function to create HAL structure for a single embedded resource
 const createHalEmbedded = (resource, path, canEdit = true, canDelete = true) => {
+  console.log(resource);
+  console.log(path);
   const halStructure = {
     _links: {
       self: { href: `/api/${path}/${resource.id}` }
     },
-    // ...resource.dataValues
     ...resource
   };
   // Add the 'edit' link conditionally
@@ -27,10 +28,10 @@ const createHalLinks = (resource, path, canEdit = true, canDelete = true) => {
   const halStructure = {
     _links: {
       self: { href: `/api/${path}/${resource.id}` },
-      all: { href: `/api/${path}/` },
-      profile: { href: `/profiles/${path}/` }
+      all: { href: `/api/${path}` },
+      profile: { href: `/profiles/${path}` }
     },
-    ...resource.dataValues
+    ...resource
   };
 
   // Add the 'edit' link conditionally
@@ -50,7 +51,7 @@ const createHalLinks = (resource, path, canEdit = true, canDelete = true) => {
 const createHalProfile = (resourceId, path, canEdit = true) => {
   const halStructure = {
     _links: {
-      self: { href: `/profile/${path}/` },
+      self: { href: `/profile/${path}` },
       item: {
         href: `api/${path}/${resourceId}`,
         templated: true

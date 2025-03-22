@@ -5,7 +5,7 @@ const { validate } = require('../utils/validation');
 const schemas = require('../utils/schemas');
 const { createHalLinks, createHalEmbedded } = require('../utils/hal');
 
-const getAuctions = async (req, res, next) => {
+const getAuctions = async (req, res) => {
   try {
     const {
       limit = 10, offset = 0, sort = 'end_time', order = 'ASC'
