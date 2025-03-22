@@ -3,24 +3,7 @@ const Ajv = require('ajv');
 const { User } = require('../models');
 
 const ajv = new Ajv({ coerceTypes: false });
-
-// hypermedia
-// Seller's Active Auctions
-// editProfile
-// userBids
-
-const addSchema = {
-  type: 'object',
-  properties: {
-    name: { type: 'string' },
-    nickname: { type: 'string' },
-    email: { type: 'string' },
-    phone: { type: 'string' },
-    password: { type: 'string' }
-  },
-  required: ['name', 'email', 'phone', 'password'],
-  additionalProperties: false
-};
+const { createHalLinks } = require('../utils/hal');
 
 const updateSchema = {
   type: 'object',
@@ -37,97 +20,87 @@ const updateSchema = {
 };
 
 const getUser = async (req, res, next) => {
+  // Find a user in the database based on the provided user ID
   User.findOne({
     where: {
       id: req.params.user_id
-    }
+    },
+    attributes: { exclude: ['password'] }
   }).then((user) => {
+    // If no user is found, return a 404 Not Found response
     if (!user) {
       return res.status(404).end();
     }
-    return res.json(user);
+    // If user exists, respond with user data and hypermedia
+    return res.json(createHalLinks(user, 'users'));
   }).catch((e) => {
+    // If an error occurs, create a new error object and pass it to the error handler
     const error = new Error(e.message);
     error.name = e.name;
-    return next(error);
+    return next(error); // Pass error to Express error handling middleware
   });
-};
-
-const addUser = async (req, res, next) => {
-  try {
-    const validate = ajv.compile(addSchema);
-    const valid = validate(req.body);
-
-    if (!valid) {
-      const error = new Error('Invalid Request body');
-      error.name = 'ValidationError';
-      return next(error);
-    }
-    const saltRounds = 10;
-    const password = await bcrypt.hash(req.body.password, saltRounds);
-    req.body = { ...req.body, password };
-
-    const user = await User.create(req.body);
-    return res.status(201).json(user);
-  } catch (e) {
-    const error = new Error(e.message);
-    error.name = e.name;
-    if (e.errors.length !== 0) {
-      error.message = e.errors[0].message;
-    }
-    return next(error);
-  }
 };
 
 const updateUser = async (req, res, next) => {
   try {
+    // Validate the request body using the updateSchema
     const validate = ajv.compile(updateSchema);
     const valid = validate(req.body);
 
+    // If the validation fails, return a validation error
     if (!valid) {
       const error = new Error('Invalid Request body');
       error.name = 'ValidationError';
-      return next(error);
+      return next(error); // Pass the error to the next middleware
     }
+    // Check if a password is included in the update request
     if ('password' in req.body) {
       const saltRounds = 10;
       const password = await bcrypt.hash(req.body.password, saltRounds);
       req.body = { ...req.body, password };
     }
-    await User.update(req.body, {
+    // Update the user in the database based on the user ID from the request params
+    const user = await User.update(req.body, {
       where: {
         id: req.params.user_id
-      }
+      },
+      attributes: { exclude: ['password'] }
     });
-    return res.json({ status: 'Updated' });
+
+    // Return a success response indicating the user was updated
+    return res.json(createHalLinks(user, 'users'));
   } catch (e) {
+    // If an error occurs, create a new error object with the error's message
     const error = new Error(e.message);
     error.name = e.name;
-    return next(error);
+    return next(error); // Pass the error to the next middleware for centralized error handling
   }
 };
-// if exists
+
 const deleteUser = (req, res, next) => {
+  // Delete the user from the database based on the user ID
   User.destroy({
     where: {
       id: req.params.user_id
     }
   }).then((count) => {
-    console.log(count);
+    // If no user was deleted (i.e., count is 0), return a 404 Not Found response
     if (count === 0) {
       return res.status(404).json({ error: 'User not found' });
     }
+
+    // Else the deletion is successful, return a response indicating the user was deleted
     return res.json({ status: 'Deleted' });
   }).catch((e) => {
+    // If an error occurs during the deletion process, catch and handle it
     const error = new Error(e.message);
     error.name = e.name;
-    return next(error);
+    return next(error); // Pass the error to the next middleware (error handler)
   });
 };
 
 module.exports = {
   getUser,
   deleteUser,
-  addUser,
   updateUser
 };

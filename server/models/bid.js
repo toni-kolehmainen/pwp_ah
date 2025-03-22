@@ -43,26 +43,26 @@ Bid.init({
     primaryKey: true,
     autoIncrement: true
   },
-  buyer_id: {
-    type: DataTypes.INTEGER,
-    allowNull: false,
-    references: {
-      model: 'users',
-      key: 'id',
-      onDelete: 'CASCADE',
-      onUpdate: 'CASCADE'
-    }
-  },
-  auction_id: {
-    type: DataTypes.INTEGER,
-    allowNull: false,
-    references: {
-      model: 'auctions',
-      key: 'id',
-      onDelete: 'CASCADE',
-      onUpdate: 'CASCADE'
-    }
-  },
+  // buyer_id: {
+  //   type: DataTypes.INTEGER,
+  //   allowNull: false,
+  // references: {
+  //   model: 'users',
+  //   key: 'id',
+  //   onDelete: 'CASCADE',
+  //   onUpdate: 'CASCADE'
+  // }
+  // },
+  // auction_id: {
+  // type: DataTypes.INTEGER,
+  // allowNull: false,
+  // references: {
+  //   model: 'auctions',
+  //   key: 'id',
+  //   onDelete: 'CASCADE',
+  //   onUpdate: 'CASCADE'
+  // }
+  // },
   amount: {
     type: DataTypes.DECIMAL(10, 2),
     allowNull: false,

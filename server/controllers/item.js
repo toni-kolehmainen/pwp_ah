@@ -2,18 +2,7 @@ const Ajv = require('ajv');
 const { Item } = require('../models');
 
 const ajv = new Ajv({ coerceTypes: false });
-
-const addSchema = {
-  type: 'object',
-  properties: {
-    name: { type: 'string' },
-    description: { type: 'string' },
-    userId: { type: 'number' },
-    categoryId: { type: 'number' }
-  },
-  required: ['name', 'userId', 'categoryId'],
-  additionalProperties: false
-};
+const { createHalLinks } = require('../utils/hal');
 
 const updateSchema = {
   type: 'object',
@@ -48,26 +37,6 @@ const getItem = async (req, res, next) => {
   }
 };
 
-const addItem = async (req, res, next) => {
-  const validate = ajv.compile(addSchema);
-  const valid = validate(req.body);
-  
-  if (!valid) {
-    const error = new Error('Invalid Request body');
-    error.name = 'ValidationError';
-    return next(error);
-  }
-
-  try {
-    const item = await Item.create(req.body);
-    res.status(201).json(item);
-  } catch (e) {
-    const error = new Error(e.message);
-    error.name = e.name;
-    return next(error);
-  }
-};
-
 const updateItem = async (req, res, next) => {
   try {
     const validate = ajv.compile(updateSchema);
@@ -87,7 +56,7 @@ const updateItem = async (req, res, next) => {
 
     if (updated) {
       const updatedItem = await Item.findOne({ where: { id: req.params.id } });
-      return res.status(200).json(updatedItem);
+      return res.status(200).json(createHalLinks(updatedItem, 'items'));
     }
 
     return res.status(404).json({ error: 'Item not found' });
@@ -120,7 +89,6 @@ const deleteItem = async (req, res, next) => {
 
 module.exports = {
   getItem,
-  addItem,
   updateItem,
   deleteItem
 };

@@ -82,7 +82,7 @@ Auction.init(
       type: DataTypes.INTEGER,
       allowNull: false,
       references: { model: 'users', key: 'id' },
-      onUpdate: 'CASCADE',
+      // onUpdate: 'CASCADE',
       onDelete: 'CASCADE'
     },
     end_time: {

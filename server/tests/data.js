@@ -1,9 +1,17 @@
 const mockUser = {
+  id: 1,
   name: 'John Doe',
   nickname: 'Johnny',
   email: 'john.doe@example.com',
   phone: '123-456-7890',
-  password: 'hashedpassword123'
+  password: 'hashedpassword123',
+  toJSON: jest.fn().mockReturnValue({
+    id: 1,
+    name: 'John Doe',
+    nickname: 'Johnny',
+    email: 'john.doe@example.com',
+    phone: '123-456-7890',
+  }),
 };
 
 const mockUpdateUser = {

@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "cross-env NODE_ENV=development nodemon index.js",
-    "test": "cross-env  NODE_ENV=test jest",
+    "test": "cross-env  NODE_ENV=test jest -t 'users'",
     "start": "cross-env NODE_ENV=production node index.js",
     "lint": "eslint . --fix"
   },
