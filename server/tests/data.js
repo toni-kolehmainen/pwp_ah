@@ -10,8 +10,22 @@ const mockUser = {
     name: 'John Doe',
     nickname: 'Johnny',
     email: 'john.doe@example.com',
+    phone: '123-456-7890'
+  })
+};
+
+const addMockUser = {
+  name: 'John Doe',
+  nickname: 'Johnny',
+  email: 'john.doe@example.com',
+  phone: '123-456-7890',
+  password: 'hashedpassword123',
+  toJSON: jest.fn().mockReturnValue({
+    name: 'John Doe',
+    nickname: 'Johnny',
+    email: 'john.doe@example.com',
     phone: '123-456-7890',
-  }),
+  })
 };
 
 const mockUpdateUser = {
@@ -36,11 +50,22 @@ const mockUserWrong = {
 
 const mockCategories = [
   {
+    id: 1,
     name: 'Toys',
-    description: 'lorum'
+    description: 'lorum',
+    toJSON: jest.fn().mockReturnValue({
+      id: 1,
+      name: 'Toys',
+      description: 'lorum'
+    }),
   },
   {
-    name: 'Sports'
+    id: 2,
+    name: 'Sports',
+    toJSON: jest.fn().mockReturnValue({
+      id: 2,
+      name: 'Sports'
+    }),
   }
 ];
 
@@ -86,6 +111,13 @@ const mockItems = [
     description: 'This is a sample item 1.',
     userId: 1,
     categoryId: 1
+    // toJSON: jest.fn().mockReturnValue({
+    //   id: 1,
+    //   name: 'Sample Item 1',
+    //   description: 'This is a sample item 1.',
+    //   userId: 1,
+    //   categoryId: 1,
+    // }),
   },
   {
     id: 2,
@@ -93,6 +125,13 @@ const mockItems = [
     description: 'This is a sample item 2.',
     userId: 2,
     categoryId: 2
+    // toJSON: jest.fn().mockReturnValue({
+    //   id: 2,
+    //   name: 'Sample Item 2',
+    //   description: 'This is a sample item 2.',
+    //   userId: 2,
+    //   categoryId: 2,
+    // }),
   }
 ];
 
@@ -111,5 +150,5 @@ module.exports = {
   mockUpdateItemInvalid,
   mockUpdateItem1,
   mockItems
+  // addMockUser
 };
-

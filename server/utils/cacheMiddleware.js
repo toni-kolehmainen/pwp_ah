@@ -3,46 +3,46 @@ const NodeCache = require('node-cache');
 // Creating a cache instance with default TTL of 5 minutes
 const cache = new NodeCache({
   stdTTL: 300, // 5 minutes in seconds
-  checkperiod: 60 // Check for expired keys every 60 seconds
+  checkperiod: 1 // Check for expired keys every 60 seconds
 });
 
 // GET Routes are cached
 const cachedRoutes = [
   { path: '/api/users', method: 'GET' },
-  { path: '/api/user/:user_id', method: 'GET' },
+  { path: '/api/users/:user_id', method: 'GET' },
   { path: '/api/categories', method: 'GET' },
   { path: '/api/items', method: 'GET' },
-  { path: '/api/item/:id', method: 'GET' },
+  { path: '/api/items/:id', method: 'GET' },
   { path: '/api/bids', method: 'GET' },
-  { path: '/api/bid/:bid_id', method: 'GET' },
+  { path: '/api/bids/:bid_id', method: 'GET' },
   { path: '/api/auctions', method: 'GET' },
-  { path: '/api/auction/:id', method: 'GET' }
+  { path: '/api/auctions/:id', method: 'GET' }
 ];
 
 // Routes that should invalidate cache when called
 const cacheInvalidationRoutes = [
   // User cache invalidation
-  { path: '/api/user/', method: 'POST', invalidate: ['/api/users'] },
-  { path: '/api/user/:user_id', method: 'PUT', invalidate: ['/api/users', '/api/user/:user_id'] },
-  { path: '/api/user/:user_id', method: 'DELETE', invalidate: ['/api/users', '/api/user/:user_id'] },
+  { path: '/api/users', method: 'POST', invalidate: ['/api/users'] },
+  { path: '/api/users/:user_id', method: 'PUT', invalidate: ['/api/users', '/api/users/:user_id'] },
+  { path: '/api/users/:user_id', method: 'DELETE', invalidate: ['/api/users', '/api/users/:user_id'] },
 
   // Item cache invalidation
-  { path: '/api/item/', method: 'POST', invalidate: ['/api/items'] },
-  { path: '/api/item/:id', method: 'PUT', invalidate: ['/api/items', '/api/item/:id'] },
-  { path: '/api/item/:id', method: 'DELETE', invalidate: ['/api/items', '/api/item/:id'] },
+  { path: '/api/items', method: 'POST', invalidate: ['/api/items'] },
+  { path: '/api/items/:id', method: 'PUT', invalidate: ['/api/items', '/api/items/:id'] },
+  { path: '/api/items/:id', method: 'DELETE', invalidate: ['/api/items', '/api/items/:id'] },
 
   // Category cache invalidation
   { path: '/api/categories', method: 'POST', invalidate: ['/api/categories'] },
   { path: '/api/categories/:id', method: 'DELETE', invalidate: ['/api/categories'] },
 
   // Bid cache invalidation
-  { path: '/api/bid', method: 'POST', invalidate: ['/api/bids'] },
-  { path: '/api/bid/:bid_id', method: 'DELETE', invalidate: ['/api/bids', '/api/bid/:bid_id'] },
+  { path: '/api/bids', method: 'POST', invalidate: ['/api/bids'] },
+  { path: '/api/bids/:bid_id', method: 'DELETE', invalidate: ['/api/bids', '/api/bids/:bid_id'] },
   { path: '/api/bids', method: 'DELETE', invalidate: ['/api/bids'] },
 
   // Auction cache invalidation
-  { path: '/api/auction', method: 'POST', invalidate: ['/api/auctions'] },
-  { path: '/api/auction/:id', method: 'DELETE', invalidate: ['/api/auctions', '/api/auction/:id'] },
+  { path: '/api/auctions', method: 'POST', invalidate: ['/api/auctions'] },
+  { path: '/api/auctions/:id', method: 'DELETE', invalidate: ['/api/auctions', '/api/auction/:id'] },
   { path: '/api/auctions', method: 'DELETE', invalidate: ['/api/auctions'] }
 ];
 

@@ -14,7 +14,7 @@ const getBid = async (req, res, next) => {
     }
 
     // else respond with bid data and hypermedia
-    return res.json(createHalLinks(bid, 'bids'));
+    return res.json(createHalLinks(bid.toJSON(), 'bids'));
   }).catch((e) => {
     const error = new Error(e.message);
     error.name = e.name;

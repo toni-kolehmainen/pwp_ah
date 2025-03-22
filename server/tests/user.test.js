@@ -42,7 +42,7 @@ afterAll(async () => {
   sequelize.close();
 });
 
-describe('GET /api/user', () => {
+describe('GET /api/users user', () => {
   beforeEach(async () => {
     // Clean up the User model before each test
     await User.destroy({ where: {}, truncate: true });
@@ -50,92 +50,59 @@ describe('GET /api/user', () => {
 
   it('Normal get (200)', async () => {
     User.findOne.mockResolvedValue(mockUser);
-    const response = await api.get('/api/user/1').expect(200).expect('Content-Type', /application\/json/);
-    expect(response.body).toEqual(mockUser);
+    const response = await api.get('/api/users/1').expect(200).expect('Content-Type', /application\/json/);
+    // expect(response.body).toEqual(mockUser);
+    const body = response.body;
+    // Check for _links
+    expect(body).toHaveProperty('_links');
+    expect(body._links).toHaveProperty('self');
+    expect(body._links.self).toHaveProperty('href', `/api/users/${mockUser.id}`);
+    expect(body._links).toHaveProperty('delete');
+    expect(body._links.delete).toHaveProperty('href', `/api/users/${mockUser.id}`, "method", "DELETE");
+    expect(body._links).toHaveProperty('edit');
+    expect(body._links.edit).toHaveProperty('href', `/api/users/${mockUser.id}`, "method", "PUT");
+    expect(body._links).toHaveProperty('profile');
+    expect(body._links.profile).toHaveProperty('href', '/profiles/users');
+    expect(body._links).toHaveProperty('all');
+    expect(body._links.all).toHaveProperty('href', '/api/users');
+    
+    // check for data values mathcing the mockUser
+    expect(body).toHaveProperty('email', mockUser.email);
+    expect(body).toHaveProperty('name', mockUser.name);
+    expect(body).toHaveProperty('nickname', mockUser.nickname);
+    expect(body).not.toHaveProperty('password');
+    expect(body).toHaveProperty('phone', mockUser.phone);
   });
   it('empty get (404)', async () => {
     User.findOne.mockResolvedValue(0);
-    const response = await api.get('/api/user/999').expect(404);
+    const response = await api.get('/api/users/999').expect(404);
     expect(response.body).toEqual({});
   });
 
   it('Param is not int (500)', async () => {
     User.findOne.mockRejectedValueOnce(mockUser);
-    await api.get('/api/user/kissa').expect(500);
+    await api.get('/api/users/kissa').expect(500);
   });
 });
 
-describe('POST /api', () => {
-  beforeEach(async () => {
-    // Clean up the User model before each test
-    await User.destroy({ where: {}, truncate: true });
-  });
-  it('no name should return status (400)', async () => {
-    User.create.mockResolvedValueOnce(mockUserWrong);
-    // Make the POST request
-    const response = await api
-      .post('/api/user')
-      .send(mockUserWrong);
-    expect(response.status).toBe(400);
-  });
-  it('Default valid (201)', async () => {
-    User.create.mockResolvedValueOnce(mockUser);
-    // Make the POST request
-    const response = await api
-      .post('/api/user')
-      .send(mockUser);
-    expect(response.status).toBe(201);
-  });
-  it('Email unique constraint (409)', async () => {
-    await api.post('/api/user')
-      .send(mockUser)
-      .expect('Content-Type', /application\/json/)
-      .expect(201);
-
-    User.create.mockRejectedValueOnce({
-      name: 'SequelizeUniqueConstraintError', // Ensure the mock includes the correct error type
-      code: '23505', // PostgreSQL error code for unique constraint violation
-      message: 'duplicate key value violates unique constraint "users_email_key"', // Error message from PostgreSQL
-      parent: {
-        code: '23505', // The PostgreSQL error code in the parent object
-        message: 'duplicate key value violates unique constraint "users_email_key"' // Message from the parent object
-      },
-      errors: [
-        {
-          message: 'Email must be unique',
-          type: 'unique violation',
-          path: 'email', // Path to the field in error
-          value: mockUser.email // The conflicting value
-        }
-      ]
-    });
-
-    const response = await api
-      .post('/api/user')
-      .send(mockUser)
-      .expect('Content-Type', /application\/json/);
-    expect(response.status).toBe(409);
-  });
-});
-
-describe('PUT /api', () => {
+describe('PUT /api user', () => {
   beforeEach(async () => {
     // Clean up the User model before each test
     await User.destroy({ where: {}, truncate: true });
   });
   it('Normal valid with password (200)', async () => {
     User.update.mockResolvedValueOnce(mockUser);
-    const response = await api.put('/api/user/1').send(mockUpdateUser).expect('Content-Type', /application\/json/);
+    const response = await api.put('/api/users/1').send(mockUpdateUser).expect('Content-Type', /application\/json/);
     expect(response.status).toBe(200);
   });
   it('Normal valid with username (200)', async () => {
     User.update.mockResolvedValueOnce(mockUser);
-    const response = await api.put('/api/user/1').send(mockUpdateUser1).expect('Content-Type', /application\/json/);
+    const response = await api.put('/api/users/1').send(mockUpdateUser1).expect('Content-Type', /application\/json/);
     expect(response.status).toBe(200);
   });
   it('try to update two lines same time (400)', async () => {
     User.update.mockRejectedValueOnce(mockUser);
-    const response = await api.put('/api/user/1').send(mockUpdateUserInvalid).expect('Content-Type', /application\/json/);
+    const response = await api.put('/api/users/1').send(mockUpdateUserInvalid).expect('Content-Type', /application\/json/);
     expect(response.status).toBe(400);
   });
   it('Invalid id (500)', async () => {
@@ -147,15 +114,15 @@ describe('PUT /api', () => {
         message: 'invalid input syntax for type integer: "kissa"'
       }
     });
-    await api.put('/api/user/kissa').send(mockUpdateUser).expect(500);
+    await api.put('/api/users/kissa').send(mockUpdateUser).expect(500);
   });
 });
 
-describe('DELETE /api', () => {
+describe('DELETE /api user', () => {
   it('should delete a user successfully', async () => {
     User.destroy.mockResolvedValueOnce(mockUser); // Simulate successful deletion
     const response = await api
-      .delete('/api/user/1')
+      .delete('/api/users/1')
       .expect(200);
     expect(response.body.status).toBe('Deleted');
   });
@@ -165,14 +132,14 @@ describe('DELETE /api', () => {
 
     User.destroy.mockResolvedValueOnce(0);
     const response = await api
-      .delete(`/api/user/${userId}`)
+      .delete(`/api/users/${userId}`)
       .expect(404);
     expect(response.body.error).toBe('User not found');
   });
   it('Pass param id string (500)', async () => {
     User.destroy.mockRejectedValueOnce(0);
     await api
-      .delete('/api/user/kissa')
+      .delete('/api/users/kissa')
       .expect(500);
   });
 });

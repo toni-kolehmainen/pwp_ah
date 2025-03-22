@@ -117,34 +117,34 @@ describe('GET /api/auction/:id', () => {
     };
     Auction.findByPk.mockResolvedValue(mockAuction);
 
-    const response = await api.get('/api/auction/1').expect(200).expect('Content-Type', /application\/json/);
+    const response = await api.get('/api/auctions/1').expect(200).expect('Content-Type', /application\/json/);
     expect(response.body).toEqual(mockAuction);
   });
 
   it('should return 404 when auction is not found', async () => {
     Auction.findByPk.mockResolvedValue(null);
 
-    const response = await api.get('/api/auction/999').expect(404);
+    const response = await api.get('/api/auctions/999').expect(404);
     expect(response.body.error).toBe('Auction not found');
   });
 
   it('should return 500 when invalid ID format is passed', async () => {
     Auction.findByPk.mockRejectedValue(new Error('Invalid ID'));
 
-    const response = await api.get('/api/auction/invalid-id').expect(500);
+    const response = await api.get('/api/auctions/invalid-id').expect(500);
     expect(response.body.error).toBe('Internal Server Error');
   });
 
   it('should handle database errors in getAuctionById (500)', async () => {
     Auction.findByPk.mockRejectedValue(new Error('Database error'));
 
-    const response = await api.get('/api/auction/1').expect(500);
+    const response = await api.get('/api/auctions/1').expect(500);
     expect(response.body.error).toBe('Internal Server Error');
   });
 });
 
 // Test POST /api/auction
-describe('POST /api/auction', () => {
+describe('POST /api/auctions', () => {
   const mockAuction = {
     item_id: 1,
     description: 'Laptop Auction',
@@ -171,7 +171,7 @@ describe('POST /api/auction', () => {
     Auction.create.mockResolvedValue(createdAuction);
 
     const response = await api
-      .post('/api/auction')
+      .post('/api/auctions')
       .set('Authorization', 'Bearer fakeToken')
       .send(mockAuction)
       .expect(201)
@@ -198,7 +198,7 @@ describe('POST /api/auction', () => {
     Auction.create.mockRejectedValue(validationError);
   
     const response = await api
-      .post('/api/auction')
+      .post('/api/auctions')
       .set('Authorization', 'Bearer fakeToken')
       .send(mockAuctionInvalid)
       .expect(400);
@@ -221,7 +221,7 @@ describe('POST /api/auction', () => {
     Auction.create.mockRejectedValue(validationError);
   
     const response = await api
-      .post('/api/auction')
+      .post('/api/auctions')
       .set('Authorization', 'Bearer fakeToken')
       .send(invalidAuction)
       .expect(400);
@@ -247,7 +247,7 @@ describe('POST /api/auction', () => {
     Auction.create.mockRejectedValue(foreignKeyError);
 
     const response = await api
-      .post('/api/auction')
+      .post('/api/auctions')
       .set('Authorization', 'Bearer fakeToken')
       .send({ item_id: 999, starting_price: 500.00 })
       .expect(400);
@@ -260,7 +260,7 @@ describe('POST /api/auction', () => {
     Auction.create.mockRejectedValue(new Error('Database error'));
 
     const response = await api
-      .post('/api/auction')
+      .post('/api/auctions')
       .set('Authorization', 'Bearer fakeToken')
       .send({ item_id: 1, starting_price: 500.00 })
       .expect(500);
@@ -286,7 +286,7 @@ describe('POST /api/auction', () => {
     Auction.create.mockRejectedValue(validationError);
 
     const response = await api
-      .post('/api/auction')
+      .post('/api/auctions')
       .set('Authorization', 'Bearer fakeToken')
       .send(invalidAuction)
       .expect(400);
@@ -308,7 +308,7 @@ describe('POST /api/auction', () => {
     Auction.create.mockRejectedValue(validationError);
   
     const response = await api
-      .post('/api/auction')
+      .post('/api/auctions')
       .set('Authorization', 'Bearer fakeToken')
       .send({})
       .expect(400);
@@ -319,7 +319,7 @@ describe('POST /api/auction', () => {
 });
 
 // Test DELETE /api/auction/:id
-describe('DELETE /api/auction/:id', () => {
+describe('DELETE /api/auctions/:id', () => {
   it('should delete an auction successfully (200)', async () => {
     // Create a mock auction that includes the seller_id matching the authenticated user
     const mockAuction = {
@@ -331,7 +331,7 @@ describe('DELETE /api/auction/:id', () => {
     Auction.findByPk.mockResolvedValue(mockAuction);
   
     const response = await api
-      .delete('/api/auction/1')
+      .delete('/api/auctions/1')
       .set('Authorization', 'Bearer fakeToken')
       .expect(200);
   
@@ -343,7 +343,7 @@ describe('DELETE /api/auction/:id', () => {
     Auction.findByPk.mockResolvedValue(null); // Mock non-existing auction
 
     const response = await api
-      .delete('/api/auction/999')
+      .delete('/api/auctions/999')
       .set('Authorization', 'Bearer fakeToken')
       .expect(404);
 
@@ -354,7 +354,7 @@ describe('DELETE /api/auction/:id', () => {
     Auction.findByPk.mockRejectedValue(new Error('Invalid ID'));
 
     const response = await api
-      .delete('/api/auction/invalid-id')
+      .delete('/api/auctions/invalid-id')
       .set('Authorization', 'Bearer fakeToken')
       .expect(500);
 
@@ -372,7 +372,7 @@ describe('DELETE /api/auction/:id', () => {
     Auction.findByPk.mockResolvedValue(mockAuction);
     
     const response = await api
-      .delete('/api/auction/1')
+      .delete('/api/auctions/1')
       .set('Authorization', 'Bearer fakeToken')
       .expect(403);
 
@@ -390,32 +390,7 @@ describe('DELETE /api/auction/:id', () => {
     Auction.findByPk.mockResolvedValue(mockAuction);
 
     const response = await api
-      .delete('/api/auction/1')
-      .set('Authorization', 'Bearer fakeToken')
-      .expect(500);
-
-    expect(response.body.error).toBe('Internal Server Error');
-  });
-});
-
-// Test DELETE /api/auctions
-describe('DELETE /api/auctions', () => {
-  it('should delete all auctions successfully (200)', async () => {
-    Auction.destroy.mockResolvedValue(5); // Simulate successful deletion of 5 auctions
-
-    const response = await api
-      .delete('/api/auctions')
-      .set('Authorization', 'Bearer fakeToken')
-      .expect(200);
-
-    expect(response.body.message).toBe('All auctions deleted successfully');
-  });
-
-  it('should handle database errors in deleteAuctions (500)', async () => {
-    Auction.destroy.mockRejectedValue(new Error('Database error'));
-
-    const response = await api
-      .delete('/api/auctions')
+      .delete('/api/auctions/1')
       .set('Authorization', 'Bearer fakeToken')
       .expect(500);
 

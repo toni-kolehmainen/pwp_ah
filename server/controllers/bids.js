@@ -25,7 +25,6 @@ const getBids = async (req, res) => {
   if (bids.length === 0) {
     return res.status(204).end();
   }
-  console.log('TEST');
   // else respond with bid data and hypermedia
   return res.json({
     _links:
@@ -35,7 +34,7 @@ const getBids = async (req, res) => {
         create: { href: '/api/bids', method: 'POST' }
       },
     _embedded: {
-      bids: bids.map((bid) => createHalEmbedded(bid, 'bids'))
+      bids: bids.map((bid) => createHalEmbedded(bid.toJSON(), 'bids'))
     }
   });
 };
@@ -56,7 +55,7 @@ const addBid = async (req, res, next) => {
 
     // Create a new bid in the database
     const bid = await Bid.create(req.body);
-    return res.status(201).json(createHalLinks(bid, 'bids'));
+    return res.status(201).json(createHalLinks(bid.toJSON(), 'bids'));
   } catch (e) {
     // If an error occurs, handle the error
     const error = new Error(e.message);
