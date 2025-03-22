@@ -1,27 +1,81 @@
-const { User } = require("../models");
+const Ajv = require('ajv');
+const bcrypt = require('bcrypt');
+const { User } = require('../models');
 
-// hypermedia
-// to auction, to bids, to items?
+const ajv = new Ajv({ coerceTypes: false });
+const { createHalLinks, createHalEmbedded } = require('../utils/hal');
 
-const NodeCache = require("node-cache");
-const myCache = new NodeCache({ stdTTL: 100, checkperiod: 120 });
+// The schema for adding a new user
+const addSchema = {
+  type: 'object',
+  properties: {
+    name: { type: 'string' },
+    nickname: { type: 'string' },
+    email: { type: 'string' },
+    phone: { type: 'string' },
+    password: { type: 'string' }
+  },
+  required: ['name', 'email', 'phone', 'password'],
+  additionalProperties: false
+};
 
 const getUsers = async (req, res) => {
-  const cacheKey = "users";
-  const cachedUsers = myCache.get(cacheKey);
-  if (cachedUsers) {
-    return res.json(cachedUsers);
-  }
+  // Find a users in the database excluding the password field
   const users = await User.findAll({
-    attributes: { exclude: ["password"] },
+    attributes: { exclude: ['password'] }
   });
+
+  // If users length is 0, return a 204 No content
   if (users.length === 0) {
     return res.status(204).end();
   }
-  myCache.set(cacheKey, users);
-  return res.json(users);
+  console.log(users);
+  // Else return users
+  return res.json({
+    _links:
+      {
+        self: { href: '/api/users/' },
+        profile: { href: '/profiles/users/' },
+        create: { href: '/api/users', method: 'POST' }
+      },
+    _embedded: {
+      users: users.map((user) => createHalEmbedded(user.toJSON(), 'users'))
+    }
+  });
+};
+
+const addUser = async (req, res, next) => {
+  try {
+    // Validate the request body using the addSchema and ajv
+    const validate = ajv.compile(addSchema);
+    const valid = validate(req.body);
+
+    // If validation fails, return a validation error
+    if (!valid) {
+      const error = new Error('Invalid Request body');
+      error.name = 'ValidationError';
+      return next(error);
+    }
+    // Hash the password before saving to the database
+    const saltRounds = 10;
+    const password = await bcrypt.hash(req.body.password, saltRounds);
+    req.body = { ...req.body, password };
+
+    // Create a new user in the database
+    const user = await User.create(req.body);
+    return res.status(201).json(createHalLinks(user, 'users'));
+  } catch (e) {
+    // If an error occurs, handle the error
+    const error = new Error(e.message);
+    error.name = e.name;
+    // If the error has validation messages
+    if (e.errors.length !== 0) {
+      error.message = e.errors[0].message;
+    }
+    return next(error); // Pass the error to the next middleware (error handler)
+  }
 };
 
 module.exports = {
-  getUsers,
+  getUsers, addUser
 };
