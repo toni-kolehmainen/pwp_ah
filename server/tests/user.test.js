@@ -91,12 +91,13 @@ describe('PUT /api user', () => {
     await User.destroy({ where: {}, truncate: true });
   });
   it('Normal valid with password (200)', async () => {
-    User.update.mockResolvedValueOnce(mockUser);
+    User.update.mockResolvedValueOnce([1, [mockUser]]);
     const response = await api.put('/api/users/1').send(mockUpdateUser).expect('Content-Type', /application\/json/);
+
     expect(response.status).toBe(200);
   });
   it('Normal valid with username (200)', async () => {
-    User.update.mockResolvedValueOnce(mockUser);
+    User.update.mockResolvedValueOnce([1, [mockUser]]);
     const response = await api.put('/api/users/1').send(mockUpdateUser1).expect('Content-Type', /application\/json/);
     expect(response.status).toBe(200);
   });
@@ -124,7 +125,16 @@ describe('DELETE /api user', () => {
     const response = await api
       .delete('/api/users/1')
       .expect(200);
-    expect(response.body.status).toBe('Deleted');
+    
+    const body = response.body;
+
+    // Check for _links
+    expect(body).toHaveProperty('_links');
+    expect(body._links).toHaveProperty('self');
+    expect(body._links).toHaveProperty('create');
+    expect(body._links.create).toHaveProperty('href', '/api/users');
+    expect(body._links.profile).toHaveProperty('href', '/profiles/users');
+    expect(body).toHaveProperty('message', `Deleted successfully from users`);
   });
 
   it('should return 404 when user is not found', async () => {

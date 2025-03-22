@@ -70,7 +70,7 @@ const mockCategories = [
 ];
 
 const mockCategory = {
-  name: 'Electronics'
+  name: 'Electronics',
 };
 
 const mockCategoryWrong = {

@@ -2,7 +2,7 @@ const Ajv = require('ajv');
 const { Category } = require('../models');
 
 const ajv = new Ajv({ coerceTypes: false });
-const { createHalLinks, createHalEmbedded } = require('../utils/hal');
+const { createHalLinks, createHalEmbedded, deleteHalLinks } = require('../utils/hal');
 
 // The schema for adding a new category
 const addSchema = {
@@ -61,7 +61,7 @@ const deleteCategories = async (req, res, next) => {
       }
 
       // Else the deletion is successful, return a response indicating the category was deleted
-      return res.json({ status: 'Deleted' });
+      return res.json(deleteHalLinks('categories'));
     }).catch((e) => {
       // If an error occurs, handle the error
       const error = new Error(e.message);
