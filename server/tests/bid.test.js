@@ -71,7 +71,7 @@ describe('GET /api/bids bid', () => {
     expect(body._links).toHaveProperty('all');
     expect(body._links.all).toHaveProperty('href', '/api/bids');
     
-    // check for data values mathcing the mockUser
+    // check for data values mathcing the mockBid
     expect(body).toHaveProperty('amount', mockBid.amount);
     expect(body).toHaveProperty('buyer_id', mockBid.buyer_id);
     expect(body).toHaveProperty('auction_id', mockBid.auction_id);

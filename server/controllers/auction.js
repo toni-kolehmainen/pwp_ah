@@ -3,7 +3,7 @@ const Item = require('../models/item');
 const User = require('../models/user');
 const { validate } = require('../utils/validation');
 const schemas = require('../utils/schemas');
-const { createHalLinks } = require('../utils/hal');
+const { createHalLinks, deleteHalLinks } = require('../utils/hal');
 
 const getAuctionById = async (req, res, next) => {
   try {
@@ -20,7 +20,7 @@ const getAuctionById = async (req, res, next) => {
     }
 
     // Return the auction as a plain object
-    return res.json(createHalLinks(auction, 'auctions', false, true));
+    return res.json(createHalLinks(auction.toJSON(), 'auctions', false, true));
   } catch (error) {
     return res.status(500).json({ error: 'Internal Server Error' });
   }
@@ -39,7 +39,8 @@ const deleteAuction = async (req, res, next) => {
     }
 
     await auction.destroy();
-    return res.json({ message: 'Auction deleted successfully' });
+    return res.json(deleteHalLinks('auctions'));
+    // return res.json({ message: 'Auction deleted successfully' });
   } catch (error) {
     return res.status(500).json({ error: 'Internal Server Error' });
   }
