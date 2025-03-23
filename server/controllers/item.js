@@ -28,7 +28,7 @@ const getItem = async (req, res, next) => {
       return res.status(404).json({ error: 'Item not found' });
     }
 
-    res.json(item);
+    return res.json(createHalLinks(item.toJSON(), 'items'));
   } catch (e) {
     const error = new Error(e.message);
     error.name = e.name;
@@ -54,7 +54,7 @@ const updateItem = async (req, res, next) => {
       returning: true
     });
 
-    if (updated == !0) {
+    if (updated !== 0) {
       return res.status(200).json(putHalLinks(updatedItems, 'items'));
     }
 

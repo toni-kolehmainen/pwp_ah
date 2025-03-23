@@ -1,7 +1,6 @@
 const Ajv = require('ajv');
 const bcrypt = require('bcrypt');
 const { User } = require('../models');
-const { cache } = require('../utils/cacheMiddleware');
 
 const ajv = new Ajv({ coerceTypes: false });
 const { createHalLinks, createHalEmbedded } = require('../utils/hal');

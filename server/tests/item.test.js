@@ -66,7 +66,26 @@ describe('GET /api/item item', () => {
   it('Normal get (200)', async () => {
     Item.findOne.mockResolvedValue(mockItem);
     const response = await api.get('/api/items/1').expect(200).expect('Content-Type', /application\/json/);
-    expect(response.body).toEqual(mockItem);
+    const body = response.body;
+
+    // Check for _links
+    expect(body).toHaveProperty('_links');
+    expect(body._links).toHaveProperty('self');
+    expect(body._links.self).toHaveProperty('href', `/api/items/${mockItem.id}`);
+    expect(body._links).toHaveProperty('delete');
+    expect(body._links.delete).toHaveProperty('href', `/api/items/${mockItem.id}`, "method", "DELETE");
+    expect(body._links).toHaveProperty('edit');
+    expect(body._links.edit).toHaveProperty('href', `/api/items/${mockItem.id}`, "method", "PUT");
+    expect(body._links).toHaveProperty('profile');
+    expect(body._links.profile).toHaveProperty('href', '/profiles/items');
+    expect(body._links).toHaveProperty('all');
+    expect(body._links.all).toHaveProperty('href', '/api/items');
+    
+    // check for data values mathcing the mockUser
+    expect(body).toHaveProperty('name', mockItem.name);
+    expect(body).toHaveProperty('description', mockItem.description);
+    expect(body).toHaveProperty('userId', mockItem.userId);
+    expect(body).toHaveProperty('categoryId', mockItem.categoryId);
   });
 
   it('empty get (404)', async () => {
