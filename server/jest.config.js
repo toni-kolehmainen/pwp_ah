@@ -4,7 +4,9 @@ module.exports = {
   silent: true, // removes all console log!!!
   coveragePathIgnorePatterns: [
     '/node_modules/',
-    '/tests/'
+    '/tests/',
+    '/utils/db',
+    '/models/index'
   ],
   coverageDirectory: 'coverage',
   coverageReporters: ['text', 'lcov']

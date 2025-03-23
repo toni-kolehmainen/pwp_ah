@@ -82,7 +82,13 @@ const mockItem = {
   name: 'Sample Item',
   description: 'This is a sample item.',
   userId: 1,
-  categoryId: 1
+  categoryId: 1,
+  toJSON: jest.fn().mockReturnValue({
+    name: 'Sample Item',
+    description: 'This is a sample item.',
+    userId: 1,
+    categoryId: 1
+  })
 };
 
 const mockItemWrong = {

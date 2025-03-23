@@ -42,7 +42,7 @@ afterAll(async () => {
   sequelize.close();
 });
 
-describe('GET /api/users user', () => {
+describe('GET /api/users/:id user', () => {
   beforeEach(async () => {
     // Clean up the User model before each test
     await User.destroy({ where: {}, truncate: true });

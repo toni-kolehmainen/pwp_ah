@@ -57,7 +57,7 @@ const addItem = async (req, res, next) => {
     console.log(valid);
 
     const item = await Item.create(req.body);
-    res.status(201).json(createHalLinks(item, 'items'));
+    return res.status(201).json(createHalLinks(item, 'items'));
   } catch (e) {
     const error = new Error(e.message);
     error.name = e.name;

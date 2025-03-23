@@ -5,7 +5,7 @@ const { validate } = require('../utils/validation');
 const schemas = require('../utils/schemas');
 const { createHalLinks, deleteHalLinks } = require('../utils/hal');
 
-const getAuctionById = async (req, res, next) => {
+const getAuctionById = async (req, res) => {
   try {
     const { id } = req.params;
     const auction = await Auction.findByPk(id, {
@@ -26,7 +26,7 @@ const getAuctionById = async (req, res, next) => {
   }
 };
 
-const deleteAuction = async (req, res, next) => {
+const deleteAuction = async (req, res) => {
   try {
     const auction = await Auction.findByPk(req.params.id);
     if (!auction) {
