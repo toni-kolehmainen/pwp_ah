@@ -51,10 +51,10 @@ const updateItem = async (req, res, next) => {
       where: {
         id: req.params.id
       },
-      returning: true,
+      returning: true
     });
 
-    if (updated ==! 0) {
+    if (updated == !0) {
       return res.status(200).json(putHalLinks(updatedItems, 'items'));
     }
 

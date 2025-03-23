@@ -19,5 +19,10 @@ const resourceProperties = (path) => {
   return {};
 };
 module.exports = {
-  resourceProperties
+  resourceProperties,
+  userProperties,
+  itemProperties,
+  categoryProperties,
+  auctionProperties,
+  bidProperties
 };

@@ -52,10 +52,10 @@ const deleteHalLinks = (path) => {
   const halStructure = {
     _links: {
       self: { href: `/api/${path}` },
-      create: { href: `/api/${path}`, "method": "POST" },
+      create: { href: `/api/${path}`, method: 'POST' },
       profile: { href: `/profiles/${path}` }
     },
-    message:`Deleted successfully from ${path}`
+    message: `Deleted successfully from ${path}`
   };
 
   return halStructure;
@@ -66,13 +66,13 @@ const putHalLinks = (resource, path) => {
   const halStructure = {
     _links: {
       self: { href: `/api/${path}/${resource.id}` },
-      create: { href: `/api/${path}`, method: "POST" },
+      create: { href: `/api/${path}`, method: 'POST' },
       profile: { href: `/profiles/${path}` },
-      edit: { href: `/api/${path}/${resource.id}`, method: "PUT" },
-      delete: { href: `/api/${path}/${resource.id}`, method: "DELETE" },
+      edit: { href: `/api/${path}/${resource.id}`, method: 'PUT' },
+      delete: { href: `/api/${path}/${resource.id}`, method: 'DELETE' }
     },
     ...resource,
-    message:`${path} updated successfully`
+    message: `${path} updated successfully`
   };
 
   return halStructure;
@@ -84,7 +84,7 @@ const createHalProfile = (resourceId, path, canEdit = true) => {
     _links: {
       self: { href: `/profile/${path}` },
       item: {
-        href: `api/${path}/${resourceId}`,
+        href: `/api/${path}/${resourceId}`,
         templated: true
       }
     },
@@ -132,9 +132,9 @@ const createHalProfile = (resourceId, path, canEdit = true) => {
 };
 
 module.exports = {
-  createHalLinks, 
-  createHalEmbedded, 
-  createHalProfile, 
+  createHalLinks,
+  createHalEmbedded,
+  createHalProfile,
   deleteHalLinks,
   putHalLinks
 };
