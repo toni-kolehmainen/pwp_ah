@@ -24,7 +24,7 @@ const addMockUser = {
     name: 'John Doe',
     nickname: 'Johnny',
     email: 'john.doe@example.com',
-    phone: '123-456-7890',
+    phone: '123-456-7890'
   })
 };
 
@@ -57,7 +57,7 @@ const mockCategories = [
       id: 1,
       name: 'Toys',
       description: 'lorum'
-    }),
+    })
   },
   {
     id: 2,
@@ -65,12 +65,12 @@ const mockCategories = [
     toJSON: jest.fn().mockReturnValue({
       id: 2,
       name: 'Sports'
-    }),
+    })
   }
 ];
 
 const mockCategory = {
-  name: 'Electronics',
+  name: 'Electronics'
 };
 
 const mockCategoryWrong = {

@@ -65,13 +65,13 @@ const updateUser = async (req, res, next) => {
         id: req.params.user_id
       },
       attributes: { exclude: ['password'] },
-      returning: true,
+      returning: true
     });
-    console.log("update")
-    console.log(updatedRows)
-    console.log(updatedUsers)
+    console.log('update');
+    console.log(updatedRows);
+    console.log(updatedUsers);
     // Return a success response indicating the user was updated
-    return res.json(putHalLinks(updatedUsers[0].toJSON(),'users'));
+    return res.json(putHalLinks(updatedUsers[0].toJSON(), 'users'));
   } catch (e) {
     // If an error occurs, create a new error object with the error's message
     const error = new Error(e.message);
