@@ -1,13 +1,31 @@
-// Function gets all bids from the database
-const getResource = async (Resource, condition, next) => {
-  try {
-    const resource = await Resource.findAll({ where: condition, raw: true });
+const { createHalEmbedded } = require('../../utils/hal');
 
-    // If no bids are found, return a 204 No Content response
-    if (resource.length === 0) {
-      return [];
+// Function gets all bids from the database
+// const getResource = async (Resource, condition, attributes, self, path, res, next) => {
+const getResource = async (db, hal, res, next) => {
+  try {
+    const resources = await db.model.findAll({
+      where: db.where,
+      attributes: db.attributes,
+      raw: true
+    });
+
+    // If no resource are found, return a 204 No Content response
+    if (resources.length === 0) {
+      return res.status(204).end();
     }
-    return resource;
+    // else respond with bid data and hypermedia
+    return res.json({
+      _links:
+    {
+      self: { href: hal.self },
+      profile: { href: `/profiles/${hal.path}/` },
+      create: { href: `/api/${hal.path}`, method: 'POST' }
+    },
+      _embedded: {
+        [hal.path]: resources.map((resource) => createHalEmbedded(resource, hal.path, hal.edit))
+      }
+    });
   } catch (e) {
     const error = new Error(e.message);
     error.name = e.name;

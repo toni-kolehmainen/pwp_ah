@@ -3,7 +3,8 @@ const bcrypt = require('bcrypt');
 const { User } = require('../models');
 
 const ajv = new Ajv({ coerceTypes: false });
-const { createHalLinks, createHalEmbedded } = require('../utils/hal');
+const { createHalLinks } = require('../utils/hal');
+const { getResource } = require('./get/base_resource');
 
 // The schema for adding a new user
 const addSchema = {
@@ -19,29 +20,45 @@ const addSchema = {
   additionalProperties: false
 };
 
-const getUsers = async (req, res) => {
+const getUsers = async (req, res, next) => {
   // Find a users in the database excluding the password field
-  const users = await User.findAll({
-    attributes: { exclude: ['password'] }
-  });
 
-  // If users length is 0, return a 204 No content
-  if (users.length === 0) {
-    return res.status(204).end();
-  }
-  console.log(users);
-  // Else return users
-  return res.json({
-    _links:
-      {
-        self: { href: '/api/users/' },
-        profile: { href: '/profiles/users/' },
-        create: { href: '/api/users', method: 'POST' }
-      },
-    _embedded: {
-      users: users.map((user) => createHalEmbedded(user.toJSON(), 'users'))
-    }
-  });
+  await getResource(
+    {
+      model: User,
+      where: {},
+      attributes: { exclude: ['password'] }
+    },
+    {
+      self: '/api/user/',
+      path: 'users',
+      edit: true
+    },
+    res,
+    next
+  );
+
+  // const users = await User.findAll({
+  //   attributes: { exclude: ['password'] }
+  // });
+
+  // // If users length is 0, return a 204 No content
+  // if (users.length === 0) {
+  //   return res.status(204).end();
+  // }
+  // console.log(users);
+  // // Else return users
+  // return res.json({
+  //   _links:
+  //     {
+  //       self: { href: '/api/users/' },
+  //       profile: { href: '/profiles/users/' },
+  //       create: { href: '/api/users', method: 'POST' }
+  //     },
+  //   _embedded: {
+  //     users: users.map((user) => createHalEmbedded(user.toJSON(), 'users'))
+  //   }
+  // });
 };
 
 const addUser = async (req, res, next) => {
