@@ -32,12 +32,6 @@ const mockBids =
     amount: 500,
     user_id: 1,
     category_id: 1,
-    toJSON: jest.fn().mockReturnValue({
-      id: 1,
-      amount: 500,
-      user_id: 1,
-      category_id: 1,
-    }),
   }
 
 

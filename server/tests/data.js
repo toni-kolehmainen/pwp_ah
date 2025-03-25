@@ -14,6 +14,8 @@ const mockUser = {
   })
 };
 
+
+
 const addMockUser = {
   name: 'John Doe',
   nickname: 'Johnny',

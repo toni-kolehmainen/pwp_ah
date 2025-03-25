@@ -1,6 +1,7 @@
 const Ajv = require('ajv');
 const { Bid } = require('../models');
-const { createHalLinks, createHalEmbedded } = require('../utils/hal');
+const { createHalLinks } = require('../utils/hal');
+const { getResource } = require('./get/base_resource');
 
 const ajv = new Ajv({ coerceTypes: false });
 
@@ -17,26 +18,21 @@ const addSchema = {
 };
 
 // Function gets all bids from the database
-const getBids = async (req, res) => {
-  const bids = await Bid.findAll({
-  });
-
-  // If no bids are found, return a 204 No Content response
-  if (bids.length === 0) {
-    return res.status(204).end();
-  }
-  // else respond with bid data and hypermedia
-  return res.json({
-    _links:
-      {
-        self: { href: '/api/bids/' },
-        profile: { href: '/profiles/bids/' },
-        create: { href: '/api/bids', method: 'POST' }
-      },
-    _embedded: {
-      bids: bids.map((bid) => createHalEmbedded(bid.toJSON(), 'bids', false))
-    }
-  });
+const getBids = async (req, res, next) => {
+  await getResource(
+    {
+      model: Bid,
+      where: {},
+      attributes: {}
+    },
+    {
+      self: '/api/bids/',
+      path: 'bids',
+      edit: false
+    },
+    res,
+    next
+  );
 };
 
 // Function to add a new bid to the database

@@ -10,6 +10,15 @@ const {
   mockUser, mockUserWrong
 } = require('./data');
 
+const getMockUser = {
+  id: 1,
+  name: 'John Doe',
+  nickname: 'Johnny',
+  email: 'john.doe@example.com',
+  phone: '123-456-7890',
+  password: 'hashedpassword123',
+};
+
 const addMockUser = {
   name: 'John Doe',
   nickname: 'Johnny',
@@ -63,13 +72,13 @@ describe('GET /api users', () => {
   });
 
   it('should return status 200 if mock user created', async () => {
-    User.findAll.mockResolvedValue([mockUser]);
+    User.findAll.mockResolvedValue([getMockUser]);
 
     await api.get('/api/users').expect(200).expect('Content-Type', /application\/json/);
   });
 
   it('should return the mock user', async () => {
-    User.findAll.mockResolvedValue([mockUser]);
+    User.findAll.mockResolvedValue([getMockUser]);
     const response = await api.get('/api/users').expect(200);
     const body = response.body;
     
@@ -89,7 +98,7 @@ describe('GET /api users', () => {
     const user = body._embedded.users[0];
     expect(user).toHaveProperty('_links');
     expect(user._links).toHaveProperty('self');
-    expect(user._links.self).toHaveProperty('href', `/api/users/${mockUser.id}`);
+    expect(user._links.self).toHaveProperty('href', `/api/users/${getMockUser.id}`);
     
     // Verify that user has 'email', 'name', and 'nickname'
     expect(user).toHaveProperty('email');
@@ -98,9 +107,9 @@ describe('GET /api users', () => {
     
     // Ensure 'href' for delete and edit are present
     expect(user._links).toHaveProperty('delete');
-    expect(user._links.delete).toHaveProperty('href', `/api/users/${mockUser.id}`);
+    expect(user._links.delete).toHaveProperty('href', `/api/users/${getMockUser.id}`);
     expect(user._links).toHaveProperty('edit');
-    expect(user._links.edit).toHaveProperty('href', `/api/users/${mockUser.id}`);
+    expect(user._links.edit).toHaveProperty('href', `/api/users/${getMockUser.id}`);
 
   });
 });
