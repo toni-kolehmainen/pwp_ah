@@ -71,9 +71,7 @@ const addUser = async (req, res, next) => {
     const error = new Error(e.message);
     error.name = e.name;
     // If the error has validation messages
-    if (e.errors.length !== 0) {
-      error.message = e.errors[0].message;
-    }
+    error.message = e.errors[0]?.message || error.message;
     return next(error); // Pass the error to the next middleware (error handler)
   }
 };

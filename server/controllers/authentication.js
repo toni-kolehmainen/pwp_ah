@@ -46,7 +46,15 @@ const login = async (req, res, next) => {
       id: user.id
     };
     const token = jwt.sign(userToken, process.env.JWT, { expiresIn: 60 * 60 });
-    return res.json({ token });
+    return res.json({
+      token,
+      expiresIn: 60 * 60,
+      user: {
+        id: user.id,
+        name: user.name,
+        email: user.email
+      }
+    });
   } catch (e) {
     const error = new Error(e.message);
     error.name = e.name;

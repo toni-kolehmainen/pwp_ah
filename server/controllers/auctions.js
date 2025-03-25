@@ -29,7 +29,7 @@ const getAuctions = async (req, res) => {
           create: { href: '/api/auctions', method: 'POST' }
         },
       _embedded: {
-        auctions: auctions.map((auction) => createHalEmbedded(auction.toJSON(), 'auctions', false, true))
+        auctions: auctions.map((auction) => createHalEmbedded(auction.toJSON(), 'auctions', false))
       }
     });
   } catch (error) {
@@ -53,7 +53,7 @@ const addAuction = async (req, res, next) => {
       // end_time: end_time || new Date(new Date().getTime() + 24 * 60 * 60 * 1000) // 24 hours
     });
     // (resource, path, canEdit = true, canDelete = true)
-    return res.status(201).json(createHalLinks(auction.toJSON(), 'auctions', false, true));
+    return res.status(201).json(createHalLinks(auction.toJSON(), 'auctions', false));
   } catch (error) {
     // Handle specific validation errors
     if (error.name === 'SequelizeValidationError' || error.name === 'SequelizeForeignKeyConstraintError') {

@@ -26,7 +26,7 @@ const getCategories = async (req, res) => {
         create: { href: '/api/categories', method: 'POST' }
       },
     _embedded: {
-      categories: categories.map((category) => createHalEmbedded(category.toJSON(), 'categories', false, true))
+      categories: categories.map((category) => createHalEmbedded(category.toJSON(), 'categories', false))
     }
   });
 };
@@ -41,7 +41,7 @@ const addCategories = async (req, res) => {
     if (!valid) return res.status(400).json({ status: 'Failed' });
 
     const category = await Category.create(req.body);
-    return res.status(201).json(createHalLinks(category, 'categories', false, true));
+    return res.status(201).json(createHalLinks(category, 'categories', false));
   } catch (error) {
     return res.status(409).json({ error });
   }

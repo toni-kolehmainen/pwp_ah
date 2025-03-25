@@ -6,11 +6,21 @@ const Auction = require('./auction');
 const Bid = require('./bid');
 
 // Define relationships
-User.hasMany(Item);
-Item.belongsTo(User);
+User.hasMany(Item, {
+  foreignKey: {
+    name: 'seller_id',
+    allowNull: false
+  }
+});
+Item.belongsTo(User, {
+  foreignKey: {
+    name: 'seller_id',
+    allowNull: false
+  }
+});
 
-User.hasMany(Auction);
-Auction.belongsTo(User);
+// User.hasMany(Auction);
+// Auction.belongsTo(User);
 
 Category.hasMany(Item, { onDelete: 'SET NULL' });
 Item.belongsTo(Category);

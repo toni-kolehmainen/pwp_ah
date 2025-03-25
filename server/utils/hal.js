@@ -1,7 +1,7 @@
 const { resourceProperties } = require('../static/profiles');
 
 // Function to create HAL structure for a single embedded resource
-const createHalEmbedded = (resource, path, canEdit = true, canDelete = true) => {
+const createHalEmbedded = (resource, path, canEdit = true) => {
   console.log(resource);
   console.log(path);
   const halStructure = {
@@ -16,15 +16,15 @@ const createHalEmbedded = (resource, path, canEdit = true, canDelete = true) => 
   }
 
   // Add the 'delete' link conditionally
-  if (canDelete) {
-    halStructure._links.delete = { href: `/api/${path}/${resource.id}`, method: 'DELETE' };
-  }
+  // if (canDelete) {
+  halStructure._links.delete = { href: `/api/${path}/${resource.id}`, method: 'DELETE' };
+  // }
 
   return halStructure;
 };
 
 // Function to create HAL structure for a single resource
-const createHalLinks = (resource, path, canEdit = true, canDelete = true) => {
+const createHalLinks = (resource, path, canEdit = true) => {
   const halStructure = {
     _links: {
       self: { href: `/api/${path}/${resource.id}` },
@@ -40,9 +40,9 @@ const createHalLinks = (resource, path, canEdit = true, canDelete = true) => {
   }
 
   // Add the 'delete' link conditionally
-  if (canDelete) {
-    halStructure._links.delete = { href: `/api/${path}/${resource.id}`, method: 'DELETE' };
-  }
+  // if (canDelete) {
+  halStructure._links.delete = { href: `/api/${path}/${resource.id}`, method: 'DELETE' };
+  // }
 
   return halStructure;
 };

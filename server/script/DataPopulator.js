@@ -22,12 +22,18 @@ const generateRandomUsers = (count) => {
 // Generate random categories
 const generateRandomCategories = (count) => {
   const categories = [];
-  for (let i = 0; i < count; i++) {
-    categories.push({
-      name: faker.commerce.department(),
-      description: faker.lorem.sentence()
-    });
+  for (let i = 0; i < count; i++) { // Adjust loop count as needed
+    const newName = faker.commerce.department();
+
+    // Check if name already exists
+    if (!categories.some((category) => category.name === newName)) {
+      categories.push({
+        name: newName,
+        description: faker.lorem.sentence()
+      });
+    }
   }
+
   return categories;
 };
 
@@ -38,7 +44,7 @@ const generateRandomItems = (count, users, categories) => {
     items.push({
       name: faker.commerce.productName(),
       description: faker.commerce.productDescription(),
-      userId: users[Math.floor(Math.random() * users.length)].id,
+      sellerId: users[Math.floor(Math.random() * users.length)].id,
       categoryId: categories[Math.floor(Math.random() * categories.length)].id
     });
   }
@@ -55,7 +61,7 @@ const generateRandomAuctions = (count, items) => {
       starting_price: parseFloat(faker.commerce.price({ min: 10, max: 1000 })),
       current_price: parseFloat(faker.commerce.price({ min: 10, max: 1000 })),
       item_id: items[Math.floor(Math.random() * items.length)].id,
-      user_id: items[Math.floor(Math.random() * items.length)].userId
+      seller_id: items[Math.floor(Math.random() * items.length)].sellerId
     });
   }
   return auctions;

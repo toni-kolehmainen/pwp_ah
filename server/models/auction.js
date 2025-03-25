@@ -1,60 +1,4 @@
-// const { Model, DataTypes } = require('sequelize');
-// const Sequelize = require('sequelize');
-// const { sequelize } = require('../utils/db');
-
-// class Auction extends Model { }
-
-// Auction.init({
-//   id: {
-//     type: DataTypes.INTEGER,
-//     primaryKey: true,
-//     autoIncrement: true
-//   },
-//   desctription: {
-//     type: DataTypes.TEXT,
-//     allowNull: true
-//   },
-//   item_id: {
-//     type: DataTypes.INTEGER,
-//     allowNull: false,
-//     references: { model: 'items', key: 'id', onDelete: 'CASCADE' },
-//   },
-//   seller_id: {
-//     type: DataTypes.INTEGER,
-//     allowNull: false,
-//     references: { model: 'users', key: 'id' },
-//     onUpdate: 'CASCADE',
-//     onDelete: 'CASCADE'
-//   },
-//   end_time: {
-//     type: DataTypes.DATE,
-//     allowNull: false,
-//     defaultValue: Sequelize.literal('NOW() + INTERVAL \'24 hours\'')
-//   },
-//   starting_price: {
-//     type: DataTypes.DECIMAL(10, 2),
-//     allowNull: false,
-//     validate: {
-//       isDecimal: true,
-//       min: 0.00
-//     }
-//   },
-//   current_price: {
-//     type: DataTypes.DECIMAL(10, 2),
-//     allowNull: false,
-//     defaultValue: 0.00
-//   }
-// }, {
-//   sequelize,
-//   underscored: true,
-//   timestamps: true,
-//   modelName: 'auction'
-// });
-
-// module.exports = Auction;
-
-const { Model, DataTypes } = require('sequelize');
-const Sequelize = require('sequelize');
+const { Model, DataTypes, Sequelize } = require('sequelize');
 const { sequelize } = require('../utils/db');
 const Item = require('./item'); // Import the Item model
 const User = require('./user'); // Import the User model
@@ -75,15 +19,18 @@ Auction.init(
       type: DataTypes.INTEGER,
       allowNull: false,
       references: { model: 'items', key: 'id' },
-      onUpdate: 'CASCADE',
       onDelete: 'CASCADE'
     },
     seller_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
       references: { model: 'users', key: 'id' },
-      // onUpdate: 'CASCADE',
       onDelete: 'CASCADE'
+    },
+    start_time: {
+      type: DataTypes.DATE,
+      allowNull: false,
+      defaultValue: Sequelize.literal('NOW()')
     },
     end_time: {
       type: DataTypes.DATE,
@@ -107,7 +54,7 @@ Auction.init(
   {
     sequelize,
     modelName: 'auction',
-    timestamps: true,
+    timestamps: false,
     underscored: true
   }
 );

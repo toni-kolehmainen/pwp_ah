@@ -16,7 +16,7 @@ const resourceProperties = (path) => {
   } if (path === 'bids') {
     return bidProperties;
   }
-  return {};
+  return { message: 'Resource not found' };
 };
 module.exports = {
   resourceProperties,

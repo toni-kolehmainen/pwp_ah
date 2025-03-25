@@ -20,7 +20,7 @@ const getAuctionById = async (req, res) => {
     }
 
     // Return the auction as a plain object
-    return res.json(createHalLinks(auction.toJSON(), 'auctions', false, true));
+    return res.json(createHalLinks(auction.toJSON(), 'auctions', false));
   } catch (error) {
     return res.status(500).json({ error: 'Internal Server Error' });
   }

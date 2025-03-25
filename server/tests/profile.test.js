@@ -167,4 +167,10 @@ describe('GET /profile ', () => {
     expect(body.actions[3]).toHaveProperty('name', "delete");
     expect(body.actions[4]).toHaveProperty('name', "update");
   });
+  it('get profile of no-match', async () => {
+    const response = await api.get('/profile/test').expect(404);
+    const body = response.body;
+    expect(body).toHaveProperty('message', "Resource not found");
+    
+  });
 });
