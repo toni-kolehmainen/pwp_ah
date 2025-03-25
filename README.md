@@ -38,6 +38,8 @@ NAME = Username in postgres
 
 PASSWORD = Password in postgres
 
+JWT = example  node -e "console.log(require('crypto').randomBytes(64).toString('hex'))"
+
 ## Dependencies
 Dependencies
 ```sh
@@ -57,17 +59,17 @@ Instructions on how to setup and populate the database.
 
 1. Start the server:
     ```sh
-    npm start
+    npm run start
     ```
     Api is open in `http://localhost:3001`
 
 2. Test the server:
     ```sh
-    npm test
+    npm run test
     ```
 3. Development the server:
     ```sh
-    npm dev
+    npm run dev
     ```
 
 ## Data Population
