@@ -11,6 +11,8 @@ const auctionsController = require('../controllers/auctions');
 const bidController = require('../controllers/bid');
 const bidsController = require('../controllers/bids');
 const authenticationController = require('../controllers/authentication');
+const bidsByAuction = require('../controllers/bids_by_auction');
+const auctionsByUsers = require('../controllers/auctions_by_user');
 
 // imported middleware contain authentication logic for jwt
 const middleware = require('../utils/middleware');
@@ -52,5 +54,11 @@ router.get('/auctions', auctionsController.getAuctions); // List all auctions
 router.get('/auctions/:id', auctionController.getAuctionById); // Get specific auction
 router.post('/auctions', middleware.authenticateJWT, auctionsController.addAuction); // Create new auction
 router.delete('/auctions/:id', middleware.authenticateJWT, auctionController.deleteAuction); // Delete auction
+
+// Bids by auction
+router.get('/auctions/:auction_id/bids', bidsByAuction.getBids);
+
+// auction by user
+router.get('/users/:user_id/auctions', auctionsByUsers.getAuctions);
 
 module.exports = router;

@@ -2,8 +2,8 @@ const { resourceProperties } = require('../static/profiles');
 
 // Function to create HAL structure for a single embedded resource
 const createHalEmbedded = (resource, path, canEdit = true) => {
+  console.log('resource');
   console.log(resource);
-  console.log(path);
   const halStructure = {
     _links: {
       self: { href: `/api/${path}/${resource.id}` }
