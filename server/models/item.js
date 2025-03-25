@@ -18,10 +18,10 @@ Item.init({
     type: DataTypes.TEXT,
     allowNull: true
   },
-  userId: {
+  sellerId: {
     type: DataTypes.INTEGER,
     allowNull: false,
-    field: 'user_id',
+    field: 'seller_id',
     references: { model: 'users', key: 'id', onDelete: 'CASCADE' }
   },
   categoryId: {

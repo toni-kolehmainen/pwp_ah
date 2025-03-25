@@ -64,8 +64,6 @@ describe('GET /api/bids bid', () => {
     expect(body._links.self).toHaveProperty('href', `/api/bids/${mockBid.id}`);
     expect(body._links).toHaveProperty('delete');
     expect(body._links.delete).toHaveProperty('href', `/api/bids/${mockBid.id}`, "method", "DELETE");
-    expect(body._links).toHaveProperty('edit');
-    expect(body._links.edit).toHaveProperty('href', `/api/bids/${mockBid.id}`, "method", "PUT");
     expect(body._links).toHaveProperty('profile');
     expect(body._links.profile).toHaveProperty('href', '/profiles/bids');
     expect(body._links).toHaveProperty('all');

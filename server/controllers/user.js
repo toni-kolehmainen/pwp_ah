@@ -1,6 +1,7 @@
 const bcrypt = require('bcrypt');
 const Ajv = require('ajv');
 const { User } = require('../models');
+const logger = require('../utils/logger');
 
 const ajv = new Ajv({ coerceTypes: false });
 const { createHalLinks, deleteHalLinks, putHalLinks } = require('../utils/hal');
@@ -95,6 +96,7 @@ const deleteUser = (req, res, next) => {
     // Else the deletion is successful, return a response indicating the user was deleted
     return res.json(deleteHalLinks('users'));
   }).catch((e) => {
+    logger.error('Unable to delete user:', e);
     // If an error occurs during the deletion process, catch and handle it
     const error = new Error(e.message);
     error.name = e.name;

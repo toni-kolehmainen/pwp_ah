@@ -34,7 +34,7 @@ const getBids = async (req, res) => {
         create: { href: '/api/bids', method: 'POST' }
       },
     _embedded: {
-      bids: bids.map((bid) => createHalEmbedded(bid.toJSON(), 'bids'))
+      bids: bids.map((bid) => createHalEmbedded(bid.toJSON(), 'bids', false))
     }
   });
 };
@@ -55,16 +55,13 @@ const addBid = async (req, res, next) => {
 
     // Create a new bid in the database
     const bid = await Bid.create(req.body);
-    return res.status(201).json(createHalLinks(bid.toJSON(), 'bids'));
+    return res.status(201).json(createHalLinks(bid.toJSON(), 'bids', false));
   } catch (e) {
     // If an error occurs, handle the error
     const error = new Error(e.message);
     error.name = e.name;
-    if (e.errors !== undefined) {
-      if (e.errors.length !== 0) {
-        error.message = e.errors[0].message;
-      }
-    }
+    error.message = e.errors[0]?.message || error.message;
+
     return next(error); // Pass the error to the next middleware (error handler)
   }
 };

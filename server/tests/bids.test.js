@@ -137,11 +137,9 @@ describe('GET /api bids', () => {
     expect(bid).toHaveProperty('user_id');
     expect(bid).toHaveProperty('category_id');
     
-    // Ensure 'href' for delete and edit are present
+    // Ensure 'href' for delete are present
     expect(bid._links).toHaveProperty('delete');
     expect(bid._links.delete).toHaveProperty('href', `/api/bids/${mockBids.id}`);
-    expect(bid._links).toHaveProperty('edit');
-    expect(bid._links.edit).toHaveProperty('href', `/api/bids/${mockBids.id}`);
   });
 });
 
