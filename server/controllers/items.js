@@ -9,10 +9,10 @@ const addSchema = {
   properties: {
     name: { type: 'string' },
     description: { type: 'string' },
-    userId: { type: 'number' },
+    sellerId: { type: 'number' },
     categoryId: { type: 'number' }
   },
-  required: ['name', 'userId', 'categoryId'],
+  required: ['name', 'sellerId', 'categoryId'],
   additionalProperties: false
 };
 
