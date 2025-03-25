@@ -12,7 +12,7 @@ const getAuctions = async (req, res) => {
     } = req.query;
 
     const auctions = await Auction.findAll({
-      attributes: ['id', 'description', 'end_time', 'starting_price', 'current_price', 'user_id', 'item_id', 'seller_id'],
+      attributes: ['id', 'description', 'end_time', 'starting_price', 'current_price', 'item_id', 'seller_id'],
       order: [[sort, order]],
       limit: parseInt(limit, 10),
       offset: parseInt(offset, 10)
