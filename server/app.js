@@ -2,13 +2,17 @@ const express = require('express');
 
 const app = express();
 const cors = require('cors');
-// const cron = require('node-cron');
+const cron = require('node-cron');
 const middleware = require('./utils/middleware');
 const router = require('./router');
 const routerProfile = require('./router/profile');
-// cron.schedule('*/2 * * * *', () => {
-//   console.log('delete example bids');
-// });
+const { dataClean } = require('./services/data_clean');
+
+// cron.schedule('0 0 * * 1', async () => {
+cron.schedule('* * * * *', async () => {
+  const mes = await dataClean();
+  console.log(mes);
+});
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
