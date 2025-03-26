@@ -56,9 +56,12 @@ const dataClean = async () => {
   const currentTime = new Date();
   const mesbackUp = await dataBackUp(1, currentTime);
 
-  const mesDelete = await deleteModelData(Auction, {
-    end_time: { [Op.lt]: currentTime }
-  });
+  const mesDelete = await deleteModelData(
+    Auction,
+    {
+      end_time: { [Op.lt]: currentTime }
+    },
+  );
 
   return { mesbackUp, mesDelete };
 };

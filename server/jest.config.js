@@ -6,7 +6,8 @@ module.exports = {
     '/node_modules/',
     '/tests/',
     '/utils/db',
-    '/models/index'
+    '/models/index',
+    '/services/'
   ],
   coverageDirectory: 'coverage',
   coverageReporters: ['text', 'lcov']

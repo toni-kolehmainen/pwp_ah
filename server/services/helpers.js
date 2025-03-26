@@ -1,19 +1,29 @@
-const { Op } = require('sequelize');
 const { Auction, Bid } = require('../models');
 
-const outdatedBidsAndAuctions = async (currentTime) => {
+const outdatedBidsAndAuctions = async (condition, include, highestOnly = false) => {
   try {
     // get outdated auctions that are removed
     const outdatedAuctions = await Auction.findAll({
-      where: {
-        end_time: { [Op.lt]: currentTime }
-      },
+      where: condition,
+      include: include.auction,
       raw: true
     });
+
     // get outdated bids that are removed
     const bids = await Promise.all(
       outdatedAuctions.map(async (auction) => {
-        const _bids = await Bid.findAll({ where: { auction_id: auction.id }, raw: true });
+        const queryOptions = {
+          where: { auction_id: auction.id },
+          include: include.bid,
+          raw: true // Return raw data, not instances
+        };
+
+        // If we need to get only the highest bid, add `order` and `limit` to the query
+        if (highestOnly) {
+          queryOptions.order = [['amount', 'DESC']];
+          queryOptions.limit = 1;
+        }
+        const _bids = await Bid.findAll(queryOptions);
         return _bids;
       })
     );
