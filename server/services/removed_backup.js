@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const { Op } = require('sequelize');
 const { outdatedBidsAndAuctions } = require('./helpers');
 
 const backupFolderPath = path.join(__dirname, 'backup');
@@ -61,7 +62,10 @@ const dataBackUp = async (choice, currentTime) => {
   switch (choice) {
   case 1: {
     // Back up dataclean auctios and bids
-    const outdated = await outdatedBidsAndAuctions(currentTime);
+    const condition = { end_time: { [Op.lt]: currentTime } };
+    const outdated = await outdatedBidsAndAuctions(condition,
+    { auction: [], bid: [] }
+    );
     if (!outdated.outdatedAuctions.length && !outdated.outdatedBids.length) {
       // No outdated auctions or bids
       message = 'No outdated auctions or bids found for backup.';
