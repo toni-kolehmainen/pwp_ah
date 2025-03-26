@@ -49,7 +49,9 @@ const addAuction = async (req, res, next) => {
       seller_id,
       description,
       starting_price,
-      current_price: starting_price
+      current_price: starting_price,
+      end_time
+
       // end_time: end_time || new Date(new Date().getTime() + 24 * 60 * 60 * 1000) // 24 hours
     });
     // (resource, path, canEdit = true, canDelete = true)

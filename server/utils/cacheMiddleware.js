@@ -3,7 +3,7 @@ const NodeCache = require('node-cache');
 // Creating a cache instance with default TTL of 5 minutes
 const cache = new NodeCache({
   stdTTL: 300, // 5 minutes in seconds
-  checkperiod: 1 // Check for expired keys every 60 seconds
+  checkperiod: 60 // Check for expired keys every 60 seconds
 });
 
 // GET Routes are cached

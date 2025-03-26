@@ -1,7 +1,6 @@
 const { createHalEmbedded } = require('../../utils/hal');
 
-// Function gets all bids from the database
-// const getResource = async (Resource, condition, attributes, self, path, res, next) => {
+// This function it get all for a model
 const getResource = async (db, hal, res, next) => {
   try {
     const resources = await db.model.findAll({

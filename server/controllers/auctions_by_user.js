@@ -1,5 +1,5 @@
 const { Auction } = require('../models');
-const { getResource } = require('./get/base_resource');
+const { getResource } = require('./base_resource/get_all');
 
 // Function gets all auctions from the database
 const getAuctions = async (req, res, next) => {

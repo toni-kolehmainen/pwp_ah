@@ -1,7 +1,7 @@
 const Ajv = require('ajv');
 const { Bid } = require('../models');
 const { createHalLinks } = require('../utils/hal');
-const { getResource } = require('./get/base_resource');
+const { getResource } = require('./base_resource/get_all');
 
 const ajv = new Ajv({ coerceTypes: false });
 
@@ -56,7 +56,7 @@ const addBid = async (req, res, next) => {
     // If an error occurs, handle the error
     const error = new Error(e.message);
     error.name = e.name;
-    error.message = e.errors[0]?.message || error.message;
+    error.message = e.errors?.[0]?.message || error.message;
 
     return next(error); // Pass the error to the next middleware (error handler)
   }
