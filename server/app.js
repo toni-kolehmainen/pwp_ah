@@ -10,9 +10,9 @@ const { dataClean } = require('./services/data_clean');
 const { auctionEndListener } = require('./services/email');
 
 // check if auction is ended every minute
-cron.schedule('* * * * *', async () => {
+// cron.schedule('* * * * *', async () => {
   auctionEndListener();
-});
+// });
 
 // removes outdated information like ended auction and its bids
 // data is copied to text file
