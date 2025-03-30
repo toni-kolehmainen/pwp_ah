@@ -1,5 +1,5 @@
 use crate::api::utils::get_base_url;
-use crate::models::{LoginResponse, User};
+use crate::models::{HalUserResponse, HalUserWrapper, LoginResponse, User};
 use dotenv::dotenv;
 use reqwest::{header, Client};
 use std::collections::HashMap;
@@ -52,28 +52,53 @@ pub async fn fetch_users(client: &Client) -> Result<(), Box<dyn Error>> {
     let base_url = get_base_url().await;
     let url = format!("{}/users", base_url);
 
-    let response = client.get(&url).send().await;
-    match response {
-        Ok(res) => {
-            let users: Vec<User> = res.json().await?;
-            for user in users {
-                println!("ID: {}, Name: {}", user.id.unwrap(), user.name);
-            }
-            let duration = start.elapsed();
-            println!("Time taken: {:?}", duration);
-            Ok(())
+    let response = client.get(&url).send().await?;
+    let hal: HalUserResponse = response.json().await?;
+
+    for wrapper in hal.embedded.users {
+        let user = &wrapper.user;
+        let links = &wrapper.links;
+
+        println!(
+            "User:\n  id: {}\n  name: {}\n  nickname: {}\n  email: {}\n  phone: {}",
+            user.id.unwrap_or_default(),
+            user.name,
+            user.nickname,
+            user.email,
+            user.phone
+        );
+
+        println!("Links:");
+        println!(
+            "  self: {} {}",
+            links.self_link.method.clone().unwrap_or("GET".into()),
+            links.self_link.href
+        );
+        if let Some(edit) = &links.edit {
+            println!(
+                "  edit: {} {}",
+                edit.method.clone().unwrap_or("PUT".into()),
+                edit.href
+            );
         }
-        Err(e) => {
-            eprintln!("Failed to fetch users: {}", e);
-            Err(Box::new(e))
+        if let Some(delete) = &links.delete {
+            println!(
+                "  delete: {} {}",
+                delete.method.clone().unwrap_or("DELETE".into()),
+                delete.href
+            );
         }
+        println!("---");
     }
+
+    println!("Time taken: {:?}", start.elapsed());
+    Ok(())
 }
 
 pub async fn fetch_user(client: &Client, user_id: i32) -> Result<(), Box<dyn Error>> {
     let start = Instant::now();
     let base_url = get_base_url().await;
-    let url = format!("{}/user/{}", base_url, user_id);
+    let url = format!("{}/users/{}", base_url, user_id);
     println!("URL: {:?}", &url);
 
     let response = client.get(&url).send().await;
@@ -97,7 +122,8 @@ pub async fn fetch_user(client: &Client, user_id: i32) -> Result<(), Box<dyn Err
 
 pub async fn add_user(client: &Client, user: User) -> Result<(), Box<dyn Error>> {
     let base_url = get_base_url().await;
-    let url = format!("{}/user", base_url);
+    let url = format!("{}/users", base_url);
+    println!("Sending User JSON: {:?}", &user);
 
     let response = client
         .post(&url)
@@ -107,7 +133,9 @@ pub async fn add_user(client: &Client, user: User) -> Result<(), Box<dyn Error>>
         .await?;
 
     if response.status().is_success() {
-        let created_user: User = response.json().await?;
+        let wrapper: HalUserWrapper = response.json().await?;
+        let created_user = wrapper.user;
+
         println!(
             "Created User - Name: {}, Description: {}",
             created_user.id.unwrap(),

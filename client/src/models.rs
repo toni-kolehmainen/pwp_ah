@@ -17,6 +17,7 @@ pub struct User {
 pub struct Item {
     pub name: String,
     pub description: String,
+    #[serde(rename = "sellerId")]
     pub userId: i32,
     pub categoryId: i32,
 }
@@ -45,4 +46,63 @@ pub struct Auction {
 #[derive(Serialize, Deserialize, Debug)]
 pub struct LoginResponse {
     pub token: String,
+}
+
+#[derive(Deserialize, Debug)]
+pub struct HalUserLinks {
+    #[serde(rename = "self")]
+    pub self_link: HalLink,
+    pub edit: Option<HalLink>,
+    pub delete: Option<HalLink>,
+}
+
+#[derive(Deserialize, Debug)]
+pub struct HalLink {
+    pub href: String,
+    pub method: Option<String>,
+}
+
+#[derive(Deserialize, Debug)]
+pub struct HalUserWrapper {
+    #[serde(rename = "_links")]
+    pub links: HalUserLinks,
+    #[serde(flatten)]
+    pub user: User,
+}
+
+#[derive(Deserialize, Debug)]
+pub struct EmbeddedUsers {
+    pub users: Vec<HalUserWrapper>,
+}
+
+#[derive(Deserialize, Debug)]
+pub struct HalUserResponse {
+    #[serde(rename = "_embedded")]
+    pub embedded: EmbeddedUsers,
+}
+#[derive(Deserialize, Debug)]
+pub struct HalItemLinks {
+    #[serde(rename = "self")]
+    pub self_link: HalLink,
+    pub edit: Option<HalLink>,
+    pub delete: Option<HalLink>,
+}
+
+#[derive(Deserialize, Debug)]
+pub struct HalItemWrapper {
+    #[serde(rename = "_links")]
+    pub links: HalItemLinks,
+    #[serde(rename = "dataValues")]
+    pub item: Item,
+}
+
+#[derive(Deserialize, Debug)]
+pub struct EmbeddedItems {
+    pub items: Vec<HalItemWrapper>,
+}
+
+#[derive(Deserialize, Debug)]
+pub struct HalItemResponse {
+    #[serde(rename = "_embedded")]
+    pub embedded: EmbeddedItems,
 }

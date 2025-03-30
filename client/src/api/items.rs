@@ -1,16 +1,17 @@
 use crate::api::utils::get_base_url;
-use crate::models::Item;
+use crate::models::{HalItemResponse, HalItemWrapper, Item};
 use reqwest::{header, Client};
 use std::error::Error;
 
 pub async fn fetch_items(client: &Client) -> Result<(), Box<dyn Error>> {
     let base_url = get_base_url().await;
     let url = format!("{}/items", base_url);
-    let items: Vec<Item> = client.get(url).send().await?.json().await?;
-    for item in items {
+    let hal: HalItemResponse = client.get(url).send().await?.json().await?;
+    for wrapper in hal.embedded.items {
+        let item = wrapper.item;
         println!(
-            "Name: {}, Description: {}, Category ID: {}, User_ID: {}",
-            item.name, item.description, item.categoryId, item.userId
+            "Name: {}, Description: {}, Category ID: {}",
+            item.name, item.description, item.categoryId
         );
     }
     Ok(())
@@ -18,7 +19,7 @@ pub async fn fetch_items(client: &Client) -> Result<(), Box<dyn Error>> {
 
 pub async fn fetch_item(client: &Client, item_id: i32) -> Result<(), Box<dyn Error>> {
     let base_url = get_base_url().await;
-    let url = format!("{}/item/{}", base_url, item_id);
+    let url = format!("{}/items/{}", base_url, item_id);
 
     let response = client.get(&url).send().await;
     match response {
@@ -26,7 +27,9 @@ pub async fn fetch_item(client: &Client, item_id: i32) -> Result<(), Box<dyn Err
             let body = res.text().await?;
             println!("Response body: {}", body);
 
-            let item: Item = serde_json::from_str(&body)?;
+            let wrapper: HalItemWrapper = serde_json::from_str(&body)?;
+            let item = wrapper.item;
+
             println!("Name: {}, Description: {}", item.name, item.description);
             Ok(())
         }
@@ -39,7 +42,7 @@ pub async fn fetch_item(client: &Client, item_id: i32) -> Result<(), Box<dyn Err
 
 pub async fn add_item(client: &Client, item: Item) -> Result<(), Box<dyn Error>> {
     let base_url = get_base_url().await;
-    let url = format!("{}/item", base_url);
+    let url = format!("{}/items/{}", base_url, item.userId);
 
     let response = client
         .post(&url)
