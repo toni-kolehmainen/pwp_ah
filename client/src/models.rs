@@ -15,6 +15,17 @@ pub struct User {
 
 #[derive(Serialize, Deserialize, Debug)]
 pub struct Item {
+    #[serde(skip_serializing)]
+    pub id: Option<i32>,
+    pub name: String,
+    pub description: String,
+    #[serde(rename = "sellerId")]
+    pub userId: i32,
+    pub categoryId: i32,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ItemPayload {
     pub name: String,
     pub description: String,
     #[serde(rename = "sellerId")]
@@ -92,17 +103,34 @@ pub struct HalItemLinks {
 pub struct HalItemWrapper {
     #[serde(rename = "_links")]
     pub links: HalItemLinks,
-    #[serde(rename = "dataValues")]
+    #[serde(flatten)]
     pub item: Item,
+}
+
+#[derive(Deserialize, Debug)]
+pub struct HalItemWrapper2 {
+    #[serde(rename = "_links")]
+    pub links: HalItemLinks,
+    pub dataValues: Item,
 }
 
 #[derive(Deserialize, Debug)]
 pub struct EmbeddedItems {
     pub items: Vec<HalItemWrapper>,
 }
+#[derive(Deserialize, Debug)]
+pub struct EmbeddedItems2 {
+    pub items: Vec<HalItemWrapper2>,
+}
 
 #[derive(Deserialize, Debug)]
 pub struct HalItemResponse {
     #[serde(rename = "_embedded")]
     pub embedded: EmbeddedItems,
+}
+
+#[derive(Deserialize, Debug)]
+pub struct HalItemResponse2 {
+    #[serde(rename = "_embedded")]
+    pub embedded: EmbeddedItems2,
 }

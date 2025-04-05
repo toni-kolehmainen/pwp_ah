@@ -1,7 +1,7 @@
 mod api;
 mod models;
 
-use crate::models::{Item, User};
+use crate::models::{Item, ItemPayload, User};
 use clap::{Parser, Subcommand};
 use reqwest::Client;
 use std::error::Error;
@@ -65,6 +65,8 @@ struct ItemGroup {
 enum ItemCommands {
     /// Fetch all items
     FetchItems,
+    /// Fetch 1 item
+    FetchItem { id: i32 },
     /// Create a new item
     AddItem {
         name: String,
@@ -72,6 +74,16 @@ enum ItemCommands {
         userId: i32,
         categoryId: i32,
     },
+    /// Update existing item
+    UpdateItem {
+        id: i32,
+        name: String,
+        description: String,
+        userId: i32,
+        categoryId: i32,
+    },
+    /// Delete item
+    DeleteItem { id: i32 },
 }
 
 #[derive(Parser, Debug)]
@@ -141,6 +153,9 @@ async fn main() -> Result<(), Box<dyn Error>> {
             ItemCommands::FetchItems => {
                 api::fetch_items(&client).await?;
             }
+            ItemCommands::FetchItem { id } => {
+                api::fetch_item(&client, &id).await?;
+            }
             ItemCommands::AddItem {
                 name,
                 description,
@@ -148,12 +163,31 @@ async fn main() -> Result<(), Box<dyn Error>> {
                 categoryId,
             } => {
                 let item = Item {
+                    id: None,
                     name,
                     description,
                     userId,
                     categoryId,
                 };
                 api::add_item(&client, item).await?;
+            }
+            ItemCommands::UpdateItem {
+                id,
+                name,
+                description,
+                userId,
+                categoryId,
+            } => {
+                let item = ItemPayload {
+                    name,
+                    description,
+                    userId,
+                    categoryId,
+                };
+                api::update_item(&client, item, &id).await?;
+            }
+            ItemCommands::DeleteItem { id } => {
+                api::delete_item(&client, &id).await?;
             }
         },
         MainCommand::Category(category_group) => match category_group.command {
