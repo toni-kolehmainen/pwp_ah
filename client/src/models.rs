@@ -14,6 +14,15 @@ pub struct User {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
+pub struct UserPayload {
+    pub name: String,
+    pub nickname: String,
+    pub email: String,
+    pub phone: String,
+    pub password: String,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
 pub struct Item {
     #[serde(skip_serializing)]
     pub id: Option<i32>,

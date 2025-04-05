@@ -1,5 +1,5 @@
 use crate::api::utils::get_base_url;
-use crate::models::{HalUserResponse, HalUserWrapper, LoginResponse, User};
+use crate::models::{HalUserResponse, HalUserWrapper, LoginResponse, User, UserPayload};
 use dotenv::dotenv;
 use reqwest::{header, Client};
 use std::collections::HashMap;
@@ -148,10 +148,38 @@ pub async fn add_user(client: &Client, user: User) -> Result<(), Box<dyn Error>>
     Ok(())
 }
 
-pub async fn update_user(client: &Client) -> Result<(), Box<dyn Error>> {
+pub async fn update_user(
+    client: &Client,
+    userUpdate: UserPayload,
+    user_id: i32,
+) -> Result<(), Box<dyn Error>> {
+    let base_url = get_base_url().await;
+    let url = format!("{}/users/{}", base_url, user_id);
+    println!("Requesting PUT: {}", url);
+    println!("Payload: {:?}", userUpdate);
+    let response = client.put(&url).json(&userUpdate).send().await?;
+    let status = response.status();
+    let body = response.text().await?;
+
+    println!("Response Status: {}", status);
+    println!("Response Body: {}", body);
     Ok(())
 }
 
 pub async fn delete_user(client: &Client, id: i32) -> Result<(), Box<dyn Error>> {
+    let base_url = get_base_url().await;
+    let url = format!("{}/users/{}", base_url, id);
+
+    let response = client
+        .delete(&url)
+        .header(header::CONTENT_TYPE, "application/json")
+        .send()
+        .await?;
+
+    let status = response.status();
+    let body = response.text().await?;
+
+    println!("Response Status: {}", status);
+    println!("Response Body: {}", body);
     Ok(())
 }

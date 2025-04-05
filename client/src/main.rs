@@ -3,6 +3,7 @@ mod models;
 
 use crate::models::{Item, ItemPayload, User};
 use clap::{Parser, Subcommand};
+use models::UserPayload;
 use reqwest::Client;
 use std::error::Error;
 
@@ -49,10 +50,17 @@ enum UserCommands {
         phone: String,
         password: Option<String>,
     },
+    /// Update an existing user by ID
+    UpdateUser {
+        id: i32,
+        name: String,
+        nickname: String,
+        email: String,
+        phone: String,
+        password: String,
+    },
     /// Delete a user by ID
     DeleteUser { id: i32 },
-    /// Update an existing user by ID
-    UpdateUser { id: i32 },
 }
 
 #[derive(Parser, Debug)]
@@ -142,11 +150,25 @@ async fn main() -> Result<(), Box<dyn Error>> {
                 };
                 api::add_user(&client, user).await?;
             }
+            UserCommands::UpdateUser {
+                id,
+                name,
+                nickname,
+                email,
+                phone,
+                password,
+            } => {
+                let user_update = UserPayload {
+                    name,
+                    nickname,
+                    email,
+                    phone,
+                    password,
+                };
+                api::update_user(&client, user_update, id).await?;
+            }
             UserCommands::DeleteUser { id } => {
                 api::delete_user(&client, id).await?;
-            }
-            UserCommands::UpdateUser { id } => {
-                api::update_user(&client).await?;
             }
         },
         MainCommand::Item(item_group) => match item_group.command {
