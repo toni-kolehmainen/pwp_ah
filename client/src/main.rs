@@ -22,6 +22,26 @@ enum MainCommand {
     Item(ItemGroup),
     /// Commands related to categories
     Category(CategoryGroup),
+    /// Commands related to bids
+    Bid(BidGroup),
+}
+
+#[derive(Parser, Debug)]
+struct BidGroup {
+    #[clap(subcommand)]
+    command: BidCommands,
+}
+
+#[derive(Subcommand, Debug)]
+enum BidCommands {
+    /// Fetch bids
+    FetchBids,
+    /// Fetch bid by id
+    FetchBid { id: i32 },
+    /// Create new bid
+    CreateBid { amount: f32, buy_time: String },
+    /// Delete existing bid
+    DeleteBid { id: i32 },
 }
 
 #[derive(Parser, Debug)]
