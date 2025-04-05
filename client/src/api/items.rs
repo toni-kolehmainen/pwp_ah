@@ -49,7 +49,7 @@ pub async fn fetch_item(client: &Client, item_id: &i32) -> Result<(), Box<dyn Er
 
 pub async fn add_item(client: &Client, item: Item) -> Result<(), Box<dyn Error>> {
     let base_url = get_base_url().await;
-    let url = format!("{}/items/{}", base_url, item.userId);
+    let url = format!("{}/items", base_url);
 
     let response = client
         .post(&url)
@@ -58,15 +58,13 @@ pub async fn add_item(client: &Client, item: Item) -> Result<(), Box<dyn Error>>
         .send()
         .await?;
 
-    if response.status().is_success() {
-        let created_item: Item = response.json().await?;
-        println!(
-            "Created item - Name: {}, Description: {}",
-            created_item.name, created_item.description
-        );
-    } else {
-        eprintln!("Failed to create item: {}", response.status());
-    }
+    println!("Requesting PUT: {}", url);
+    println!("Payload: {:?}", item);
+    let status = response.status();
+    let body = response.text().await?;
+
+    println!("Response Status: {}", status);
+    println!("Response Body: {}", body);
 
     Ok(())
 }
