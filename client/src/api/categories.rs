@@ -1,55 +1,50 @@
 use crate::api::utils::get_base_url;
-use crate::models::Category;
+use crate::models::{Category, HalCategoryResponse, HalCategoryWrapper};
 use reqwest::{header, Client};
 use std::error::Error;
 
 pub async fn fetch_categories(client: &Client) -> Result<(), Box<dyn Error>> {
     let base_url = get_base_url().await;
     let url = format!("{}/categories", base_url);
-    let categories: Vec<Category> = client.get(url).send().await?.json().await?;
-    for category in categories {
+    let hal: HalCategoryResponse = client.get(url).send().await?.json().await?;
+    for wrapper in hal.embedded.items {
+        let category = &wrapper.category;
         println!(
-            "Name: {}, Description: {}",
-            category.name, category.description
+            "ID: {}, Name: {}, Description: {}",
+            category.id.unwrap_or_default(),
+            category.name,
+            category.description
         );
     }
     Ok(())
 }
 
-pub async fn fetch_category(client: &Client, category_name: String) -> Result<(), Box<dyn Error>> {
+pub async fn fetch_category(client: &Client, id: &i32) -> Result<(), Box<dyn Error>> {
     let base_url = get_base_url().await;
-    let url = format!("{}/category/{}", base_url, category_name);
+    let url = format!("{}/categories/{}", base_url, id);
 
-    let response = client.get(&url).send().await;
-    match response {
-        Ok(res) => {
-            let body = res.text().await?;
-            println!("Response body: {}", body);
+    let res = client.get(url).send().await?;
+    let wrapper: HalCategoryWrapper = res.json().await?;
+    let category = &wrapper.category;
+    println!("Item:");
+    println!("  ID: {}", category.id.unwrap_or_default());
+    println!("  Name: {}", category.name);
+    println!("  Description: {}", category.description);
 
-            let category: Category = serde_json::from_str(&body)?;
-            println!(
-                "Name: {}, Description: {}",
-                category.name, category.description
-            );
-            Ok(())
-        }
-        Err(e) => {
-            eprintln!("Failed to fetch category: {}", e);
-            Err(Box::new(e))
-        }
+    println!("Links:");
+    println!("  self: {}", wrapper.links.self_link.href);
+    if let Some(edit) = &wrapper.links.edit {
+        println!("  edit: {}", edit.href);
     }
+    if let Some(delete) = &wrapper.links.delete {
+        println!("  delete: {}", delete.href);
+    }
+    Ok(())
 }
 
-pub async fn add_category(
-    client: &Client,
-    name: String,
-    description: String,
-) -> Result<(), Box<dyn Error>> {
+pub async fn add_category(client: &Client, category: Category) -> Result<(), Box<dyn Error>> {
     let base_url = get_base_url().await;
     let url = format!("{}/categories", base_url);
-
-    let category = Category { name, description };
-
     let response = client
         .post(&url)
         .json(&category)
@@ -57,19 +52,31 @@ pub async fn add_category(
         .send()
         .await?;
 
-    if response.status().is_success() {
-        let created_category: Category = response.json().await?;
-        println!(
-            "Created Category - Name: {}, Description: {}",
-            created_category.name, created_category.description
-        );
-    } else {
-        eprintln!("Failed to create category: {}", response.status());
-    }
+    println!("Requesting PUT: {}", url);
+    println!("Payload: {:?}", category);
+    let status = response.status();
+    let body = response.text().await?;
+
+    println!("Response Status: {}", status);
+    println!("Response Body: {}", body);
 
     Ok(())
 }
 
-pub async fn delete_category(client: &Client) -> Result<(), Box<dyn Error>> {
+pub async fn delete_category(client: &Client, id: i32) -> Result<(), Box<dyn Error>> {
+    let base_url = get_base_url().await;
+    let url = format!("{}/categories/{}", base_url, id);
+
+    let response = client
+        .delete(&url)
+        .header(header::CONTENT_TYPE, "application/json")
+        .send()
+        .await?;
+
+    let status = response.status();
+    let body = response.text().await?;
+
+    println!("Response Status: {}", status);
+    println!("Response Body: {}", body);
     Ok(())
 }

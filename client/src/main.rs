@@ -3,7 +3,7 @@ mod models;
 
 use crate::models::{Item, ItemPayload, User};
 use clap::{Parser, Subcommand};
-use models::UserPayload;
+use models::{Category, UserPayload};
 use reqwest::Client;
 use std::error::Error;
 
@@ -104,6 +104,8 @@ struct CategoryGroup {
 enum CategoryCommands {
     /// Fetch all categories
     FetchCategories,
+    /// TODO OR REMOVE!!!! Fetch category by id
+    FetchCategory { id: i32 },
     /// Create a new category
     AddCategory {
         /// Category Name
@@ -111,6 +113,8 @@ enum CategoryCommands {
         /// Category Description
         description: String,
     },
+    /// Delete Category
+    DeleteCategory { id: i32 },
 }
 
 #[tokio::main]
@@ -216,8 +220,19 @@ async fn main() -> Result<(), Box<dyn Error>> {
             CategoryCommands::FetchCategories => {
                 api::fetch_categories(&client).await?;
             }
+            CategoryCommands::FetchCategory { id } => {
+                api::fetch_category(&client, &id).await?;
+            }
             CategoryCommands::AddCategory { name, description } => {
-                api::add_category(&client, name, description).await?;
+                let category = Category {
+                    id: None,
+                    name,
+                    description,
+                };
+                api::add_category(&client, category).await?;
+            }
+            CategoryCommands::DeleteCategory { id } => {
+                api::delete_category(&client, id).await?;
             }
         },
     }
