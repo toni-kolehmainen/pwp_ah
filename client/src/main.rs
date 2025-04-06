@@ -2,13 +2,13 @@ mod api;
 mod models;
 
 use crate::models::{Item, ItemPayload, User};
-use clap::{Parser, Subcommand};
+use chrono::{NaiveDateTime, Utc};
+use clap::{Id, Parser, Subcommand};
 use models::auctions::{Auction, AuctionPayload};
-use models::bids::Bid;
-use models::{Category, UserPayload};
+use models::bids::{Bid, BidPayload};
+use models::{Category, CreateBid, UserPayload};
 use reqwest::Client;
 use std::error::Error;
-
 #[derive(Parser, Debug)]
 #[clap(author, version, about)]
 struct Args {
@@ -66,7 +66,11 @@ enum BidCommands {
     /// Fetch bid by id
     FetchBid { id: i32 },
     /// Create new bid
-    CreateBid { amount: f32, buy_time: String },
+    CreateBid {
+        auction_id: i32,
+        buyer_id: i32,
+        amount: f32,
+    },
     /// Delete existing bid
     DeleteBid { id: i32 },
 }
@@ -289,11 +293,15 @@ async fn main() -> Result<(), Box<dyn Error>> {
             BidCommands::FetchBid { id } => {
                 api::fetch_bid(&client, id).await?;
             }
-            BidCommands::CreateBid { amount, buy_time } => {
-                let bid = Bid {
-                    id: None,
+            BidCommands::CreateBid {
+                auction_id,
+                buyer_id,
+                amount,
+            } => {
+                let bid = BidPayload {
+                    auction_id,
+                    buyer_id,
                     amount,
-                    buy_time,
                 };
                 api::create_bid(&client, bid).await?;
             }
