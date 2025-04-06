@@ -5,8 +5,8 @@ use reqwest::{header, Client};
 use std::collections::HashMap;
 use std::env;
 use std::error::Error;
+use std::fs;
 use std::time::Instant;
-
 pub async fn login_user(
     client: &Client,
     user_id: i32,
@@ -32,6 +32,7 @@ pub async fn login_user(
                 let token: LoginResponse = res.json().await?;
                 println!("Login successful");
                 println!("Token: {}", token.token);
+                fs::write(".auth_token", &token.token)?;
             } else {
                 println!("Failed to login: HTTP {}", res.status());
             }

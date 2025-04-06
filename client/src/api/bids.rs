@@ -14,7 +14,9 @@ pub async fn fetch_bids(client: &Client) -> Result<(), Box<dyn Error>> {
         let bid = &wrapper.bid;
         println!(
             "ID: {}, Amount: {}, Time: {}",
-            bid.id, bid.amount, bid.buy_time
+            bid.id.unwrap(),
+            bid.amount,
+            bid.buy_time
         );
         println!("  self: {}", wrapper.links.self_link.href);
         if let Some(delete) = &wrapper.links.delete {
@@ -37,7 +39,9 @@ pub async fn fetch_bid(client: &Client, bid_id: i32) -> Result<(), Box<dyn Error
     println!("Bid:");
     println!(
         "ID: {}, Amount: {}, Time: {}",
-        bid.id, bid.amount, bid.buy_time
+        bid.id.unwrap(),
+        bid.amount,
+        bid.buy_time
     );
     println!("Links:");
     println!("  self: {}", wrapper.links.self_link.href);
@@ -48,7 +52,7 @@ pub async fn fetch_bid(client: &Client, bid_id: i32) -> Result<(), Box<dyn Error
     Ok(())
 }
 
-pub async fn create_bid(client: &Client, payload: BidPayload) -> Result<(), Box<dyn Error>> {
+pub async fn create_bid(client: &Client, payload: Bid) -> Result<(), Box<dyn Error>> {
     let base_url = get_base_url().await;
     let url = format!("{}/bids", base_url);
 

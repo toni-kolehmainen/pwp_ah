@@ -3,6 +3,8 @@ mod models;
 
 use crate::models::{Item, ItemPayload, User};
 use clap::{Parser, Subcommand};
+use models::auctions::{Auction, AuctionPayload};
+use models::bids::Bid;
 use models::{Category, UserPayload};
 use reqwest::Client;
 use std::error::Error;
@@ -24,6 +26,31 @@ enum MainCommand {
     Category(CategoryGroup),
     /// Commands related to bids
     Bid(BidGroup),
+    /// Commands related to auctions
+    Auction(AuctionGroup),
+}
+
+#[derive(Parser, Debug)]
+struct AuctionGroup {
+    #[clap(subcommand)]
+    command: AuctionCommands,
+}
+
+#[derive(Subcommand, Debug)]
+enum AuctionCommands {
+    /// Fetch all auctions
+    FetchAuctions,
+    /// Fetch one auction by ID
+    FetchAuction { id: i32 },
+    /// Create new auction
+    CreateAuction {
+        item_id: i32,
+        description: String,
+        starting_price: f32,
+        end_time: String,
+    },
+    /// Delete auction by ID
+    DeleteAuction { id: i32 },
 }
 
 #[derive(Parser, Debug)]
@@ -253,6 +280,50 @@ async fn main() -> Result<(), Box<dyn Error>> {
             }
             CategoryCommands::DeleteCategory { id } => {
                 api::delete_category(&client, id).await?;
+            }
+        },
+        MainCommand::Bid(bid_group) => match bid_group.command {
+            BidCommands::FetchBids => {
+                api::fetch_bids(&client).await?;
+            }
+            BidCommands::FetchBid { id } => {
+                api::fetch_bid(&client, id).await?;
+            }
+            BidCommands::CreateBid { amount, buy_time } => {
+                let bid = Bid {
+                    id: None,
+                    amount,
+                    buy_time,
+                };
+                api::create_bid(&client, bid).await?;
+            }
+            BidCommands::DeleteBid { id } => {
+                api::delete_bid(&client, id).await?;
+            }
+        },
+        MainCommand::Auction(auction_group) => match auction_group.command {
+            AuctionCommands::FetchAuctions => {
+                api::fetch_auctions(&client).await?;
+            }
+            AuctionCommands::FetchAuction { id } => {
+                api::fetch_auction(&client, id).await?;
+            }
+            AuctionCommands::CreateAuction {
+                item_id,
+                description,
+                starting_price,
+                end_time,
+            } => {
+                let payload = AuctionPayload {
+                    item_id,
+                    description,
+                    starting_price,
+                    end_time,
+                };
+                api::create_auction(&client, payload).await?;
+            }
+            AuctionCommands::DeleteAuction { id } => {
+                api::delete_auction(&client, id).await?;
             }
         },
     }
