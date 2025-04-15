@@ -22,6 +22,6 @@ delete:
                 type: string
                 example: Deleted
     '404':
-      $ref: '../components/login_responses.yaml#/NotFound'
+      $ref: '../components/responses.yaml#/NotFound'
     '500':
-      $ref: '../components/user_responses.yaml#/InternalServerError'
+      $ref: '../components/responses.yaml#/InternalServerError'

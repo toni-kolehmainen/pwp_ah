@@ -61,8 +61,8 @@ components:
       $ref: './components/category_schemas.yaml#/AddCategoryRequest'
   responses:
     BadRequest:
-      $ref: './components/login_responses.yaml#/BadRequest'
+      $ref: './components/responses.yaml#/BadRequest'
     NotFound:
-      $ref: './components/login_responses.yaml#/NotFound'
+      $ref: './components/responses.yaml#/NotFound'
     InternalServerError:
-      $ref: './components/user_responses.yaml#/InternalServerError'
+      $ref: './components/responses.yaml#/InternalServerError'

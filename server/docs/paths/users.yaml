@@ -13,7 +13,7 @@ get:
             items:
               $ref: '../components/user_schemas.yaml#/User'
     '500':
-      $ref: '../components/user_responses.yaml#/InternalServerError'
+      $ref: '../components/responses.yaml#/InternalServerError'
 
 post:
   summary: Add a new user
@@ -34,6 +34,6 @@ post:
           schema:
             $ref: '../components/user_schemas.yaml#/User'
     '400':
-      $ref: '../components/login_responses.yaml#/BadRequest'
+      $ref: '../components/responses.yaml#/BadRequest'
     '500':
-      $ref: '../components/user_responses.yaml#/InternalServerError'
+      $ref: '../components/responses.yaml#/InternalServerError'
