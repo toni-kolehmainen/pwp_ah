@@ -12,6 +12,7 @@ const initializeDatabase = async () => {
     let userCount = -1;
 
     userCount = await User.count();
+    console.log("userCount", userCount);
     // Promise((resolve) => setTimeout(resolve, 1000));
     // userCount = 0
     if (userCount === 0) {
@@ -26,6 +27,7 @@ const initializeDatabase = async () => {
 };
 
 // Start the server
+
 const start = async () => {
   try {
     await connectToDatabase(); // Connect to the database

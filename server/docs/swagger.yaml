@@ -1,0 +1,89 @@
+openapi: 3.0.0
+info:
+  title: Users API
+  version: 1.0.0
+  description: API for managing users with HAL-style hypermedia responses
+
+servers:
+  - url: http://localhost:3001/api
+
+paths:
+
+  /ping:
+      get:
+        summary: Ping test
+        responses:
+          '200':
+            description: OK
+
+  /login/{user_id}:
+    post:
+      summary: User login
+      description: Authenticates a user by their ID, email, and password. Returns a JWT token on success.
+      tags:
+        - Authentication
+      parameters:
+        - name: user_id
+          in: path
+          required: true
+          schema:
+            type: integer
+          description: ID of the user to authenticate
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LoginRequest'
+      responses:
+        '200':
+          description: Successfully authenticated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LoginResponse'
+        '400':
+          description: Invalid request body
+        '404':
+          description: User not found
+        '401':
+          description: Invalid email or password
+        '500':
+          description: Internal server error
+
+components:
+  schemas:
+    LoginRequest:
+      type: object
+      required:
+        - email
+        - password
+      properties:
+        email:
+          type: string
+          example: test@example.com
+        password:
+          type: string
+          example: yourpassword123
+
+    LoginResponse:
+      type: object
+      properties:
+        token:
+          type: string
+          example: eyJhbGciOiJIUzI1NiIsInR5cCI6...
+        expiresIn:
+          type: integer
+          example: 3600
+        user:
+          type: object
+          properties:
+            id:
+              type: integer
+              example: 1
+            name:
+              type: string
+              example: Vern
+            email:
+              type: string
+              example: test@example.com
