@@ -14,9 +14,20 @@ Auction:
       type: number
       format: float
       example: 100.00
+    current_price:
+      type: number
+      format: float
+      example: 100.00
+    item_id:
+      type: integer
+      example: 101
     seller_id:
       type: integer
       example: 1
+    end_time:
+      type: string
+      format: date-time
+      example: 2023-12-31T23:59:59Z
     created_at:
       type: string
       format: date-time
