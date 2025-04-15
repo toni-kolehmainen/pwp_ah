@@ -765,20 +765,19 @@ components:
         description:
           type: string
           example: This is a sample item.
-        price:
-          type: number
-          format: float
-          example: 19.99
-        stock:
+        sellerId:
           type: integer
-          example: 100
+          example: 1
+        categoryId:
+          type: integer
+          example: 2
     AddItemRequest:
       type: object
       required:
         - name
         - description
-        - price
-        - stock
+        - sellerId
+        - categoryId
       properties:
         name:
           type: string
@@ -786,13 +785,12 @@ components:
         description:
           type: string
           example: This is a sample item.
-        price:
-          type: number
-          format: float
-          example: 19.99
-        stock:
+        sellerId:
           type: integer
-          example: 100
+          example: 1
+        categoryId:
+          type: integer
+          example: 2
     UpdateItemRequest:
       type: object
       properties:
@@ -802,13 +800,12 @@ components:
         description:
           type: string
           example: Updated description of the item.
-        price:
-          type: number
-          format: float
-          example: 29.99
-        stock:
+        sellerId:
           type: integer
-          example: 50
+          example: 1
+        categoryId:
+          type: integer
+          example: 2
     Auction:
       type: object
       properties:
@@ -825,9 +822,20 @@ components:
           type: number
           format: float
           example: 100
+        current_price:
+          type: number
+          format: float
+          example: 100
+        item_id:
+          type: integer
+          example: 101
         seller_id:
           type: integer
           example: 1
+        end_time:
+          type: string
+          format: date-time
+          example: '2023-12-31T23:59:59Z'
         created_at:
           type: string
           format: date-time
