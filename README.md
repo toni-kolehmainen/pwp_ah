@@ -80,3 +80,9 @@ The database is automatically populated with sample data when the server starts 
 ```sh
 node script/DataPopulator.js
 ```
+
+## Swagger Documentation
+- Install Swagger
+```sh
+npm install swagger-ui-express swagger-jsdoc yamljs
+```
