@@ -12,6 +12,8 @@ paths:
     $ref: './paths/login.yaml'
   /users:
     $ref: './paths/users.yaml'
+  /users/{user_id}:
+    $ref: './paths/user.yaml'
 
 components:
   schemas:
@@ -23,6 +25,8 @@ components:
       $ref: './components/user_schemas.yaml#/User'
     AddUserRequest:
       $ref: './components/user_schemas.yaml#/AddUserRequest'
+    UpdateUserRequest:
+      $ref: './components/user_schemas.yaml#/UpdateUserRequest'
   responses:
     BadRequest:
       $ref: './components/login_responses.yaml#/BadRequest'

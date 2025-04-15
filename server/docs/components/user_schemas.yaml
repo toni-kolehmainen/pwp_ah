@@ -40,3 +40,22 @@ AddUserRequest:
     nickname:
       type: string
       example: Johnny
+
+UpdateUserRequest:
+  type: object
+  properties:
+    name:
+      type: string
+      example: John Doe
+    email:
+      type: string
+      example: john.doe@example.com
+    phone:
+      type: string
+      example: 1234567890
+    password:
+      type: string
+      example: securepassword123
+    nickname:
+      type: string
+      example: Johnny

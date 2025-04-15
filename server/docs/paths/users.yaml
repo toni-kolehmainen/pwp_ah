@@ -2,7 +2,7 @@ get:
   summary: Get all users
   description: Retrieve a list of users from the database, excluding their password fields.
   tags:
-    - Users
+    - All Users
   responses:
     '200':
       description: A list of users
@@ -19,7 +19,7 @@ post:
   summary: Add a new user
   description: Creates a new user in the database after validating the request body and hashing the password.
   tags:
-    - Users
+    - All Users
   requestBody:
     required: true
     content:
