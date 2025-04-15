@@ -69,7 +69,7 @@ get:
     '204':
       description: No auctions found
     '500':
-      $ref: '../components/user_responses.yaml#/InternalServerError'
+      $ref: '../components/responses.yaml#/InternalServerError'
 
 post:
   summary: Add a new auction
@@ -90,6 +90,6 @@ post:
           schema:
             $ref: '../components/auction_schemas.yaml#/Auction'
     '400':
-      $ref: '../components/login_responses.yaml#/BadRequest'
+      $ref: '../components/responses.yaml#/BadRequest'
     '500':
-      $ref: '../components/user_responses.yaml#/InternalServerError'
+      $ref: '../components/responses.yaml#/InternalServerError'

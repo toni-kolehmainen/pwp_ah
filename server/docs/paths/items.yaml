@@ -45,7 +45,7 @@ get:
     '204':
       description: No items found
     '500':
-      $ref: '../components/user_responses.yaml#/InternalServerError'
+      $ref: '../components/responses.yaml#/InternalServerError'
 
 post:
   summary: Add a new item
@@ -66,6 +66,6 @@ post:
           schema:
             $ref: '../components/item_schemas.yaml#/Item'
     '400':
-      $ref: '../components/login_responses.yaml#/BadRequest'
+      $ref: '../components/responses.yaml#/BadRequest'
     '500':
-      $ref: '../components/user_responses.yaml#/InternalServerError'
+      $ref: '../components/responses.yaml#/InternalServerError'

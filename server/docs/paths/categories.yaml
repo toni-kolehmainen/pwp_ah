@@ -37,7 +37,7 @@ get:
                     items:
                       $ref: '../components/category_schemas.yaml#/Category'
     '500':
-      $ref: '../components/user_responses.yaml#/InternalServerError'
+      $ref: '../components/responses.yaml#/InternalServerError'
 
 post:
   summary: Add a new category
@@ -58,7 +58,7 @@ post:
           schema:
             $ref: '../components/category_schemas.yaml#/Category'
     '400':
-      $ref: '../components/login_responses.yaml#/BadRequest'
+      $ref: '../components/responses.yaml#/BadRequest'
     '409':
       description: Conflict - Category already exists
       content:
@@ -70,4 +70,4 @@ post:
                 type: string
                 example: Category already exists
     '500':
-      $ref: '../components/user_responses.yaml#/InternalServerError'
+      $ref: '../components/responses.yaml#/InternalServerError'
