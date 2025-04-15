@@ -8,13 +8,25 @@ servers:
   - url: http://localhost:3001/api
 
 paths:
-  /ping:
-    $ref: './paths/ping.yaml'
   /login/{user_id}:
     $ref: './paths/login.yaml'
+  /users:
+    $ref: './paths/users.yaml'
 
 components:
   schemas:
-    $ref: './components/login_schemas.yaml'
+    LoginRequest:
+      $ref: './components/login_schemas.yaml#/LoginRequest'
+    LoginResponse:
+      $ref: './components/login_schemas.yaml#/LoginResponse'
+    User:
+      $ref: './components/user_schemas.yaml#/User'
+    AddUserRequest:
+      $ref: './components/user_schemas.yaml#/AddUserRequest'
   responses:
-    $ref: './components/login_responses.yaml'
+    BadRequest:
+      $ref: './components/login_responses.yaml#/BadRequest'
+    NotFound:
+      $ref: './components/login_responses.yaml#/NotFound'
+    InternalServerError:
+      $ref: './components/user_responses.yaml#/InternalServerError'

@@ -6,12 +6,6 @@ info:
 servers:
   - url: 'http://localhost:3001/api'
 paths:
-  /ping:
-    get:
-      summary: Ping test
-      responses:
-        '200':
-          description: OK
   '/login/{user_id}':
     post:
       summary: User login
@@ -41,9 +35,42 @@ paths:
         '400':
           $ref: '#/components/responses/BadRequest'
         '401':
-          $ref: '#/components/responses/Unauthorized'
+          description: Invalid email or password
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Invalid email or password
         '404':
           $ref: '#/components/responses/NotFound'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: An unexpected error occurred
+  /users:
+    get:
+      summary: Get all users
+      description: 'Retrieve a list of users from the database, excluding their password fields.'
+      tags:
+        - Users
+      responses:
+        '200':
+          description: A list of users
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/User'
         '500':
           $ref: '#/components/responses/InternalServerError'
 components:
@@ -81,6 +108,24 @@ components:
             email:
               type: string
               example: test@example.com
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        name:
+          type: string
+          example: John Doe
+        email:
+          type: string
+          example: john.doe@example.com
+        phone:
+          type: string
+          example: 1234567890
+        nickname:
+          type: string
+          example: Johnny
   responses:
     BadRequest:
       description: Invalid request body
@@ -102,16 +147,6 @@ components:
               message:
                 type: string
                 example: User not found
-    Unauthorized:
-      description: Invalid email or password
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              message:
-                type: string
-                example: Invalid email or password
     InternalServerError:
       description: Internal server error
       content:
