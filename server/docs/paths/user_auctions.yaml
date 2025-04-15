@@ -1,0 +1,37 @@
+get:
+  summary: Get auctions by user
+  description: Retrieve all auctions created by a specific user.
+  tags:
+    - Auctions by user
+  parameters:
+    - name: user_id
+      in: path
+      required: true
+      schema:
+        type: integer
+      description: ID of the user whose auctions are being retrieved
+  responses:
+    '200':
+      description: A list of auctions by the user
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              _links:
+                type: object
+                properties:
+                  self:
+                    type: string
+                    example: /api/users/1/auctions
+              _embedded:
+                type: object
+                properties:
+                  auctions:
+                    type: array
+                    items:
+                      $ref: '../components/auction_schemas.yaml#/Auction'
+    '404':
+      $ref: '../components/login_responses.yaml#/NotFound'
+    '500':
+      $ref: '../components/user_responses.yaml#/InternalServerError'

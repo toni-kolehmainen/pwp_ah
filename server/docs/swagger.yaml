@@ -14,6 +14,22 @@ paths:
     $ref: './paths/users.yaml'
   /users/{user_id}:
     $ref: './paths/user.yaml'
+  /users/{user_id}/auctions:
+    $ref: './paths/user_auctions.yaml'
+  /items:
+    $ref: './paths/items.yaml'
+  /items/{id}:
+    $ref: './paths/item.yaml'
+  /auctions:
+    $ref: './paths/auctions.yaml'
+  /auctions/{auction_id}/bids:
+    $ref: './paths/auction_bids.yaml'
+  /auctions/{auction_id}/bids/{bid_id}:
+    $ref: './paths/bid.yaml'
+  /categories:
+    $ref: './paths/categories.yaml'
+  /categories/{id}:
+    $ref: './paths/category.yaml'
 
 components:
   schemas:
@@ -27,6 +43,22 @@ components:
       $ref: './components/user_schemas.yaml#/AddUserRequest'
     UpdateUserRequest:
       $ref: './components/user_schemas.yaml#/UpdateUserRequest'
+    Item:
+      $ref: './components/item_schemas.yaml#/Item'
+    AddItemRequest:
+      $ref: './components/item_schemas.yaml#/AddItemRequest'
+    UpdateItemRequest:
+      $ref: './components/item_schemas.yaml#/UpdateItemRequest'
+    Auction:
+      $ref: './components/auction_schemas.yaml#/Auction'
+    AddAuctionRequest:
+      $ref: './components/auction_schemas.yaml#/AddAuctionRequest'
+    Bid:
+      $ref: './components/bid_schemas.yaml#/Bid'
+    Category:
+      $ref: './components/category_schemas.yaml#/Category'
+    AddCategoryRequest:
+      $ref: './components/category_schemas.yaml#/AddCategoryRequest'
   responses:
     BadRequest:
       $ref: './components/login_responses.yaml#/BadRequest'

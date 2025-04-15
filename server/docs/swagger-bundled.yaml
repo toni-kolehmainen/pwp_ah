@@ -177,6 +177,496 @@ paths:
           $ref: '#/components/responses/NotFound'
         '500':
           $ref: '#/components/responses/InternalServerError'
+  '/users/{user_id}/auctions':
+    get:
+      summary: Get auctions by user
+      description: Retrieve all auctions created by a specific user.
+      tags:
+        - Auctions by user
+      parameters:
+        - name: user_id
+          in: path
+          required: true
+          schema:
+            type: integer
+          description: ID of the user whose auctions are being retrieved
+      responses:
+        '200':
+          description: A list of auctions by the user
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  _links:
+                    type: object
+                    properties:
+                      self:
+                        type: string
+                        example: /api/users/1/auctions
+                  _embedded:
+                    type: object
+                    properties:
+                      auctions:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/Auction'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /items:
+    get:
+      summary: Get all items
+      description: Retrieve a list of all items from the database.
+      tags:
+        - All Items
+      responses:
+        '200':
+          description: A list of items
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  _links:
+                    type: object
+                    properties:
+                      self:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            example: /api/items/
+                      profile:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            example: /profiles/items/
+                      create:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            example: /api/items
+                          method:
+                            type: string
+                            example: POST
+                  _embedded:
+                    type: object
+                    properties:
+                      items:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/Item'
+        '204':
+          description: No items found
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+    post:
+      summary: Add a new item
+      description: Create a new item in the database.
+      tags:
+        - All Items
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AddItemRequest'
+      responses:
+        '201':
+          description: Item created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Item'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  '/items/{id}':
+    get:
+      summary: Get an item by ID
+      description: Retrieve an item from the database based on the provided item ID.
+      tags:
+        - Item
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+          description: ID of the item to retrieve
+      responses:
+        '200':
+          description: Item retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Item'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+    put:
+      summary: Update an item by ID
+      description: Update an item's details in the database based on the provided item ID.
+      tags:
+        - Item
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+          description: ID of the item to update
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateItemRequest'
+      responses:
+        '200':
+          description: Item updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Item'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+    delete:
+      summary: Delete an item by ID
+      description: Delete an item from the database based on the provided item ID.
+      tags:
+        - Item
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+          description: ID of the item to delete
+      responses:
+        '200':
+          description: Item deleted successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Item deleted successfully
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /auctions:
+    get:
+      summary: Get all auctions
+      description: 'Retrieve a list of all auctions with optional pagination, sorting, and filtering.'
+      tags:
+        - All Auctions
+      parameters:
+        - name: limit
+          in: query
+          required: false
+          schema:
+            type: integer
+            default: 10
+          description: Number of auctions to retrieve
+        - name: offset
+          in: query
+          required: false
+          schema:
+            type: integer
+            default: 0
+          description: Number of auctions to skip
+        - name: sort
+          in: query
+          required: false
+          schema:
+            type: string
+            default: end_time
+          description: Field to sort by
+        - name: order
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - ASC
+              - DESC
+            default: ASC
+          description: Sort order (ascending or descending)
+      responses:
+        '200':
+          description: A list of auctions
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  _links:
+                    type: object
+                    properties:
+                      self:
+                        type: string
+                        example: /api/auctions/
+                      profile:
+                        type: string
+                        example: /profiles/auctions/
+                      create:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            example: /api/auctions
+                          method:
+                            type: string
+                            example: POST
+                  _embedded:
+                    type: object
+                    properties:
+                      auctions:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/Auction'
+        '204':
+          description: No auctions found
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+    post:
+      summary: Add a new auction
+      description: Create a new auction in the database.
+      tags:
+        - All Auctions
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AddAuctionRequest'
+      responses:
+        '201':
+          description: Auction created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Auction'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  '/auctions/{auction_id}/bids':
+    get:
+      summary: Get bids by auction
+      description: Retrieve all bids for a specific auction.
+      tags:
+        - Bids by Auction
+      parameters:
+        - name: auction_id
+          in: path
+          required: true
+          schema:
+            type: integer
+          description: ID of the auction whose bids are being retrieved
+      responses:
+        '200':
+          description: A list of bids for the auction
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  _links:
+                    type: object
+                    properties:
+                      self:
+                        type: string
+                        example: /api/auction/1/bids
+                  _embedded:
+                    type: object
+                    properties:
+                      bids:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/Bid'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  '/auctions/{auction_id}/bids/{bid_id}':
+    get:
+      summary: Get a bid by ID
+      description: Retrieve a specific bid for a given auction.
+      tags:
+        - Bid
+      parameters:
+        - name: auction_id
+          in: path
+          required: true
+          schema:
+            type: integer
+          description: ID of the auction
+        - name: bid_id
+          in: path
+          required: true
+          schema:
+            type: integer
+          description: ID of the bid to retrieve
+      responses:
+        '200':
+          description: Bid retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Bid'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+    delete:
+      summary: Delete a bid by ID
+      description: Delete a specific bid for a given auction.
+      tags:
+        - Bid
+      parameters:
+        - name: auction_id
+          in: path
+          required: true
+          schema:
+            type: integer
+          description: ID of the auction
+        - name: bid_id
+          in: path
+          required: true
+          schema:
+            type: integer
+          description: ID of the bid to delete
+      responses:
+        '200':
+          description: Bid deleted successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: Deleted
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /categories:
+    get:
+      summary: Get all categories
+      description: Retrieve a list of all categories.
+      tags:
+        - Categories
+      responses:
+        '200':
+          description: A list of categories
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  _links:
+                    type: object
+                    properties:
+                      self:
+                        type: string
+                        example: /api/categories/
+                      profile:
+                        type: string
+                        example: /profiles/categories/
+                      create:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            example: /api/categories
+                          method:
+                            type: string
+                            example: POST
+                  _embedded:
+                    type: object
+                    properties:
+                      categories:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/Category'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+    post:
+      summary: Add a new category
+      description: Create a new category in the database.
+      tags:
+        - Categories
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AddCategoryRequest'
+      responses:
+        '201':
+          description: Category created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Category'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '409':
+          description: Conflict - Category already exists
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Category already exists
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  '/categories/{id}':
+    delete:
+      summary: Delete a category by ID
+      description: Delete a specific category from the database.
+      tags:
+        - Categories
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+          description: ID of the category to delete
+      responses:
+        '200':
+          description: Category deleted successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: Deleted
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
 components:
   schemas:
     LoginRequest:
@@ -271,6 +761,155 @@ components:
         nickname:
           type: string
           example: Johnny
+    Item:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        name:
+          type: string
+          example: Sample Item
+        description:
+          type: string
+          example: This is a sample item.
+        price:
+          type: number
+          format: float
+          example: 19.99
+        stock:
+          type: integer
+          example: 100
+    AddItemRequest:
+      type: object
+      required:
+        - name
+        - description
+        - price
+        - stock
+      properties:
+        name:
+          type: string
+          example: Sample Item
+        description:
+          type: string
+          example: This is a sample item.
+        price:
+          type: number
+          format: float
+          example: 19.99
+        stock:
+          type: integer
+          example: 100
+    UpdateItemRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          example: Updated Item Name
+        description:
+          type: string
+          example: Updated description of the item.
+        price:
+          type: number
+          format: float
+          example: 29.99
+        stock:
+          type: integer
+          example: 50
+    Auction:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        title:
+          type: string
+          example: Vintage Watch
+        description:
+          type: string
+          example: A rare vintage watch in excellent condition.
+        starting_price:
+          type: number
+          format: float
+          example: 100
+        seller_id:
+          type: integer
+          example: 1
+        created_at:
+          type: string
+          format: date-time
+          example: '2023-01-01T12:00:00Z'
+        updated_at:
+          type: string
+          format: date-time
+          example: '2023-01-02T12:00:00Z'
+    AddAuctionRequest:
+      type: object
+      required:
+        - item_id
+        - description
+        - starting_price
+        - end_time
+      properties:
+        item_id:
+          type: integer
+          example: 101
+        description:
+          type: string
+          example: A rare collectible item.
+        starting_price:
+          type: number
+          format: float
+          example: 50
+        end_time:
+          type: string
+          format: date-time
+          example: '2023-12-31T23:59:59Z'
+    Bid:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        auction_id:
+          type: integer
+          example: 101
+        bidder_id:
+          type: integer
+          example: 5
+        amount:
+          type: number
+          format: float
+          example: 150
+        created_at:
+          type: string
+          format: date-time
+          example: '2023-01-01T12:00:00Z'
+    Category:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        name:
+          type: string
+          example: Electronics
+        description:
+          type: string
+          example: Items related to electronic devices.
+    AddCategoryRequest:
+      type: object
+      required:
+        - name
+        - description
+      properties:
+        name:
+          type: string
+          example: Electronics
+        description:
+          type: string
+          example: Items related to electronic devices.
   responses:
     BadRequest:
       description: Invalid request body

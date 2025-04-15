@@ -1,0 +1,58 @@
+Item:
+  type: object
+  properties:
+    id:
+      type: integer
+      example: 1
+    name:
+      type: string
+      example: Sample Item
+    description:
+      type: string
+      example: This is a sample item.
+    price:
+      type: number
+      format: float
+      example: 19.99
+    stock:
+      type: integer
+      example: 100
+
+AddItemRequest:
+  type: object
+  required:
+    - name
+    - description
+    - price
+    - stock
+  properties:
+    name:
+      type: string
+      example: Sample Item
+    description:
+      type: string
+      example: This is a sample item.
+    price:
+      type: number
+      format: float
+      example: 19.99
+    stock:
+      type: integer
+      example: 100
+
+UpdateItemRequest:
+  type: object
+  properties:
+    name:
+      type: string
+      example: Updated Item Name
+    description:
+      type: string
+      example: Updated description of the item.
+    price:
+      type: number
+      format: float
+      example: 29.99
+    stock:
+      type: integer
+      example: 50

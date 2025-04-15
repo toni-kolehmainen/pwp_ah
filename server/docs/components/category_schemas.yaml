@@ -1,0 +1,25 @@
+Category:
+  type: object
+  properties:
+    id:
+      type: integer
+      example: 1
+    name:
+      type: string
+      example: Electronics
+    description:
+      type: string
+      example: Items related to electronic devices.
+
+AddCategoryRequest:
+  type: object
+  required:
+    - name
+    - description
+  properties:
+    name:
+      type: string
+      example: Electronics
+    description:
+      type: string
+      example: Items related to electronic devices.
