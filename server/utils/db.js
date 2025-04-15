@@ -14,6 +14,7 @@ const sequelize = new Sequelize(db, NAME, PASSWORD, {
 });
 
 const connectToDatabase = async () => {
+  
   try {
     await sequelize.authenticate();
     logger.info('database connected');

@@ -129,7 +129,7 @@ const auctionEndListener = async () => {
     },
     true
   );
-  const updateAuctions = needEmailSend.outdatedBids.map((data) => {
+  const updateAuctions = needEmailSend.outdatedBids?.map((data) => {
     const from = 'Dariana Kovacek84'; // get from ethereal.email
     const to = data['user.email'];
     const subject = '🎉 Congratulations! You Have the Winning Bid on Your Auction';

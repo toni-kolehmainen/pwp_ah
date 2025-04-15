@@ -8,6 +8,7 @@ const router = require('./router');
 const routerProfile = require('./router/profile');
 const { dataClean } = require('./services/data_clean');
 const { auctionEndListener } = require('./services/email');
+const setupSwagger = require('./utils/swagger_setup');
 
 // check if auction is ended every minute
 // cron.schedule('* * * * *', async () => {
@@ -38,6 +39,8 @@ app.use((_, res, next) => {
 
 // Adding the middleware
 app.use(middleware.cacheMiddleware);
+
+setupSwagger(app);
 
 app.use('/profile', routerProfile);
 app.use('/api', router);
