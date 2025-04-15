@@ -1,0 +1,37 @@
+get:
+  summary: Get bids by auction
+  description: Retrieve all bids for a specific auction.
+  tags:
+    - Bids by Auction
+  parameters:
+    - name: auction_id
+      in: path
+      required: true
+      schema:
+        type: integer
+      description: ID of the auction whose bids are being retrieved
+  responses:
+    '200':
+      description: A list of bids for the auction
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              _links:
+                type: object
+                properties:
+                  self:
+                    type: string
+                    example: /api/auction/1/bids
+              _embedded:
+                type: object
+                properties:
+                  bids:
+                    type: array
+                    items:
+                      $ref: '../components/bid_schemas.yaml#/Bid'
+    '404':
+      $ref: '../components/login_responses.yaml#/NotFound'
+    '500':
+      $ref: '../components/user_responses.yaml#/InternalServerError'

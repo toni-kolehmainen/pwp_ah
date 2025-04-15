@@ -1,0 +1,20 @@
+Bid:
+  type: object
+  properties:
+    id:
+      type: integer
+      example: 1
+    auction_id:
+      type: integer
+      example: 101
+    bidder_id:
+      type: integer
+      example: 5
+    amount:
+      type: number
+      format: float
+      example: 150.00
+    created_at:
+      type: string
+      format: date-time
+      example: 2023-01-01T12:00:00Z

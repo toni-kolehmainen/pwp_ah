@@ -1,0 +1,95 @@
+get:
+  summary: Get all auctions
+  description: Retrieve a list of all auctions with optional pagination, sorting, and filtering.
+  tags:
+    - All Auctions
+  parameters:
+    - name: limit
+      in: query
+      required: false
+      schema:
+        type: integer
+        default: 10
+      description: Number of auctions to retrieve
+    - name: offset
+      in: query
+      required: false
+      schema:
+        type: integer
+        default: 0
+      description: Number of auctions to skip
+    - name: sort
+      in: query
+      required: false
+      schema:
+        type: string
+        default: end_time
+      description: Field to sort by
+    - name: order
+      in: query
+      required: false
+      schema:
+        type: string
+        enum: [ASC, DESC]
+        default: ASC
+      description: Sort order (ascending or descending)
+  responses:
+    '200':
+      description: A list of auctions
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              _links:
+                type: object
+                properties:
+                  self:
+                    type: string
+                    example: /api/auctions/
+                  profile:
+                    type: string
+                    example: /profiles/auctions/
+                  create:
+                    type: object
+                    properties:
+                      href:
+                        type: string
+                        example: /api/auctions
+                      method:
+                        type: string
+                        example: POST
+              _embedded:
+                type: object
+                properties:
+                  auctions:
+                    type: array
+                    items:
+                      $ref: '../components/auction_schemas.yaml#/Auction'
+    '204':
+      description: No auctions found
+    '500':
+      $ref: '../components/user_responses.yaml#/InternalServerError'
+
+post:
+  summary: Add a new auction
+  description: Create a new auction in the database.
+  tags:
+    - All Auctions
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: '../components/auction_schemas.yaml#/AddAuctionRequest'
+  responses:
+    '201':
+      description: Auction created successfully
+      content:
+        application/json:
+          schema:
+            $ref: '../components/auction_schemas.yaml#/Auction'
+    '400':
+      $ref: '../components/login_responses.yaml#/BadRequest'
+    '500':
+      $ref: '../components/user_responses.yaml#/InternalServerError'

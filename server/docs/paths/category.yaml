@@ -1,0 +1,27 @@
+delete:
+  summary: Delete a category by ID
+  description: Delete a specific category from the database.
+  tags:
+    - Categories
+  parameters:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: integer
+      description: ID of the category to delete
+  responses:
+    '200':
+      description: Category deleted successfully
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              status:
+                type: string
+                example: Deleted
+    '404':
+      $ref: '../components/login_responses.yaml#/NotFound'
+    '500':
+      $ref: '../components/user_responses.yaml#/InternalServerError'
