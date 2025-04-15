@@ -1,0 +1,42 @@
+User:
+  type: object
+  properties:
+    id:
+      type: integer
+      example: 1
+    name:
+      type: string
+      example: John Doe
+    email:
+      type: string
+      example: john.doe@example.com
+    phone:
+      type: string
+      example: 1234567890
+    nickname:
+      type: string
+      example: Johnny
+
+AddUserRequest:
+  type: object
+  required:
+    - name
+    - email
+    - phone
+    - password
+  properties:
+    name:
+      type: string
+      example: John Doe
+    email:
+      type: string
+      example: john.doe@example.com
+    phone:
+      type: string
+      example: 1234567890
+    password:
+      type: string
+      example: securepassword123
+    nickname:
+      type: string
+      example: Johnny
