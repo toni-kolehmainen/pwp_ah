@@ -86,8 +86,7 @@ node script/DataPopulator.js
 ```sh
 npm install swagger-ui-express swagger-jsdoc yamljs
 ```
-- Run this for a updated bundle swagger documentation
+- Run this for an updated bundle swagger documentation
 ```sh
-cd /server/docs/
-npx swagger-cli bundle swagger.yaml --outfile swagger-bundled.yaml --type yaml
+npm run bundle-docs
 ```
