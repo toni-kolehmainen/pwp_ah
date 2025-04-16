@@ -22,8 +22,20 @@ Item.belongsTo(User, {
 // User.hasMany(Auction);
 // Auction.belongsTo(User);
 
-Category.hasMany(Item, { onDelete: 'SET NULL' });
-Item.belongsTo(Category);
+Category.hasMany(Item, {
+  onDelete: 'SET NULL',
+  foreignKey: {
+    name: 'seller_id',
+    allowNull: false
+  }
+});
+
+Item.belongsTo(Category, {
+  foreignKey: {
+    name: 'seller_id',
+    allowNull: false
+  }
+});
 
 Item.hasOne(Auction);
 Auction.belongsTo(Item);

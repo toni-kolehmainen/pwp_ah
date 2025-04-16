@@ -18,18 +18,18 @@ Item.init({
     type: DataTypes.TEXT,
     allowNull: true
   },
-  sellerId: {
-    type: DataTypes.INTEGER,
-    allowNull: false,
-    field: 'seller_id',
-    references: { model: 'users', key: 'id', onDelete: 'CASCADE' }
-  },
-  categoryId: {
-    type: DataTypes.INTEGER,
-    allowNull: false,
-    field: 'category_id',
-    references: { model: 'categories', key: 'id', onDelete: 'SET NULL' }
-  }
+  // sellerId: {
+  //   type: DataTypes.INTEGER,
+  //   allowNull: false,
+  //   field: 'seller_id',
+  //   references: { model: 'users', key: 'id', onDelete: 'CASCADE' }
+  // },
+  // categoryId: {
+  //   type: DataTypes.INTEGER,
+  //   allowNull: false,
+  //   field: 'category_id',
+  //   references: { model: 'categories', key: 'id', onDelete: 'SET NULL' }
+  // }
 }, {
   sequelize,
   underscored: true,
