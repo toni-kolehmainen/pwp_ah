@@ -22,22 +22,86 @@ get:
                 type: object
                 properties:
                   self:
-                    type: string
-                    example: /api/users/1/auctions
+                    type: object
+                    properties:
+                      href:
+                        type: string
+                        example: /api/users/1/auctions
                   profile:
-                    type: string
-                    example: /profiles/auctions/
+                    type: object
+                    properties:
+                      href:
+                        type: string
+                        example: /profiles/auctions/
                   create:
-                    type: string 
-                    example: /api/auctions,
-                    method: POST
+                    type: object
+                    properties:
+                      href:
+                        type: string
+                        example: /api/auctions
+                      method:
+                        type: string
+                        example: POST
               _embedded:
                 type: object
                 properties:
                   auctions:
                     type: array
                     items:
-                      $ref: '../components/auction_schemas.yaml#/Auction'
+                      type: object
+                      properties:
+                        _links:
+                          type: object
+                          properties:
+                            self:
+                              type: object
+                              properties:
+                                href:
+                                  type: string
+                                  example: /api/auctions/3
+                            delete:
+                              type: object
+                              properties:
+                                href:
+                                  type: string
+                                  example: /api/auctions/3
+                                method:
+                                  type: string
+                                  example: DELETE
+                        id:
+                          type: integer
+                          example: 3
+                        description:
+                          type: string
+                          example: New orchid Pizza with ergonomic design for bogus comfort
+                        item_id:
+                          type: integer
+                          nullable: true
+                          example: null
+                        seller_id:
+                          type: integer
+                          example: 1
+                        start_time:
+                          type: string
+                          format: date-time
+                          example: 2025-04-08T15:58:45.709Z
+                        end_time:
+                          type: string
+                          format: date-time
+                          example: 2025-06-27T09:21:07.282Z
+                        starting_price:
+                          type: string
+                          example: "740.89"
+                        current_price:
+                          type: string
+                          example: "495.90"
+                        emaidSend:
+                          type: boolean
+                          example: false
+                        itemId:
+                          type: integer
+                          nullable: true
+                          example: null
     '404':
       $ref: '../components/responses.yaml#/NotFound'
     '500':
