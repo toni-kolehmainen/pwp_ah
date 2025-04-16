@@ -43,7 +43,15 @@ get:
                     items:
                       $ref: '../components/item_schemas.yaml#/Item'
     '204':
-      description: No items found
+      description: Items not found
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+                example: Items not found
     '500':
       $ref: '../components/responses.yaml#/InternalServerError'
 
