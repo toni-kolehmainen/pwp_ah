@@ -32,6 +32,11 @@ paths:
     $ref: './paths/category.yaml'
 
 components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
   schemas:
     LoginRequest:
       $ref: './components/login_schemas.yaml#/LoginRequest'

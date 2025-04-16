@@ -440,6 +440,8 @@ paths:
       description: Create a new auction in the database.
       tags:
         - All Auctions
+      security:
+        - bearerAuth: []
       requestBody:
         required: true
         content:
@@ -660,6 +662,11 @@ paths:
         '500':
           $ref: '#/components/responses/InternalServerError'
 components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
   schemas:
     LoginRequest:
       type: object

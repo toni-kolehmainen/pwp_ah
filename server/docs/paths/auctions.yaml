@@ -76,6 +76,8 @@ post:
   description: Create a new auction in the database.
   tags:
     - All Auctions
+  security:
+    - bearerAuth: []
   requestBody:
     required: true
     content:
