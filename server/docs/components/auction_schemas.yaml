@@ -37,6 +37,9 @@ Auction:
       format: date-time
       example: 2023-01-02T12:00:00Z
 
+
+
+
 AddAuctionRequest:
   type: object
   required:
@@ -47,7 +50,7 @@ AddAuctionRequest:
   properties:
     item_id:
       type: integer
-      example: 101
+      example: 3
     description:
       type: string
       example: A rare collectible item.

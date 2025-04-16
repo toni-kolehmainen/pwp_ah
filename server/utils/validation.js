@@ -1,7 +1,7 @@
 const Ajv = require('ajv');
 const addFormats = require('ajv-formats');
 
-const ajv = new Ajv({ allErrors: true });
+const ajv = new Ajv({ coerceTypes: true, allErrors: true });
 addFormats(ajv); // Add support for additional formats
 
 const validate = (schema, property) => (req, res, next) => {
