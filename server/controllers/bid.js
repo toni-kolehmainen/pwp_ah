@@ -1,57 +1,25 @@
-const Ajv = require('ajv');
 const { Bid } = require('../models');
+const { createHalLinks } = require('../utils/hal');
 
-const ajv = new Ajv({ coerceTypes: false });
-
-const addSchema = {
-  type: 'object',
-  properties: {
-    auction_id: { type: 'integer' },
-    buyer_id: { type: 'integer' },
-    amount: { type: 'number' }
-  },
-  required: ['auction_id', 'buyer_id', 'amount'],
-  additionalProperties: false
-};
-
+// Function gets single bid from the database
 const getBid = async (req, res, next) => {
   Bid.findOne({
     where: {
       id: req.params.bid_id
     }
   }).then((bid) => {
+    // If no bid is found, return a 404 response
     if (!bid) {
       return res.status(404).end();
     }
-    return res.json(bid);
+
+    // else respond with bid data and hypermedia
+    return res.json(createHalLinks(bid.toJSON(), 'bids', true));
   }).catch((e) => {
     const error = new Error(e.message);
     error.name = e.name;
     return next(error);
   });
-};
-
-const addBid = async (req, res, next) => {
-  try {
-    const validate = ajv.compile(addSchema);
-    const valid = validate(req.body);
-
-    if (!valid) {
-      const error = new Error('Invalid Request body');
-      error.name = 'ValidationError';
-      return next(error);
-    }
-
-    const bid = await Bid.create(req.body);
-    return res.status(201).json(bid);
-  } catch (e) {
-    const error = new Error(e.message);
-    error.name = e.name;
-    if (e.errors.length !== 0) {
-      error.message = e.errors[0].message;
-    }
-    return next(error);
-  }
 };
 
 const deleteBid = (req, res, next) => {
@@ -73,5 +41,5 @@ const deleteBid = (req, res, next) => {
 };
 
 module.exports = {
-  getBid, deleteBid, addBid
+  getBid, deleteBid
 };

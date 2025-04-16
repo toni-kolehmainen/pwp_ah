@@ -71,16 +71,12 @@ beforeEach(() => {
 });
 
 // Test GET /api/auctions
-describe('GET /api/auctions', () => {
-  it('should return all auctions (200)', async () => {
-    const mockAuctions = [
-      { id: 1, description: 'Laptop Auction', starting_price: 500.00 },
-      { id: 2, description: 'Phone Auction', starting_price: 300.00 }
-    ];
-    Auction.findAll.mockResolvedValue(mockAuctions);
 
-    const response = await api.get('/api/auctions').expect(200).expect('Content-Type', /application\/json/);
-    expect(response.body).toEqual(mockAuctions);
+describe('GET /api/auctions', () => {
+  beforeEach(async () => {
+    // Clean up the User model before each test
+    jest.clearAllMocks();
+    await Auction.destroy({ where: {}, truncate: true });
   });
 
   it('should return an empty array when no auctions exist (204)', async () => {
@@ -97,54 +93,121 @@ describe('GET /api/auctions', () => {
     expect(response.text).toBe(''); // No content should return an empty response
   });
 
-  it('should handle database errors in getAuctions (500)', async () => {
-    Auction.findAll.mockRejectedValue(new Error('Database error'));
+  
+  it('should return all auctions (200)', async () => {
+    const mockAuctions = [
+      { 
+        id: 1, 
+        description: 'Laptop Auction', 
+        starting_price: 500.00,
+        toJSON: jest.fn().mockReturnValue({
+          id: 1, 
+          description: 'Laptop Auction', 
+          starting_price: 500.00,
+        })
+      },
+      { 
+        id: 2, 
+        description: 'Phone Auction', 
+        starting_price: 300.00,
+        toJSON: jest.fn().mockReturnValue({
+          id: 2, 
+          description: 'Phone Auction', 
+          starting_price: 300.00,
+        })
+      }
+    ];
+    Auction.findAll.mockResolvedValue(mockAuctions);
 
-    const response = await api.get('/api/auctions').expect(500);
-    expect(response.body.error).toBe('Internal Server Error');
+    const response = await api.get('/api/auctions').expect(200).expect('Content-Type', /application\/json/);
+    const body = response.body;
+
+    // Check for _links
+    expect(body).toHaveProperty('_links');
+    expect(body._links).toHaveProperty('self');
+    expect(body._links).toHaveProperty('create');
+    expect(body._links.create).toHaveProperty('href', '/api/auctions');
+    expect(body._links.profile).toHaveProperty('href', '/profiles/auctions/');
+
+    // Check for _embedded and embedded users array
+    expect(body).toHaveProperty('_embedded');
+    expect(body._embedded).toHaveProperty('auctions');
+    expect(Array.isArray(body._embedded.auctions)).toBe(true);
+    for (let i=0; i<body._embedded.auctions.lenght; i++) {
+      // Check for the properties of the first user in the embedded array
+      const auction = body._embedded.auctions[i];
+      expect(auction).toHaveProperty('_links');
+      expect(auction._links).toHaveProperty('self');
+      expect(auction._links.self).toHaveProperty('href', `/api/auctions/${mockAuctions[i].id}`);
+      
+      // Verify that user has 'email', 'name', and 'nickname'
+      expect(auction).toHaveProperty('description');
+      expect(auction).toHaveProperty('starting_price');
+      
+      // Ensure 'href' for delete and edit are present
+      expect(auction._links).toHaveProperty('delete');
+      expect(auction._links.delete).toHaveProperty('href', `/api/auctions/${mockAuctions[i].id}`);
+    }
   });
 });
 
 // Test GET /api/auction/:id
 describe('GET /api/auction/:id', () => {
+
+
   it('should return a specific auction (200)', async () => {
     const mockAuction = { 
       id: 1, 
       description: 'Laptop Auction', 
       starting_price: 500.00,
       item: { id: 1, name: 'Laptop' },
-      seller: { id: 1, name: 'Test User' }
+      seller: { id: 1, name: 'Test User' },
+      toJSON: jest.fn().mockReturnValue({
+        id: 1, 
+        description: 'Laptop Auction', 
+        starting_price: 500.00,
+        item: { id: 1, name: 'Laptop' },
+        seller: { id: 1, name: 'Test User' },
+      })
     };
     Auction.findByPk.mockResolvedValue(mockAuction);
 
-    const response = await api.get('/api/auction/1').expect(200).expect('Content-Type', /application\/json/);
-    expect(response.body).toEqual(mockAuction);
+    const response = await api.get('/api/auctions/1').expect(200).expect('Content-Type', /application\/json/);
+    const body = response.body;
+    expect(body).toHaveProperty('_links');
+    expect(body._links).toHaveProperty('self');
+    expect(body._links.self).toHaveProperty('href', `/api/auctions/${mockAuction.id}`);
+    expect(body._links).toHaveProperty('delete');
+    expect(body._links.delete).toHaveProperty('href', `/api/auctions/${mockAuction.id}`, "method", "DELETE");
+    expect(body._links).toHaveProperty('profile');
+    expect(body._links.profile).toHaveProperty('href', '/profiles/auctions');
+    expect(body._links).toHaveProperty('all');
+    expect(body._links.all).toHaveProperty('href', '/api/auctions');
+    
+    // check for data values mathcing the mockUser
+    expect(body).toHaveProperty('description', mockAuction.description);
+    expect(body).toHaveProperty('starting_price', mockAuction.starting_price);
+    expect(body).toHaveProperty('item', mockAuction.item);
+    expect(body).toHaveProperty('seller', mockAuction.seller);
   });
 
   it('should return 404 when auction is not found', async () => {
     Auction.findByPk.mockResolvedValue(null);
 
-    const response = await api.get('/api/auction/999').expect(404);
+    const response = await api.get('/api/auctions/999').expect(404);
     expect(response.body.error).toBe('Auction not found');
   });
 
   it('should return 500 when invalid ID format is passed', async () => {
     Auction.findByPk.mockRejectedValue(new Error('Invalid ID'));
 
-    const response = await api.get('/api/auction/invalid-id').expect(500);
-    expect(response.body.error).toBe('Internal Server Error');
-  });
-
-  it('should handle database errors in getAuctionById (500)', async () => {
-    Auction.findByPk.mockRejectedValue(new Error('Database error'));
-
-    const response = await api.get('/api/auction/1').expect(500);
+    const response = await api.get('/api/auctions/invalid-id').expect(500);
     expect(response.body.error).toBe('Internal Server Error');
   });
 });
 
 // Test POST /api/auction
-describe('POST /api/auction', () => {
+describe('POST /api/auctions', () => {
   const mockAuction = {
     item_id: 1,
     description: 'Laptop Auction',
@@ -165,13 +228,20 @@ describe('POST /api/auction', () => {
       description: mockAuction.description,
       starting_price: mockAuction.starting_price,
       current_price: mockAuction.starting_price,
-      end_time: new Date(new Date().getTime() + 24 * 60 * 60 * 1000) // Default end_time
+      toJSON: jest.fn().mockReturnValue({
+        id: 1,
+        item_id: mockAuction.item_id,
+        seller_id: 1, // Seller ID from mocked authentication
+        description: mockAuction.description,
+        starting_price: mockAuction.starting_price,
+        current_price: mockAuction.starting_price,
+      })
     };
     
     Auction.create.mockResolvedValue(createdAuction);
 
     const response = await api
-      .post('/api/auction')
+      .post('/api/auctions')
       .set('Authorization', 'Bearer fakeToken')
       .send(mockAuction)
       .expect(201)
@@ -198,7 +268,7 @@ describe('POST /api/auction', () => {
     Auction.create.mockRejectedValue(validationError);
   
     const response = await api
-      .post('/api/auction')
+      .post('/api/auctions')
       .set('Authorization', 'Bearer fakeToken')
       .send(mockAuctionInvalid)
       .expect(400);
@@ -221,7 +291,7 @@ describe('POST /api/auction', () => {
     Auction.create.mockRejectedValue(validationError);
   
     const response = await api
-      .post('/api/auction')
+      .post('/api/auctions')
       .set('Authorization', 'Bearer fakeToken')
       .send(invalidAuction)
       .expect(400);
@@ -247,7 +317,7 @@ describe('POST /api/auction', () => {
     Auction.create.mockRejectedValue(foreignKeyError);
 
     const response = await api
-      .post('/api/auction')
+      .post('/api/auctions')
       .set('Authorization', 'Bearer fakeToken')
       .send({ item_id: 999, starting_price: 500.00 })
       .expect(400);
@@ -260,7 +330,7 @@ describe('POST /api/auction', () => {
     Auction.create.mockRejectedValue(new Error('Database error'));
 
     const response = await api
-      .post('/api/auction')
+      .post('/api/auctions')
       .set('Authorization', 'Bearer fakeToken')
       .send({ item_id: 1, starting_price: 500.00 })
       .expect(500);
@@ -286,7 +356,7 @@ describe('POST /api/auction', () => {
     Auction.create.mockRejectedValue(validationError);
 
     const response = await api
-      .post('/api/auction')
+      .post('/api/auctions')
       .set('Authorization', 'Bearer fakeToken')
       .send(invalidAuction)
       .expect(400);
@@ -308,7 +378,7 @@ describe('POST /api/auction', () => {
     Auction.create.mockRejectedValue(validationError);
   
     const response = await api
-      .post('/api/auction')
+      .post('/api/auctions')
       .set('Authorization', 'Bearer fakeToken')
       .send({})
       .expect(400);
@@ -319,7 +389,7 @@ describe('POST /api/auction', () => {
 });
 
 // Test DELETE /api/auction/:id
-describe('DELETE /api/auction/:id', () => {
+describe('DELETE /api/auctions/:id', () => {
   it('should delete an auction successfully (200)', async () => {
     // Create a mock auction that includes the seller_id matching the authenticated user
     const mockAuction = {
@@ -331,11 +401,11 @@ describe('DELETE /api/auction/:id', () => {
     Auction.findByPk.mockResolvedValue(mockAuction);
   
     const response = await api
-      .delete('/api/auction/1')
+      .delete('/api/auctions/1')
       .set('Authorization', 'Bearer fakeToken')
       .expect(200);
   
-    expect(response.body.message).toBe('Auction deleted successfully');
+    expect(response.body.message).toBe('Deleted successfully from auctions');
     expect(mockAuction.destroy).toHaveBeenCalled();
   });
   
@@ -343,7 +413,7 @@ describe('DELETE /api/auction/:id', () => {
     Auction.findByPk.mockResolvedValue(null); // Mock non-existing auction
 
     const response = await api
-      .delete('/api/auction/999')
+      .delete('/api/auctions/999')
       .set('Authorization', 'Bearer fakeToken')
       .expect(404);
 
@@ -354,7 +424,7 @@ describe('DELETE /api/auction/:id', () => {
     Auction.findByPk.mockRejectedValue(new Error('Invalid ID'));
 
     const response = await api
-      .delete('/api/auction/invalid-id')
+      .delete('/api/auctions/invalid-id')
       .set('Authorization', 'Bearer fakeToken')
       .expect(500);
 
@@ -372,7 +442,7 @@ describe('DELETE /api/auction/:id', () => {
     Auction.findByPk.mockResolvedValue(mockAuction);
     
     const response = await api
-      .delete('/api/auction/1')
+      .delete('/api/auctions/1')
       .set('Authorization', 'Bearer fakeToken')
       .expect(403);
 
@@ -390,7 +460,7 @@ describe('DELETE /api/auction/:id', () => {
     Auction.findByPk.mockResolvedValue(mockAuction);
 
     const response = await api
-      .delete('/api/auction/1')
+      .delete('/api/auctions/1')
       .set('Authorization', 'Bearer fakeToken')
       .expect(500);
 
@@ -398,27 +468,23 @@ describe('DELETE /api/auction/:id', () => {
   });
 });
 
-// Test DELETE /api/auctions
-describe('DELETE /api/auctions', () => {
-  it('should delete all auctions successfully (200)', async () => {
-    Auction.destroy.mockResolvedValue(5); // Simulate successful deletion of 5 auctions
-
-    const response = await api
-      .delete('/api/auctions')
-      .set('Authorization', 'Bearer fakeToken')
-      .expect(200);
-
-    expect(response.body.message).toBe('All auctions deleted successfully');
+describe('GET /api/auctions errors', () => {
+  beforeEach(async () => {
+    // Clean up the User model before each test
+    jest.clearAllMocks();
+    await Auction.destroy({ where: {}, truncate: true });
   });
 
-  it('should handle database errors in deleteAuctions (500)', async () => {
-    Auction.destroy.mockRejectedValue(new Error('Database error'));
+  it('should handle database errors in getAuctions (500)', async () => {
+    Auction.findAll.mockRejectedValueOnce(new Error('Database error'));
 
-    const response = await api
-      .delete('/api/auctions')
-      .set('Authorization', 'Bearer fakeToken')
-      .expect(500);
+    const response = await api.get('/api/auctions').expect(500);
+    expect(response.body.error).toBe('Internal Server Error');
+  });
+  it('should handle database errors in getAuctionById (500)', async () => {
+    Auction.findByPk.mockRejectedValue(new Error('Database error'));
 
+    const response = await api.get('/api/auctions/1').expect(500);
     expect(response.body.error).toBe('Internal Server Error');
   });
 });

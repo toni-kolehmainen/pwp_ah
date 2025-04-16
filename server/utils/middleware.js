@@ -1,6 +1,7 @@
 const rateLimit = require('express-rate-limit');
 const jwt = require('jsonwebtoken');
 const logger = require('./logger');
+const { cacheMiddleware } = require('./cacheMiddleware');
 
 const requestLogger = (request, response, next) => {
   logger.info('Method:', request.method);
@@ -15,8 +16,8 @@ const unknownEndpoint = (request, response) => {
 };
 
 const errorHandler = (error, request, response, next) => {
-  logger.error(error.message);
-
+  console.log('In error handler:');
+  console.log('In error handler:', error); // Log the error to ensure it's being passed
   if (error.name === 'CastError') {
     return response.status(400).json({ error: 'malformatted id' });
   }
@@ -31,7 +32,10 @@ const errorHandler = (error, request, response, next) => {
   }
   if (error.name === 'SequelizeValidationError') {
     return response.status(400).json({ error: error.message });
+  } if (error.name === 'SequelizeForeignKeyConstraintError') {
+    return response.status(400).json({ error: error.message });
   }
+
   return next(error);
 };
 
@@ -61,5 +65,6 @@ module.exports = {
   unknownEndpoint,
   errorHandler,
   limiter,
-  authenticateJWT
+  authenticateJWT,
+  cacheMiddleware
 };
