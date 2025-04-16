@@ -41,3 +41,17 @@ InternalServerError:
           message:
             type: string
             example: An unexpected error occurred
+
+
+Error:
+  type: object
+  properties:
+    error:
+      type: string
+      example: Error message
+    details:
+      type: string
+      example: Detailed error description
+  required:
+    - error
+    - details

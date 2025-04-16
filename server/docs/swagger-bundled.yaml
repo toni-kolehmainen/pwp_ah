@@ -540,7 +540,15 @@ paths:
                         items:
                           $ref: '#/components/schemas/Item'
         '204':
-          description: No items found
+          description: Items not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Items not found
         '500':
           $ref: '#/components/responses/InternalServerError'
     post:
@@ -1092,21 +1100,111 @@ components:
     Item:
       type: object
       properties:
-        id:
+        _links:
+          type: object
+          properties:
+            self:
+              type: object
+              properties:
+                href:
+                  type: string
+                  example: /api/items/1
+            edit:
+              type: object
+              properties:
+                href:
+                  type: string
+                  example: /api/items/1
+                method:
+                  type: string
+                  example: PUT
+            delete:
+              type: object
+              properties:
+                href:
+                  type: string
+                  example: /api/items/1
+                method:
+                  type: string
+                  example: DELETE
+        dataValues:
+          type: object
+          properties:
+            id:
+              type: integer
+              example: 1
+            name:
+              type: string
+              example: Sample Item
+            description:
+              type: string
+              example: Ergonomic Chicken made with Silk for all-day oblong support.
+            sellerId:
+              type: integer
+              example: 1
+            categoryId:
+              type: integer
+              example: 2
+            seller_id:
+              type: integer
+              example: 1
+        _previousDataValues:
+          type: object
+          description: Same structure as dataValues
+          properties:
+            id:
+              type: integer
+            name:
+              type: string
+              example: Sample Item
+            description:
+              type: string
+              example: Ergonomic Chicken made with Silk for all-day oblong support.
+            sellerId:
+              type: integer
+              example: 1
+            categoryId:
+              type: integer
+              example: 2
+            seller_id:
+              type: integer
+              example: 1
+        uniqno:
           type: integer
           example: 1
-        name:
-          type: string
-          example: Sample Item
-        description:
-          type: string
-          example: This is a sample item.
-        sellerId:
-          type: integer
-          example: 1
-        categoryId:
-          type: integer
-          example: 2
+        _changed:
+          type: object
+          example: {}
+        _options:
+          type: object
+          properties:
+            isNewRecord:
+              type: boolean
+              example: false
+            _schema:
+              type: string
+              nullable: true
+              example: null
+            _schemaDelimiter:
+              type: string
+              example: ''
+            raw:
+              type: boolean
+              example: true
+            attributes:
+              type: array
+              items:
+                type: string
+                example:
+                  - id
+                  - name
+                  - description
+                  - sellerId
+                  - categoryId
+                  - seller_id
+        isNewRecord:
+          type: boolean
+          example: false
     AddItemRequest:
       type: object
       required:
