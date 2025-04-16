@@ -25,11 +25,11 @@ const getItems = async (req, res) => {
     console.log(items);
     return res.status(200).json({
       _links:
-        {
-          self: { href: '/api/items/' },
-          profile: { href: '/profiles/items/' },
-          create: { href: '/api/items', method: 'POST' }
-        },
+      {
+        self: { href: '/api/items/' },
+        profile: { href: '/profiles/items/' },
+        create: { href: '/api/items', method: 'POST' }
+      },
       _embedded: {
         items: items.map((item) => createHalEmbedded(item, 'items'))
       }
@@ -43,6 +43,8 @@ const getItems = async (req, res) => {
 const addItem = async (req, res, next) => {
   console.log(req.body);
   try {
+    const { name, description, sellerId, categoryId } = req.body;
+
     const validate = ajv.compile(addSchema);
     const valid = validate(req.body);
     console.log('after validation');
@@ -56,7 +58,12 @@ const addItem = async (req, res, next) => {
     console.log(req.body);
     console.log(valid);
 
-    const item = await Item.create(req.body);
+    const item = await Item.create({
+      name,
+      description,
+      seller_id: sellerId,
+      category_id: categoryId
+    });
     return res.status(201).json(createHalLinks(item, 'items'));
   } catch (e) {
     const error = new Error(e.message);
