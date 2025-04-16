@@ -2,18 +2,33 @@ const express = require('express');
 
 const app = express();
 const cors = require('cors');
-// const cron = require('node-cron');
+const cron = require('node-cron');
 const middleware = require('./utils/middleware');
 const router = require('./router');
+const routerProfile = require('./router/profile');
+const { dataClean } = require('./services/data_clean');
+const { auctionEndListener } = require('./services/email');
+const { NODE_ENV } = require('./utils/config');
 
-// cron.schedule('*/2 * * * *', () => {
-//   console.log('delete example bids');
-// });
+if (NODE_ENV !== 'test') {
+  // check if auction is ended every minute
+  cron.schedule('* * * * *', async () => {
+    auctionEndListener();
+  });
+
+  // removes outdated information like ended auction and its bids
+  // data is copied to text file
+  cron.schedule('0 0 * * 1', async () => {
+    const mes = await dataClean();
+    console.log(mes);
+  });
+}
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cors());
 
+// Adding access control allow headers
 app.use((_, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE');
@@ -21,7 +36,12 @@ app.use((_, res, next) => {
   next();
 });
 
-app.use(middleware.limiter);
+// app.use(middleware.limiter);
+
+// Adding the middleware
+app.use(middleware.cacheMiddleware);
+
+app.use('/profile', routerProfile);
 app.use('/api', router);
 app.use(middleware.requestLogger);
 app.use(middleware.unknownEndpoint);

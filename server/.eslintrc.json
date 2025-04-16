@@ -18,5 +18,5 @@
       "linebreak-style": ["error", "windows"],
       "no-plusplus": "off"
     },
-    "ignorePatterns": ["**/*.test.js"]
+    "ignorePatterns": ["**/*.test.js", "**/tests/*.js" ]
   }
