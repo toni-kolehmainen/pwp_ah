@@ -16,7 +16,7 @@ get:
       content:
         application/json:
           schema:
-            $ref: '../components/item_schemas.yaml#/Item'
+            $ref: '../components/item_schemas.yaml#/SingleGetItem'
     '404':
       $ref: '../components/responses.yaml#/NotFound'
     '500':
@@ -46,7 +46,7 @@ put:
       content:
         application/json:
           schema:
-            $ref: '../components/item_schemas.yaml#/Item'
+            $ref: '../components/item_schemas.yaml#/UpdateItem'
     '400':
       $ref: '../components/responses.yaml#/BadRequest'
     '404':
@@ -72,11 +72,7 @@ delete:
       content:
         application/json:
           schema:
-            type: object
-            properties:
-              message:
-                type: string
-                example: Item deleted successfully
+            $ref: '../components/item_schemas.yaml#/DeleteItem'
     '404':
       $ref: '../components/responses.yaml#/NotFound'
     '500':

@@ -685,7 +685,59 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Item'
+                type: object
+                properties:
+                  _links:
+                    type: object
+                    properties:
+                      self:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            example: /api/items/1
+                      all:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            example: /api/items
+                      profile:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            example: /profiles/items
+                      edit:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            example: /api/items/1
+                          method:
+                            type: string
+                            example: PUT
+                      delete:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            example: /api/items/1
+                          method:
+                            type: string
+                            example: DELETE
+                  id:
+                    type: integer
+                    example: 1
+                  name:
+                    type: string
+                    example: Fresh Concrete Tuna
+                  description:
+                    type: string
+                    example: Ergonomic Chicken made with Silk for all-day oblong support
+                  seller_id:
+                    type: integer
+                    example: 1
         '404':
           $ref: '#/components/responses/NotFound'
         '500':
@@ -714,7 +766,68 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Item'
+                type: object
+                properties:
+                  '0':
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 13
+                      name:
+                        type: string
+                        example: New Scheme Tariff Item
+                      description:
+                        type: string
+                        example: This is a US 125% on Items
+                      seller_id:
+                        type: integer
+                        example: 1
+                  _links:
+                    type: object
+                    properties:
+                      self:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            example: /api/items/undefined
+                      create:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            example: /api/items
+                          method:
+                            type: string
+                            example: POST
+                      profile:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            example: /profiles/items
+                      edit:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            example: /api/items/undefined
+                          method:
+                            type: string
+                            example: PUT
+                      delete:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            example: /api/items/undefined
+                          method:
+                            type: string
+                            example: DELETE
+                  message:
+                    type: string
+                    example: item updated successfully
         '400':
           $ref: '#/components/responses/BadRequest'
         '404':
@@ -741,9 +854,33 @@ paths:
               schema:
                 type: object
                 properties:
+                  _links:
+                    type: object
+                    properties:
+                      self:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            example: /api/items
+                      create:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            example: /api/items
+                          method:
+                            type: string
+                            example: POST
+                      profile:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            example: /profiles/items
                   message:
                     type: string
-                    example: Item deleted successfully
+                    example: Deleted successfully from items
         '404':
           $ref: '#/components/responses/NotFound'
         '500':
