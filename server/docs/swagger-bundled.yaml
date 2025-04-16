@@ -56,13 +56,86 @@ paths:
         - All Users
       responses:
         '200':
-          description: A list of users
+          description: A HAL-formatted list of users
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/User'
+                type: object
+                properties:
+                  _links:
+                    type: object
+                    properties:
+                      self:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            example: /api/user/
+                      profile:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            example: /profiles/users/
+                      create:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            example: /api/users
+                          method:
+                            type: string
+                            example: POST
+                  _embedded:
+                    type: object
+                    properties:
+                      users:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            _links:
+                              type: object
+                              properties:
+                                self:
+                                  type: object
+                                  properties:
+                                    href:
+                                      type: string
+                                      example: /api/users/1
+                                edit:
+                                  type: object
+                                  properties:
+                                    href:
+                                      type: string
+                                      example: /api/users/1
+                                    method:
+                                      type: string
+                                      example: PUT
+                                delete:
+                                  type: object
+                                  properties:
+                                    href:
+                                      type: string
+                                      example: /api/users/1
+                                    method:
+                                      type: string
+                                      example: DELETE
+                            id:
+                              type: integer
+                              example: 1
+                            name:
+                              type: string
+                              example: John Doe
+                            nickname:
+                              type: string
+                              example: Johnny
+                            email:
+                              type: string
+                              example: john.doe@example.com
+                            phone:
+                              type: string
+                              example: 1234567890
         '500':
           $ref: '#/components/responses/InternalServerError'
     post:
@@ -106,7 +179,62 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/User'
+                type: object
+                properties:
+                  _links:
+                    type: object
+                    properties:
+                      self:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            example: /api/users/8
+                      all:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            example: /api/users
+                      profile:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            example: /profiles/users
+                      edit:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            example: /api/users/8
+                          method:
+                            type: string
+                            example: PUT
+                      delete:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            example: /api/users/8
+                          method:
+                            type: string
+                            example: DELETE
+                  id:
+                    type: integer
+                    example: 8
+                  name:
+                    type: string
+                    example: John Doe
+                  nickname:
+                    type: string
+                    example: Johnn
+                  email:
+                    type: string
+                    example: john.doe@example.com
+                  phone:
+                    type: string
+                    example: 12345678120
         '404':
           $ref: '#/components/responses/NotFound'
         '500':
@@ -135,7 +263,71 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/User'
+                type: object
+                properties:
+                  _links:
+                    type: object
+                    properties:
+                      self:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            example: /api/users/8
+                      create:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            example: /api/users
+                          method:
+                            type: string
+                            example: POST
+                      profile:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            example: /profiles/users
+                      edit:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            example: /api/users/8
+                          method:
+                            type: string
+                            example: PUT
+                      delete:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            example: /api/users/8
+                          method:
+                            type: string
+                            example: DELETE
+                  id:
+                    type: integer
+                    example: 8
+                  name:
+                    type: string
+                    example: John Doe
+                  nickname:
+                    type: string
+                    example: Johnn
+                  email:
+                    type: string
+                    example: john.doe@example.com
+                  phone:
+                    type: string
+                    example: 12345678120
+                  password:
+                    type: string
+                    example: $2b$10$...
+                  message:
+                    type: string
+                    example: users updated successfully
         '400':
           $ref: '#/components/responses/BadRequest'
         '404':
@@ -162,9 +354,33 @@ paths:
               schema:
                 type: object
                 properties:
+                  _links:
+                    type: object
+                    properties:
+                      self:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            example: /api/users
+                      create:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            example: /api/users
+                          method:
+                            type: string
+                            example: POST
+                      profile:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            example: /profiles/users
                   message:
                     type: string
-                    example: User deleted successfully
+                    example: Deleted successfully from users
         '404':
           $ref: '#/components/responses/NotFound'
         '500':
@@ -196,6 +412,13 @@ paths:
                       self:
                         type: string
                         example: /api/users/1/auctions
+                      profile:
+                        type: string
+                        example: /profiles/auctions/
+                      create:
+                        type: string
+                        example: '/api/auctions,'
+                        method: POST
                   _embedded:
                     type: object
                     properties:
@@ -704,9 +927,48 @@ components:
     User:
       type: object
       properties:
+        _links:
+          type: object
+          properties:
+            self:
+              type: object
+              properties:
+                href:
+                  type: string
+                  example: /api/users/8
+            all:
+              type: object
+              properties:
+                href:
+                  type: string
+                  example: /api/users
+            profile:
+              type: object
+              properties:
+                href:
+                  type: string
+                  example: /profiles/users
+            edit:
+              type: object
+              properties:
+                href:
+                  type: string
+                  example: /api/users/8
+                method:
+                  type: string
+                  example: PUT
+            delete:
+              type: object
+              properties:
+                href:
+                  type: string
+                  example: /api/users/8
+                method:
+                  type: string
+                  example: DELETE
         id:
           type: integer
-          example: 1
+          example: 8
         name:
           type: string
           example: John Doe
@@ -715,10 +977,13 @@ components:
           example: john.doe@example.com
         phone:
           type: string
-          example: 1234567890
+          example: 12345678120
+        password:
+          type: string
+          example: $2b$10$...
         nickname:
           type: string
-          example: Johnny
+          example: Johnn
     AddUserRequest:
       type: object
       required:

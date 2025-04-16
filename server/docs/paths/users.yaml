@@ -5,13 +5,11 @@ get:
     - All Users
   responses:
     '200':
-      description: A list of users
+      description: A HAL-formatted list of users
       content:
         application/json:
           schema:
-            type: array
-            items:
-              $ref: '../components/user_schemas.yaml#/User'
+              $ref: '../components/user_schemas.yaml#/UserListResponse'
     '500':
       $ref: '../components/responses.yaml#/InternalServerError'
 
@@ -32,7 +30,7 @@ post:
       content:
         application/json:
           schema:
-            $ref: '../components/user_schemas.yaml#/User'
+            $ref: '../components/user_schemas.yaml#/UserResponseHAL'
     '400':
       $ref: '../components/responses.yaml#/BadRequest'
     '500':

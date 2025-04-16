@@ -16,7 +16,7 @@ get:
       content:
         application/json:
           schema:
-            $ref: '../components/user_schemas.yaml#/User'
+            $ref: '../components/user_schemas.yaml#/SingleUserResponseHAL'
     '404':
       $ref: '../components/responses.yaml#/NotFound'
     '500':
@@ -46,7 +46,8 @@ put:
       content:
         application/json:
           schema:
-            $ref: '../components/user_schemas.yaml#/User'
+            $ref: '../components/user_schemas.yaml#/UpdateUserResponseHAL'
+            
     '400':
       $ref: '../components/responses.yaml#/BadRequest'
     '404':
@@ -72,11 +73,7 @@ delete:
       content:
         application/json:
           schema:
-            type: object
-            properties:
-              message:
-                type: string
-                example: User deleted successfully
+            $ref: '../components/user_schemas.yaml#/DeleteUserResponseHAL'
     '404':
       $ref: '../components/responses.yaml#/NotFound'
     '500':
