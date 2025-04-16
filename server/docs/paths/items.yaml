@@ -72,7 +72,7 @@ post:
       content:
         application/json:
           schema:
-            $ref: '../components/item_schemas.yaml#/Item'
+            $ref: '../components/item_schemas.yaml#/AddItem'
     '400':
       $ref: '../components/responses.yaml#/BadRequest'
     '500':

@@ -568,7 +568,100 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Item'
+                type: object
+                properties:
+                  _links:
+                    type: object
+                    properties:
+                      self:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            example: /api/items/1
+                      all:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            example: /api/items
+                      profile:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            example: /profiles/items
+                      edit:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            example: /api/items/1
+                          method:
+                            type: string
+                            example: PUT
+                      delete:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            example: /api/items/1
+                          method:
+                            type: string
+                            example: DELETE
+                  dataValues:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 1
+                      name:
+                        type: string
+                        example: New China Sample Item
+                      description:
+                        type: string
+                        example: Ergonomic Chicken made with Silk for all-day oblong support
+                      seller_id:
+                        type: integer
+                        example: 1
+                  _previousDataValues:
+                    type: object
+                    description: Same structure as dataValues
+                    properties:
+                      name:
+                        type: string
+                        example: Sample Item
+                      description:
+                        type: string
+                        example: Ergonomic Chicken made with Silk for all-day oblong support.
+                      seller_id:
+                        type: integer
+                        example: 1
+                      id:
+                        type: integer
+                        example: 1
+                  uniqno:
+                    type: integer
+                    example: 1
+                  _changed:
+                    type: object
+                    example: {}
+                  _options:
+                    type: object
+                    properties:
+                      isNewRecord:
+                        type: boolean
+                        example: true
+                      _schema:
+                        type: string
+                        nullable: true
+                        example: null
+                      _schemaDelimiter:
+                        type: string
+                        example: ''
+                  isNewRecord:
+                    type: boolean
+                    example: false
         '400':
           $ref: '#/components/responses/BadRequest'
         '500':
@@ -1154,6 +1247,7 @@ components:
           properties:
             id:
               type: integer
+              example: 1
             name:
               type: string
               example: Sample Item
@@ -1215,10 +1309,10 @@ components:
       properties:
         name:
           type: string
-          example: Sample Item
+          example: New Chinese Tariff Item
         description:
           type: string
-          example: This is a sample item.
+          example: This is a US 125% on Items
         sellerId:
           type: integer
           example: 1
