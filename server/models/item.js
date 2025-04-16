@@ -17,7 +17,7 @@ Item.init({
   description: {
     type: DataTypes.TEXT,
     allowNull: true
-  },
+  }
   // sellerId: {
   //   type: DataTypes.INTEGER,
   //   allowNull: false,

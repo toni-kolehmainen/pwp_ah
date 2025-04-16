@@ -25,14 +25,14 @@ Item.belongsTo(User, {
 Category.hasMany(Item, {
   onDelete: 'SET NULL',
   foreignKey: {
-    name: 'seller_id',
+    name: 'category_id',
     allowNull: false
   }
 });
 
 Item.belongsTo(Category, {
   foreignKey: {
-    name: 'seller_id',
+    name: 'category_id',
     allowNull: false
   }
 });
