@@ -24,6 +24,13 @@ get:
                   self:
                     type: string
                     example: /api/users/1/auctions
+                  profile:
+                    type: string
+                    example: /profiles/auctions/
+                  create:
+                    type: string 
+                    example: /api/auctions,
+                    method: POST
               _embedded:
                 type: object
                 properties:

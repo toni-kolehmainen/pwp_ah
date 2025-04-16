@@ -43,7 +43,7 @@ components:
     LoginResponse:
       $ref: './components/login_schemas.yaml#/LoginResponse'
     User:
-      $ref: './components/user_schemas.yaml#/User'
+      $ref: './components/user_schemas.yaml#/UserResponseHAL'
     AddUserRequest:
       $ref: './components/user_schemas.yaml#/AddUserRequest'
     UpdateUserRequest:

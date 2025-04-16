@@ -16,7 +16,7 @@ const updateSchema = {
     password: { type: 'string' }
   },
   minProperties: 1,
-  maxProperties: 1,
+  // maxProperties: 1, // This line is commented out to allow multiple properties to be updated
   additionalProperties: false
 };
 
@@ -45,8 +45,11 @@ const getUser = async (req, res, next) => {
 const updateUser = async (req, res, next) => {
   try {
     // Validate the request body using the updateSchema
+    console.log('update schema---> ', updateSchema);
     const validate = ajv.compile(updateSchema);
     const valid = validate(req.body);
+
+    console.log('valid---> ', valid, req.body);
 
     // If the validation fails, return a validation error
     if (!valid) {
