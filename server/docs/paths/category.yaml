@@ -16,11 +16,7 @@ delete:
       content:
         application/json:
           schema:
-            type: object
-            properties:
-              status:
-                type: string
-                example: Deleted
+            $ref: '../components/category_schemas.yaml#/deleteCategory'
     '404':
       $ref: '../components/responses.yaml#/NotFound'
     '500':

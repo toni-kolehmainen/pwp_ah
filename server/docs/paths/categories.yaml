@@ -15,11 +15,17 @@ get:
                 type: object
                 properties:
                   self:
-                    type: string
-                    example: /api/categories/
+                    type: object
+                    properties:
+                      href:
+                        type: string
+                        example: /api/categories/
                   profile:
-                    type: string
-                    example: /profiles/categories/
+                    type: object
+                    properties:
+                      href:
+                        type: string
+                        example: /profiles/categories/
                   create:
                     type: object
                     properties:
@@ -35,9 +41,33 @@ get:
                   categories:
                     type: array
                     items:
-                      $ref: '../components/category_schemas.yaml#/Category'
+                      type: object
+                      allOf:
+                      - type: object
+                        properties:
+                          _links:
+                            type: object
+                            properties:
+                              self:
+                                type: object
+                                properties:
+                                  href:
+                                    type: string
+                                    example: /api/categories/1
+                              delete:
+                                type: object
+                                properties:
+                                  href:
+                                    type: string
+                                    example: /api/categories/1
+                                  method:
+                                    type: string
+                                    example: DELETE
+                      - $ref: '../components/category_schemas.yaml#/Category'
+                        
     '500':
       $ref: '../components/responses.yaml#/InternalServerError'
+
 
 post:
   summary: Add a new category
@@ -56,7 +86,7 @@ post:
       content:
         application/json:
           schema:
-            $ref: '../components/category_schemas.yaml#/Category'
+            $ref: '../components/category_schemas.yaml#/AddCategoryResponse'
     '400':
       $ref: '../components/responses.yaml#/BadRequest'
     '409':
@@ -71,3 +101,6 @@ post:
                 example: Category already exists
     '500':
       $ref: '../components/responses.yaml#/InternalServerError'
+
+
+      
