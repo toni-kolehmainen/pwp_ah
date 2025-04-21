@@ -22,15 +22,55 @@ get:
                 type: object
                 properties:
                   self:
-                    type: string
-                    example: /api/auction/1/bids
+                    type: object
+                    properties:
+                      href:
+                        type: string
+                        example: /api/auction/3/bids
+                  profile:
+                    type: object
+                    properties:
+                      href: 
+                        type: string
+                        example: /profiles/bids/
+                  create:
+                    type: object
+                    properties:
+                      href:
+                        type: string
+                        example: /api/bids
+                      method:
+                        type: string
+                        example: POST
               _embedded:
                 type: object
                 properties:
                   bids:
                     type: array
                     items:
-                      $ref: '../components/bid_schemas.yaml#/Bid'
+                      type: object
+                      allOf:
+                        - type: object
+                          properties:
+                            _links:
+                              type: object
+                              properties:
+                                self:
+                                  type: object
+                                  properties:
+                                    href:
+                                      type: string
+                                      example: /api/bids/8
+                                delete:
+                                  type: object
+                                  properties:
+                                    href:
+                                      type: string
+                                      example: /api/bids/8
+                                    method:
+                                      type: string
+                                      example: DELETE
+                        - $ref: '../components/bid_schemas.yaml#/Bid'
     '404':
       $ref: '../components/responses.yaml#/NotFound'
     '500':
