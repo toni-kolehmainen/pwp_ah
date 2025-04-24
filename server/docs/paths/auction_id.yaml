@@ -1,0 +1,79 @@
+
+# in this file we are documenting the single auction that can
+# be get by id and delete by id 
+# /api/auction/{id}
+
+
+
+get:
+  summary: Get auction by ID
+  description: Retrieve a list of auctions with ID.
+  tags:
+    - Auction
+  security:
+    - bearerAuth: []
+  parameters:
+    - name: auction_id
+      in: path
+      required: true
+      schema:
+        type: integer
+      description: specific ID of the auction
+  responses:
+    '200':
+      description: Auction by ID example response
+      content:
+        application/json:
+          schema:
+            $ref: '../components/auction_id.yaml#/AuctionById'
+    '404':
+      description: Auction not found
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+                example: Auction not found
+    '500':
+      $ref: '../components/responses.yaml#/InternalServerError'
+  
+
+delete:
+  summary: Delete auction by ID
+  description: Delete a specific auction by ID.
+  tags:
+    - Auction
+  security:
+    - bearerAuth: []
+  parameters:
+    - name: auction_id
+      in: path
+      required: true
+      schema:
+        type: integer
+      description: ID of the auction to delete
+  responses:
+    '200':
+      description: Auction deleted successfully
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+                example: Deleted successfully from Auctions
+    '404':
+      description: Auction not found
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+                example: Auction not found
+    '500':
+      $ref: '../components/responses.yaml#/InternalServerError'

@@ -54,9 +54,9 @@ delete:
           schema:
             type: object
             properties:
-              status:
+              message:
                 type: string
-                example: Deleted
+                example: Deleted successfully from Bid
     '404':
       $ref: '../components/responses.yaml#/NotFound'
     '500':

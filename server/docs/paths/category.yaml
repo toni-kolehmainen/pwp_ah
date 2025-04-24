@@ -16,7 +16,11 @@ delete:
       content:
         application/json:
           schema:
-            $ref: '../components/category_schemas.yaml#/deleteCategory'
+            type: object
+            properties:
+              message:
+                type: string
+                example: Deleted successfully from Categories
     '404':
       $ref: '../components/responses.yaml#/NotFound'
     '500':

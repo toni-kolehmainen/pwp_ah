@@ -22,6 +22,8 @@ paths:
     $ref: './paths/item.yaml'
   /auctions:
     $ref: './paths/auctions.yaml'
+  /auctions/{auction_id}:
+    $ref: './paths/auction_id.yaml'
   /auctions/{auction_id}/bids:
     $ref: './paths/auction_bids.yaml'
   /auctions/{auction_id}/bids/{bid_id}:

@@ -1,0 +1,86 @@
+AuctionById:
+  type: object
+  properties:
+    _links:
+      type: object
+      properties:
+        self:
+          type: object
+          properties:
+            href:
+              type: string
+              example: /api/auctions/1
+        all:
+          type: object
+          properties:
+            href:
+              type: string
+              example: /api/auctions
+        profile:
+          type: object
+          properties:
+            href:
+              type: string
+              example: /profiles/auctions
+        delete:
+          type: object
+          properties:
+            href:
+              type: string
+              example: /api/auctions/1
+            method:
+              type: string
+              example: DELETE
+    id: 
+      type: integer
+      example: 1
+    description: 
+      type: string
+      example: Auction for a vintage car
+    item_id:
+      type: integer
+      example: null
+    start_time:
+      type: string
+      format: date-time
+      example: 2023-10-01T12:00:00Z
+    end_time:
+      type: string
+      format: date-time
+      example: 2023-10-15T12:00:00Z
+    starting_price:
+      type: number
+      format: float
+      example: 1000.00
+    current_price:
+      type: number
+      format: float
+      example: 1000.00
+    emaidSend:
+      type: boolean
+      example: false
+    itemId:
+      type: integer
+      nullable: true
+      example: null
+    item:
+      type: object
+      example: null
+    seller:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        name: 
+          type: string
+          example: John Doe
+        nickname:
+          type: string
+          example: johndoe
+        email:
+          type: string
+          example: john.doe@gmail.com
+        phone:
+          type: string
+          example: 1234567890

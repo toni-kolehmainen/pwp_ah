@@ -72,7 +72,11 @@ delete:
       content:
         application/json:
           schema:
-            $ref: '../components/item_schemas.yaml#/DeleteItem'
+            type: object
+            properties:
+              message:
+                type: string
+                example: Deleted successfully from Items
     '404':
       $ref: '../components/responses.yaml#/NotFound'
     '500':

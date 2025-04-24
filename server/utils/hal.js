@@ -50,11 +50,11 @@ const createHalLinks = (resource, path, canEdit = true) => {
 // Function to delete HAL structure for a single resource
 const deleteHalLinks = (path) => {
   const halStructure = {
-    _links: {
-      self: { href: `/api/${path}` },
-      create: { href: `/api/${path}`, method: 'POST' },
-      profile: { href: `/profiles/${path}` }
-    },
+    // _links: {
+    //   self: { href: `/api/${path}` },
+    //   create: { href: `/api/${path}`, method: 'POST' },
+    //   profile: { href: `/profiles/${path}` }
+    // },
     message: `Deleted successfully from ${path}`
   };
 

@@ -354,33 +354,9 @@ paths:
               schema:
                 type: object
                 properties:
-                  _links:
-                    type: object
-                    properties:
-                      self:
-                        type: object
-                        properties:
-                          href:
-                            type: string
-                            example: /api/users
-                      create:
-                        type: object
-                        properties:
-                          href:
-                            type: string
-                            example: /api/users
-                          method:
-                            type: string
-                            example: POST
-                      profile:
-                        type: object
-                        properties:
-                          href:
-                            type: string
-                            example: /profiles/users
                   message:
                     type: string
-                    example: Deleted successfully from users
+                    example: Deleted successfully from Users
         '404':
           $ref: '#/components/responses/NotFound'
         '500':
@@ -854,33 +830,9 @@ paths:
               schema:
                 type: object
                 properties:
-                  _links:
-                    type: object
-                    properties:
-                      self:
-                        type: object
-                        properties:
-                          href:
-                            type: string
-                            example: /api/items
-                      create:
-                        type: object
-                        properties:
-                          href:
-                            type: string
-                            example: /api/items
-                          method:
-                            type: string
-                            example: POST
-                      profile:
-                        type: object
-                        properties:
-                          href:
-                            type: string
-                            example: /profiles/items
                   message:
                     type: string
-                    example: Deleted successfully from items
+                    example: Deleted successfully from Items
         '404':
           $ref: '#/components/responses/NotFound'
         '500':
@@ -1069,6 +1021,161 @@ paths:
           $ref: '#/components/responses/BadRequest'
         '500':
           $ref: '#/components/responses/InternalServerError'
+  '/auctions/{auction_id}':
+    get:
+      summary: Get auction by ID
+      description: Retrieve a list of auctions with ID.
+      tags:
+        - Auction
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: auction_id
+          in: path
+          required: true
+          schema:
+            type: integer
+          description: specific ID of the auction
+      responses:
+        '200':
+          description: Auction by ID example response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  _links:
+                    type: object
+                    properties:
+                      self:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            example: /api/auctions/1
+                      all:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            example: /api/auctions
+                      profile:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            example: /profiles/auctions
+                      delete:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            example: /api/auctions/1
+                          method:
+                            type: string
+                            example: DELETE
+                  id:
+                    type: integer
+                    example: 1
+                  description:
+                    type: string
+                    example: Auction for a vintage car
+                  item_id:
+                    type: integer
+                    example: null
+                  start_time:
+                    type: string
+                    format: date-time
+                    example: '2023-10-01T12:00:00Z'
+                  end_time:
+                    type: string
+                    format: date-time
+                    example: '2023-10-15T12:00:00Z'
+                  starting_price:
+                    type: number
+                    format: float
+                    example: 1000
+                  current_price:
+                    type: number
+                    format: float
+                    example: 1000
+                  emaidSend:
+                    type: boolean
+                    example: false
+                  itemId:
+                    type: integer
+                    nullable: true
+                    example: null
+                  item:
+                    type: object
+                    example: null
+                  seller:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 1
+                      name:
+                        type: string
+                        example: John Doe
+                      nickname:
+                        type: string
+                        example: johndoe
+                      email:
+                        type: string
+                        example: john.doe@gmail.com
+                      phone:
+                        type: string
+                        example: 1234567890
+        '404':
+          description: Auction not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Auction not found
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+    delete:
+      summary: Delete auction by ID
+      description: Delete a specific auction by ID.
+      tags:
+        - Auction
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: auction_id
+          in: path
+          required: true
+          schema:
+            type: integer
+          description: ID of the auction to delete
+      responses:
+        '200':
+          description: Auction deleted successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Deleted successfully from Auctions
+        '404':
+          description: Auction not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Auction not found
+        '500':
+          $ref: '#/components/responses/InternalServerError'
   '/auctions/{auction_id}/bids':
     get:
       summary: Get bids by auction
@@ -1203,9 +1310,9 @@ paths:
               schema:
                 type: object
                 properties:
-                  status:
+                  message:
                     type: string
-                    example: Deleted
+                    example: Deleted successfully from Bid
         '404':
           $ref: '#/components/responses/NotFound'
         '500':
@@ -1400,33 +1507,9 @@ paths:
               schema:
                 type: object
                 properties:
-                  _links:
-                    type: object
-                    properties:
-                      self:
-                        type: object
-                        properties:
-                          href:
-                            type: string
-                            example: /api/categories
-                      create:
-                        type: object
-                        properties:
-                          href:
-                            type: string
-                            example: /api/categories
-                          method:
-                            type: string
-                            example: POST
-                      profile:
-                        type: object
-                        properties:
-                          href:
-                            type: string
-                            example: /profiles/categories
                   message:
                     type: string
-                    example: Deleted successfully from categories
+                    example: Deleted successfully from Categories
         '404':
           $ref: '#/components/responses/NotFound'
         '500':
