@@ -1254,19 +1254,186 @@ paths:
           $ref: '#/components/responses/NotFound'
         '500':
           $ref: '#/components/responses/InternalServerError'
-  '/auctions/{auction_id}/bids/{bid_id}':
+  /bids:
+    get:
+      summary: Get all bids
+      description: Retrieve a list of all bids from the database.
+      tags:
+        - All Bids
+      responses:
+        '200':
+          description: Bids retrievedr successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  _links:
+                    type: object
+                    properties:
+                      self:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            example: /api/bids/
+                      profile:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            example: /profiles/bids/
+                      create:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            example: /api/bids
+                          method:
+                            type: string
+                            example: POST
+                  _embedded:
+                    type: object
+                    properties:
+                      bids:
+                        type: array
+                        items:
+                          allOf:
+                            - type: object
+                              properties:
+                                _links:
+                                  type: object
+                                  properties:
+                                    self:
+                                      type: object
+                                      properties:
+                                        href:
+                                          type: string
+                                          example: /api/bids/1
+                                    delete:
+                                      type: object
+                                      properties:
+                                        href:
+                                          type: string
+                                          example: /api/bids/1
+                                        method:
+                                          type: string
+                                          example: DELETE
+                            - $ref: '#/components/schemas/Bid'
+        '404':
+          description: Bids not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Bids not found
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+    post:
+      summary: Create a new bid
+      description: Create a new bid in the database.
+      tags:
+        - All Bids
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - auction_id
+                - buyer_id
+                - amount
+              properties:
+                auction_id:
+                  type: integer
+                  example: 101
+                buyer_id:
+                  type: integer
+                  example: 5
+                amount:
+                  type: number
+                  format: float
+                  example: 150
+      responses:
+        '201':
+          description: Bid created successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  _links:
+                    type: object
+                    properties:
+                      self:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            example: /api/bids/1
+                      all:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            example: /api/bids
+                      profile:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            example: /profiles/bids/
+                      delete:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            example: /api/bids/1
+                          method:
+                            type: string
+                            example: DELETE
+                  buy_time:
+                    type: string
+                    format: date-time
+                    example: '2023-01-01T12:00:00Z'
+                  id:
+                    type: integer
+                    example: 1
+                  auction_id:
+                    type: integer
+                    example: 4
+                  buyer_id:
+                    type: integer
+                    example: 5
+                  amount:
+                    type: string
+                    format: float
+                    example: 150
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Bad request
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  '/bids/{bid_id}':
     get:
       summary: Get a bid by ID
-      description: Retrieve a specific bid for a given auction.
+      description: Reterive a bid data based on Bid Id.
       tags:
         - Bid
       parameters:
-        - name: auction_id
-          in: path
-          required: true
-          schema:
-            type: integer
-          description: ID of the auction
         - name: bid_id
           in: path
           required: true
@@ -1279,23 +1446,70 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Bid'
+                type: object
+                allOf:
+                  - type: object
+                    properties:
+                      _links:
+                        type: object
+                        properties:
+                          self:
+                            type: object
+                            properties:
+                              href:
+                                type: string
+                                example: /api/bids/17
+                          all:
+                            type: object
+                            properties:
+                              href:
+                                type: string
+                                example: /api/bids
+                          profile:
+                            type: object
+                            properties:
+                              href:
+                                type: string
+                                example: /profiles/bids
+                          edit:
+                            type: object
+                            properties:
+                              href:
+                                type: string
+                                example: /api/bids/17
+                              method:
+                                type: string
+                                example: PUT
+                          delete:
+                            type: object
+                            properties:
+                              href:
+                                type: string
+                                example: /api/bids/17
+                              method:
+                                type: string
+                                example: DELETE
+                  - $ref: '#/components/schemas/Bid'
         '404':
-          $ref: '#/components/responses/NotFound'
+          description: Bid by ID not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Bid by ID not found
         '500':
           $ref: '#/components/responses/InternalServerError'
     delete:
       summary: Delete a bid by ID
-      description: Delete a specific bid for a given auction.
+      description: Delete a specific bid basde on ID.
       tags:
         - Bid
+      security:
+        - bearerAuth: []
       parameters:
-        - name: auction_id
-          in: path
-          required: true
-          schema:
-            type: integer
-          description: ID of the auction
         - name: bid_id
           in: path
           required: true
@@ -1310,11 +1524,22 @@ paths:
               schema:
                 type: object
                 properties:
+                  status:
+                    type: string
+                    example: Deleted
                   message:
                     type: string
                     example: Deleted successfully from Bid
         '404':
-          $ref: '#/components/responses/NotFound'
+          description: Bid not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Bid not found
         '500':
           $ref: '#/components/responses/InternalServerError'
   /categories:

@@ -26,10 +26,16 @@ paths:
     $ref: './paths/auction_id.yaml'
   /auctions/{auction_id}/bids:
     $ref: './paths/auction_bids.yaml'
-  /auctions/{auction_id}/bids/{bid_id}:
+    # here we are getting the all of bids and creating the bids based on buyer_id and auction_id 
+  /bids:
+    $ref: './paths/bids.yaml'
+    # here we are getting the bids by their id
+  /bids/{bid_id}:
     $ref: './paths/bid.yaml'
+  # here we are receiving all of the categories and creating the categories
   /categories:
     $ref: './paths/categories.yaml'
+
   /categories/{id}:
     $ref: './paths/category.yaml'
 
