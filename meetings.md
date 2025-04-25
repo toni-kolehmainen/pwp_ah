@@ -67,16 +67,22 @@ Maybe do:
 
 
 ## Meeting 4.
-* **DATE:**
-* **ASSISTANTS:**
+* **DATE:17.04.2025**
+* **ASSISTANTS:Iván Sánchez Milara**
 
 ### Minutes
 *Summary of what was discussed during the meeting*
 
+- Contribution of members.
+- Noticed some small parts in hypermedia that could be fixed in few minutes.
+- Same was with documentation.
+- Small questions related to evaluation of the final grade.
+
 ### Action points
 *List here the actions points discussed with assistants*
 
-
+- Fix hypermedia item missing line and add get-all for auction by used and bids by auction
+- For Documentation check lovelace and correct missing or fix certain parts status code and authentication.
 
 
 ## Midterm meeting
