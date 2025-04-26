@@ -7,22 +7,12 @@ const middleware = require('./utils/middleware');
 const router = require('./router');
 const routerProfile = require('./router/profile');
 const { dataClean } = require('./services/data_clean');
-const { auctionEndListener } = require('./services/email');
-const { NODE_ENV } = require('./utils/config');
 
-if (NODE_ENV !== 'test') {
-  // check if auction is ended every minute
-  cron.schedule('* * * * *', async () => {
-    auctionEndListener();
-  });
-
-  // removes outdated information like ended auction and its bids
-  // data is copied to text file
-  cron.schedule('0 0 * * 1', async () => {
-    const mes = await dataClean();
-    console.log(mes);
-  });
-}
+cron.schedule('* * * * *', async () => {
+  // cron.schedule('0 0 * * 1', async () => { // a week
+  const mes = await dataClean();
+  console.log(mes);
+});
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());

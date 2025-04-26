@@ -56,3 +56,106 @@ Backup for auctions - Deleted at: 2025-03-26T17:59:00.793Z
   "itemId": 2
 }
 
+
+
+Backup for auctions - Deleted at: 2025-04-26T10:25:54.343Z
+----------------------------------------------
+{
+  "id": 6,
+  "description": "The pink Hat combines Kiribati aesthetics with Iridium-based durability",
+  "item_id": 10,
+  "seller_id": 2,
+  "start_time": "2025-04-18T14:23:03.234Z",
+  "end_time": "2025-04-18T14:22:03.227Z",
+  "starting_price": "791.49",
+  "current_price": "608.45",
+  "emaidSend": false,
+  "itemId": 10
+}
+
+{
+  "id": 7,
+  "description": "Our creamy-inspired Pizza brings a taste of luxury to your ajar lifestyle",
+  "item_id": 10,
+  "seller_id": 2,
+  "start_time": "2025-04-18T14:23:19.823Z",
+  "end_time": "2025-04-18T14:22:19.817Z",
+  "starting_price": "15.95",
+  "current_price": "173.25",
+  "emaidSend": false,
+  "itemId": 10
+}
+
+{
+  "id": 8,
+  "description": "Our penguin-friendly Shoes ensures excitable comfort for your pets",
+  "item_id": 10,
+  "seller_id": 2,
+  "start_time": "2025-04-18T14:24:18.799Z",
+  "end_time": "2025-04-18T14:23:18.793Z",
+  "starting_price": "557.48",
+  "current_price": "0.00",
+  "emaidSend": false,
+  "itemId": 10
+}
+
+{
+  "id": 9,
+  "description": "The orchid Table combines Martinique aesthetics with Thallium-based durability",
+  "item_id": 10,
+  "seller_id": 2,
+  "start_time": "2025-04-18T12:46:16.040Z",
+  "end_time": "2025-04-18T14:25:16.040Z",
+  "starting_price": "636.25",
+  "current_price": "636.25",
+  "emaidSend": false,
+  "itemId": 10
+}
+
+{
+  "id": 10,
+  "description": "New black Hat with ergonomic design for glaring comfort",
+  "item_id": 10,
+  "seller_id": 2,
+  "start_time": "2025-04-17T14:26:41.940Z",
+  "end_time": "2025-04-18T14:26:41.940Z",
+  "starting_price": "897.89",
+  "current_price": "897.89",
+  "emaidSend": false,
+  "itemId": 10
+}
+
+
+
+Backup for auctions - Deleted at: 2025-04-26T10:38:27.042Z
+----------------------------------------------
+{
+  "id": 11,
+  "description": "The sleek and babyish Chicken comes with purple LED lighting for smart functionality",
+  "item_id": 10,
+  "seller_id": 2,
+  "start_time": "2025-04-25T10:36:37.424Z",
+  "end_time": "2025-04-26T10:36:37.424Z",
+  "starting_price": "218.55",
+  "current_price": "218.55",
+  "emaidSend": false,
+  "itemId": 10
+}
+
+
+
+Backup for auctions - Deleted at: 2025-04-26T10:40:39.437Z
+----------------------------------------------
+{
+  "id": 12,
+  "description": "Our cow-friendly Table ensures moist comfort for your pets",
+  "item_id": 10,
+  "seller_id": 2,
+  "start_time": "2025-04-25T10:39:44.850Z",
+  "end_time": "2025-04-26T10:39:44.850Z",
+  "starting_price": "682.19",
+  "current_price": "1000.00",
+  "emaidSend": false,
+  "itemId": 10
+}
+

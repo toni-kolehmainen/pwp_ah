@@ -7,7 +7,10 @@
     "dev": "cross-env NODE_ENV=development nodemon index.js",
     "test": "cross-env  NODE_ENV=test jest",
     "start": "cross-env NODE_ENV=production node index.js",
-    "lint": "eslint . --fix"
+    "lint": "eslint . --fix",
+    "population_dev": "cross-env NODE_ENV=development node ./script/DataPopulator.js",
+    "population": "cross-env NODE_ENV=production node ./script/DataPopulator.js",
+    "create_auction": "cross-env NODE_ENV=production node ./script/CreateAuction.js"
   },
   "author": "",
   "license": "ISC",

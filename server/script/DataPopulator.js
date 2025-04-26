@@ -114,10 +114,10 @@ const seedData = async () => {
   } catch (error) {
     console.error('❌ Error seeding data:', error);
   } finally {
-    // await sequelize.close(); // Close the connection only after all operations are done
+    await sequelize.close(); // Close the connection only after all operations are done
   }
 };
 
 // Run the script
-// seedData();
-module.exports = { seedData };
+seedData();
+// module.exports = { seedData };

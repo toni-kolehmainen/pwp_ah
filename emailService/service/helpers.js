@@ -18,6 +18,7 @@ const outdatedBidsAndAuctions = async (condition, include, highestOnly = false) 
           raw: true // Return raw data, not instances
         };
 
+        // If we need to get only the highest bid, add `order` and `limit` to the query
         if (highestOnly) {
           queryOptions.order = [['amount', 'DESC']];
           queryOptions.limit = 1;

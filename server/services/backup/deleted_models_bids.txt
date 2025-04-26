@@ -46,3 +46,15 @@ Backup for bids - Deleted at: 2025-03-26T17:59:00.797Z
   "auction_id": 30
 }
 
+
+
+Backup for bids - Deleted at: 2025-04-26T10:40:39.439Z
+----------------------------------------------
+{
+  "id": 16,
+  "amount": "1000.00",
+  "buy_time": "2025-04-26T10:39:11.589Z",
+  "buyer_id": 1,
+  "auction_id": 12
+}
+
