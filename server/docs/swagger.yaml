@@ -10,32 +10,32 @@ servers:
 paths:
   /api/login/{user_id}:
     $ref: './paths/login.yaml'
-  /api//users:
+  /api/users:
     $ref: './paths/users.yaml'
-  /api//users/{user_id}:
+  /api/users/{user_id}:
     $ref: './paths/user.yaml'
-  /api//users/{user_id}/auctions:
+  /api/users/{user_id}/auctions:
     $ref: './paths/user_auctions.yaml'
-  /api//items:
+  /api/items:
     $ref: './paths/items.yaml'
-  /api//items/{id}:
+  /api/items/{id}:
     $ref: './paths/item.yaml'
-  /api//auctions:
+  /api/auctions:
     $ref: './paths/auctions.yaml'
-  /api//auctions/{auction_id}:
+  /api/auctions/{auction_id}:
     $ref: './paths/auction_id.yaml'
-  /api//auctions/{auction_id}/bids:
+  /api/auctions/{auction_id}/bids:
     $ref: './paths/auction_bids.yaml'
     # here we are getting the all of bids and creating the bids based on buyer_id and auction_id 
-  /api//bids:
+  /api/bids:
     $ref: './paths/bids.yaml'
     # here we are getting the bids by their id
-  /api//bids/{bid_id}:
+  /api/bids/{bid_id}:
     $ref: './paths/bid.yaml'
   # here we are receiving all of the categories and creating the categories
-  /api//categories:
+  /api/categories:
     $ref: './paths/categories.yaml'
-  /api//categories/{id}:
+  /api/categories/{id}:
     $ref: './paths/category.yaml'
 
   # from here Prfiles apis path 
@@ -85,10 +85,21 @@ components:
       $ref: './components/category_schemas.yaml#/Category'
     AddCategoryRequest:
       $ref: './components/category_schemas.yaml#/AddCategoryRequest'
-  responses:
+  # responses:
     BadRequest:
       $ref: './components/responses.yaml#/BadRequest'
     NotFound:
       $ref: './components/responses.yaml#/NotFound'
     InternalServerError:
       $ref: './components/responses.yaml#/InternalServerError'
+  # profile:
+    UsersProfile:
+      $ref: './components/profile_schemas.yaml#/UserProfileResponse'
+    ItemsProfile:
+      $ref: './components/profile_schemas.yaml#/ItemProfileResponse'
+    CategoriesProfile:
+      $ref: './components/profile_schemas.yaml#/CategoryProfileResponse'
+    AuctionsProfile:
+      $ref: './components/profile_schemas.yaml#/AuctionProfileResponse'
+    BidsProfile:
+      $ref: './components/profile_schemas.yaml#/BidProfileResponse'
