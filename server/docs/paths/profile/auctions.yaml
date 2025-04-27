@@ -1,0 +1,22 @@
+get:
+  tags:
+    - Profile
+  summary: Retrieve auction profile information
+  description: Fetches the profile details and actions for auctions.
+  responses:
+    '200':
+      description: Successful response
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/profile_schemas.yaml#/AuctionProfileResponse'
+    '404':
+      description: Auctions Profile not found
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+                example: Auctions Profile not found

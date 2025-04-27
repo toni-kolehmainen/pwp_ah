@@ -4,9 +4,9 @@ info:
   version: 1.0.0
   description: API for managing users with HAL-style hypermedia responses
 servers:
-  - url: 'http://localhost:3001/api'
+  - url: 'http://localhost:3001'
 paths:
-  '/login/{user_id}':
+  '/api/login/{user_id}':
     post:
       summary: User login
       description: 'Authenticates a user by their ID, email, and password. Returns a JWT token on success.'
@@ -48,7 +48,7 @@ paths:
           $ref: '#/components/responses/NotFound'
         '500':
           $ref: '#/components/responses/InternalServerError'
-  /users:
+  /api//users:
     get:
       summary: Get all users
       description: 'Retrieve a list of users from the database, excluding their password fields.'
@@ -160,7 +160,7 @@ paths:
           $ref: '#/components/responses/BadRequest'
         '500':
           $ref: '#/components/responses/InternalServerError'
-  '/users/{user_id}':
+  '/api//users/{user_id}':
     get:
       summary: Get a user by ID
       description: Retrieve a user from the database based on the provided user ID.
@@ -361,7 +361,7 @@ paths:
           $ref: '#/components/responses/NotFound'
         '500':
           $ref: '#/components/responses/InternalServerError'
-  '/users/{user_id}/auctions':
+  '/api//users/{user_id}/auctions':
     get:
       summary: Get auctions by user
       description: Retrieve all auctions created by a specific user.
@@ -470,7 +470,7 @@ paths:
           $ref: '#/components/responses/NotFound'
         '500':
           $ref: '#/components/responses/InternalServerError'
-  /items:
+  /api//items:
     get:
       summary: Get all items
       description: Retrieve a list of all items from the database.
@@ -642,7 +642,7 @@ paths:
           $ref: '#/components/responses/BadRequest'
         '500':
           $ref: '#/components/responses/InternalServerError'
-  '/items/{id}':
+  '/api//items/{id}':
     get:
       summary: Get an item by ID
       description: Retrieve an item from the database based on the provided item ID.
@@ -837,7 +837,7 @@ paths:
           $ref: '#/components/responses/NotFound'
         '500':
           $ref: '#/components/responses/InternalServerError'
-  /auctions:
+  /api//auctions:
     get:
       summary: Get all auctions
       description: 'Retrieve a list of all auctions with optional pagination, sorting, and filtering.'
@@ -1021,7 +1021,7 @@ paths:
           $ref: '#/components/responses/BadRequest'
         '500':
           $ref: '#/components/responses/InternalServerError'
-  '/auctions/{auction_id}':
+  '/api//auctions/{auction_id}':
     get:
       summary: Get auction by ID
       description: Retrieve a list of auctions with ID.
@@ -1176,7 +1176,7 @@ paths:
                     example: Auction not found
         '500':
           $ref: '#/components/responses/InternalServerError'
-  '/auctions/{auction_id}/bids':
+  '/api//auctions/{auction_id}/bids':
     get:
       summary: Get bids by auction
       description: Retrieve all bids for a specific auction.
@@ -1254,7 +1254,7 @@ paths:
           $ref: '#/components/responses/NotFound'
         '500':
           $ref: '#/components/responses/InternalServerError'
-  /bids:
+  /api//bids:
     get:
       summary: Get all bids
       description: Retrieve a list of all bids from the database.
@@ -1427,7 +1427,7 @@ paths:
                     example: Bad request
         '500':
           $ref: '#/components/responses/InternalServerError'
-  '/bids/{bid_id}':
+  '/api//bids/{bid_id}':
     get:
       summary: Get a bid by ID
       description: Reterive a bid data based on Bid Id.
@@ -1542,7 +1542,7 @@ paths:
                     example: Bid not found
         '500':
           $ref: '#/components/responses/InternalServerError'
-  /categories:
+  /api//categories:
     get:
       summary: Get all categories
       description: Retrieve a list of all categories.
@@ -1711,7 +1711,7 @@ paths:
                     example: Category already exists
         '500':
           $ref: '#/components/responses/InternalServerError'
-  '/categories/{id}':
+  '/api//categories/{id}':
     delete:
       summary: Delete a category by ID
       description: Delete a specific category from the database.
@@ -1739,6 +1739,883 @@ paths:
           $ref: '#/components/responses/NotFound'
         '500':
           $ref: '#/components/responses/InternalServerError'
+  /profile/users:
+    get:
+      tags:
+        - Profile
+      summary: Retrieve user profile information
+      description: Fetches the profile details and actions for users.
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  _links:
+                    type: object
+                    properties:
+                      self:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            example: /profile/users
+                      item:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            example: '/api/users/:user_id'
+                          templated:
+                            type: boolean
+                            example: true
+                  properties:
+                    type: object
+                    properties:
+                      id:
+                        type: object
+                        properties:
+                          type:
+                            type: string
+                            example: integer
+                          description:
+                            type: string
+                            example: The unique identifier for a user.
+                      name:
+                        type: object
+                        properties:
+                          type:
+                            type: string
+                            example: string
+                          description:
+                            type: string
+                            example: The name of the user.
+                      nickname:
+                        type: object
+                        properties:
+                          type:
+                            type: string
+                            example: string
+                          description:
+                            type: string
+                            example: The nickname of the user (optional).
+                      email:
+                        type: object
+                        properties:
+                          type:
+                            type: string
+                            example: string
+                          description:
+                            type: string
+                            example: The email address of the user.
+                          format:
+                            type: string
+                            example: email
+                      phone:
+                        type: object
+                        properties:
+                          type:
+                            type: string
+                            example: string
+                          description:
+                            type: string
+                            example: The phone number of the user.
+                      created_at:
+                        type: object
+                        properties:
+                          type:
+                            type: string
+                            example: string
+                          description:
+                            type: string
+                            example: The date when the user account was created.
+                          format:
+                            type: string
+                            example: date-time
+                  actions:
+                    type: array
+                    items:
+                      oneOf:
+                        - type: object
+                          properties:
+                            name:
+                              type: string
+                              example: create
+                            method:
+                              type: string
+                              example: POST
+                            href:
+                              type: string
+                              example: /api/users
+                            title:
+                              type: string
+                              example: Create a new object to users
+                        - type: object
+                          properties:
+                            name:
+                              type: string
+                              example: get all
+                            method:
+                              type: string
+                              example: GET
+                            href:
+                              type: string
+                              example: /api/users
+                            title:
+                              type: string
+                              example: Get all objects from users
+                        - type: object
+                          properties:
+                            name:
+                              type: string
+                              example: get single
+                            method:
+                              type: string
+                              example: GET
+                            href:
+                              type: string
+                              example: '/api/users/:user_id'
+                            title:
+                              type: string
+                              example: 'Get a single object from users by :user_id'
+                        - type: object
+                          properties:
+                            name:
+                              type: string
+                              example: delete
+                            method:
+                              type: string
+                              example: DELETE
+                            href:
+                              type: string
+                              example: '/api/users/:user_id'
+                            templated:
+                              type: boolean
+                              example: true
+                            title:
+                              type: string
+                              example: Delete object from users
+                        - type: object
+                          properties:
+                            name:
+                              type: string
+                              example: update
+                            method:
+                              type: string
+                              example: PUT
+                            href:
+                              type: string
+                              example: '/api/users/:user_id'
+                            templated:
+                              type: boolean
+                              example: true
+                            title:
+                              type: string
+                              example: Update an existing object in users
+        '404':
+          description: Users Profile not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Users Profile not found
+  /profile/items:
+    get:
+      tags:
+        - Profile
+      summary: Retrieve Items profile information
+      description: Fetches the profile details and actions for items.
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  _links:
+                    type: object
+                    properties:
+                      self:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            example: /profile/items
+                      item:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            example: '/api/items/:id'
+                          templated:
+                            type: boolean
+                            example: true
+                  properties:
+                    type: object
+                    properties:
+                      id:
+                        type: object
+                        properties:
+                          type:
+                            type: string
+                            example: integer
+                          description:
+                            type: string
+                            example: The unique identifier for the item.
+                      name:
+                        type: object
+                        properties:
+                          type:
+                            type: string
+                            example: string
+                          description:
+                            type: string
+                            example: The name of the item.
+                          maxLength:
+                            type: integer
+                            example: 100
+                      description:
+                        type: object
+                        properties:
+                          type:
+                            type: string
+                            example: string
+                          description:
+                            type: string
+                            example: A detailed description of the item.
+                      user_id:
+                        type: object
+                        properties:
+                          type:
+                            type: string
+                            example: integer
+                          description:
+                            type: string
+                            example: The unique identifier for the user who owns the item.
+                          format:
+                            type: string
+                            example: int64
+                      category_id:
+                        type: object
+                        properties:
+                          type:
+                            type: string
+                            example: integer
+                          description:
+                            type: string
+                            example: The unique identifier for the category the item belongs to.
+                          format:
+                            type: string
+                            example: int64
+                  actions:
+                    type: array
+                    items:
+                      oneOf:
+                        - type: object
+                          properties:
+                            name:
+                              type: string
+                              example: create
+                            method:
+                              type: string
+                              example: POST
+                            href:
+                              type: string
+                              example: /api/items
+                            title:
+                              type: string
+                              example: Create a new object to items
+                        - type: object
+                          properties:
+                            name:
+                              type: string
+                              example: get all
+                            method:
+                              type: string
+                              example: GET
+                            href:
+                              type: string
+                              example: /api/items
+                            title:
+                              type: string
+                              example: Get all objects from items
+                        - type: object
+                          properties:
+                            name:
+                              type: string
+                              example: get single
+                            method:
+                              type: string
+                              example: GET
+                            href:
+                              type: string
+                              example: '/api/items/:id'
+                            title:
+                              type: string
+                              example: 'Get a single object from items by :id'
+                        - type: object
+                          properties:
+                            name:
+                              type: string
+                              example: delete
+                            method:
+                              type: string
+                              example: DELETE
+                            href:
+                              type: string
+                              example: '/api/items/:id'
+                            templated:
+                              type: boolean
+                              example: true
+                            title:
+                              type: string
+                              example: Delete object from items
+                        - type: object
+                          properties:
+                            name:
+                              type: string
+                              example: update
+                            method:
+                              type: string
+                              example: PUT
+                            href:
+                              type: string
+                              example: '/api/items/:id'
+                            templated:
+                              type: boolean
+                              example: true
+                            title:
+                              type: string
+                              example: Update an existing object in items
+        '404':
+          description: Items Profile not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Items Profile not found
+  /profile/categories:
+    get:
+      tags:
+        - Profile
+      summary: Retrieve category profile information
+      description: Fetches the profile details and actions for categories.
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  _links:
+                    type: object
+                    properties:
+                      self:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            example: /profile/categories
+                      item:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            example: '/api/categories/:id'
+                          templated:
+                            type: boolean
+                            example: true
+                  properties:
+                    type: object
+                    properties:
+                      id:
+                        type: object
+                        properties:
+                          type:
+                            type: string
+                            example: integer
+                          description:
+                            type: string
+                            example: The unique identifier for the category.
+                      description:
+                        type: object
+                        properties:
+                          type:
+                            type: string
+                            example: string
+                          description:
+                            type: string
+                            example: A description of the category.
+                      name:
+                        type: object
+                        properties:
+                          type:
+                            type: string
+                            example: string
+                          description:
+                            type: string
+                            example: The name of the category.
+                          maxLength:
+                            type: integer
+                            example: 100
+                  actions:
+                    type: array
+                    items:
+                      oneOf:
+                        - type: object
+                          properties:
+                            name:
+                              type: string
+                              example: create
+                            method:
+                              type: string
+                              example: POST
+                            href:
+                              type: string
+                              example: /api/categories
+                            title:
+                              type: string
+                              example: Create a new object to categories
+                        - type: object
+                          properties:
+                            name:
+                              type: string
+                              example: get all
+                            method:
+                              type: string
+                              example: GET
+                            href:
+                              type: string
+                              example: /api/categories
+                            title:
+                              type: string
+                              example: Get all objects from categories
+                        - type: object
+                          properties:
+                            name:
+                              type: string
+                              example: get single
+                            method:
+                              type: string
+                              example: GET
+                            href:
+                              type: string
+                              example: '/api/categories/:id'
+                            title:
+                              type: string
+                              example: 'Get a single object from categories by :id'
+                        - type: object
+                          properties:
+                            name:
+                              type: string
+                              example: delete
+                            method:
+                              type: string
+                              example: DELETE
+                            href:
+                              type: string
+                              example: '/api/categories/:id'
+                            templated:
+                              type: boolean
+                              example: true
+                            title:
+                              type: string
+                              example: Delete object from categories
+        '404':
+          description: Categories Profile not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Categories Profile not found
+  /profile/bids:
+    get:
+      tags:
+        - Profile
+      summary: Retrieve bid profile information
+      description: Fetches the profile details and actions for bids.
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  _links:
+                    type: object
+                    properties:
+                      self:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            example: /profile/bids
+                      item:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            example: '/api/bids/:bid_id'
+                          templated:
+                            type: boolean
+                            example: true
+                  properties:
+                    type: object
+                    properties:
+                      id:
+                        type: object
+                        properties:
+                          type:
+                            type: string
+                            example: integer
+                          description:
+                            type: string
+                            example: The unique identifier for the bid.
+                      amount:
+                        type: object
+                        properties:
+                          type:
+                            type: string
+                            example: number
+                          description:
+                            type: string
+                            example: The amount of the bid.
+                          format:
+                            type: string
+                            example: decimal
+                          minimum:
+                            type: number
+                            example: 0
+                      created_at:
+                        type: object
+                        properties:
+                          type:
+                            type: string
+                            example: string
+                          description:
+                            type: string
+                            example: The date and time when the bid was created.
+                          format:
+                            type: string
+                            example: date-time
+                      updated_at:
+                        type: object
+                        properties:
+                          type:
+                            type: string
+                            example: string
+                          description:
+                            type: string
+                            example: The date and time when the bid was last updated.
+                          format:
+                            type: string
+                            example: date-time
+                  actions:
+                    type: array
+                    items:
+                      oneOf:
+                        - type: object
+                          properties:
+                            name:
+                              type: string
+                              example: create
+                            method:
+                              type: string
+                              example: POST
+                            href:
+                              type: string
+                              example: /api/bids
+                            title:
+                              type: string
+                              example: Create a new object to bids
+                        - type: object
+                          properties:
+                            name:
+                              type: string
+                              example: get all
+                            method:
+                              type: string
+                              example: GET
+                            href:
+                              type: string
+                              example: /api/bids
+                            title:
+                              type: string
+                              example: Get all objects from bids
+                        - type: object
+                          properties:
+                            name:
+                              type: string
+                              example: get single
+                            method:
+                              type: string
+                              example: GET
+                            href:
+                              type: string
+                              example: '/api/bids/:bid_id'
+                            title:
+                              type: string
+                              example: 'Get a single object from bids by :bid_id'
+                        - type: object
+                          properties:
+                            name:
+                              type: string
+                              example: delete
+                            method:
+                              type: string
+                              example: DELETE
+                            href:
+                              type: string
+                              example: '/api/bids/:bid_id'
+                            templated:
+                              type: boolean
+                              example: true
+                            title:
+                              type: string
+                              example: Delete object from bids
+        '404':
+          description: Bids Profile not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Bids Profile not found
+  /profile/auctions:
+    get:
+      tags:
+        - Profile
+      summary: Retrieve auction profile information
+      description: Fetches the profile details and actions for auctions.
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  _links:
+                    type: object
+                    properties:
+                      self:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            example: /profile/auctions
+                      item:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            example: '/api/auctions/:id'
+                          templated:
+                            type: boolean
+                            example: true
+                  properties:
+                    type: object
+                    properties:
+                      id:
+                        type: object
+                        properties:
+                          type:
+                            type: string
+                            example: integer
+                          description:
+                            type: string
+                            example: The unique identifier for the auction.
+                      description:
+                        type: object
+                        properties:
+                          type:
+                            type: string
+                            example: string
+                          description:
+                            type: string
+                            example: A detailed description of the auction item.
+                          maxLength:
+                            type: integer
+                            example: 1000
+                      item_id:
+                        type: object
+                        properties:
+                          type:
+                            type: string
+                            example: integer
+                          description:
+                            type: string
+                            example: The ID of the item being auctioned.
+                          format:
+                            type: string
+                            example: int64
+                      seller_id:
+                        type: object
+                        properties:
+                          type:
+                            type: string
+                            example: integer
+                          description:
+                            type: string
+                            example: The ID of the seller who created the auction.
+                          format:
+                            type: string
+                            example: int64
+                      end_time:
+                        type: object
+                        properties:
+                          type:
+                            type: string
+                            example: string
+                          description:
+                            type: string
+                            example: The date and time when the auction ends.
+                          format:
+                            type: string
+                            example: date-time
+                      starting_price:
+                        type: object
+                        properties:
+                          type:
+                            type: string
+                            example: number
+                          description:
+                            type: string
+                            example: The starting price of the auction item.
+                          format:
+                            type: string
+                            example: decimal
+                          minimum:
+                            type: number
+                            example: 0
+                      current_price:
+                        type: object
+                        properties:
+                          type:
+                            type: string
+                            example: number
+                          description:
+                            type: string
+                            example: The current price of the auction item.
+                          format:
+                            type: string
+                            example: decimal
+                          minimum:
+                            type: number
+                            example: 0
+                      created_at:
+                        type: object
+                        properties:
+                          type:
+                            type: string
+                            example: string
+                          description:
+                            type: string
+                            example: The date and time when the auction was created.
+                          format:
+                            type: string
+                            example: date-time
+                      updated_at:
+                        type: object
+                        properties:
+                          type:
+                            type: string
+                            example: string
+                          description:
+                            type: string
+                            example: The date and time when the auction was last updated.
+                          format:
+                            type: string
+                            example: date-time
+                  actions:
+                    type: array
+                    items:
+                      oneOf:
+                        - type: object
+                          properties:
+                            name:
+                              type: string
+                              example: create
+                            method:
+                              type: string
+                              example: POST
+                            href:
+                              type: string
+                              example: /api/auctions
+                            title:
+                              type: string
+                              example: Create a new object to auctions
+                        - type: object
+                          properties:
+                            name:
+                              type: string
+                              example: get all
+                            method:
+                              type: string
+                              example: GET
+                            href:
+                              type: string
+                              example: /api/auctions
+                            title:
+                              type: string
+                              example: Get all objects from auctions
+                        - type: object
+                          properties:
+                            name:
+                              type: string
+                              example: get single
+                            method:
+                              type: string
+                              example: GET
+                            href:
+                              type: string
+                              example: '/api/auctions/:id'
+                            title:
+                              type: string
+                              example: 'Get a single object from auctions by :id'
+                        - type: object
+                          properties:
+                            name:
+                              type: string
+                              example: delete
+                            method:
+                              type: string
+                              example: DELETE
+                            href:
+                              type: string
+                              example: '/api/auctions/:id'
+                            templated:
+                              type: boolean
+                              example: true
+                            title:
+                              type: string
+                              example: Delete object from auctions
+        '404':
+          description: Auctions Profile not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Auctions Profile not found
 components:
   securitySchemes:
     bearerAuth:

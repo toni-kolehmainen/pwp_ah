@@ -5,39 +5,52 @@ info:
   description: API for managing users with HAL-style hypermedia responses
 
 servers:
-  - url: http://localhost:3001/api
+  - url: http://localhost:3001
 
 paths:
-  /login/{user_id}:
+  /api/login/{user_id}:
     $ref: './paths/login.yaml'
-  /users:
+  /api//users:
     $ref: './paths/users.yaml'
-  /users/{user_id}:
+  /api//users/{user_id}:
     $ref: './paths/user.yaml'
-  /users/{user_id}/auctions:
+  /api//users/{user_id}/auctions:
     $ref: './paths/user_auctions.yaml'
-  /items:
+  /api//items:
     $ref: './paths/items.yaml'
-  /items/{id}:
+  /api//items/{id}:
     $ref: './paths/item.yaml'
-  /auctions:
+  /api//auctions:
     $ref: './paths/auctions.yaml'
-  /auctions/{auction_id}:
+  /api//auctions/{auction_id}:
     $ref: './paths/auction_id.yaml'
-  /auctions/{auction_id}/bids:
+  /api//auctions/{auction_id}/bids:
     $ref: './paths/auction_bids.yaml'
     # here we are getting the all of bids and creating the bids based on buyer_id and auction_id 
-  /bids:
+  /api//bids:
     $ref: './paths/bids.yaml'
     # here we are getting the bids by their id
-  /bids/{bid_id}:
+  /api//bids/{bid_id}:
     $ref: './paths/bid.yaml'
   # here we are receiving all of the categories and creating the categories
-  /categories:
+  /api//categories:
     $ref: './paths/categories.yaml'
-
-  /categories/{id}:
+  /api//categories/{id}:
     $ref: './paths/category.yaml'
+
+  # from here Prfiles apis path 
+  /profile/users:
+    $ref: './paths/profile/users.yaml'
+  /profile/items:
+    $ref: './paths/profile/items.yaml'
+  /profile/categories:
+    $ref: './paths/profile/categories.yaml'
+  /profile/bids:
+    $ref: './paths/profile/bids.yaml'
+  /profile/auctions:
+    $ref: './paths/profile/auctions.yaml'
+
+
 
 components:
   securitySchemes:
