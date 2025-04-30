@@ -16,13 +16,18 @@ const loginSchema = {
 };
 
 const login = async (req, res, next) => {
+
+  // Check if the request body is in JSON format
+  if (!req.is('application/json')) {
+    return res.status(415).json({ message: 'Content-Type must be application/json' });
+  }
+
   const validate = ajv.compile(loginSchema);
   const valid = validate(req.body);
 
+  // Check if the request body is valid according to the schema
   if (!valid) {
-    const error = new Error('Invalid Request body');
-    error.name = 'ValidationError';
-    return next(error);
+    return res.status(400).json({ message: 'Invalid request body', errors: validate.errors });
   }
   try {
     const user = await User.findOne({
@@ -37,9 +42,8 @@ const login = async (req, res, next) => {
     const passwordValid = await bcrypt.compare(req.body.password, user.password);
 
     if (!(user.email === req.body.email && passwordValid)) {
-      const error = new Error('Invalid email or password');
-      error.name = 'ValidationError';
-      return next(error);
+      // If the email or password is incorrect, return a 401 Unauthorized status
+      return res.status(401).json({ message: 'Invalid email or password' });
     }
     const userToken = {
       email: user.email,
