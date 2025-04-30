@@ -46,9 +46,19 @@ paths:
                     example: Invalid email or password
         '404':
           $ref: '#/components/schemas/NotFound'
+        '415':
+          description: Unsupported media type
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Unsupported media type
         '500':
           $ref: '#/components/schemas/InternalServerError'
-  /api//users:
+  /api/users:
     get:
       summary: Get all users
       description: 'Retrieve a list of users from the database, excluding their password fields.'
@@ -160,7 +170,7 @@ paths:
           $ref: '#/components/schemas/BadRequest'
         '500':
           $ref: '#/components/schemas/InternalServerError'
-  '/api//users/{user_id}':
+  '/api/users/{user_id}':
     get:
       summary: Get a user by ID
       description: Retrieve a user from the database based on the provided user ID.
@@ -361,7 +371,7 @@ paths:
           $ref: '#/components/schemas/NotFound'
         '500':
           $ref: '#/components/schemas/InternalServerError'
-  '/api//users/{user_id}/auctions':
+  '/api/users/{user_id}/auctions':
     get:
       summary: Get auctions by user
       description: Retrieve all auctions created by a specific user.
@@ -470,7 +480,7 @@ paths:
           $ref: '#/components/schemas/NotFound'
         '500':
           $ref: '#/components/schemas/InternalServerError'
-  /api//items:
+  /api/items:
     get:
       summary: Get all items
       description: Retrieve a list of all items from the database.
@@ -642,7 +652,7 @@ paths:
           $ref: '#/components/schemas/BadRequest'
         '500':
           $ref: '#/components/schemas/InternalServerError'
-  '/api//items/{id}':
+  '/api/items/{id}':
     get:
       summary: Get an item by ID
       description: Retrieve an item from the database based on the provided item ID.
@@ -837,7 +847,7 @@ paths:
           $ref: '#/components/schemas/NotFound'
         '500':
           $ref: '#/components/schemas/InternalServerError'
-  /api//auctions:
+  /api/auctions:
     get:
       summary: Get all auctions
       description: 'Retrieve a list of all auctions with optional pagination, sorting, and filtering.'
@@ -1021,7 +1031,7 @@ paths:
           $ref: '#/components/schemas/BadRequest'
         '500':
           $ref: '#/components/schemas/InternalServerError'
-  '/api//auctions/{auction_id}':
+  '/api/auctions/{auction_id}':
     get:
       summary: Get auction by ID
       description: Retrieve a list of auctions with ID.
@@ -1176,7 +1186,7 @@ paths:
                     example: Auction not found
         '500':
           $ref: '#/components/schemas/InternalServerError'
-  '/api//auctions/{auction_id}/bids':
+  '/api/auctions/{auction_id}/bids':
     get:
       summary: Get bids by auction
       description: Retrieve all bids for a specific auction.
@@ -1254,7 +1264,7 @@ paths:
           $ref: '#/components/schemas/NotFound'
         '500':
           $ref: '#/components/schemas/InternalServerError'
-  /api//bids:
+  /api/bids:
     get:
       summary: Get all bids
       description: Retrieve a list of all bids from the database.
@@ -1427,7 +1437,7 @@ paths:
                     example: Bad request
         '500':
           $ref: '#/components/schemas/InternalServerError'
-  '/api//bids/{bid_id}':
+  '/api/bids/{bid_id}':
     get:
       summary: Get a bid by ID
       description: Reterive a bid data based on Bid Id.
@@ -1542,7 +1552,7 @@ paths:
                     example: Bid not found
         '500':
           $ref: '#/components/schemas/InternalServerError'
-  /api//categories:
+  /api/categories:
     get:
       summary: Get all categories
       description: Retrieve a list of all categories.
@@ -1711,7 +1721,7 @@ paths:
                     example: Category already exists
         '500':
           $ref: '#/components/schemas/InternalServerError'
-  '/api//categories/{id}':
+  '/api/categories/{id}':
     delete:
       summary: Delete a category by ID
       description: Delete a specific category from the database.

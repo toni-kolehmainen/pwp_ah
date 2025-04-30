@@ -20,6 +20,17 @@ NotFound:
             type: string
             example: User not found
 
+UnsupportedMediaType:
+  description: Unsupported media type
+  content:
+    application/json:
+      schema:
+        type: object
+        properties:
+          message:
+            type: string
+            example: Unsupported media type
+
 Unauthorized:
   description: Invalid email or password
   content:

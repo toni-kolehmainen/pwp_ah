@@ -23,6 +23,8 @@ post:
         application/json:
           schema:
             $ref: '../components/login_schemas.yaml#/LoginResponse'
+    '415':
+      $ref: '../components/responses.yaml#/UnsupportedMediaType'
     '400':
       $ref: '../components/responses.yaml#/BadRequest'
     '404':
