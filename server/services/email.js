@@ -4,8 +4,8 @@ const { outdatedBidsAndAuctions } = require('./helpers');
 const { User, Auction, Item } = require('../models');
 const config = require('../utils/config');
 
-console.log(config.EMAIL)
-console.log(config.PASSWORD_ETH)
+console.log(config.EMAIL);
+console.log(config.PASSWORD_ETH);
 
 const transporter = nodemailer.createTransport({
   host: 'smtp.ethereal.email',
@@ -39,7 +39,7 @@ const winningBidEmail = (userName, auctionTitle, itemName, bidAmount, auctionEnd
     [Your Company Name]
     [Your Support Email] | [Your Website]
   `;
-  const winningBidEmailHTML = (userName, auctionTitle, itemName, bidAmount, auctionEndTime) => `
+const winningBidEmailHTML = (userName, auctionTitle, itemName, bidAmount, auctionEndTime) => `
   <p>Subject: 🎉 Congratulations! You Have the Winning Bid on Your Auction</p>
 
   <p>Dear ${userName},</p>
@@ -72,7 +72,7 @@ const sendEmail = async (from, to, subject, text, html) => {
     to: `${to}, ${to}`, // list of receivers
     subject: `${subject}`, // Subject line
     text: `${text}`, // plain text body
-    html: html // html body
+    html // html body
   });
 
   console.log('Message sent: %s', info.messageId);
@@ -81,14 +81,14 @@ const sendEmail = async (from, to, subject, text, html) => {
 const emailSended = async (auctionId) => {
   // console.log(auctionId)
 
-  const count = await Auction.update(
+  await Auction.update(
     { emaidSend: true },
-      {
-        where: {
-          emaid_send: false,
-          id: { [Op.in]: auctionId } // Ensure this matches your database column name
-        }
+    {
+      where: {
+        emaid_send: false,
+        id: { [Op.in]: auctionId } // Ensure this matches your database column name
       }
+    }
   );
   // console.log(count)
 };
@@ -151,10 +151,10 @@ const auctionEndListener = async () => {
     );
 
     sendEmail(from, to, subject, text, html);
-    return data['auction.id']
+    return data['auction.id'];
   });
 
-  await emailSended(updateAuctions)
+  await emailSended(updateAuctions);
 };
 
 module.exports = {

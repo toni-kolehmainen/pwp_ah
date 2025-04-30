@@ -12,7 +12,7 @@ const initializeDatabase = async () => {
     let userCount = -1;
 
     userCount = await User.count();
-    console.log("userCount", userCount);
+    console.log('userCount', userCount);
     // Promise((resolve) => setTimeout(resolve, 1000));
     // userCount = 0
     if (userCount === 0) {

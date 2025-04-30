@@ -1,6 +1,4 @@
 const { Auction } = require('../models');
-const Item = require('../models/item');
-const User = require('../models/user');
 const { validate } = require('../utils/validation');
 const schemas = require('../utils/schemas');
 const { createHalLinks, createHalEmbedded } = require('../utils/hal');
@@ -37,7 +35,7 @@ const getAuctions = async (req, res) => {
   }
 };
 
-const addAuction = async (req, res, next) => {
+const addAuction = async (req, res) => {
   try {
     const {
       item_id, description, starting_price, end_time
@@ -51,7 +49,6 @@ const addAuction = async (req, res, next) => {
       starting_price,
       current_price: starting_price,
       end_time
-
       // end_time: end_time || new Date(new Date().getTime() + 24 * 60 * 60 * 1000) // 24 hours
     });
     // (resource, path, canEdit = true, canDelete = true)

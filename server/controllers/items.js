@@ -43,7 +43,9 @@ const getItems = async (req, res) => {
 const addItem = async (req, res, next) => {
   console.log(req.body);
   try {
-    const { name, description, sellerId, categoryId } = req.body;
+    const {
+      name, description, sellerId, categoryId
+    } = req.body;
 
     const validate = ajv.compile(addSchema);
     const valid = validate(req.body);

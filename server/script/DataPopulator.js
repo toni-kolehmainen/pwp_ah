@@ -1,8 +1,8 @@
 const { faker } = require('@faker-js/faker');
 const {
   User, Item, Category, Auction, Bid
-} = require('../models/index.js');
-const { sequelize } = require('../utils/db.js');
+} = require('../models/index');
+const { sequelize } = require('../utils/db');
 
 // Generate random users
 const generateRandomUsers = (count) => {
@@ -22,7 +22,8 @@ const generateRandomUsers = (count) => {
 // Generate random categories
 const generateRandomCategories = (count) => {
   const categories = [];
-  for (let i = 0; i < count; i++) { // Adjust loop count as needed
+  for (let i = 0; i < count; i++) {
+    // Adjust loop count as needed
     const newName = faker.commerce.department();
 
     // Check if name already exists
@@ -87,19 +88,29 @@ const seedData = async () => {
     console.log('🌱 Seeding database...');
 
     // Create users
-    const users = await User.bulkCreate(generateRandomUsers(5), { returning: true });
+    const users = await User.bulkCreate(generateRandomUsers(5), {
+      returning: true
+    });
     console.log('✅ Users created:', users.length);
 
     // Create categories
-    const categories = await Category.bulkCreate(generateRandomCategories(5), { returning: true });
+    const categories = await Category.bulkCreate(generateRandomCategories(5), {
+      returning: true
+    });
     console.log('✅ Categories created:', categories.length);
 
     // Create items
-    const items = await Item.bulkCreate(generateRandomItems(10, users, categories), { returning: true });
+    const items = await Item.bulkCreate(
+      generateRandomItems(10, users, categories),
+      { returning: true }
+    );
     console.log('✅ Items created:', items.length);
 
     // Create auctions
-    const auctions = await Auction.bulkCreate(generateRandomAuctions(5, items), { returning: true });
+    const auctions = await Auction.bulkCreate(
+      generateRandomAuctions(5, items),
+      { returning: true }
+    );
     console.log('✅ Auctions created:', auctions.length);
 
     // Create bids

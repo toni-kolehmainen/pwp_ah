@@ -63,8 +63,9 @@ const dataBackUp = async (choice, currentTime) => {
   case 1: {
     // Back up dataclean auctios and bids
     const condition = { end_time: { [Op.lt]: currentTime } };
-    const outdated = await outdatedBidsAndAuctions(condition,
-    { auction: [], bid: [] }
+    const outdated = await outdatedBidsAndAuctions(
+      condition,
+      { auction: [], bid: [] }
     );
     if (!outdated.outdatedAuctions.length && !outdated.outdatedBids.length) {
       // No outdated auctions or bids

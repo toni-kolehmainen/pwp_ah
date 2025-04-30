@@ -72,12 +72,11 @@ const replacePathParams = (pattern, requestPath) => {
   return result;
 };
 
-// Cache middleware
 const cacheMiddleware = (req, res, next) => {
   // Skip caching for non GET requests unless its a cache invalidation route
   if (req.method !== 'GET') {
     // Check if this request should invalidate cache
-    for (const route of cacheInvalidationRoutes) {
+    cacheInvalidationRoutes.some((route) => {
       if (route.method === req.method && routeMatches(route.path, req.path)) {
         // This route should invalidate cache
         route.invalidate.forEach((invalidatePath) => {
@@ -95,21 +94,15 @@ const cacheMiddleware = (req, res, next) => {
             }
           });
         });
-        break;
+        return true; // Breaks out of .some()
       }
-    }
+      return false;
+    });
     return next();
   }
 
   // Check if this route should be cached
-  let newCache = false;
-  for (const route of cachedRoutes) {
-    if (routeMatches(route.path, req.path)) {
-      newCache = true;
-      break;
-    }
-  }
-
+  const newCache = cachedRoutes.some((route) => routeMatches(route.path, req.path));
   if (!newCache) {
     return next();
   }
@@ -128,8 +121,8 @@ const cacheMiddleware = (req, res, next) => {
 
   // If no cache hit, replace res.json to intercept the response
   const originalJson = res.json;
-  res.json = function (data) {
-    // Savnig the response in cache
+  res.json = function cacheInterceptor(data) {
+    // Saving the response in cache
     cache.set(cacheKey, {
       status: res.statusCode,
       data
@@ -142,7 +135,7 @@ const cacheMiddleware = (req, res, next) => {
     return originalJson.call(this, data);
   };
 
-  next();
+  return next();
 };
 
 // Export the cache instance and middleware

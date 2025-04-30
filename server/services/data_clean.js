@@ -60,7 +60,7 @@ const dataClean = async () => {
     Auction,
     {
       end_time: { [Op.lt]: currentTime }
-    },
+    }
   );
 
   return { mesbackUp, mesDelete };

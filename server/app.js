@@ -12,7 +12,7 @@ const setupSwagger = require('./utils/swagger_setup');
 
 // check if auction is ended every minute
 // cron.schedule('* * * * *', async () => {
-  auctionEndListener();
+auctionEndListener();
 // });
 
 // removes outdated information like ended auction and its bids

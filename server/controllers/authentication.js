@@ -16,7 +16,6 @@ const loginSchema = {
 };
 
 const login = async (req, res, next) => {
-
   // Check if the request body is in JSON format
   if (!req.is('application/json')) {
     return res.status(415).json({ message: 'Content-Type must be application/json' });
