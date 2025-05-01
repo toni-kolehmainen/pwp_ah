@@ -41,7 +41,7 @@ paths:
               schema:
                 type: object
                 properties:
-                  message:
+                  error:
                     type: string
                     example: Invalid email or password
         '404':
@@ -53,7 +53,7 @@ paths:
               schema:
                 type: object
                 properties:
-                  message:
+                  error:
                     type: string
                     example: Unsupported media type
         '500':
@@ -2270,7 +2270,7 @@ components:
           schema:
             type: object
             properties:
-              message:
+              error:
                 type: string
                 example: User not found
     InternalServerError:
@@ -2280,7 +2280,7 @@ components:
           schema:
             type: object
             properties:
-              message:
+              error:
                 type: string
                 example: An unexpected error occurred
     UsersProfile:

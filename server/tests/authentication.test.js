@@ -1,8 +1,7 @@
 const supertest = require('supertest');
-const { dbSync, User } = require('../models'); // models
-const { sequelize } = require('../utils/db'); // Import sequelize
+const { dbSync, User } = require('../models');
+const { sequelize } = require('../utils/db');
 const app = require('../app');
-// Import Express app
 const api = supertest(app);
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
@@ -10,9 +9,8 @@ const jwt = require('jsonwebtoken');
 const { mockUser } = require('./data');
 
 jest.mock('express-rate-limit', () => jest.fn().mockImplementation(() => (req, res, next) => {
-  next(); // Mocking the rate-limiting middleware without enforcing limits
+  next();
 }));
-// Mock bcrypt and jwt
 jest.mock('bcrypt', () => ({
   compare: jest.fn()
 }));
@@ -21,11 +19,11 @@ jest.mock('jsonwebtoken', () => ({
 }));
 jest.mock('../models', () => {
   const mockModel = {
-    findAll: jest.fn(), // Return the mock user
+    findAll: jest.fn(),
     findOne: jest.fn(),
     create: jest.fn(),
-    update: jest.fn(), // Assuming one row updated
-    destroy: jest.fn() // Assuming one row deleted
+    update: jest.fn(),
+    destroy: jest.fn()
   };
 
   return {
@@ -38,7 +36,6 @@ jest.mock('../models', () => {
   };
 });
 
-// You need to wait for the database models to create.
 beforeAll(async () => {
   await dbSync();
   console.log('Database is synced before running tests');
@@ -48,9 +45,8 @@ afterAll(async () => {
   sequelize.close();
 });
 
-describe('GET /api/login', () => {
+describe('POST /api/login', () => {
   beforeEach(async () => {
-    // Clean up the User model before each test
     await User.destroy({ where: {}, truncate: true });
     jest.clearAllMocks();
   });
@@ -70,6 +66,7 @@ describe('GET /api/login', () => {
       });
     expect(bcrypt.compare).toHaveBeenCalledWith('password123', mockUser.password);
   });
+
   it('login wrong schema', async () => {
     User.findOne.mockResolvedValue(mockUser);
     bcrypt.compare.mockResolvedValue(true);
@@ -82,6 +79,7 @@ describe('GET /api/login', () => {
         expect(response.body.error).toBe('Invalid Request body');
       });
   });
+
   it('user not found', async () => {
     User.findOne.mockResolvedValue(null);
 
@@ -91,41 +89,49 @@ describe('GET /api/login', () => {
       .expect(404)
       .expect('Content-Type', /application\/json/)
       .then((response) => {
-        expect(response.body.message).toBe('user not found');
+        expect(response.body.error).toBe('user not found');
       });
   });
+
   it('login wrong email', async () => {
     User.findOne.mockResolvedValue(mockUser);
     await api
       .post('/api/login/1')
       .send({ email: 'john.doe@gmail.com', password: 'password123' })
-      .expect(400).then((response) => {
+      .expect(401).then((response) => {
         expect(response.body.error).toBe('Invalid email or password');
       });
   });
-  it('login wrong email', async () => {
+
+  it('login wrong password', async () => {
     User.findOne.mockResolvedValue(mockUser);
+    bcrypt.compare.mockResolvedValue(false);
     await api
       .post('/api/login/1')
-      .send({ email: 'john.doe@gmail.com', password: 'password123' })
-      .expect(400).then((response) => {
+      .send({ email: mockUser.email, password: 'wrongpassword' })
+      .expect(401).then((response) => {
         expect(response.body.error).toBe('Invalid email or password');
       });
   });
+
   it('call login with string', async () => {
-    User.findOne.mockRejectedValueOnce({
-      name: 'SequelizeDatabaseError',
-      message: 'invalid input syntax for type integer: "authentication"',
-      parent: {
-        code: '22P02', // PostgreSQL error code for invalid integer syntax
-        message: 'invalid input syntax for type integer: "authentication"'
-      }
-    });
     await api
       .post('/api/login/authentication')
       .send({ email: mockUser.email, password: 'password123' })
       .expect(500).then((response) => {
         expect(response.body.error).toBe('invalid input syntax for type integer: "authentication"');
+      });
+  });
+
+  it('handles database error', async () => {
+    User.findOne.mockRejectedValue(new Error('Database connection failed'));
+    await api
+      .post('/api/login/1')
+      .send({ email: mockUser.email, password: 'password123' })
+      .expect(500)
+      .then((response) => {
+        console.log('Response body:', response.body); // Debug log
+        expect(response.body.error).toBe('Database connection failed');
       });
   });
 });

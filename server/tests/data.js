@@ -40,7 +40,7 @@ const mockUpdateUser1 = {
 
 const mockUpdateUserInvalid = {
   name: 'pekka',
-  password: 'hashedpassword123'
+  invalidField: 'hashedpassword123'
 };
 
 const mockUserWrong = {
