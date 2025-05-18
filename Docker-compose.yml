@@ -1,3 +1,4 @@
+
 services:
   email:
     image: email_service
@@ -6,7 +7,7 @@ services:
       dockerfile: Dockerfile
     environment:
       DB_HOST: db
-      DB_NAME: pvp
+      DB_NAME: "{DB_NAME}" 
     env_file: 
       - path: "emailService/.env" # Possibility to add env to environment
     depends_on:
@@ -21,7 +22,7 @@ services:
       - 3001:3001
     environment:
       DB_HOST: db
-      DB_NAME: pvp
+      DB_NAME: "{DB_NAME}" 
     env_file: 
       - path: "server/.env"
     depends_on:
@@ -30,9 +31,9 @@ services:
     image: postgres:latest
     restart: always
     environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: ah2025
-      POSTGRES_DB: pvp
+      POSTGRES_USER: "{POSTGRES_USER}"
+      POSTGRES_PASSWORD: "{POSTGRES_PASSWORD}"
+      POSTGRES_DB: "{POSTGRES_DB}"
     volumes:
       - db:/var/lib/postgresql/data
     ports:
