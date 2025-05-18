@@ -1,0 +1,54 @@
+
+services:
+  email:
+    image: email_service
+    restart: always
+    build:
+      context: ./emailService
+      dockerfile: Dockerfile
+    environment:
+      DB_HOST: db
+      DB_NAME: auction_db
+    env_file: 
+      - "emailService/.env" # Possibility to add env to environment
+    depends_on:
+      - db
+  server:
+    image: backend
+    container_name: server
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    ports:
+      - 3001:3001
+    restart: always
+    environment:
+      DB_HOST: db
+      DB_NAME: auction_db
+    env_file: 
+      - "server/.env"
+    depends_on:
+      - db
+  db:
+    image: postgres:latest
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: auction_db
+    volumes:
+      - db:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+  nginx:
+    image: nginx:1.20.1
+    restart: always
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    ports:
+      - 8080:80
+    container_name: reverse-proxy
+    depends_on:
+      - server
+volumes:
+  db:
