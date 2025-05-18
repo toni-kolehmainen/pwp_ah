@@ -1,7 +1,7 @@
 const Ajv = require('ajv');
 const addFormats = require('ajv-formats');
 
-const ajv = new Ajv({ allErrors: true });
+const ajv = new Ajv({ coerceTypes: true, allErrors: true });
 addFormats(ajv); // Add support for additional formats
 
 const validate = (schema, property) => (req, res, next) => {
@@ -10,18 +10,18 @@ const validate = (schema, property) => (req, res, next) => {
 
   if (property === 'params' && data.id) {
     const parsedId = parseInt(data.id, 10);
-    if (!isNaN(parsedId)) {
+    if (!Number.isNaN(parsedId)) {
       data.id = parsedId;
     }
   }
   console.log('validations after going on', data);
 
-  const validate = ajv.compile(schema);
-  const valid = validate(data);
+  const validateSchema = ajv.compile(schema);
+  const valid = validateSchema(data);
   console.log('validations is going on valid ', valid);
 
   if (!valid) {
-    const errors = validate.errors.map((error) => ({
+    const errors = validateSchema.errors.map((error) => ({
       path: error.instancePath || '',
       message: error.message,
       params: error.params
@@ -33,7 +33,7 @@ const validate = (schema, property) => (req, res, next) => {
     });
   }
 
-  next();
+  return next();
 };
 
 module.exports = { validate };

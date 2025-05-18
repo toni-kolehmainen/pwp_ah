@@ -1,0 +1,64 @@
+Auction:
+  type: object
+  properties:
+    id:
+      type: integer
+      example: 1
+    title:
+      type: string
+      example: Vintage Watch
+    description:
+      type: string
+      example: A rare vintage watch in excellent condition.
+    starting_price:
+      type: number
+      format: float
+      example: 100.00
+    current_price:
+      type: number
+      format: float
+      example: 100.00
+    item_id:
+      type: integer
+      example: 101
+    seller_id:
+      type: integer
+      example: 1
+    end_time:
+      type: string
+      format: date-time
+      example: 2023-12-31T23:59:59Z
+    created_at:
+      type: string
+      format: date-time
+      example: 2023-01-01T12:00:00Z
+    updated_at:
+      type: string
+      format: date-time
+      example: 2023-01-02T12:00:00Z
+
+
+
+
+AddAuctionRequest:
+  type: object
+  required:
+    - item_id
+    - description
+    - starting_price
+    - end_time
+  properties:
+    item_id:
+      type: integer
+      example: 3
+    description:
+      type: string
+      example: A rare collectible item.
+    starting_price:
+      type: number
+      format: float
+      example: 50.00
+    end_time:
+      type: string
+      format: date-time
+      example: 2023-12-31T23:59:59Z

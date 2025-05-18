@@ -1,0 +1,83 @@
+get:
+  summary: Get an item by ID
+  description: Retrieve an item from the database based on the provided item ID.
+  tags:
+    - Item
+  parameters:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: integer
+      description: ID of the item to retrieve
+  responses:
+    '200':
+      description: Item retrieved successfully
+      content:
+        application/json:
+          schema:
+            $ref: '../components/item_schemas.yaml#/SingleGetItem'
+    '404':
+      $ref: '../components/responses.yaml#/NotFound'
+    '500':
+      $ref: '../components/responses.yaml#/InternalServerError'
+
+put:
+  summary: Update an item by ID
+  description: Update an item's details in the database based on the provided item ID.
+  tags:
+    - Item
+  parameters:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: integer
+      description: ID of the item to update
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: '../components/item_schemas.yaml#/UpdateItemRequest'
+  responses:
+    '200':
+      description: Item updated successfully
+      content:
+        application/json:
+          schema:
+            $ref: '../components/item_schemas.yaml#/UpdateItem'
+    '400':
+      $ref: '../components/responses.yaml#/BadRequest'
+    '404':
+      $ref: '../components/responses.yaml#/NotFound'
+    '500':
+      $ref: '../components/responses.yaml#/InternalServerError'
+
+delete:
+  summary: Delete an item by ID
+  description: Delete an item from the database based on the provided item ID.
+  tags:
+    - Item
+  parameters:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: integer
+      description: ID of the item to delete
+  responses:
+    '200':
+      description: Item deleted successfully
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+                example: Deleted successfully from Items
+    '404':
+      $ref: '../components/responses.yaml#/NotFound'
+    '500':
+      $ref: '../components/responses.yaml#/InternalServerError'

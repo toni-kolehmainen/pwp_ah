@@ -1,0 +1,108 @@
+get:
+  summary: Get auctions by user
+  description: Retrieve all auctions created by a specific user.
+  tags:
+    - Auctions by user
+  parameters:
+    - name: user_id
+      in: path
+      required: true
+      schema:
+        type: integer
+      description: ID of the user whose auctions are being retrieved
+  responses:
+    '200':
+      description: A list of auctions by the user
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              _links:
+                type: object
+                properties:
+                  self:
+                    type: object
+                    properties:
+                      href:
+                        type: string
+                        example: /api/users/1/auctions
+                  profile:
+                    type: object
+                    properties:
+                      href:
+                        type: string
+                        example: /profiles/auctions/
+                  create:
+                    type: object
+                    properties:
+                      href:
+                        type: string
+                        example: /api/auctions
+                      method:
+                        type: string
+                        example: POST
+              _embedded:
+                type: object
+                properties:
+                  auctions:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        _links:
+                          type: object
+                          properties:
+                            self:
+                              type: object
+                              properties:
+                                href:
+                                  type: string
+                                  example: /api/auctions/3
+                            delete:
+                              type: object
+                              properties:
+                                href:
+                                  type: string
+                                  example: /api/auctions/3
+                                method:
+                                  type: string
+                                  example: DELETE
+                        id:
+                          type: integer
+                          example: 3
+                        description:
+                          type: string
+                          example: New orchid Pizza with ergonomic design for bogus comfort
+                        item_id:
+                          type: integer
+                          nullable: true
+                          example: null
+                        seller_id:
+                          type: integer
+                          example: 1
+                        start_time:
+                          type: string
+                          format: date-time
+                          example: 2025-04-08T15:58:45.709Z
+                        end_time:
+                          type: string
+                          format: date-time
+                          example: 2025-06-27T09:21:07.282Z
+                        starting_price:
+                          type: string
+                          example: "740.89"
+                        current_price:
+                          type: string
+                          example: "495.90"
+                        emaidSend:
+                          type: boolean
+                          example: false
+                        itemId:
+                          type: integer
+                          nullable: true
+                          example: null
+    '404':
+      $ref: '../components/responses.yaml#/NotFound'
+    '500':
+      $ref: '../components/responses.yaml#/InternalServerError'

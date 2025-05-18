@@ -1,0 +1,62 @@
+# All bids include 2 functionalites 
+# get all bids
+# post a new bid
+
+get:
+  summary: Get all bids
+  description: Retrieve a list of all bids from the database.
+  tags:
+    - All Bids
+  responses:
+    '200':
+      description: Bids retrievedr successfully
+      content:
+        application/json:
+          schema:
+            $ref: '../components/bid_schemas.yaml#/BidsGetResponse'
+    '404':
+      description: Bids not found
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+                example: Bids not found
+    '500':
+      $ref: '../components/responses.yaml#/InternalServerError'
+
+
+post:
+  summary: Create a new bid
+  description: Create a new bid in the database.
+  tags:
+    - All Bids
+  security:
+    - bearerAuth: []
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: '../components/bid_schemas.yaml#/BidCreateRequest'
+  responses:
+    '201':
+      description: Bid created successfully
+      content:
+        application/json:
+          schema:
+            $ref: '../components/bid_schemas.yaml#/BidCreateResponse'
+    '400':
+      description: Bad request
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+                example: Bad request
+    '500':
+      $ref: '../components/responses.yaml#/InternalServerError'

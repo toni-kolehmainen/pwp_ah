@@ -38,38 +38,42 @@ NAME = Username in postgres
 
 PASSWORD = Password in postgres
 
-JWT = example  node -e "console.log(require('crypto').randomBytes(64).toString('hex'))"
+JWT="console.log(require('crypto').randomBytes(64).toString('hex'))"
+
+EMAIL=(https://ethereal.email/)
+
+PASSWORD_ETH=(https://ethereal.email/)
 
 ## Dependencies
+
+Depencies are visible in package.json
+
 Dependencies
 ```sh
-npm install pg, sequelize, cors, express
+npm install
 ```
 Dev-Dependencies
 ```sh
-npm install --save-dev cross-env, dotenv, nodemon, supertest
+npm install --save-dev
 ```
 
 ## Database
 Postgresql V17
-Todo:
-Instructions how to setup the database framework and external libraries you might have used, or a link where it is clearly explained.
-Instructions on how to setup and populate the database.
 ## Usage
 
 1. Start the server:
     ```sh
-    npm run start
+    npm start
     ```
     Api is open in `http://localhost:3001`
 
 2. Test the server:
     ```sh
-    npm run test
+    npm test
     ```
 3. Development the server:
     ```sh
-    npm run dev
+    npm dev
     ```
 
 ## Data Population
@@ -80,5 +84,22 @@ npm install @faker-js/faker
 - Populate the Database
 The database is automatically populated with sample data when the server starts if the database is empty. To manually populate the database, run:
 ```sh
-node script/DataPopulator.js
+npm run population_dev
 ```
+
+## Swagger Documentation
+- Install Swagger
+```sh
+npm install swagger-ui-express swagger-jsdoc yamljs
+```
+- Run this for an updated bundle swagger documentation
+```sh
+npm run bundle-docs
+```
+
+## Aux service 
+You need example account in https://ethereal.email/
+
+Add the ethereal email account credentials to .env.
+
+Then you can demo the aux service in ethereal email.

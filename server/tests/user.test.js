@@ -51,7 +51,6 @@ describe('GET /api/users/:id user', () => {
   it('Normal get (200)', async () => {
     User.findOne.mockResolvedValue(mockUser);
     const response = await api.get('/api/users/1').expect(200).expect('Content-Type', /application\/json/);
-    // expect(response.body).toEqual(mockUser);
     const body = response.body;
     // Check for _links
     expect(body).toHaveProperty('_links');
@@ -73,8 +72,11 @@ describe('GET /api/users/:id user', () => {
     expect(body).not.toHaveProperty('password');
     expect(body).toHaveProperty('phone', mockUser.phone);
   });
+  // it('empty get (404)', async () => {
+  //   User.findOne.mockResolvedValue(0);
+
   it('empty get (404)', async () => {
-    User.findOne.mockResolvedValue(0);
+    User.findOne.mockResolvedValue(null);
     const response = await api.get('/api/users/999').expect(404);
     expect(response.body).toEqual({});
   });
@@ -90,28 +92,64 @@ describe('PUT /api user', () => {
     // Clean up the User model before each test
     await User.destroy({ where: {}, truncate: true });
   });
-  it('Normal valid with password (200)', async () => {
-    User.update.mockResolvedValueOnce([1, [mockUser]]);
-    const response = await api.put('/api/users/1').send(mockUpdateUser).expect('Content-Type', /application\/json/);
+  // it('Normal valid with password (200)', async () => {
+  //   User.update.mockResolvedValueOnce([1, [mockUser]]);
+  //   const response = await api.put('/api/users/1').send(mockUpdateUser).expect('Content-Type', /application\/json/);
 
+  //   expect(response.status).toBe(200);
+  // });
+  // it('Normal valid with username (200)', async () => {
+  //   User.update.mockResolvedValueOnce([1, [mockUser]]);
+  //   const response = await api.put('/api/users/1').send(mockUpdateUser1).expect('Content-Type', /application\/json/);
+  //   expect(response.status).toBe(200);
+  // });
+  // it('try to update two lines same time (400)', async () => {
+  //   User.update.mockRejectedValueOnce(mockUser);
+  //   const response = await api.put('/api/users/1').send(mockUpdateUserInvalid).expect('Content-Type', /application\/json/);
+  //   expect(response.status).toBe(400);
+  // });
+  // it('Invalid id (500)', async () => {
+  //   User.update.mockRejectedValueOnce({
+  //     name: 'SequelizeDatabaseError',
+  //     message: 'invalid input syntax for type integer: "kissa"',
+  //     parent: {
+  //       code: '22P02', // PostgreSQL error code for invalid input syntax
+  //   await User.destroy({ where: {}, truncate: true });
+  // });
+
+  it('Normal valid with password (200)', async () => {
+    User.update.mockResolvedValue([1, [mockUser]]);
+    const response = await api.put('/api/users/1').send(mockUpdateUser).expect('Content-Type', /application\/json/);
     expect(response.status).toBe(200);
   });
+
   it('Normal valid with username (200)', async () => {
-    User.update.mockResolvedValueOnce([1, [mockUser]]);
+    User.update.mockResolvedValue([1, [mockUser]]);
     const response = await api.put('/api/users/1').send(mockUpdateUser1).expect('Content-Type', /application\/json/);
     expect(response.status).toBe(200);
   });
+
   it('try to update two lines same time (400)', async () => {
-    User.update.mockRejectedValueOnce(mockUser);
-    const response = await api.put('/api/users/1').send(mockUpdateUserInvalid).expect('Content-Type', /application\/json/);
+    const invalidBody = {
+      name: 'John',
+      invalidField: 'test' // Triggers additionalProperties: false
+    };
+    const response = await api
+      .put('/api/users/1')
+      .send(invalidBody)
+      .expect('Content-Type', /application\/json/);
     expect(response.status).toBe(400);
+    expect(response.body).toEqual({
+      error: 'Invalid Request body'
+    });
   });
+
   it('Invalid id (500)', async () => {
-    User.update.mockRejectedValueOnce({
+    User.update.mockRejectedValue({
       name: 'SequelizeDatabaseError',
       message: 'invalid input syntax for type integer: "kissa"',
       parent: {
-        code: '22P02', // PostgreSQL error code for invalid input syntax
+        code: '22P02',
         message: 'invalid input syntax for type integer: "kissa"'
       }
     });

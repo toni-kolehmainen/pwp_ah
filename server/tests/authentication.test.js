@@ -48,9 +48,8 @@ afterAll(async () => {
   sequelize.close();
 });
 
-describe('GET /api/login', () => {
+describe('POST /api/login', () => {
   beforeEach(async () => {
-    // Clean up the User model before each test
     await User.destroy({ where: {}, truncate: true });
     jest.clearAllMocks();
   });
@@ -91,7 +90,7 @@ describe('GET /api/login', () => {
       .expect(404)
       .expect('Content-Type', /application\/json/)
       .then((response) => {
-        expect(response.body.message).toBe('user not found');
+        expect(response.body.error).toBe('user not found');
       });
   });
   it('login wrong email', async () => {
@@ -99,33 +98,40 @@ describe('GET /api/login', () => {
     await api
       .post('/api/login/1')
       .send({ email: 'john.doe@gmail.com', password: 'password123' })
-      .expect(400).then((response) => {
+      .expect(401).then((response) => {
         expect(response.body.error).toBe('Invalid email or password');
       });
   });
-  it('login wrong email', async () => {
+
+  it('login wrong password', async () => {
     User.findOne.mockResolvedValue(mockUser);
+    bcrypt.compare.mockResolvedValue(false);
     await api
       .post('/api/login/1')
-      .send({ email: 'john.doe@gmail.com', password: 'password123' })
-      .expect(400).then((response) => {
+      .send({ email: mockUser.email, password: 'wrongpassword' })
+      .expect(401).then((response) => {
         expect(response.body.error).toBe('Invalid email or password');
       });
   });
+
   it('call login with string', async () => {
-    User.findOne.mockRejectedValueOnce({
-      name: 'SequelizeDatabaseError',
-      message: 'invalid input syntax for type integer: "authentication"',
-      parent: {
-        code: '22P02', // PostgreSQL error code for invalid integer syntax
-        message: 'invalid input syntax for type integer: "authentication"'
-      }
-    });
     await api
       .post('/api/login/authentication')
       .send({ email: mockUser.email, password: 'password123' })
       .expect(500).then((response) => {
         expect(response.body.error).toBe('invalid input syntax for type integer: "authentication"');
+      });
+  });
+
+  it('handles database error', async () => {
+    User.findOne.mockRejectedValue(new Error('Database connection failed'));
+    await api
+      .post('/api/login/1')
+      .send({ email: mockUser.email, password: 'password123' })
+      .expect(500)
+      .then((response) => {
+        console.log('Response body:', response.body); // Debug log
+        expect(response.body.error).toBe('Database connection failed');
       });
   });
 });

@@ -1,4 +1,3 @@
-# FROM node:23-alpine
 FROM node:20-alpine3.17
 
 WORKDIR /app

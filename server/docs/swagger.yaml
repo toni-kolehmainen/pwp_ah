@@ -1,0 +1,105 @@
+openapi: 3.0.0
+info:
+  title: Users API
+  version: 1.0.0
+  description: API for managing users with HAL-style hypermedia responses
+
+servers:
+  - url: http://localhost:3001
+
+paths:
+  /api/login/{user_id}:
+    $ref: './paths/login.yaml'
+  /api/users:
+    $ref: './paths/users.yaml'
+  /api/users/{user_id}:
+    $ref: './paths/user.yaml'
+  /api/users/{user_id}/auctions:
+    $ref: './paths/user_auctions.yaml'
+  /api/items:
+    $ref: './paths/items.yaml'
+  /api/items/{id}:
+    $ref: './paths/item.yaml'
+  /api/auctions:
+    $ref: './paths/auctions.yaml'
+  /api/auctions/{auction_id}:
+    $ref: './paths/auction_id.yaml'
+  /api/auctions/{auction_id}/bids:
+    $ref: './paths/auction_bids.yaml'
+    # here we are getting the all of bids and creating the bids based on buyer_id and auction_id 
+  /api/bids:
+    $ref: './paths/bids.yaml'
+    # here we are getting the bids by their id
+  /api/bids/{bid_id}:
+    $ref: './paths/bid.yaml'
+  # here we are receiving all of the categories and creating the categories
+  /api/categories:
+    $ref: './paths/categories.yaml'
+  /api/categories/{id}:
+    $ref: './paths/category.yaml'
+
+  # from here Prfiles apis path 
+  /profile/users:
+    $ref: './paths/profile/users.yaml'
+  /profile/items:
+    $ref: './paths/profile/items.yaml'
+  /profile/categories:
+    $ref: './paths/profile/categories.yaml'
+  /profile/bids:
+    $ref: './paths/profile/bids.yaml'
+  /profile/auctions:
+    $ref: './paths/profile/auctions.yaml'
+
+
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  schemas:
+    LoginRequest:
+      $ref: './components/login_schemas.yaml#/LoginRequest'
+    LoginResponse:
+      $ref: './components/login_schemas.yaml#/LoginResponse'
+    User:
+      $ref: './components/user_schemas.yaml#/UserResponseHAL'
+    AddUserRequest:
+      $ref: './components/user_schemas.yaml#/AddUserRequest'
+    UpdateUserRequest:
+      $ref: './components/user_schemas.yaml#/UpdateUserRequest'
+    Item:
+      $ref: './components/item_schemas.yaml#/Item'
+    AddItemRequest:
+      $ref: './components/item_schemas.yaml#/AddItemRequest'
+    UpdateItemRequest:
+      $ref: './components/item_schemas.yaml#/UpdateItemRequest'
+    Auction:
+      $ref: './components/auction_schemas.yaml#/Auction'
+    AddAuctionRequest:
+      $ref: './components/auction_schemas.yaml#/AddAuctionRequest'
+    Bid:
+      $ref: './components/bid_schemas.yaml#/Bid'
+    Category:
+      $ref: './components/category_schemas.yaml#/Category'
+    AddCategoryRequest:
+      $ref: './components/category_schemas.yaml#/AddCategoryRequest'
+  # responses:
+    BadRequest:
+      $ref: './components/responses.yaml#/BadRequest'
+    NotFound:
+      $ref: './components/responses.yaml#/NotFound'
+    InternalServerError:
+      $ref: './components/responses.yaml#/InternalServerError'
+  # profile:
+    UsersProfile:
+      $ref: './components/profile_schemas.yaml#/UserProfileResponse'
+    ItemsProfile:
+      $ref: './components/profile_schemas.yaml#/ItemProfileResponse'
+    CategoriesProfile:
+      $ref: './components/profile_schemas.yaml#/CategoryProfileResponse'
+    AuctionsProfile:
+      $ref: './components/profile_schemas.yaml#/AuctionProfileResponse'
+    BidsProfile:
+      $ref: './components/profile_schemas.yaml#/BidProfileResponse'

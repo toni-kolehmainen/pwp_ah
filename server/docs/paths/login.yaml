@@ -1,0 +1,35 @@
+post:
+  summary: User login
+  description: Authenticates a user by their ID, email, and password. Returns a JWT token on success.
+  tags:
+    - Authentication
+  parameters:
+    - name: user_id
+      in: path
+      required: true
+      schema:
+        type: integer
+      description: ID of the user to authenticate
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: '../components/login_schemas.yaml#/LoginRequest'
+  responses:
+    '200':
+      description: Successfully authenticated
+      content:
+        application/json:
+          schema:
+            $ref: '../components/login_schemas.yaml#/LoginResponse'
+    '415':
+      $ref: '../components/responses.yaml#/UnsupportedMediaType'
+    '400':
+      $ref: '../components/responses.yaml#/BadRequest'
+    '404':
+      $ref: '../components/responses.yaml#/NotFound'
+    '401':
+      $ref: '../components/responses.yaml#/Unauthorized'
+    '500':
+      $ref: '../components/responses.yaml#/InternalServerError'

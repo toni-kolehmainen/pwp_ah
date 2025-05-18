@@ -1,0 +1,183 @@
+get:
+  summary: Get all auctions
+  description: Retrieve a list of all auctions with optional pagination, sorting, and filtering.
+  tags:
+    - All Auctions
+  parameters:
+    - name: limit
+      in: query
+      required: false
+      schema:
+        type: integer
+        default: 10
+      description: Number of auctions to retrieve
+    - name: offset
+      in: query
+      required: false
+      schema:
+        type: integer
+        default: 0
+      description: Number of auctions to skip
+    - name: sort
+      in: query
+      required: false
+      schema:
+        type: string
+        default: end_time
+      description: Field to sort by
+    - name: order
+      in: query
+      required: false
+      schema:
+        type: string
+        enum: [ASC, DESC]
+        default: ASC
+      description: Sort order (ascending or descending)
+  responses:
+    '200':
+      description: A list of auctions
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              _links:
+                type: object
+                properties:
+                  self:
+                    type: object
+                    properties:
+                      href:
+                        type: string
+                        example: /api/auctions/
+                  profile:
+                    type: object
+                    properties:
+                      href:
+                        type: string
+                        example: /profiles/auctions/
+                  create:
+                    type: object
+                    properties:
+                      href:
+                        type: string
+                        example: /api/auctions
+                      method:
+                        type: string
+                        example: POST
+              _embedded:
+                type: object
+                properties:
+                  auctions:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        _links:
+                          type: object
+                          properties:
+                            self:
+                              type: object
+                              properties:
+                                href:
+                                  type: string
+                                  example: /api/auctions/3
+                            delete:
+                              type: object
+                              properties:
+                                href:
+                                  type: string
+                                  example: /api/auctions/3
+                                method:
+                                  type: string
+                                  example: DELETE
+                        id:
+                          type: integer
+                          example: 3
+                        description:
+                          type: string
+                          example: New orchid Pizza with ergonomic design for bogus comfort
+                        end_time:
+                          type: string
+                          format: date-time
+                          example: 2025-06-27T09:21:07.282Z
+                        starting_price:
+                          type: string
+                          example: "740.89"
+                        current_price:
+                          type: string
+                          example: "495.90"
+                        item_id:
+                          type: integer
+                          nullable: true
+                          example: null
+                        seller_id:
+                          type: integer
+                          example: 1
+    '204':
+      description: No auctions found
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+                example: No auctions data found
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+                example: Internal Server Error
+
+
+post:
+  summary: Add a new auction
+  description: Create a new auction in the database.
+  tags:
+    - All Auctions
+  security:
+    - bearerAuth: []
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: '../components/auction_schemas.yaml#/AddAuctionRequest'
+  responses:
+    '201':
+      description: Auction created successfully
+      content:
+        application/json:
+          schema:
+            $ref: '../components/auction_schemas.yaml#/Auction'
+          example:
+            _links:
+              self:
+                href: "/api/auctions/9"
+              all:
+                href: "/api/auctions"
+              profile:
+                href: "/profiles/auctions"
+              delete:
+                href: "/api/auctions/9"
+                method: "DELETE"
+            start_time: "2025-04-16T23:25:17.049Z"
+            emaidSend: false
+            id: 9
+            item_id: 3
+            seller_id: 7
+            description: "A rare collectible item."
+            starting_price: "50.00"
+            current_price: "50.00"
+            end_time: "2023-12-31T23:59:59.000Z"
+            itemId: 3
+    '400':
+      $ref: '../components/responses.yaml#/BadRequest'
+    '500':
+      $ref: '../components/responses.yaml#/InternalServerError'

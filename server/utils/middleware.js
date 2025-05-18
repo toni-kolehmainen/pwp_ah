@@ -1,4 +1,3 @@
-const rateLimit = require('express-rate-limit');
 const jwt = require('jsonwebtoken');
 const logger = require('./logger');
 const { cacheMiddleware } = require('./cacheMiddleware');

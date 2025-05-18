@@ -120,4 +120,3 @@ const seedData = async () => {
 
 // Run the script
 seedData();
-// module.exports = { seedData };

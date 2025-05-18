@@ -7,9 +7,12 @@ const middleware = require('./utils/middleware');
 const router = require('./router');
 const routerProfile = require('./router/profile');
 const { dataClean } = require('./services/data_clean');
+const setupSwagger = require('./utils/swagger_setup');
 
+// removes outdated information like ended auction and its bids
+// data is copied to text file
+// cron.schedule('0 0 * * 1', async () => {
 cron.schedule('* * * * *', async () => {
-  // cron.schedule('0 0 * * 1', async () => { // a week
   const mes = await dataClean();
   console.log(mes);
 });
@@ -28,6 +31,8 @@ app.use((_, res, next) => {
 
 // Adding the middleware
 app.use(middleware.cacheMiddleware);
+
+setupSwagger(app);
 
 app.use('/profile', routerProfile);
 app.use('/api', router);
