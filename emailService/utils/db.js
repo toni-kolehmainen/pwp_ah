@@ -1,10 +1,10 @@
 const Sequelize = require('sequelize');
 const { env } = require('node:process');
 
-const name = env.NAME
-const password = env.PASSWORD
-const db = env.DB_NAME
-const host = env.DB_HOST
+const name = env.NAME;
+const password = env.PASSWORD;
+const db = env.DB_NAME;
+const host = env.DB_HOST;
 
 const sequelize = new Sequelize(db, name, password, {
   host,

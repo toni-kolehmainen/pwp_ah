@@ -26,8 +26,6 @@ app.use((_, res, next) => {
   next();
 });
 
-// app.use(middleware.limiter);
-
 // Adding the middleware
 app.use(middleware.cacheMiddleware);
 

@@ -39,12 +39,6 @@ const errorHandler = (error, request, response, next) => {
   return next(error);
 };
 
-const limiter = rateLimit({
-  windowMs: 1 * 60 * 1000, // 1 minute
-  max: 5, // Limit to 5 requests per windowMs
-  message: 'Too many requests, please try again later.'
-});
-
 const authenticateJWT = (req, res, next) => {
   const token = req.header('Authorization');
 
@@ -64,7 +58,6 @@ module.exports = {
   requestLogger,
   unknownEndpoint,
   errorHandler,
-  limiter,
   authenticateJWT,
   cacheMiddleware
 };

@@ -4,9 +4,6 @@ const { outdatedBidsAndAuctions } = require('./helpers');
 const { User, Auction, Item } = require('../models');
 const config = require('../utils/config');
 
-console.log(config.EMAIL);
-console.log(config.PASSWORD_ETH);
-
 const transporter = nodemailer.createTransport({
   host: 'smtp.ethereal.email',
   port: 587,
@@ -64,7 +61,6 @@ const winningBidEmailHTML = (userName, auctionTitle, itemName, bidAmount, auctio
   [Your Support Email] | [Your Website]</p>
 `;
 
-// async..await is not allowed in global scope, must use a wrapper
 const sendEmail = async (from, to, subject, text, html) => {
   // send mail with defined transport object
   const info = await transporter.sendMail({
@@ -79,9 +75,7 @@ const sendEmail = async (from, to, subject, text, html) => {
 };
 
 const emailSended = async (auctionId) => {
-  // console.log(auctionId)
-
-  const count = await Auction.update(
+  await Auction.update(
     { emaidSend: true },
     {
       where: {
@@ -90,7 +84,6 @@ const emailSended = async (auctionId) => {
       }
     }
   );
-  // console.log(count)
 };
 
 const auctionEndListener = async () => {
