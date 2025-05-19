@@ -87,7 +87,7 @@ describe('GET /api users', () => {
     expect(body._links).toHaveProperty('self');
     expect(body._links).toHaveProperty('create');
     expect(body._links.create).toHaveProperty('href', '/api/users');
-    expect(body._links.profile).toHaveProperty('href', '/profiles/users/');
+    expect(body._links.profile).toHaveProperty('href', '/profile/users/');
 
     // Check for _embedded and embedded users array
     expect(body).toHaveProperty('_embedded');

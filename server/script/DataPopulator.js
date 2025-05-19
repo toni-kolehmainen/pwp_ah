@@ -44,8 +44,8 @@ const generateRandomItems = (count, users, categories) => {
     items.push({
       name: faker.commerce.productName(),
       description: faker.commerce.productDescription(),
-      sellerId: users[Math.floor(Math.random() * users.length)].id,
-      categoryId: categories[Math.floor(Math.random() * categories.length)].id
+      seller_id: users[Math.floor(Math.random() * users.length)].id,
+      category_id: categories[Math.floor(Math.random() * categories.length)].id
     });
   }
   return items;
@@ -61,7 +61,7 @@ const generateRandomAuctions = (count, items) => {
       starting_price: parseFloat(faker.commerce.price({ min: 10, max: 1000 })),
       current_price: parseFloat(faker.commerce.price({ min: 10, max: 1000 })),
       item_id: items[Math.floor(Math.random() * items.length)].id,
-      seller_id: items[Math.floor(Math.random() * items.length)].sellerId
+      seller_id: items[Math.floor(Math.random() * items.length)].seller_id
     });
   }
   return auctions;
@@ -89,31 +89,34 @@ const seedData = async () => {
     // Create users
     const users = await User.bulkCreate(generateRandomUsers(5), { returning: true });
     console.log('✅ Users created:', users.length);
+    const plainUsers = users.map((user) => user.get({ plain: true }));
 
     // Create categories
     const categories = await Category.bulkCreate(generateRandomCategories(5), { returning: true });
     console.log('✅ Categories created:', categories.length);
+    const plainCategories = categories.map((category) => category.get({ plain: true }));
 
     // Create items
-    const items = await Item.bulkCreate(generateRandomItems(10, users, categories), { returning: true });
+    const items = await Item.bulkCreate(generateRandomItems(10, plainUsers, plainCategories), { returning: true });
     console.log('✅ Items created:', items.length);
+    const plainItems = items.map((item) => item.get({ plain: true }));
 
     // Create auctions
-    const auctions = await Auction.bulkCreate(generateRandomAuctions(5, items), { returning: true });
+    const auctions = await Auction.bulkCreate(generateRandomAuctions(5, plainItems), { returning: true });
     console.log('✅ Auctions created:', auctions.length);
+    const plainAuctions = auctions.map((auction) => auction.get({ plain: true }));
 
     // Create bids
-    await Bid.bulkCreate(generateRandomBids(15, users, auctions));
+    await Bid.bulkCreate(generateRandomBids(15, plainUsers, plainAuctions));
     console.log('✅ Bids created:', 15);
 
     console.log('✅ Data seeded successfully!');
   } catch (error) {
     console.error('❌ Error seeding data:', error);
   } finally {
-    // await sequelize.close(); // Close the connection only after all operations are done
+    await sequelize.close(); // Close the connection only after all operations are done
   }
 };
 
 // Run the script
-// seedData();
-module.exports = { seedData };
+seedData();

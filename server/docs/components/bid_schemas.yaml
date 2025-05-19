@@ -1,0 +1,201 @@
+Bid:
+  type: object
+  properties:
+    id:
+      type: integer
+      example: 1
+    amount:
+      type: number
+      format: float
+      example: 150.00
+    buy_time:
+      type: string
+      format: date-time
+      example: 2023-01-01T12:00:00Z
+    buyer_id:
+      type: integer
+      example: 5
+    auction_id:
+      type: integer
+      example: 101
+
+
+
+BidCreateRequest:
+  type: object
+  required:
+    - auction_id
+    - buyer_id
+    - amount
+  properties:
+    auction_id:
+      type: integer
+      example: 101
+    buyer_id:
+      type: integer
+      example: 5
+    amount:
+      type: number
+      format: float
+      example: 150.00      
+    
+BidCreateResponse:
+  type: object
+  properties:
+    _links:
+      type: object
+      properties:
+        self:
+          type: object
+          properties:
+            href:
+              type: string
+              example: /api/bids/1
+        all:
+          type: object
+          properties:
+            href:
+              type: string
+              example: /api/bids
+        profile:
+          type: object
+          properties:
+            href:
+              type: string
+              example: /profile/bids/
+        delete:
+          type: object
+          properties:
+            href:
+              type: string
+              example: /api/bids/1
+            method:
+              type: string
+              example: DELETE
+    buy_time:
+      type: string
+      format: date-time
+      example: 2023-01-01T12:00:00Z
+    id:
+      type: integer
+      example: 1
+    auction_id:
+      type: integer
+      example: 4
+    buyer_id:
+      type: integer
+      example: 5
+    amount:
+      type: string
+      format: float
+      example: 150.00
+
+BidIdResponse:
+  type: object
+  allOf:
+    - type: object
+      properties:
+        _links:
+          type: object
+          properties:
+            self:
+              type: object
+              properties:
+                href:
+                  type: string
+                  example: /api/bids/17
+            all:
+              type: object
+              properties:
+                href:
+                  type: string
+                  example: /api/bids
+            profile:
+              type: object
+              properties:
+                href:
+                  type: string
+                  example: /profile/bids
+            edit:
+              type: object
+              properties:
+                href:
+                  type: string
+                  example: /api/bids/17
+                method:
+                  type: string
+                  example: PUT
+            delete:
+              type: object
+              properties:
+                href:
+                  type: string
+                  example: /api/bids/17
+                method:
+                  type: string
+                  example: DELETE
+    - $ref: '../components/bid_schemas.yaml#/Bid'
+
+
+BidsGetResponse:
+  type: object
+  properties:
+    _links:
+      type: object
+      properties:
+        self:
+          type: object
+          properties:
+            href:
+              type: string
+              example: /api/bids/
+        profile:
+          type: object
+          properties:
+            href:
+              type: string
+              example: /profile/bids/
+        create:
+          type: object
+          properties:
+            href:
+              type: string
+              example: /api/bids
+            method:
+              type: string
+              example: POST
+        get_all:
+          type: object
+          properties:
+            href:
+              type: string
+              example: /api/bids
+    _embedded:
+      type: object
+      properties:
+        bids:
+          type: array
+          items:
+            allOf:
+              - type: object
+                properties:
+                  _links:
+                    type: object
+                    properties:
+                      self:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            example: /api/bids/1
+                      delete:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            example: /api/bids/1
+                          method:
+                            type: string
+                            example: DELETE
+              - $ref: '../components/bid_schemas.yaml#/Bid'
+   

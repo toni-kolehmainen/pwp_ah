@@ -82,7 +82,7 @@ const dbSync = async () => {
 };
 
 if (NODE_ENV !== 'test') {
-  dbSync();
+  // dbSync();
 }
 
 module.exports = {

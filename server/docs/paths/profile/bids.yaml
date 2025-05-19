@@ -1,0 +1,22 @@
+get:
+  tags:
+    - Profile
+  summary: Retrieve bid profile information
+  description: Fetches the profile details and actions for bids.
+  responses:
+    '200':
+      description: Successful response
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/profile_schemas.yaml#/BidProfileResponse'
+    '404':
+      description: Bids Profile not found
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+                example: Bids Profile not found

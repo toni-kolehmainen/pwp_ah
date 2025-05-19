@@ -3,14 +3,13 @@ const { env } = require('node:process');
 const logger = require('./logger');
 const { NAME, PASSWORD, NODE_ENV } = require('./config');
 
-const host = (env.DB_HOST) ? env.DB_HOST : 'localhost';
-const db = (NODE_ENV === 'test') ? 'test' : 'postgres';
+const host = NODE_ENV === 'production' ? env.DB_HOST : 'localhost';
+const db = NODE_ENV === 'production' ? env.DB_NAME : 'postgres';
 
 const sequelize = new Sequelize(db, NAME, PASSWORD, {
   host,
   dialect: 'postgres',
   logging: false
-  // logging: console.log
 });
 
 const connectToDatabase = async () => {

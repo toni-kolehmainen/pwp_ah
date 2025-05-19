@@ -62,7 +62,7 @@ describe('GET /api/users/:id user', () => {
     expect(body._links).toHaveProperty('edit');
     expect(body._links.edit).toHaveProperty('href', `/api/users/${mockUser.id}`, "method", "PUT");
     expect(body._links).toHaveProperty('profile');
-    expect(body._links.profile).toHaveProperty('href', '/profiles/users');
+    expect(body._links.profile).toHaveProperty('href', '/profile/users');
     expect(body._links).toHaveProperty('all');
     expect(body._links.all).toHaveProperty('href', '/api/users');
     
@@ -73,6 +73,9 @@ describe('GET /api/users/:id user', () => {
     expect(body).not.toHaveProperty('password');
     expect(body).toHaveProperty('phone', mockUser.phone);
   });
+  // it('empty get (404)', async () => {
+  //   User.findOne.mockResolvedValue(0);
+
   it('empty get (404)', async () => {
     User.findOne.mockResolvedValue(0);
     const response = await api.get('/api/users/999').expect(404);
@@ -96,22 +99,34 @@ describe('PUT /api user', () => {
 
     expect(response.status).toBe(200);
   });
+
   it('Normal valid with username (200)', async () => {
     User.update.mockResolvedValueOnce([1, [mockUser]]);
     const response = await api.put('/api/users/1').send(mockUpdateUser1).expect('Content-Type', /application\/json/);
     expect(response.status).toBe(200);
   });
+
   it('try to update two lines same time (400)', async () => {
-    User.update.mockRejectedValueOnce(mockUser);
-    const response = await api.put('/api/users/1').send(mockUpdateUserInvalid).expect('Content-Type', /application\/json/);
+    const invalidBody = {
+      name: 'John',
+      invalidField: 'test' // Triggers additionalProperties: false
+    };
+    const response = await api
+      .put('/api/users/1')
+      .send(invalidBody)
+      .expect('Content-Type', /application\/json/);
     expect(response.status).toBe(400);
+    expect(response.body).toEqual({
+      error: 'Invalid Request body'
+    });
   });
+
   it('Invalid id (500)', async () => {
-    User.update.mockRejectedValueOnce({
+    User.update.mockRejectedValue({
       name: 'SequelizeDatabaseError',
       message: 'invalid input syntax for type integer: "kissa"',
       parent: {
-        code: '22P02', // PostgreSQL error code for invalid input syntax
+        code: '22P02',
         message: 'invalid input syntax for type integer: "kissa"'
       }
     });
@@ -133,7 +148,7 @@ describe('DELETE /api user', () => {
     expect(body._links).toHaveProperty('self');
     expect(body._links).toHaveProperty('create');
     expect(body._links.create).toHaveProperty('href', '/api/users');
-    expect(body._links.profile).toHaveProperty('href', '/profiles/users');
+    expect(body._links.profile).toHaveProperty('href', '/profile/users');
     expect(body).toHaveProperty('message', `Deleted successfully from users`);
   });
 

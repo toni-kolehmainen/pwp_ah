@@ -9,8 +9,8 @@ const updateSchema = {
   properties: {
     name: { type: 'string' },
     description: { type: 'string' },
-    sellerId: { type: 'number' },
-    categoryId: { type: 'number' }
+    seller_id: { type: 'number' },
+    category_id: { type: 'number' }
   },
   minProperties: 1,
   additionalProperties: false

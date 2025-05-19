@@ -68,7 +68,7 @@ describe('Item Controller', () => {
     });
     it('should create a new item and return 201', async () => {
       // Mocking successful validation and item creation
-      const newItem = { name: 'New Item', sellerId: 1, categoryId: 2, description: 'Description' };
+      const newItem = { name: 'New Item', seller_id: 1, category_id: 2, description: 'Description' };
       const createdItem = { id: 1, ...newItem };
       Item.create.mockResolvedValue(createdItem);
       createHalLinks.mockReturnValue({ _links: 'mocked' });
@@ -99,7 +99,7 @@ describe('Item Controller', () => {
 
     it('should return 500 if item creation fails', async () => {
       // Mocking a failure during item creation
-      const newItem = { name: 'New Item', sellerId: 1, categoryId: 2, description: 'Description' };
+      const newItem = { name: 'New Item', seller_id: 1, category_id: 2, description: 'Description' };
       Item.create.mockRejectedValue(new Error('Item creation failed'));
 
       const response = await request(app)

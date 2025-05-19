@@ -9,10 +9,10 @@ const addSchema = {
   properties: {
     name: { type: 'string' },
     description: { type: 'string' },
-    sellerId: { type: 'number' },
-    categoryId: { type: 'number' }
+    seller_id: { type: 'number' },
+    category_id: { type: 'number' }
   },
-  required: ['name', 'sellerId', 'categoryId'],
+  required: ['name', 'seller_id', 'category_id'],
   additionalProperties: false
 };
 
@@ -27,7 +27,7 @@ const getItems = async (req, res) => {
       _links:
       {
         self: { href: '/api/items/' },
-        profile: { href: '/profiles/items/' },
+        profile: { href: '/profile/items/' },
         create: { href: '/api/items', method: 'POST' }
       },
       _embedded: {
@@ -43,7 +43,7 @@ const getItems = async (req, res) => {
 const addItem = async (req, res, next) => {
   console.log(req.body);
   try {
-    const { name, description, sellerId, categoryId } = req.body;
+    const { name, description, seller_id, category_id } = req.body;
 
     const validate = ajv.compile(addSchema);
     const valid = validate(req.body);
@@ -61,8 +61,8 @@ const addItem = async (req, res, next) => {
     const item = await Item.create({
       name,
       description,
-      seller_id: sellerId,
-      category_id: categoryId
+      seller_id: seller_id,
+      category_id: category_id
     });
     return res.status(201).json(createHalLinks(item, 'items'));
   } catch (e) {

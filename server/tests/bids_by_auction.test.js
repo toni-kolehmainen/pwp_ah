@@ -74,7 +74,7 @@ describe('GET /api bidsauctions', () => {
     expect(body._links).toHaveProperty('self');
     expect(body._links).toHaveProperty('create');
     expect(body._links.create).toHaveProperty('href', '/api/bids');
-    expect(body._links.profile).toHaveProperty('href', '/profiles/bids/');
+    expect(body._links.profile).toHaveProperty('href', '/profile/bids/');
 
     // Check for _embedded and embedded bids array
     expect(body).toHaveProperty('_embedded');

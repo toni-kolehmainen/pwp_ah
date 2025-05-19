@@ -1,0 +1,106 @@
+get:
+  summary: Get all categories
+  description: Retrieve a list of all categories.
+  tags:
+    - Categories
+  responses:
+    '200':
+      description: A list of categories
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              _links:
+                type: object
+                properties:
+                  self:
+                    type: object
+                    properties:
+                      href:
+                        type: string
+                        example: /api/categories/
+                  profile:
+                    type: object
+                    properties:
+                      href:
+                        type: string
+                        example: /profile/categories/
+                  create:
+                    type: object
+                    properties:
+                      href:
+                        type: string
+                        example: /api/categories
+                      method:
+                        type: string
+                        example: POST
+              _embedded:
+                type: object
+                properties:
+                  categories:
+                    type: array
+                    items:
+                      type: object
+                      allOf:
+                      - type: object
+                        properties:
+                          _links:
+                            type: object
+                            properties:
+                              self:
+                                type: object
+                                properties:
+                                  href:
+                                    type: string
+                                    example: /api/categories/1
+                              delete:
+                                type: object
+                                properties:
+                                  href:
+                                    type: string
+                                    example: /api/categories/1
+                                  method:
+                                    type: string
+                                    example: DELETE
+                      - $ref: '../components/category_schemas.yaml#/Category'
+                        
+    '500':
+      $ref: '../components/responses.yaml#/InternalServerError'
+
+
+post:
+  summary: Add a new category
+  description: Create a new category in the database.
+  tags:
+    - Categories
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: '../components/category_schemas.yaml#/AddCategoryRequest'
+  responses:
+    '201':
+      description: Category created successfully
+      content:
+        application/json:
+          schema:
+            $ref: '../components/category_schemas.yaml#/AddCategoryResponse'
+    '400':
+      $ref: '../components/responses.yaml#/BadRequest'
+    '409':
+      description: Conflict - Category already exists
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+                example: Category already exists
+    '500':
+      $ref: '../components/responses.yaml#/InternalServerError'
+
+
+      

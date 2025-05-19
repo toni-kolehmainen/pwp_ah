@@ -77,7 +77,7 @@ describe('GET /api/item item', () => {
     expect(body._links).toHaveProperty('edit');
     expect(body._links.edit).toHaveProperty('href', `/api/items/${mockItem.id}`, "method", "PUT");
     expect(body._links).toHaveProperty('profile');
-    expect(body._links.profile).toHaveProperty('href', '/profiles/items');
+    expect(body._links.profile).toHaveProperty('href', '/profile/items');
     expect(body._links).toHaveProperty('all');
     expect(body._links.all).toHaveProperty('href', '/api/items');
     
@@ -155,7 +155,7 @@ describe('DELETE /api/item', () => {
     expect(body._links).toHaveProperty('self');
     expect(body._links).toHaveProperty('create');
     expect(body._links.create).toHaveProperty('href', '/api/items');
-    expect(body._links.profile).toHaveProperty('href', '/profiles/items');
+    expect(body._links.profile).toHaveProperty('href', '/profile/items');
     expect(body).toHaveProperty('message', `Deleted successfully from items`);
   });
 

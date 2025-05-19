@@ -22,7 +22,7 @@ const getCategories = async (req, res) => {
     _links:
       {
         self: { href: '/api/categories/' },
-        profile: { href: '/profiles/categories/' },
+        profile: { href: '/profile/categories/' },
         create: { href: '/api/categories', method: 'POST' }
       },
     _embedded: {

@@ -1,0 +1,68 @@
+BadRequest:
+  description: Invalid request body
+  content:
+    application/json:
+      schema:
+        type: object
+        properties:
+          error:
+            type: string
+            example: Invalid request body
+
+NotFound:
+  description: User not found
+  content:
+    application/json:
+      schema:
+        type: object
+        properties:
+          error:
+            type: string
+            example: User not found
+
+UnsupportedMediaType:
+  description: Unsupported media type
+  content:
+    application/json:
+      schema:
+        type: object
+        properties:
+          error:
+            type: string
+            example: Unsupported media type
+
+Unauthorized:
+  description: Invalid email or password
+  content:
+    application/json:
+      schema:
+        type: object
+        properties:
+          error:
+            type: string
+            example: Invalid email or password
+
+InternalServerError:
+  description: Internal server error
+  content:
+    application/json:
+      schema:
+        type: object
+        properties:
+          error:
+            type: string
+            example: An unexpected error occurred
+
+
+Error:
+  type: object
+  properties:
+    error:
+      type: string
+      example: Error message
+    details:
+      type: string
+      example: Detailed error description
+  required:
+    - error
+    - details

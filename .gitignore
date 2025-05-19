@@ -2,3 +2,24 @@
 node_modules
 coverage
 request
+backup
+# Ignore Rust build artifacts and dependencies in client/
+client/target/
+client/Cargo.lock
+
+# Ignore editor and OS files in client/
+client/.vscode/
+client/.idea/
+client/*.swp
+client/*.swo
+client/.auth_token
+client/.env
+client/tarpaulin-report.html
+# Ignore backup and temp files in client/
+client/*.log
+client/*.tmp
+client/**/*.rs.bk
+
+# OS generated files
+.DS_Store
+Thumbs.db

@@ -1,6 +1,4 @@
 const { Auction } = require('../models');
-const Item = require('../models/item');
-const User = require('../models/user');
 const { validate } = require('../utils/validation');
 const schemas = require('../utils/schemas');
 const { createHalLinks, createHalEmbedded } = require('../utils/hal');
@@ -25,7 +23,7 @@ const getAuctions = async (req, res) => {
       _links:
         {
           self: { href: '/api/auctions/' },
-          profile: { href: '/profiles/auctions/' },
+          profile: { href: '/profile/auctions/' },
           create: { href: '/api/auctions', method: 'POST' }
         },
       _embedded: {

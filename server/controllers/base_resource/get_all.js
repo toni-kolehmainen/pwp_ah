@@ -16,11 +16,12 @@ const getResource = async (db, hal, res, next) => {
     // else respond with bid data and hypermedia
     return res.json({
       _links:
-    {
-      self: { href: hal.self },
-      profile: { href: `/profiles/${hal.path}/` },
-      create: { href: `/api/${hal.path}`, method: 'POST' }
-    },
+      {
+        self: { href: hal.self },
+        profile: { href: `/profile/${hal.path}/` },
+        create: { href: `/api/${hal.path}`, method: 'POST' },
+        get_all: { href: `/api/${hal.path}` }
+      },
       _embedded: {
         [hal.path]: resources.map((resource) => createHalEmbedded(resource, hal.path, hal.edit, hal.showAuctionByUser, hal.showBidsByAuction))
       }

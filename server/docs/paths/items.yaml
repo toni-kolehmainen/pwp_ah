@@ -1,0 +1,79 @@
+get:
+  summary: Get all items
+  description: Retrieve a list of all items from the database.
+  tags:
+    - All Items
+  responses:
+    '200':
+      description: A list of items
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              _links:
+                type: object
+                properties:
+                  self:
+                    type: object
+                    properties:
+                      href:
+                        type: string
+                        example: /api/items/
+                  profile:
+                    type: object
+                    properties:
+                      href:
+                        type: string
+                        example: /profile/items/
+                  create:
+                    type: object
+                    properties:
+                      href:
+                        type: string
+                        example: /api/items
+                      method:
+                        type: string
+                        example: POST
+              _embedded:
+                type: object
+                properties:
+                  items:
+                    type: array
+                    items:
+                      $ref: '../components/item_schemas.yaml#/Item'
+    '204':
+      description: Items not found
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+                example: Items not found
+    '500':
+      $ref: '../components/responses.yaml#/InternalServerError'
+
+post:
+  summary: Add a new item
+  description: Create a new item in the database.
+  tags:
+    - All Items
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: '../components/item_schemas.yaml#/AddItemRequest'
+  responses:
+    '201':
+      description: Item created successfully
+      content:
+        application/json:
+          schema:
+            $ref: '../components/item_schemas.yaml#/AddItem'
+    '400':
+      $ref: '../components/responses.yaml#/BadRequest'
+    '500':
+      $ref: '../components/responses.yaml#/InternalServerError'

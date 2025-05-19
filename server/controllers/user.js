@@ -16,7 +16,6 @@ const updateSchema = {
     password: { type: 'string' }
   },
   minProperties: 1,
-  maxProperties: 1,
   additionalProperties: false
 };
 

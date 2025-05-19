@@ -127,7 +127,7 @@ describe('GET /api/auctions', () => {
     expect(body._links).toHaveProperty('self');
     expect(body._links).toHaveProperty('create');
     expect(body._links.create).toHaveProperty('href', '/api/auctions');
-    expect(body._links.profile).toHaveProperty('href', '/profiles/auctions/');
+    expect(body._links.profile).toHaveProperty('href', '/profile/auctions/');
 
     // Check for _embedded and embedded users array
     expect(body).toHaveProperty('_embedded');
@@ -180,7 +180,7 @@ describe('GET /api/auction/:id', () => {
     expect(body._links).toHaveProperty('delete');
     expect(body._links.delete).toHaveProperty('href', `/api/auctions/${mockAuction.id}`, "method", "DELETE");
     expect(body._links).toHaveProperty('profile');
-    expect(body._links.profile).toHaveProperty('href', '/profiles/auctions');
+    expect(body._links.profile).toHaveProperty('href', '/profile/auctions');
     expect(body._links).toHaveProperty('all');
     expect(body._links.all).toHaveProperty('href', '/api/auctions');
     

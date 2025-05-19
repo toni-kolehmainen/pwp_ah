@@ -61,7 +61,7 @@ describe('GET /api categories', () => {
     expect(body._links).toHaveProperty('self');
     expect(body._links).toHaveProperty('create');
     expect(body._links.create).toHaveProperty('href', '/api/categories');
-    expect(body._links.profile).toHaveProperty('href', '/profiles/categories/');
+    expect(body._links.profile).toHaveProperty('href', '/profile/categories/');
 
     // Check for _embedded and embedded bids array
     expect(body).toHaveProperty('_embedded');
@@ -144,7 +144,7 @@ describe('DELETE /api categories', () => {
       expect(body._links).toHaveProperty('self');
       expect(body._links).toHaveProperty('create');
       expect(body._links.create).toHaveProperty('href', '/api/categories');
-      expect(body._links.profile).toHaveProperty('href', '/profiles/categories');
+      expect(body._links.profile).toHaveProperty('href', '/profile/categories');
       expect(body).toHaveProperty('message', `Deleted successfully from categories`);
   });
 

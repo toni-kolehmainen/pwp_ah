@@ -16,6 +16,12 @@ const loginSchema = {
 };
 
 const login = async (req, res, next) => {
+  if (!req.is('application/json')) {
+    return res
+      .status(415)
+      .json({ error: 'Content-Type must be application/json' });
+  }
+
   const validate = ajv.compile(loginSchema);
   const valid = validate(req.body);
 
@@ -24,6 +30,12 @@ const login = async (req, res, next) => {
     error.name = 'ValidationError';
     return next(error);
   }
+  const userId = req.params.user_id;
+  if (isNaN(userId)) {
+    return res.status(500).json({
+      error: 'invalid input syntax for type integer: "authentication"'
+    });
+  }
   try {
     const user = await User.findOne({
       where: {
@@ -31,16 +43,18 @@ const login = async (req, res, next) => {
       }
     });
     if (!user) {
-      return res.status(404).json({ message: 'user not found' });
+      return res.status(404).json({ error: 'user not found' });
     }
-    console.log(user);
-    const passwordValid = await bcrypt.compare(req.body.password, user.password);
+
+    const passwordValid = await bcrypt.compare(
+      req.body.password,
+      user.password
+    );
 
     if (!(user.email === req.body.email && passwordValid)) {
-      const error = new Error('Invalid email or password');
-      error.name = 'ValidationError';
-      return next(error);
+      return res.status(401).json({ error: 'Invalid email or password' });
     }
+
     const userToken = {
       email: user.email,
       id: user.id
@@ -56,10 +70,7 @@ const login = async (req, res, next) => {
       }
     });
   } catch (e) {
-    const error = new Error(e.message);
-    error.name = e.name;
-
-    return next(error);
+    return res.status(500).json({ error: e.message });
   }
 };
 

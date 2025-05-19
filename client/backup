@@ -1,0 +1,21 @@
+
+curl -X POST http://172.201.17.30:8080/api/auctions/ \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3RAZ21haWwuY29tIiwiaWQiOjYsImlhdCI6MTc0NzYxMDQzNCwiZXhwIjoxNzQ3NjE0MDM0fQ.-zXBVccx3WmJFT-m_12Cb68sLNlnK5TNlksmDChEZL0" \
+  -d '{
+    "item_id": 123,
+    "description": "Auction for rare item",
+    "starting_price": 100.0,
+    "end_time": "2025-06-01T12:00:00Z"
+  }'
+
+
+  curl -X POST http://172.201.17.30:8080/api/items \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3RAZ21haWwuY29tIiwiaWQiOjYsImlhdCI6MTc0NzYxMDQzNCwiZXhwIjoxNzQ3NjE0MDM0fQ.-zXBVccx3WmJFT-m_12Cb68sLNlnK5TNlksmDChEZL0" \
+  -d '{
+    "name": "Sample Item",
+    "description": "A description of the item",
+    "seller_id": 1,
+    "category_id": 2
+  }'

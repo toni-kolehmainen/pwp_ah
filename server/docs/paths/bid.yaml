@@ -1,0 +1,70 @@
+get:
+  summary: Get a bid by ID
+  description: Reterive a bid data based on Bid Id.
+  tags:
+    - Bid
+  parameters:
+    - name: bid_id
+      in: path
+      required: true
+      schema:
+        type: integer
+      description: ID of the bid to retrieve
+  responses:
+    '200':
+      description: Bid retrieved successfully
+      content:
+        application/json:
+          schema:
+            $ref: '../components/bid_schemas.yaml#/BidIdResponse'
+    '404':
+      description: Bid by ID not found
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+                example: Bid by ID not found
+    '500':
+      $ref: '../components/responses.yaml#/InternalServerError'
+
+delete:
+  summary: Delete a bid by ID
+  description: Delete a specific bid basde on ID.
+  tags:
+    - Bid
+  security:
+    - bearerAuth: []
+  parameters:
+    - name: bid_id
+      in: path
+      required: true
+      schema:
+        type: integer
+      description: ID of the bid to delete
+  responses:
+    '200':
+      description: Bid deleted successfully
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              status:
+                type: string
+                example: Deleted
+    '404':
+      description: Bid not found
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+                example: Bid not found
+    '500':
+      $ref: '../components/responses.yaml#/InternalServerError'
+

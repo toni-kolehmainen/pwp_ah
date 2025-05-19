@@ -1,0 +1,37 @@
+get:
+  summary: Get all users
+  description: Retrieve a list of users from the database, excluding their password fields.
+  tags:
+    - All Users
+  responses:
+    '200':
+      description: A HAL-formatted list of users
+      content:
+        application/json:
+          schema:
+              $ref: '../components/user_schemas.yaml#/UserListResponse'
+    '500':
+      $ref: '../components/responses.yaml#/InternalServerError'
+
+post:
+  summary: Add a new user
+  description: Creates a new user in the database after validating the request body and hashing the password.
+  tags:
+    - All Users
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: '../components/user_schemas.yaml#/AddUserRequest'
+  responses:
+    '201':
+      description: User created successfully
+      content:
+        application/json:
+          schema:
+            $ref: '../components/user_schemas.yaml#/UserResponseHAL'
+    '400':
+      $ref: '../components/responses.yaml#/BadRequest'
+    '500':
+      $ref: '../components/responses.yaml#/InternalServerError'

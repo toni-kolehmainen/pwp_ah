@@ -1,0 +1,83 @@
+get:
+  summary: Get bids by auction
+  description: Retrieve all bids for a specific auction.
+  tags:
+    - Bids by Auction
+  parameters:
+    - name: auction_id
+      in: path
+      required: true
+      schema:
+        type: integer
+      description: ID of the auction whose bids are being retrieved
+  responses:
+    '200':
+      description: A list of bids for the auction
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              _links:
+                type: object
+                properties:
+                  self:
+                    type: object
+                    properties:
+                      href:
+                        type: string
+                        example: /api/auction/3/bids
+                  profile:
+                    type: object
+                    properties:
+                      href: 
+                        type: string
+                        example: /profile/bids/
+                  create:
+                    type: object
+                    properties:
+                      href:
+                        type: string
+                        example: /api/bids
+                      method:
+                        type: string
+                        example: POST
+                  get_all:
+                    type: object
+                    properties:
+                      href:
+                        type: string
+                        example: /api/bids
+              _embedded:
+                type: object
+                properties:
+                  bids:
+                    type: array
+                    items:
+                      type: object
+                      allOf:
+                        - type: object
+                          properties:
+                            _links:
+                              type: object
+                              properties:
+                                self:
+                                  type: object
+                                  properties:
+                                    href:
+                                      type: string
+                                      example: /api/bids/8
+                                delete:
+                                  type: object
+                                  properties:
+                                    href:
+                                      type: string
+                                      example: /api/bids/8
+                                    method:
+                                      type: string
+                                      example: DELETE
+                        - $ref: '../components/bid_schemas.yaml#/Bid'
+    '404':
+      $ref: '../components/responses.yaml#/NotFound'
+    '500':
+      $ref: '../components/responses.yaml#/InternalServerError'
