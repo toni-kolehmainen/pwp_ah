@@ -3,7 +3,7 @@
 
 use crate::api;
 use crate::api::utils::fetch_api_root_links;
-use crate::models::{Category, CreateBid, Item2, ItemPayload, ItemPayload2, User, UserPayload};
+use crate::models::{Category, CreateBid, ItemPayload2, User, UserPayload};
 use clap::{Parser, Subcommand};
 use reqwest::Client;
 use std::error::Error;

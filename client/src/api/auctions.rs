@@ -1,8 +1,8 @@
 // Auction API client functions for interacting with the backend auctions endpoints.
 
 use crate::api::utils::get_base_url;
-use crate::models::auctions::{Auction, AuctionPayload, HalAuctionResponse, HalAuctionWrapper};
-use reqwest::{header, Client};
+use crate::models::auctions::{AuctionPayload, HalAuctionResponse, HalAuctionWrapper};
+use reqwest::{Client};
 use std::error::Error;
 
 // Fetch all auctions and print their details

@@ -1,13 +1,12 @@
 // API client functions for interacting with the users endpoints.
 
-use crate::api::utils::{get_address, get_base_url};
+use crate::api::utils::{get_base_url};
 use crate::models::{HalUserResponse, HalUserWrapper, LoginResponse, User, UserPayload};
 use reqwest::{header, Client};
 use std::collections::HashMap;
 use std::error::Error;
 use std::fs;
 use std::time::Instant;
-use std::io::{stdin, stdout, Write};
 
 // Log in a user and save the auth token to .auth_token
 pub async fn login_user(
@@ -97,83 +96,6 @@ pub async fn fetch_users(client: &Client) -> Result<(), Box<dyn Error>> {
     }
 
     println!("Time taken: {:?}", start.elapsed());
-    Ok(())
-}
-
-// Fetch all users and allow interactive selection and actions
-pub async fn fetch_users2(client: &Client) -> Result<(), Box<dyn Error>> {
-    let base_url = get_base_url().await;
-    let url = format!("{}/users", base_url);
-
-    let response = client.get(&url).send().await?;
-    let hal: HalUserResponse = response.json().await?;
-
-    for (i, wrapper) in hal.embedded.users.iter().enumerate() {
-        let user = &wrapper.user;
-        println!("\n[{}] {} ({})", i + 1, user.name, user.email);
-    }
-
-    print!("\nChoose a user number to act on (or 0 to cancel): ");
-    stdout().flush()?;
-    let mut input = String::new();
-    stdin().read_line(&mut input)?;
-    let choice = input.trim().parse::<usize>().unwrap_or(0);
-
-    if choice == 0 || choice > hal.embedded.users.len() {
-        println!("Cancelled.");
-        return Ok(());
-    }
-
-    let selected = &hal.embedded.users[choice - 1];
-    println!("\nSelected user: {}", selected.user.name);
-
-    println!("\nAvailable actions:");
-    println!("  [1] View details");
-
-    let mut actions = vec![("View details", &selected.links.self_link.href, "GET")];
-
-    if let Some(edit) = &selected.links.edit {
-        actions.push(("Edit", &edit.href, edit.method.as_deref().unwrap_or("PUT")));
-        println!("  [{}] Edit ({})", actions.len(), edit.href);
-    }
-    if let Some(delete) = &selected.links.delete {
-        actions.push((
-            "Delete",
-            &delete.href,
-            delete.method.as_deref().unwrap_or("DELETE"),
-        ));
-        println!("  [{}] Delete ({})", actions.len(), delete.href);
-    }
-
-    print!("\nChoose an action: ");
-    stdout().flush()?;
-    let mut action_input = String::new();
-    stdin().read_line(&mut action_input)?;
-    let action_index = action_input.trim().parse::<usize>().unwrap_or(0);
-
-    if action_index == 0 || action_index > actions.len() {
-        println!("Invalid action.");
-        return Ok(());
-    }
-
-    let (label, href, method) = &actions[action_index - 1];
-    let full_url = format!("{}{}", get_address().await, href);
-    println!("\n URL: {}", full_url);
-    println!("\nPerforming: {} {} {}", label, method, href);
-    let res = match *method {
-        "GET" => client.get(&full_url).send().await?,
-        "PUT" => client.put(&full_url).send().await?,
-        "DELETE" => client.delete(&full_url).send().await?,
-        _ => {
-            println!("Unsupported method: {}", method);
-            return Ok(());
-        }
-    };
-
-    let status = res.status();
-    let body = res.text().await?;
-    println!("Response: {} - {}", status, body);
-
     Ok(())
 }
 
