@@ -27,7 +27,7 @@ const getItems = async (req, res) => {
       _links:
       {
         self: { href: '/api/items/' },
-        profile: { href: '/profiles/items/' },
+        profile: { href: '/profile/items/' },
         create: { href: '/api/items', method: 'POST' }
       },
       _embedded: {

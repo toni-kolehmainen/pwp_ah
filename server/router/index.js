@@ -60,5 +60,16 @@ router.get('/auctions/:auction_id/bids', bidsByAuction.getBids);
 
 // auction by user
 router.get('/users/:user_id/auctions', auctionsByUsers.getAuctions);
-
+router.get('/', (req, res) => {
+  res.json({
+    _links: {
+      self: { href: '/api/' },
+      users: { href: '/api/users', method: 'GET' },
+      items: { href: '/api/items', method: 'GET' },
+      categories: { href: '/api/categories', method: 'GET' },
+      bids: { href: '/api/bids', method: 'GET' },
+      auctions: { href: '/api/auctions', method: 'GET' }
+    }
+  });
+});
 module.exports = router;

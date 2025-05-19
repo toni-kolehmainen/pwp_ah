@@ -23,7 +23,7 @@ const getAuctions = async (req, res) => {
       _links:
         {
           self: { href: '/api/auctions/' },
-          profile: { href: '/profiles/auctions/' },
+          profile: { href: '/profile/auctions/' },
           create: { href: '/api/auctions', method: 'POST' }
         },
       _embedded: {

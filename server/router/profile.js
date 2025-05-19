@@ -10,7 +10,7 @@ router.get('/items', profileController.itemPofile);
 router.get('/categories', profileController.categoryPofile);
 router.get('/bids', profileController.bidPofile);
 router.get('/auctions', profileController.auctionPofile);
-
+router.get('/user', profileController.userPofile);
 router.all('*', (req, res) => {
   res.status(404).json(resourceProperties());
 });

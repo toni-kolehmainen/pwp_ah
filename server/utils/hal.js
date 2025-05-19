@@ -35,7 +35,7 @@ const createHalLinks = (resource, path, canEdit = true, showAuctionByUser = fals
     _links: {
       self: { href: `/api/${path}/${resource.id}` },
       all: { href: `/api/${path}` },
-      profile: { href: `/profiles/${path}` }
+      profile: { href: `/profile/${path}` }
     },
     ...resource
   };
@@ -67,7 +67,7 @@ const deleteHalLinks = (path) => {
     _links: {
       self: { href: `/api/${path}` },
       create: { href: `/api/${path}`, method: 'POST' },
-      profile: { href: `/profiles/${path}` }
+      profile: { href: `/profile/${path}` }
     },
     message: `Deleted successfully from ${path}`
   };
@@ -81,7 +81,7 @@ const putHalLinks = (resource, path) => {
     _links: {
       self: { href: `/api/${path}/${resource.id}` },
       create: { href: `/api/${path}`, method: 'POST' },
-      profile: { href: `/profiles/${path}` },
+      profile: { href: `/profile/${path}` },
       edit: { href: `/api/${path}/${resource.id}`, method: 'PUT' },
       delete: { href: `/api/${path}/${resource.id}`, method: 'DELETE' }
     },

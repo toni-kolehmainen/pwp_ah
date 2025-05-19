@@ -18,7 +18,7 @@ const getResource = async (db, hal, res, next) => {
       _links:
       {
         self: { href: hal.self },
-        profile: { href: `/profiles/${hal.path}/` },
+        profile: { href: `/profile/${hal.path}/` },
         create: { href: `/api/${hal.path}`, method: 'POST' },
         get_all: { href: `/api/${hal.path}` }
       },
